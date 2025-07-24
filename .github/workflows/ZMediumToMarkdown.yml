@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
   schedule:
-    - cron: '10 1 15 * *'
+    - cron: '10 1 15 * *' # Monthly sync
 
 permissions:
   contents: write
@@ -37,26 +37,9 @@ jobs:
             --cookie_sid ${{ secrets.MEDIUM_COOKIE_SID }}
             -j ${{ env.MEDIUM_USER }}
 
-      - name: Generate Medium About page by RSS
-        run: |
-          ruby -r feedjira -e '
-            require "jekyll";
-            feed=Feedjira.parse(URI.open("https://medium.com/feed/@${{ env.MEDIUM_USER }}").read);
-            about=feed.entries.find{|e|e.url.include?("/about")};
-            File.write("_tabs/about.md", <<~MD);
-            ---
-            layout: page
-            title: About
-            permalink: /about/
-            ---
-            <article class="medium-about">
-            #{about&.content || "<p>Unable to fetch Medium About content.</p>"}
-            </article>
-            MD'
-      
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v6
         with:
-          commit_message: "Update fetched Medium posts & about"
+          commit_message: "Update fetched Medium posts"
           branch: main
           push_options: '--force-with-lease'
