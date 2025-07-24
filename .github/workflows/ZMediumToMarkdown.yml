@@ -17,3 +17,4 @@ jobs:
       uses: ZhgChgLi/ZMediumToMarkdown@main
       with:
         command: "--cookie_uid ${{ secrets.MEDIUM_COOKIE_UID }} --cookie_sid ${{ secrets.MEDIUM_COOKIE_SID }} -j dbragetti"
+        # comment for triggering action
