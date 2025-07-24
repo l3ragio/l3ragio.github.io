@@ -40,9 +40,10 @@ social:
     # The first element serves as the copyright owner's link
     - https://x.com/l3rag1 # change to your Twitter homepage
     - https://github.com/l3ragio # change to your GitHub homepage
+    - https://www.linkedin.com/in/davide-bragetti
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    - https://www.linkedin.com/in/davide-bragetti/
+    
 
 # Site Verification Settings
 webmaster_verifications:
