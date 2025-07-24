@@ -4,22 +4,59 @@ on:
   workflow_dispatch:
   push:
   schedule:
-    - cron: "10 1 15 * *" # Runs at 01:10 UTC on the 15th of every month
+    - cron: '10 1 15 * *'
 
 permissions:
   contents: write
 
 jobs:
-  ZMediumToMarkdown:
+  fetch_and_sync:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler-cache: true
+
+      - name: Add feedjira to Gemfile
+        run: |
+          echo "gem 'feedjira'" >> Gemfile
+          bundle install
+
       - name: Run ZMediumToMarkdown Bot
         uses: ZhgChgLi/ZMediumToMarkdown@main
         with:
-          command: "--cookie_uid ${{ secrets.MEDIUM_COOKIE_UID }} --cookie_sid ${{ secrets.MEDIUM_COOKIE_SID }} -j ${{ env.MEDIUM_USER }}"
+          command: >
+            --cookie_uid ${{ secrets.MEDIUM_COOKIE_UID }}
+            --cookie_sid ${{ secrets.MEDIUM_COOKIE_SID }}
+            -j ${{ env.MEDIUM_USER }}
+
+      - name: Generate Medium About page by RSS
+        run: |
+          ruby -r feedjira -e '
+            require "jekyll";
+            feed=Feedjira.parse(URI.open("https://medium.com/feed/@${{ env.MEDIUM_USER }}").read);
+            about=feed.entries.find{|e|e.url.include?("/about")};
+            File.write("_tabs/about.md", <<~MD);
+            ---
+            layout: page
+            title: About
+            permalink: /about/
+            ---
+            <article class="medium-about">
+            #{about&.content || "<p>Unable to fetch Medium About content.</p>"}
+            </article>
+            MD'
+      
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v6
         with:
-          commit_message: "Update fetched Medium posts"
+          commit_message: "Update fetched Medium posts & about"
           branch: main
           push_options: '--force-with-lease'
