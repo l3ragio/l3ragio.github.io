@@ -9,14 +9,14 @@ theme: jekyll-theme-chirpy
 lang: en
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone: Asia/Taipei
+timezone: Europe/Rome
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Medium To Jekyll Starter # the main title
+title:  # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the subtitle
+tagline:  # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
@@ -35,14 +35,14 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Davide Bragetti
-  email: bragettidavide_at_gmail.com # change to your email address
+  email: bragettidavide@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://x.com/l3rag1 # change to your Twitter homepage
     - https://github.com/l3ragio # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/davide-bragetti/
 
 # Site Verification Settings
 webmaster_verifications:
