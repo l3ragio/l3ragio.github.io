@@ -5,7 +5,7 @@ title: About
 
 {% assign about = site.data.medium_about %}
 {% if about and about.name %}
-## About {{ about.name }}
+### {{ about.name }}
 
 {% if about.avatar_url %}
 ![{{ about.name }}]({{ about.avatar_url }})
