@@ -1,22 +1,20 @@
 # _plugins/medium_about.rb
 require 'open-uri'
 require 'nokogiri'
+require 'jekyll'
 
 Jekyll::Hooks.register :site, :post_read do |site|
   username = site.config['medium_username']
-  url = "https://medium.com/@#{username}/about"
-  html = URI.open(url).read
+  about_url = "https://medium.com/@#{username}/about"
 
-  doc = Nokogiri::HTML(html)
+  begin
+    doc = Nokogiri::HTML(URI.open(about_url))
+    article = doc.at_css('article') || doc.at_css('main') || doc.at_css('.u-marginTop20')
+    html = article ? article.inner_html.strip : "<p>Error: couldn't locate 'about' content.</p>"
 
-  # Select the actual rendered content in the <article> tag
-  article = doc.at('article')
-
-  if article
-    # Clean up unwanted scripts or attributes if needed
-    article.search('script, style, noscript').remove
-    site.data['medium_about_html'] = article.inner_html
-  else
+    site.data['medium_about_html'] = html
+  rescue => e
     site.data['medium_about_html'] = "<p>Unable to fetch Medium About content.</p>"
+    Jekyll.logger.error "medium_about:", "Error reading Medium about: #{e.message}"
   end
 end
