@@ -16,7 +16,7 @@ jobs:
       - name: Run ZMediumToMarkdown Bot
         uses: ZhgChgLi/ZMediumToMarkdown@main
         with:
-          command: "--cookie_uid ${{ secrets.MEDIUM_COOKIE_UID }} --cookie_sid ${{ secrets.MEDIUM_COOKIE_SID }} -j $MEDIUM_USER"
+          command: "--cookie_uid ${{ secrets.MEDIUM_COOKIE_UID }} --cookie_sid ${{ secrets.MEDIUM_COOKIE_SID }} -j ${{ env.MEDIUM_USER }}"
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v6
         with:
