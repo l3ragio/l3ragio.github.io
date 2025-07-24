@@ -4,10 +4,6 @@ title: About
 permalink: /about/
 ---
 
-{% if site.data.medium_about %}
-  <article class="medium-about">
-    {{ site.data.medium_about.content }}
-  </article>
-{% else %}
-  <p>Unable to fetch Medium About content.</p>
-{% endif %}
+<div class="medium-about-full">
+  {{ site.data.medium_about_full | markdownify }}
+</div>
