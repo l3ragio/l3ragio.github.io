@@ -5,16 +5,26 @@ require 'jekyll'
 
 Jekyll::Hooks.register :site, :post_read do |site|
   username = site.config['medium_username']
-  about_url = "https://medium.com/@#{username}/about"
+  about_url = "https://medium.com/@#{username}/about?format=json"
+  raw = URI.open(about_url).read
+  clean = raw.sub(/\A\]\)\}while\(1\);<\/x>/, '')
+  json = JSON.parse(clean)
+  html = json.dig('payload','value','content','bodyModel','paragraphs')
+  # Sometimes Medium's structure differs - handle exceptions
+  html ||= json.dig('payload','user','about') || ''
 
-  begin
-    doc = Nokogiri::HTML(URI.open(about_url))
-    article = doc.at_css('article') || doc.at_css('main') || doc.at_css('.u-marginTop20')
-    html = article ? article.inner_html.strip : "<p>Error: couldn't locate 'about' content.</p>"
-
-    site.data['medium_about_html'] = html
-  rescue => e
-    site.data['medium_about_html'] = "<p>Unable to fetch Medium About content.</p>"
-    Jekyll.logger.error "medium_about:", "Error reading Medium about: #{e.message}"
+  # If we got an array of paragraphs, reconstruct HTML
+  if html.is_a?(Array)
+    doc = Nokogiri::HTML::DocumentFragment.parse('')
+    html.each do |p|
+      # those paragraphs contain text, markup or image data
+      fragment = Nokogiri::HTML::DocumentFragment.parse(p['text'] || '')
+      doc.add_child(fragment)
+    end
+    about_html = doc.to_html
+  else
+    about_html = html
   end
+
+  site.data['medium_about_html'] = about_html
 end
