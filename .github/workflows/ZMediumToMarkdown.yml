@@ -1,21 +1,25 @@
 name: ZMediumToMarkdown
+
 on:
   workflow_dispatch:
   push:
   schedule:
-    - cron: "10 1 15 * *" # Runs at 01:10 (UTC) on the 15th of every month.
-    # Schedule to automatically sync at specified intervals
-    # Reference: https://crontab.guru/
+    - cron: "10 1 15 * *" # Runs at 01:10 UTC on the 15th of every month
 
 permissions:
   contents: write
-  
+
 jobs:
   ZMediumToMarkdown:
     runs-on: ubuntu-latest
     steps:
-    - name: ZMediumToMarkdown Automatic Bot
-      uses: ZhgChgLi/ZMediumToMarkdown@main
-      with:
-        command: "--cookie_uid ${{ secrets.MEDIUM_COOKIE_UID }} --cookie_sid ${{ secrets.MEDIUM_COOKIE_SID }} -j dbragetti"
-        # comment for triggering action
+      - name: Run ZMediumToMarkdown Bot
+        uses: ZhgChgLi/ZMediumToMarkdown@main
+        with:
+          command: "--cookie_uid ${{ secrets.MEDIUM_COOKIE_UID }} --cookie_sid ${{ secrets.MEDIUM_COOKIE_SID }} -j dbragetti"
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v6
+        with:
+          commit_message: "Update fetched Medium posts"
+          branch: main
+          push_options: '--force-with-lease'
