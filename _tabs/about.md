@@ -1,19 +1,11 @@
 ---
 layout: page
 title: About
+permalink: /about/
 ---
 
-{% assign about = site.data.medium_about %}
-{% if about and about.name %}
-## About {{ about.name }}
-
-{% if about.avatar_url %}
-![{{ about.name }}]({{ about.avatar_url }})
-{% endif %}
-
-{{ about.bio }}
-
-Find me on [Medium](https://medium.com/@{{ about.username }})
-{% else %}
-No profile data yet. Make sure `medium_username` is set in `_config.yml`.
-{% endif %}
+<div class="medium-about">
+  <img src="{{ site.data.medium_about.avatar_url }}" alt="{{ site.data.medium_about.name }} avatar">
+  <h1>{{ site.data.medium_about.name }}</h1>
+  <p>{{ site.data.medium_about.bio }}</p>
+</div>
