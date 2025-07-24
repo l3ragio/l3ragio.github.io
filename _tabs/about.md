@@ -10,6 +10,6 @@ permalink: /about/
   {% endif %}
   <h1>{{ site.data.medium_about.name }}</h1>
   <div class="medium-bio">
-    {{ site.data.medium_about_html | markdownify }}
+    aaaa {{ site.data.medium_about_html | markdownify }}
   </div>
 </div>
