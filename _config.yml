@@ -138,6 +138,9 @@ assets:
     env: # [development | production]
       MEDIUM_USER: dbragetti
 
+# in _config.yml
+medium_username: dbragetti
+
 pwa:
   enabled: true # The option for PWA feature (installable)
   cache:
