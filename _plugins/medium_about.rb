@@ -1,15 +1,21 @@
-# Place in `_plugins/medium_about.rb`
-
 require 'net/http'
 require 'json'
+require 'jekyll'
 
 Jekyll::Hooks.register :site, :pre_render do |site|
-  medium_url = "https://medium.com/@YOUR_MEDIUM_USERNAME"
-  uri = URI("#{medium_url}/?format=json")
-  data = JSON.parse(Net::HTTP.get(uri).sub('])}while(1);</x>', ''))
-  site.config['medium_about'] = {
-    "name" => data["payload"]["user"]["name"],
-    "bio"  => data["payload"]["user"]["bio"],
-    "avatar" => data["payload"]["user"]["imageId"], # may require build URL
+  # Replace with your Medium @username
+  url = URI("https://medium.com/@your_username?format=json")
+  body = Net::HTTP.get(url).sub(/^while\(1\);/, '')  # remove Medium prefix
+  js = JSON.parse(body)
+
+  # Grab your bio and avatar
+  user = js.dig("payload", "user")
+  about = {
+    "name" => user["name"],
+    "bio"  => user["bio"],
+    "image" => user["imageId"]
   }
+
+  # Save as a data file accessible in Liquid
+  File.write(File.join(site.source, "_data", "medium_about.json"), JSON.generate(about))
 end
