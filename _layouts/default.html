@@ -1,0 +1,18 @@
+---
+layout: null
+---
+
+<!doctype html>
+<html lang="{{ site.lang | default: "en" }}">
+  {% include head.html %}
+  <body>
+    <div id="panel-wrapper">
+      {% include_cached header-custom.html %}
+      <main class="container">
+        {{ content }}
+      </main>
+    </div>
+    {% include_cached footer.html %}
+    {% include_cached search-loader.html %}
+  </body>
+</html>
