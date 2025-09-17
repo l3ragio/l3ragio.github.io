@@ -9,19 +9,6 @@ layout: default
     <p class="meta">{{ page.date | date: "%Y-%m-%d" }}</p>
   </header>
 
-  {% if page.hero %}
-  <figure class="vs-hero">
-    <a href="{{ page.hero | relative_url }}" class="popup img-link shimmer">
-      <img
-        src="{{ page.hero | relative_url }}"
-        alt="{{ page.title }} hero"
-        loading="lazy"
-        decoding="async"
-      >
-    </a>
-  </figure>
-  {% endif %}
-
   {% if page.panels %}
   <section class="vs-panels">
     {% for p in page.panels %}
@@ -57,26 +44,12 @@ layout: default
 </article>
 
 <style>
-/* Container width similar to Chirpy content width */
 .vs-article { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
 
-/* --- HERO: make it a small summary thumbnail --- */
-.vs-hero {
-  max-width: 360px;       /* 👈 shrink the hero */
-  margin: 0 auto 1rem;    /* center + space below */
-}
-.vs-hero img {
-  display: block;
-  width: 100%;
-  height: auto;           /* preserve aspect ratio */
-  border-radius: 12px;
-  /* If you ever set a fixed height, keep aspect with: object-fit: cover; */
-}
-
-/* --- PANELS: make them big (full content width) --- */
+/* Panels fill the content width */
 .vs-panels {
   display: grid;
-  grid-template-columns: 1fr;     /* one per row = widest possible */
+  grid-template-columns: 1fr;
   gap: 18px;
 }
 .vs-panel {
@@ -88,14 +61,8 @@ layout: default
 .vs-panel img {
   display: block;
   width: 100%;
-  height: auto;                   /* responsive width, keep ratio */
-  /* If you later cap height, use object-fit: cover to avoid distortion */
+  height: auto;
 }
 .vs-panel figcaption { padding: 10px; }
 .vs-panel .bubbles { margin: .4rem 0 0 1rem; }
-
-/* Optional: on small screens keep things readable */
-@media (max-width: 480px) {
-  .vs-hero { max-width: 260px; }  /* even smaller hero on phones */
-}
 </style>
