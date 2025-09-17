@@ -23,7 +23,7 @@ description: >- # used by seo meta and the atom feed
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: "https://l3ragio.github.io/"
+url: "https://l3ragio.github.io"
 
 github:
   username: l3ragio # change to your GitHub username
@@ -175,6 +175,10 @@ collections:
   tabs:
     output: true
     sort_by: order
+  # --- Visual Stories collection ---
+  visual_stories:
+    output: true
+    permalink: /visual-stories/:slug/
 
 defaults:
   - scope:
@@ -197,6 +201,14 @@ defaults:
     values:
       layout: page
       permalink: /:title/
+  # Defaults for Visual Stories
+  - scope:
+      path: "_visual_stories"
+      type: visual_stories
+    values:
+      layout: visual_story
+      comments: false
+      toc: false
 
 sass:
   style: compressed
