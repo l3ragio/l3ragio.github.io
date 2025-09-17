@@ -10,10 +10,8 @@ permalink: /visual-stories/
   {% for s in stories %}
     <article class="vs-card">
       <a class="vs-link" href="{{ s.url | relative_url }}">
-        <img class="vs-thumb"
-             src="{{ (s.hero | default: s.panels[0].img) | relative_url }}"
-             alt="{{ s.title }} cover"
-             loading="lazy" decoding="async" />
+        <div class="vs-thumb"
+             style="--vs-thumb:url('{{ (s.hero | default: s.panels[0].img) | relative_url }}')"></div>
         <div class="vs-meta">
           <h3>{{ s.title }}</h3>
           {% if s.subtitle %}<p>{{ s.subtitle }}</p>{% endif %}
@@ -36,12 +34,14 @@ permalink: /visual-stories/
   background:var(--card-bg);
   overflow:hidden;
 }
-.vs-link{ display:block; text-decoration:none; color:inherit; }
+.vs-link{ display:block; color:inherit; text-decoration:none; }
 .vs-thumb{
-  display:block;
   width:100%;
   aspect-ratio:4/3;
-  object-fit:cover;
+  background-image:var(--vs-thumb);
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
 }
 .vs-meta{ padding:12px; }
 .vs-meta h3{ margin:.2rem 0 .1rem; font-size:1.05rem; }
