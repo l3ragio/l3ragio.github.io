@@ -1,0 +1,54 @@
+---
+layout: default
+---
+
+<article class="vs-article">
+  <header class="vs-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
+    <p class="meta">{{ page.date | date: "%Y-%m-%d" }}</p>
+  </header>
+
+  {% if page.hero %}
+  <figure class="vs-hero">
+    <img src="{{ page.hero | relative_url }}" alt="{{ page.title }} hero">
+  </figure>
+  {% endif %}
+
+  {% if page.panels %}
+  <section class="vs-panels">
+    {% for p in page.panels %}
+    <figure class="vs-panel">
+      <img src="{{ p.img | relative_url }}" alt="{{ p.alt | default: 'panel' }}">
+      {% if p.caption or p.bubbles %}
+      <figcaption>
+        {% if p.caption %}<div class="caption">{{ p.caption }}</div>{% endif %}
+        {% if p.bubbles %}
+        <ul class="bubbles">
+          {% for b in p.bubbles %}
+          <li><strong>{{ b.speaker }}:</strong> {{ b.text }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </figcaption>
+      {% endif %}
+    </figure>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  <section class="vs-notes">
+    {{ content }}
+  </section>
+</article>
+
+<style>
+.vs-header{margin-bottom:1rem}
+.vs-hero img{width:100%;border-radius:12px}
+.vs-panels{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;margin-top:1rem}
+.vs-panel{border:1px solid var(--border-color);border-radius:12px;overflow:hidden;background:var(--card-bg)}
+.vs-panel img{display:block;width:100%}
+.vs-panel figcaption{padding:10px}
+.vs-panel .bubbles{margin:.4rem 0 0 1rem}
+.vs-notes{margin-top:1.5rem}
+</style>
