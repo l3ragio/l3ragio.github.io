@@ -2,7 +2,7 @@
 title: Greek Stoic Scenes — Panel 1–3
 subtitle: Outside the theatres, managing emotions
 date: 2025-09-17
-hero: /assets/visual-stories/greek-stoic-scenes/panel-01.jpg
+hero: /assets/visual-stories/greek-stoic-scenes/panel-01.png
 panels:
   - img: /assets/visual-stories/greek-stoic-scenes/panel-01.png
     alt: Stoic citizens outside the theatre
