@@ -13,7 +13,7 @@ layout: default
   <section class="vs-panels">
     {% for p in page.panels %}
     <figure class="vs-panel">
-      <a href="{{ p.img | relative_url }}" class="popup img-link shimmer">
+        <a href="{{ p.img | relative_url }}" class="vs-image">
         <img
           src="{{ p.img | relative_url }}"
           alt="{{ p.alt | default: 'panel' }}"
