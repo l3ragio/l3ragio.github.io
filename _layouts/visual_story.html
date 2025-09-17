@@ -11,7 +11,14 @@ layout: default
 
   {% if page.hero %}
   <figure class="vs-hero">
-    <img src="{{ page.hero | relative_url }}" alt="{{ page.title }} hero">
+    <a href="{{ page.hero | relative_url }}" class="popup img-link shimmer">
+      <img
+        src="{{ page.hero | relative_url }}"
+        alt="{{ page.title }} hero"
+        loading="lazy"
+        decoding="async"
+      >
+    </a>
   </figure>
   {% endif %}
 
@@ -19,7 +26,14 @@ layout: default
   <section class="vs-panels">
     {% for p in page.panels %}
     <figure class="vs-panel">
-      <img src="{{ p.img | relative_url }}" alt="{{ p.alt | default: 'panel' }}">
+      <a href="{{ p.img | relative_url }}" class="popup img-link shimmer">
+        <img
+          src="{{ p.img | relative_url }}"
+          alt="{{ p.alt | default: 'panel' }}"
+          loading="lazy"
+          decoding="async"
+        >
+      </a>
       {% if p.caption or p.bubbles %}
       <figcaption>
         {% if p.caption %}<div class="caption">{{ p.caption }}</div>{% endif %}
@@ -43,12 +57,45 @@ layout: default
 </article>
 
 <style>
-.vs-header{margin-bottom:1rem}
-.vs-hero img{width:100%;border-radius:12px}
-.vs-panels{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;margin-top:1rem}
-.vs-panel{border:1px solid var(--border-color);border-radius:12px;overflow:hidden;background:var(--card-bg)}
-.vs-panel img{display:block;width:100%}
-.vs-panel figcaption{padding:10px}
-.vs-panel .bubbles{margin:.4rem 0 0 1rem}
-.vs-notes{margin-top:1.5rem}
+/* Container width similar to Chirpy content width */
+.vs-article { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+
+/* --- HERO: make it a small summary thumbnail --- */
+.vs-hero {
+  max-width: 360px;       /* 👈 shrink the hero */
+  margin: 0 auto 1rem;    /* center + space below */
+}
+.vs-hero img {
+  display: block;
+  width: 100%;
+  height: auto;           /* preserve aspect ratio */
+  border-radius: 12px;
+  /* If you ever set a fixed height, keep aspect with: object-fit: cover; */
+}
+
+/* --- PANELS: make them big (full content width) --- */
+.vs-panels {
+  display: grid;
+  grid-template-columns: 1fr;     /* one per row = widest possible */
+  gap: 18px;
+}
+.vs-panel {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--card-bg);
+}
+.vs-panel img {
+  display: block;
+  width: 100%;
+  height: auto;                   /* responsive width, keep ratio */
+  /* If you later cap height, use object-fit: cover to avoid distortion */
+}
+.vs-panel figcaption { padding: 10px; }
+.vs-panel .bubbles { margin: .4rem 0 0 1rem; }
+
+/* Optional: on small screens keep things readable */
+@media (max-width: 480px) {
+  .vs-hero { max-width: 260px; }  /* even smaller hero on phones */
+}
 </style>
