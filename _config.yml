@@ -39,8 +39,11 @@ social:
   links:
     # The first element serves as the copyright owner's link
     - https://x.com/l3rag1 # change to your Twitter homepage
+    - https://twitter.com/l3rag1
     - https://github.com/l3ragio # change to your GitHub homepage
     - https://www.linkedin.com/in/davide-bragetti
+    - https://l3ragio.github.io/
+    - https://medium.com/@dbragetti
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     
