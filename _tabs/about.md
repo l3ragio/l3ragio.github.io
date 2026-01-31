@@ -23,15 +23,7 @@ Find me on [Medium](https://medium.com/@{{ about.username }})
 
 <img src="https://miro.medium.com/v2/resize:fit:1313/1*u2rbaO2KNkYlWddDuhFAQA.jpeg" alt="About Hero Image" width="100%" />
 
-**Beyond my practical work, my passion for cybersecurity has led me to explore the academic sphere.**
+Davide Bragetti is an independent AI researcher, frontier Red Team leader and operator, and trusted adviser in regulated-industry settings. With dual PhDs in cybersecurity, his career spans collaborations with companies such as Anthropic, Microsoft, Google, Tesla, Meta and Apple, and work with the European Commission, the European Central Bank and the United Nations—alongside leading global universities and research centers.
 
-One of my most remarkable academic experiences was being invited by Prof. Dr. Cas Cremers at CISPA to deliver a talk titled **“Questioning the Oracle.”**  
-This provided an excellent platform to present my work on breaking security properties against Compression Functions, a key building block of hash functions and PRNGs.
 
-My explorations into Quantum circuits as a potential solution to avoid the risk of arithmetic-circuit analysis further signify my creative approach to tackling complex cybersecurity problems.
-
-As I continue to grow in my career, I stay connected with the broader cybersecurity community through my Medium blog, where I discuss and analyze emerging concepts, techniques, and scenarios related to prominent threats and promising technologies.
-
-My commitment to continuous learning, coupled with my diverse experiences, fuels my desire to contribute meaningful insights and solutions to the field of cybersecurity.
-
-*Stay tuned for more discussions and discoveries in the ever-evolving world of cybersecurity!*
+He now supports organizations in building resilient, auditable AI systems—guiding assurance frameworks, telemetry and adversarial testing of models and platforms—while advancing scientific insight into how AI models behave and fail. He is committed to embedding governance, adversary-aware monitoring and adaptive assurance into mission-critical deployments, enabling organisations to stay ahead in a world where intelligent systems and sophisticated adversaries evolve together.
