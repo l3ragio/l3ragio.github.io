@@ -37,9 +37,19 @@ jobs:
             --cookie_sid ${{ secrets.MEDIUM_COOKIE_SID }}
             -j ${{ env.MEDIUM_USER }}
 
+      - name: Install ImageMagick
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick
+
+      - name: Generate OG preview images for Visual Stories
+        run: |
+          mkdir -p assets/og
+          ruby scripts/generate_visual_story_og.rb
+
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v6
         with:
-          commit_message: "Update fetched Medium posts"
+          commit_message: "Update fetched Medium posts + OG previews"
           branch: main
-          push_options: '--force-with-lease'
+          push_options: "--force-with-lease"
