@@ -24,4 +24,4 @@ panels:
     text: Let joy be ambient, not private.
 image: "/assets/og/greek-stoic-scenes.jpg"
 ---
-Credits / model / seed, etc.
+summary: "Outside the theatres, ancient Greeks practice Stoic discipline—silence in hardship, shared joy in public."
