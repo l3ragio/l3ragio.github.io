@@ -4,16 +4,19 @@ layout: default
 
 <article class="vs-article">
   <header class="vs-header">
-    <h1>{{ page.title }}</h1>
-    {% if page.subtitle %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
-    <p class="meta">{{ page.date | date: "%Y-%m-%d" }}</p>
+    <h1 class="vs-title">{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="vs-subtitle">{{ page.subtitle }}</p>{% endif %}
+    <p class="vs-meta">{{ page.date | date: "%Y-%m-%d" }}</p>
   </header>
 
   {% if page.panels %}
   <section class="vs-panels">
+    {% assign show_captions = page.show_captions %}
+    {% assign show_bubbles = page.show_bubbles %}
+
     {% for p in page.panels %}
     <figure class="vs-panel">
-        <a href="{{ p.img | relative_url }}" class="vs-image">
+      <a href="{{ p.img | relative_url }}" class="vs-image">
         <img
           src="{{ p.img | relative_url }}"
           alt="{{ p.alt | default: 'panel' }}"
@@ -21,15 +24,30 @@ layout: default
           decoding="async"
         >
       </a>
-      {% if p.caption or p.bubbles %}
-      <figcaption>
-        {% if p.caption %}<div class="caption">{{ p.caption }}</div>{% endif %}
-        {% if p.bubbles %}
-        <ul class="bubbles">
-          {% for b in p.bubbles %}
-          <li><strong>{{ b.speaker }}:</strong> {{ b.text }}</li>
-          {% endfor %}
-        </ul>
+
+      {% assign has_caption = p.caption and show_captions != false %}
+      {% assign has_bubbles = p.bubbles and show_bubbles != false %}
+
+      {% if has_caption or has_bubbles %}
+      <figcaption class="vs-caption">
+        {% if has_caption %}
+          <div class="vs-caption-text">{{ p.caption }}</div>
+        {% endif %}
+
+        {% if has_bubbles %}
+          <ul class="vs-bubbles">
+            {% for b in p.bubbles %}
+              {% assign sp = b.speaker | default: "" | downcase %}
+              <li class="vs-bubble">
+                {% if sp == "narrator" %}
+                  <em class="vs-voiceover">{{ b.text }}</em>
+                {% else %}
+                  <span class="vs-speaker">{{ b.speaker }}:</span>
+                  <span class="vs-speech">{{ b.text }}</span>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
         {% endif %}
       </figcaption>
       {% endif %}
@@ -38,31 +56,89 @@ layout: default
   </section>
   {% endif %}
 
+  {% if page.credits %}
+    {% assign c = page.credits %}
+    {% assign has_credits =
+      (c.model and c.model != "") or
+      (c.seed and c.seed != "") or
+      (c.tools and c.tools != "")
+    %}
+    {% if has_credits %}
+    <section class="vs-credits">
+      <h2 class="vs-credits-title">Credits</h2>
+      <dl class="vs-credits-list">
+        {% if c.model and c.model != "" %}<div><dt>Model</dt><dd>{{ c.model }}</dd></div>{% endif %}
+        {% if c.seed and c.seed != "" %}<div><dt>Seed</dt><dd>{{ c.seed }}</dd></div>{% endif %}
+        {% if c.tools and c.tools != "" %}<div><dt>Tools</dt><dd>{{ c.tools }}</dd></div>{% endif %}
+      </dl>
+    </section>
+    {% endif %}
+  {% endif %}
+
+  {% if content and content != "" %}
   <section class="vs-notes">
     {{ content }}
   </section>
+  {% endif %}
 </article>
 
 <style>
+/* Container */
 .vs-article { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+.vs-header { margin: 0 0 1rem 0; }
+.vs-title { margin: 0; }
+.vs-subtitle { margin: .35rem 0 0 0; opacity: .85; }
+.vs-meta { margin: .5rem 0 0 0; opacity: .7; font-size: .95rem; }
 
-/* Panels fill the content width */
+/* Panels: single column works best for mobile & readability */
 .vs-panels {
   display: grid;
   grid-template-columns: 1fr;
   gap: 18px;
 }
+
 .vs-panel {
   border: 1px solid var(--border-color);
   border-radius: 12px;
   overflow: hidden;
   background: var(--card-bg);
 }
-.vs-panel img {
+
+/* Make the image link a solid tap target */
+.vs-image { display: block; }
+.vs-image img {
   display: block;
   width: 100%;
   height: auto;
 }
-.vs-panel figcaption { padding: 10px; }
-.vs-panel .bubbles { margin: .4rem 0 0 1rem; }
+
+/* Caption area (mobile-safe text wrapping) */
+.vs-caption {
+  padding: 10px 12px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.vs-caption-text { margin: 0 0 .35rem 0; opacity: .9; }
+
+/* Bubbles: readable on phones */
+.vs-bubbles {
+  margin: .35rem 0 0 0;
+  padding-left: 1rem;
+  line-height: 1.4;
+}
+.vs-bubble { margin: .25rem 0; }
+.vs-speaker { font-weight: 600; margin-right: .25rem; }
+.vs-voiceover { opacity: .9; }
+
+/* Credits block */
+.vs-credits { margin-top: 1.25rem; padding-top: .75rem; border-top: 1px solid var(--border-color); }
+.vs-credits-title { margin: 0 0 .5rem 0; font-size: 1.05rem; }
+.vs-credits-list { margin: 0; }
+.vs-credits-list > div { display: grid; grid-template-columns: 90px 1fr; gap: .75rem; padding: .2rem 0; }
+.vs-credits-list dt { opacity: .7; }
+.vs-credits-list dd { margin: 0; }
+
+/* Notes */
+.vs-notes { margin-top: 1.25rem; }
 </style>
