@@ -1,0 +1,11 @@
+{% if page.layout == "visual_story" %}
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ page.title | escape }}" />
+<meta property="og:description" content="{{ page.subtitle | default: page.excerpt | escape }}" />
+<meta property="og:url" content="{{ page.url | absolute_url }}" />
+{% if page.image %}
+<meta property="og:image" content="{{ page.image | absolute_url }}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="{{ page.image | absolute_url }}" />
+{% endif %}
+{% endif %}
