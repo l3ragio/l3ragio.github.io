@@ -1,0 +1,28 @@
+---
+---
+
+/* Chirpy override entry point.
+   Imports the original theme then layers small visual adjustments on top.
+   Keep this file minimal and resilient to upstream theme updates. */
+
+@import 'main';
+
+:root {
+  --orb-rgb: 0, 255, 198;
+}
+
+html[data-mode="dark"],
+html:not([data-mode]) {
+  --link-color: #00ffc6;
+  --link-underline-color: rgba(0, 255, 198, 0.4);
+}
+
+#orbs-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}

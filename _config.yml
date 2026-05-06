@@ -14,12 +14,13 @@ timezone: Europe/Rome
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title:  # the main title
+title: Davide Bragetti
 
-tagline:  # it will display as the subtitle
+tagline: Notes on AI safety, formal methods, and adversarial security.
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  Davide Bragetti — independent research on AI safety, formal methods,
+  and adversarial security. Technical notes, papers, and visual stories.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -38,15 +39,11 @@ social:
   email: bragettidavide@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://x.com/l3rag1 # change to your Twitter homepage
-    - https://twitter.com/l3rag1
-    - https://github.com/l3ragio # change to your GitHub homepage
+    - https://github.com/l3ragio
+    - https://x.com/l3rag1
     - https://www.linkedin.com/in/davide-bragetti
-    - https://l3ragio.github.io/
     - https://medium.com/@dbragetti
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    
+
 
 # Site Verification Settings
 webmaster_verifications:
@@ -92,7 +89,7 @@ pageviews:
 #     light — Use the light color scheme
 #     dark — Use the dark color scheme
 #
-theme_mode: # [light | dark]
+theme_mode: dark # [light | dark]
 
 # The CDN endpoint for media resources.
 # Notice that once it is assigned, the CDN url
@@ -106,7 +103,7 @@ avatar: "/assets/img/avatar.png"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
-social_preview_image: # string, local or CORS resources
+social_preview_image: /assets/img/avatar.png
 
 # boolean type, the global switch for TOC in posts.
 toc: true
@@ -140,9 +137,8 @@ assets:
     # specify the Jekyll environment, empty means both
     # only works if `assets.self_host.enabled` is 'true'
     env: # [development | production]
-      MEDIUM_USER: dbragetti
 
-# in _config.yml
+# Medium account synced by ZMediumToMarkdown workflow
 medium_username: dbragetti
 
 pwa:
@@ -230,8 +226,11 @@ exclude:
   - "*.gemspec"
   - docs
   - tools
+  - scripts
   - README.md
   - LICENSE
+  - CLAUDE.md
+  - image.png
   - purgecss.js
   - rollup.config.js
   - "package*.json"

@@ -4,9 +4,11 @@ date: 2026-05-07T00:00:00+02:00
 categories: [ai-safety]
 tags: [evaluations, risk-management, frontier-ai, bluedot, science-of-evals]
 description: "What 'eval' actually means, what would close the proprietary benchmark gap, why frameworks live downstream of evaluations, and one bootstrap proposal worth testing."
+math: true
 ---
 
 > **TL;DR.** AI evaluation today is roughly where cryptography was in the early 1980s. We have plenty of techniques but no shared soundness definition. Risk management frameworks inherit the gaps of the evaluations they reference, and frontier models themselves may be the production engine for the formal specification we are missing.
+{: .prompt-tip }
 
 I am partway through the BlueDot Technical AI Safety course, through the unit on detecting danger and how AI companies test for safety. The unit covers four risk management frameworks (Anthropic, OpenAI, Google DeepMind, Meta), three categories of artifact (risk management policies, system cards, red team reports), and the field wide question of what counts as a rigorous evaluation. Across two live discussions on the unit I left a set of comments in the shared docs that I want to expand here, because they got at something I think is worth saying out loud.
 
@@ -22,19 +24,17 @@ The way to read this. We are between phases. The pre formal phase (everyone defi
 
 The second observation, in question form. What would it actually take to close the gap between proprietary benchmarks and a shared formal spec? I see three plausible scenarios.
 
-**A. A regulator demands formalised eval specs.** Government intervention forces standardisation. Plausible in jurisdictions already drafting AI policy (EU AI Act, UK AISI work, US executive orders). Specifications become the regulatory artifact, not lab choice.
+1. **A regulator demands formalised eval specs.** Government intervention forces standardisation. Plausible in jurisdictions already drafting AI policy (EU AI Act, UK AISI work, US executive orders). Specifications become the regulatory artifact, not lab choice.
 
-**B. A lab finds a technique that requires comparing benchmarks formally.** Some methodology, maybe automated red teaming or cross model contamination detection, only works if benchmarks share a specification language. Once one lab uses it, others have to adopt or be left behind.
+2. **A lab finds a technique that requires comparing benchmarks formally.** Some methodology, maybe automated red teaming or cross model contamination detection, only works if benchmarks share a specification language. Once one lab uses it, others have to adopt or be left behind.
 
-**C. A paper proves a soundness theorem.** Specifically, a result of the form
+3. **A paper proves a soundness theorem.** Specifically, a result of the form
 
-```text
-Pr(adversary fools the eval) <= epsilon
-```
+   $$\Pr(\text{adversary fools the eval}) \le \varepsilon$$
 
-under stated conditions. Once you have that for one eval, follow up papers either have to match the theorem or explain why theirs cannot. The theorem becomes the new floor.
+   under stated conditions. Once you have that for one eval, follow up papers either have to match the theorem or explain why theirs cannot. The theorem becomes the new floor.
 
-Any one of the three would probably suffice. What is interesting is that all three are imaginable but none of them have actually happened yet. The field is in a stable disequilibrium. The strongest near term force toward closure is probably (A), because regulators are moving and labs respond to regulation faster than they respond to academic results.
+Any one of the three would probably suffice. What is interesting is that all three are imaginable but none of them have actually happened yet. The field is in a stable disequilibrium. The strongest near term force toward closure is probably the first (regulation), because regulators are moving and labs respond to regulation faster than they respond to academic results.
 
 ## Frameworks live downstream of evaluations
 
