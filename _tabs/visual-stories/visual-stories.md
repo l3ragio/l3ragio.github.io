@@ -1,6 +1,6 @@
 ---
 title: Visual Stories
-icon: 📚
+icon: fas fa-images
 order: 5
 permalink: /visual-stories/
 ---

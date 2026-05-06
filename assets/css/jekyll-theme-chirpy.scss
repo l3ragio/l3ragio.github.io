@@ -26,3 +26,45 @@ html:not([data-mode]) {
   z-index: -1;
   pointer-events: none;
 }
+
+/* Sidebar: more breathing room between the avatar and the site title.
+   Default Chirpy stacks them too tightly when the avatar is 112px. */
+#sidebar .profile-wrapper {
+  #avatar {
+    margin-bottom: 0.75rem;
+  }
+
+  .site-title {
+    margin-top: 0.25rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .site-subtitle {
+    margin-top: 0.15rem;
+  }
+}
+
+/* Topbar: keep the breadcrumb shrinkable so a long post title does not
+   push the search field onto a second line. Last segment truncates. */
+#topbar #breadcrumb {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+
+  span:last-of-type {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+  }
+}
+
+/* Make sure the search field has a stable minimum width on desktop. */
+@media (min-width: 850px) {
+  #topbar #search {
+    flex: 0 0 auto;
+    min-width: 13rem;
+  }
+}
