@@ -68,3 +68,20 @@ html:not([data-mode]) {
     min-width: 13rem;
   }
 }
+
+/* Sidebar social icons: keep them on a single horizontal row at the bottom,
+   evenly distributed, with symmetric padding and no per-icon side margins.
+   Chirpy default is flex-wrap with asymmetric left padding, which on a
+   narrow sidebar causes the icons to wrap and look misaligned. */
+#sidebar .sidebar-bottom {
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  gap: 0.35rem;
+
+  > a,
+  > #mode-toggle {
+    margin: 0 !important;
+  }
+}
