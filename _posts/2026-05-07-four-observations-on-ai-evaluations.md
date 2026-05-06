@@ -1,6 +1,6 @@
 ---
 title: "Four Observations on AI Evaluations from BlueDot Unit 3"
-date: 2026-05-07T10:00:00+02:00
+date: 2026-05-07T00:00:00+02:00
 categories: [ai-safety]
 tags: [evaluations, risk-management, frontier-ai, bluedot, science-of-evals]
 description: "What 'eval' actually means, what would close the proprietary benchmark gap, why frameworks live downstream of evaluations, and one bootstrap proposal worth testing."
