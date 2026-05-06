@@ -85,3 +85,45 @@ html:not([data-mode]) {
     margin: 0 !important;
   }
 }
+
+/* Hover colour: Chirpy hardcodes #d2603a (sand/orange) on link hover, which
+   clashes with the cyan accent. Match accent on hover so the palette stays
+   coherent. */
+#topbar #breadcrumb a:hover,
+.post-meta a:not([class]):hover,
+.content a:not(.img-link):hover {
+  color: #00ffc6 !important;
+  border-bottom-color: #00ffc6 !important;
+}
+
+/* Post header: tighter heading, calmer description.
+   Default Chirpy H1 is heavy at desktop sizes; pull it back a touch. */
+#main-wrapper article > header > h1 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+article .post-desc {
+  color: var(--text-muted-color);
+  font-style: italic;
+}
+
+/* Post-preview card without a hero image: when the layout falls back to
+   col-md-12 (no image div), give the card-body symmetric padding so the
+   title does not look pushed against the left edge. */
+.post-preview > .col-md-12 > .card-body {
+  padding-inline: 1.25rem;
+}
+
+/* Footer: centre the lone copyright line on desktop now that the second
+   paragraph is gone, and give it a touch more breathing room above. */
+#tail-wrapper > footer {
+  margin-top: 2rem;
+  justify-content: center;
+
+  > p {
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+}

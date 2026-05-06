@@ -1,0 +1,22 @@
+{%- comment -%}
+  Local override of Chirpy's footer.html.
+
+  Removes the theme and Medium-sync attribution from the rendered footer
+  to keep the user-facing site clean. The attribution remains documented
+  in the project README and in the upstream Chirpy / ZhgChg.Li repos.
+{%- endcomment -%}
+
+<footer
+  aria-label="Site Info"
+  class="d-flex flex-column justify-content-center text-muted align-items-lg-center pb-lg-3"
+>
+  <p>
+    &copy; <time>{{ site.time | date: '%Y' }}</time>
+    <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
+    <span
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author."
+    >Some rights reserved.</span>
+  </p>
+</footer>
