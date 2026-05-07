@@ -1,6 +1,6 @@
 ---
 title: "Necessary, not sufficient"
-date: 2026-05-08T00:30:00+02:00
+date: 2026-05-07T22:30:00+02:00
 categories: [ai-safety]
 tags: [mechanistic-interpretability, interpretability, debate, bluedot, ai-safety]
 description: "Six arguments against the strong claim that mechanistic interpretability will lead to safe AI. Notes from the BlueDot Unit 4 debate."
