@@ -52,13 +52,11 @@ article .content {
 }
 
 // ── Right atmospheric rail (decorative, CSS-only) ────────────────────
-// Chirpy's #panel-wrapper has Chirpy-internal layout logic that fights
-// our overrides. Rather than wrestle with it, we paint a decorative
-// atmospheric zone on the right edge of the viewport: a soft vertical
-// gradient that catches orbs, plus a subtle hairline marking it as a
-// distinct visual zone. TOC continues to work via the sticky toc-bar
-// at the top of the article on narrower viewports; at xl+ Chirpy
-// shows its own panel-wrapper alongside.
+// Decorative zone on the right edge: soft vertical gradient that
+// catches orbs + hairline border marking it as a distinct zone.
+// Coupled with main-wrapper padding-right so content does NOT
+// visually slide under the rail (the user flagged "constraints not
+// respected" — this is the lateral constraint pass).
 @media (min-width: 992px) {
   body::after {
     content: '';
@@ -76,6 +74,13 @@ article .content {
       rgba(0, 255, 198, 0.07) 100%
     );
     border-left: 1px solid var(--border-subtle);
+  }
+
+  // Reserve the right 200px for the atmospheric rail. Content stays
+  // left of the rail; topbar / footer / article all respect this
+  // constraint.
+  #main-wrapper {
+    padding-right: 200px;
   }
 }
 

@@ -156,11 +156,25 @@ html[data-mode="light"] {
   height: 56px;
 }
 
+// Force the topbar to a true single horizontal row. Without explicit
+// row direction + nowrap the topbar items (breadcrumb, search) ended
+// up stacking vertically due to inherited flex defaults from some
+// parent class. Pin everything explicitly so breadcrumb sits left and
+// search sits right on the same line.
 #topbar {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: 56px !important;
   font-size: var(--text-sm);
   letter-spacing: 0.02em;
+  gap: var(--space-3);
 
   #breadcrumb {
+    flex: 1 1 auto;
+    min-width: 0;
     font-size: var(--text-xs);
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -189,31 +203,61 @@ html[data-mode="light"] {
   border-radius: 0.4rem;
 }
 
-// Search field: align as a flex container so the icon and input
-// sit on the same vertical baseline, centered against the 56px
-// topbar height. Fixed input height; icon vertically centered.
+// Search field: explicit flex item that does not grow / shrink, sized
+// 13rem so it sits on the right of the topbar without competing with
+// the breadcrumb. Icon vertically centered inside the input via
+// position:absolute + top:50% transform.
 #topbar #search {
   display: flex;
   align-items: center;
   position: relative;
+  flex: 0 0 13rem;
   height: 36px;
+  margin-left: auto;
 
   > i.fas.fa-search {
     position: absolute;
-    left: var(--space-1);
+    left: 0.6rem;
     top: 50%;
     transform: translateY(-50%);
     font-size: var(--text-sm);
     color: var(--text-muted);
     pointer-events: none;
+    margin: 0;
   }
 
   #search-input {
     height: 100%;
-    line-height: 1;
-    padding: 0 var(--space-2) 0 calc(var(--space-3) + var(--space-1));
+    line-height: 36px;
+    padding: 0 var(--space-2) 0 2rem;
     font-size: var(--text-sm);
+    font-family: var(--font-sans);
     background: transparent;
     color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    width: 100%;
+    transition: border-color var(--transition-fast),
+                box-shadow var(--transition-fast);
+
+    &::placeholder {
+      color: var(--text-muted);
+      line-height: 36px;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+  }
+}
+
+// Hide the Cancel button on desktop — it is only useful when the
+// mobile search overlay is open. Removing the redundant element
+// improves the topbar visual rhythm.
+@media (min-width: 850px) {
+  #topbar #search-cancel {
+    display: none !important;
   }
 }

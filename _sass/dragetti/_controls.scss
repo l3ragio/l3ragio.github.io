@@ -4,23 +4,9 @@
 // reading column. Match the token palette and add focus-visible rings
 // so keyboard nav stays consistent across the chrome.
 
-// ── Search input (topbar) ─────────────────────────────────────────────
-#topbar #search-input {
-  font-family: var(--font-sans);
-  background: transparent;
-  border: 1px solid var(--border-subtle);
-  color: var(--text-primary);
-
-  &::placeholder {
-    color: var(--text-muted);
-  }
-
-  &:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 1px var(--accent-soft);
-    outline: none;
-  }
-}
+// Search input (topbar) is owned entirely by _chrome.scss now to avoid
+// a split rule definition. Focus state lives there with the rest of
+// the search field.
 
 // ── Search results panel ──────────────────────────────────────────────
 // Hover color for search result links: align with the accent palette
