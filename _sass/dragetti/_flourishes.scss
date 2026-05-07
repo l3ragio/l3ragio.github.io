@@ -1,0 +1,54 @@
+// Editorial flourishes (Phase D).
+//
+// Polish that elevates the prose without adding visual weight: animated
+// link underlines on inline links, a quiet section divider between
+// major article sections.
+
+// ── Animated link underline (prose only) ─────────────────────────────
+// Default Chirpy gives content links a static text-decoration. Replace
+// with a 1px background-image underline that lives just below the
+// baseline. On hover, swap to a 2px underline + subtle accent shift.
+// Skip the rule for image links (.img-link) and for callout blockquotes.
+article .content a:not(.img-link):not(.anchor):not(.popup) {
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  padding-bottom: 1px;
+  transition: background-size var(--transition-fast),
+              color var(--transition-fast);
+  color: var(--text-primary);
+
+  &:hover {
+    color: var(--accent);
+    background-size: 100% 2px;
+  }
+}
+
+// Override the Chirpy hover that sets border-bottom + color !important
+// (would re-add the static underline). The entry overlay had the cyan
+// override; this rule wins because it is later and uses more specific
+// :not() chaining.
+article .content a:not(.img-link):not(.anchor):not(.popup):hover {
+  border-bottom-color: transparent !important;
+}
+
+// ── Section divider ──────────────────────────────────────────────────
+// A quiet ornamental break before secondary H2 sections (skip the
+// first H2 of a post). Three diamond glyphs in accent at watermark
+// alpha — readable as "section change" without competing with the
+// heading itself.
+article .content > h2:not(:first-of-type)::before {
+  content: '\25C7\00a0\00a0\25C7\00a0\00a0\25C7';   // ◇  ◇  ◇
+  display: block;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: normal;
+  letter-spacing: 0.4em;
+  color: var(--accent);
+  opacity: 0.35;
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-5);
+}
