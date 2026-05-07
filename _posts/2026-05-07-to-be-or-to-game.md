@@ -5,6 +5,10 @@ categories: [ai-safety]
 tags: [evaluations, science-of-evals, ai-deception, governance, formal-methods]
 description: "An answer for the need of the Science of Evals."
 math: true
+image:
+  path: /assets/img/heroes/to-be-or-to-game.png
+  alt: "Tiered tower under construction with figures negotiating, an oversight eye, scales of justice, and scaffolding - allegory for the layered structure of AI evaluation."
+  lqip: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiA5Ij48cmVjdCB3aWR0aD0iMTYiIGhlaWdodD0iOSIgZmlsbD0iI2QyYzdhYyIvPjwvc3ZnPg==
 ---
 
 > **TL;DR.** Evals are the bottleneck of AI safety, and the field knows it. The problem is doubly hard because the evaluation domain is computationally infinite and the subject of evaluation can game the evaluator. The solution shape is a top-down tiered governance that constrains deception level by level, a bottom-up axiomatisation that recovers properties from the most computationally constrained environments, and a meet-in-the-middle effort that ties the two. This post sketches that shape and ends with three practical ways the work can begin.
