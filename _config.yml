@@ -144,7 +144,9 @@ medium_username: dbragetti
 pwa:
   enabled: true # The option for PWA feature (installable)
   cache:
-    enabled: true # The option for PWA offline cache
+    enabled: false # Offline cache disabled — was triggering the
+                   # "new version available" toast on every reload
+                   # because Chirpy's SW kept seeing version mismatches.
     # Paths defined here will be excluded from the PWA cache.
     # Usually its value is the `baseurl` of another website that
     # shares the same domain name as the current website.
