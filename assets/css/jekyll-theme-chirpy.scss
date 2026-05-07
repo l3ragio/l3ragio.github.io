@@ -16,6 +16,7 @@
 @import 'dragetti/callouts';
 @import 'dragetti/panels';
 @import 'dragetti/controls';
+@import 'dragetti/cards';
 @import 'dragetti/motion';
 
 :root {
@@ -101,21 +102,12 @@
   border-bottom-color: #00ffc6 !important;
 }
 
-/* Post-preview card without a hero image: when the layout falls back to
-   col-md-12 (no image div), give the card-body symmetric padding so the
-   title does not look pushed against the left edge. */
-.post-preview > .col-md-12 > .card-body {
-  padding-inline: 1.25rem;
-}
-
-/* Footer: centre the lone copyright line on desktop now that the second
-   paragraph is gone, and give it a touch more breathing room above. */
+/* Footer copyright text alignment (centering kept; the rhythm/tone of
+   the footer is now owned by _layout.scss). */
 #tail-wrapper > footer {
-  margin-top: 2rem;
   justify-content: center;
 
   > p {
-    margin-bottom: 0.5rem;
     text-align: center;
   }
 }

@@ -1,0 +1,99 @@
+// Post-preview card.
+//
+// True card container: bg-raised, hairline border, radius-md, shadow-xs
+// at rest, lift + shadow-sm + accent border on hover. Internal layout
+// hierarchy: title (serif 600) -> description (serif muted) -> meta
+// (mono uppercase eyebrow at the bottom).
+//
+// The wrapper is article.card-wrapper.card. Inside it lives
+// a.post-preview which is the actual link, holding the row layout
+// (image col + card-body col, or card-body col-md-12 alone).
+
+.card-wrapper.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+  overflow: hidden;
+  transition:
+    transform var(--transition-medium),
+    box-shadow var(--transition-medium),
+    border-color var(--transition-fast);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+    border-color: rgba(0, 255, 198, 0.20);
+  }
+}
+
+.post-preview {
+  text-decoration: none !important;
+
+  .card-body {
+    padding: var(--space-3);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--text-heading);
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    margin-top: 0;
+    margin-bottom: var(--space-1);
+    transition: color var(--transition-fast);
+  }
+
+  .card-text.content {
+    font-family: var(--font-serif);
+    font-size: var(--text-sm);
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin-top: 0 !important;
+    margin-bottom: var(--space-2) !important;
+  }
+
+  // Meta line at the bottom of the card. Mono uppercase eyebrow with
+  // date + reading time. Pushed to bottom via flex auto margin.
+  .post-meta {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: auto;
+    padding-top: var(--space-2);
+
+    em {
+      font-style: normal;
+      color: var(--text-muted);
+    }
+  }
+
+  // Hero image: keep proportions consistent across cards. 16:9 aspect
+  // ratio means cards with images don't dominate cards without.
+  .preview-img {
+    aspect-ratio: 16 / 9;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+// Card hover affordance: title shifts to accent. Subtle, not flashy.
+.card-wrapper.card:hover .post-preview .card-title {
+  color: var(--accent);
+}
+
+// Cards without a hero image: card-body becomes col-md-12, expand to
+// full card width, give a comfortable inner pad.
+.post-preview > .col-md-12 > .card-body {
+  padding: var(--space-3) var(--space-4);
+}
