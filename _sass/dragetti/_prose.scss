@@ -33,11 +33,12 @@ article .content {
 }
 
 // ── Drop cap ──────────────────────────────────────────────────────────
-// Skippable per post by adding `class: no-dropcap` to the post layout
-// wrapper (the .content div) via a future Liquid hook; for now applies
-// to every post. 3em is the largest size that does not feel kitschy
-// at a 17px body.
-article .content:not(.no-dropcap) > p:first-of-type::first-letter {
+// Restrict to the single-post article (Chirpy emits data-toc="true" on
+// the post article and not on post-preview cards). Skippable per post
+// by adding `class: no-dropcap` to the post layout wrapper via a
+// future Liquid hook; for now applies to every actual post.
+// 3em is the largest size that does not feel kitschy at a 17px body.
+article[data-toc] .content:not(.no-dropcap) > p:first-of-type::first-letter {
   font-family: var(--font-serif);
   font-size: 3em;
   line-height: 0.92;
