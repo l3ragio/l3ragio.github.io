@@ -51,54 +51,41 @@ article .content {
   margin-top: var(--space-3);
 }
 
-// ── Right rail (panel-wrapper) ───────────────────────────────────────
-// Chirpy hides #panel-wrapper below xl (1200px). Force visible at lg
-// (>= 992px) so the right rail becomes a real always-present zone of
-// the layout, not a desktop-luxury widget. Tokenize the rail's padding
-// + sticky position so the TOC + Recently Updated + Topics widgets
-// align with the content baseline.
+// ── Right atmospheric rail (decorative, CSS-only) ────────────────────
+// Chirpy's #panel-wrapper has Chirpy-internal layout logic that fights
+// our overrides. Rather than wrestle with it, we paint a decorative
+// atmospheric zone on the right edge of the viewport: a soft vertical
+// gradient that catches orbs, plus a subtle hairline marking it as a
+// distinct visual zone. TOC continues to work via the sticky toc-bar
+// at the top of the article on narrower viewports; at xl+ Chirpy
+// shows its own panel-wrapper alongside.
 @media (min-width: 992px) {
-  #panel-wrapper {
-    display: block !important;
-    padding-top: var(--space-5);
-    padding-left: var(--space-3);
-    padding-right: var(--space-2);
-    /* DEBUG: position fixed to right edge so we can see it */
-    position: fixed !important;
-    top: 80px !important;
-    right: 1rem !important;
-    width: 280px !important;
-    height: auto !important;
-    border-left: 4px solid red !important;
-    background: rgba(255,0,0,0.2) !important;
-    z-index: 1000 !important;
-
-    // Accent atmosphere: subtle vertical gradient on the rail's left
-    // edge so the rail reads as the "atmospheric zone" of the page,
-    // catching orbs from the canvas while staying quiet.
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 60px;
-      pointer-events: none;
-      background: linear-gradient(
-        to right,
-        rgba(0, 255, 198, 0.06) 0%,
-        transparent 100%
-      );
-    }
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 200px;
+    pointer-events: none;
+    z-index: -1;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 255, 198, 0.04) 60%,
+      rgba(0, 255, 198, 0.07) 100%
+    );
+    border-left: 1px solid var(--border-subtle);
   }
+}
 
-  // Make main column stop at the rail edge instead of extending into it
-  // (Chirpy at lg has main col-lg-11 = 91.66% which crowds out the
-  // panel; cap at lg-9 to leave 25% for the rail).
-  #main-wrapper > .container .col-lg-11 {
-    flex: 0 0 75% !important;
-    max-width: 75% !important;
-  }
+html[data-mode="light"] body::after {
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 120, 88, 0.04) 60%,
+    rgba(0, 120, 88, 0.07) 100%
+  );
 }
 
 #panel-wrapper .access > section {
