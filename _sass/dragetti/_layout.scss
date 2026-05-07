@@ -157,7 +157,7 @@ html[data-mode="light"] #panel-wrapper::before {
   }
 }
 
-// ── TOC bar (sticky horizontal at the top of post on narrow widths) ─
+// ── TOC bar (sticky title-echo with embedded TOC trigger) ──────────
 // Default Chirpy renders the post title + a Contents button as a
 // pill-styled bar. Tokenize so it reads as part of the surface system
 // rather than a Bootstrap leftover.
@@ -181,6 +181,13 @@ html[data-mode="light"] #panel-wrapper::before {
       color: var(--accent);
     }
   }
+}
+
+// #toc-solo-trigger is a redundant "Contents" button - the toc-bar
+// above already exposes the same TOC trigger embedded with the post
+// title. Hide the solo-trigger; the bar is the single affordance.
+#toc-solo-trigger {
+  display: none !important;
 }
 
 #toc-solo-trigger {
