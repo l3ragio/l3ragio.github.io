@@ -21,37 +21,47 @@
   }
 }
 
-// ── Tags index page: pills wrap as a grid, not a vertical stack ──────
-// Default rendering had each tag on its own line. Force flex-wrap so
-// pills tile horizontally with consistent gaps.
-#page-tag,
-#tags {
-  > ul,
-  ul.tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-1);
-    padding-left: 0;
-    list-style: none;
-
-    > li {
-      list-style: none;
-
-      a {
-        display: inline-flex;
-        align-items: center;
-      }
-    }
-  }
-}
-
-// Tags page main wrapper: just in case Chirpy renders differently
-main #tags > ul {
+// ── Tags index page: pills tile as a grid ────────────────────────────
+// Chirpy renders tags as <div id="tags" class="d-flex flex-wrap"> with
+// direct <a class="tag"> children (no list). Earlier selector targeted
+// a non-existent ul. Override the .tag layout directly so pills sit
+// inline with consistent gaps and don't stretch to row width.
+main #tags {
   display: flex !important;
   flex-wrap: wrap;
   gap: var(--space-1) var(--space-1);
-  list-style: none;
-  padding-left: 0;
+  align-content: flex-start;
+}
+
+main #tags > a.tag {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  margin-right: 0 !important;
+  line-height: 1.4 !important;
+  padding: var(--space-1) var(--space-2) !important;
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+  border: 1px solid transparent !important;
+  border-radius: 999px !important;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.02em;
+  box-shadow: none !important;
+  transition: background var(--transition-fast),
+              border-color var(--transition-fast);
+
+  &:hover {
+    background: rgba(0, 255, 198, 0.15) !important;
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+  }
+
+  span {
+    margin-left: var(--space-1);
+    font-size: 0.8em;
+    color: var(--text-muted);
+  }
 }
 
 // ── Archives: timeline-style year markers ────────────────────────────
