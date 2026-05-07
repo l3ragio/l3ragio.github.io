@@ -37,7 +37,10 @@ html[data-mode="light"] {
     .site-title {
       margin-top: var(--space-1);
       margin-bottom: var(--space-1);
-      font-size: var(--text-md);
+      // --text-xl gives the brand presence without the heavy 28px
+      // 900-weight that Chirpy ships. 24px Inter 600 holds the column.
+      font-size: var(--text-xl);
+      line-height: 1.2;
     }
 
     .site-subtitle {
