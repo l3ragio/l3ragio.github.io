@@ -5,15 +5,15 @@ categories: [ai-safety]
 tags: [mechanistic-interpretability, interpretability, debate, bluedot, ai-safety]
 description: "Even granting that mechanistic interpretability gets us to safe AI, does that guarantee a safe world? Notes from the BlueDot Unit 4 debate."
 math: false
-authors: [davide, liz_tan, joy_yang]
+authors: [davide, abdullah, avni, caroline, janhavi, joy_yang, liz_tan, lucas]
 ---
 
-> **TL;DR.** Two questions, not one. Can mechanistic interpretability lead us to safe AI? And if it can, does that guarantee that nothing bad ever happens? In Unit 4 of the BlueDot Technical AI Safety course our team defended the position that the answer to the first question is "not on its own", with six operational arguments. The deeper move - and the focus of this post - is that the answer to the second question is also "no", on grounds the operational arguments do not depend on. Safe AI is not a property of a model. It is a property of the relationship between many models, many users, many institutions, and many incentives.
+> **TL;DR.** Two questions, not one. Can mechanistic interpretability lead us to safe AI? And if it can, does that guarantee that nothing bad ever happens? Unit 4 of the BlueDot Technical AI Safety course closed with a debate on the first question. This post is the synthesis our discussion group co-wrote afterwards: six operational arguments showing that the answer to the first question is "not on its own", and a structural argument that the answer to the second question is "no" on independent grounds. Safe AI is not a property of a model. It is a property of the relationship between many models, many users, many institutions, and many incentives.
 {: .prompt-tip }
 
 ## The proposition
 
-The unit's closing exercise asked the group to defend one of two positions: *Mechanistic interpretability techniques will lead to safe AI models* (Team A: Lucas, Abdullah, Janhavi, Avni), or *Mechanistic interpretability techniques will not lead to safe AI models* (Team B: the three of us). The framing matters. The claim under contention is not "mech interp is useful". Few researchers in the room would have disputed that. The claim is whether mech interp, pursued to its limits, gets us all the way to safe deployment of frontier systems. Our six arguments target the second claim.
+The unit's closing exercise asked the group to defend one of two positions: *Mechanistic interpretability techniques will lead to safe AI models* (Team A: Lucas, Abdullah, Janhavi, Avni), or *Mechanistic interpretability techniques will not lead to safe AI models* (Team B: Davide, Liz, Joy). The framing matters. The claim under contention is not "mech interp is useful". Few researchers in the room would have disputed that. The claim is whether mech interp, pursued to its limits, gets us all the way to safe deployment of frontier systems. The six arguments below were defended in the debate by Team B; the synthesis here was co-written by both teams afterwards.
 
 ## 1. The "complete understanding" assumption is very strong
 
@@ -39,9 +39,9 @@ A class of frontier models is built for legitimate research: chemistry models fo
 
 Suppose all the previous problems are solved at some future date: we identify activation spaces corresponding to unwanted behaviours, and we monitor them in real time. A sufficiently capable model could learn to express the same computation through a different activation space, one we have not flagged. This is the mech-interp analogue of the chain-of-thought faithfulness problem: any monitored channel becomes an optimization target the moment the model has an incentive to evade detection. Our oversight is only as good as our coverage of the routing space, which grows combinatorially with model size.
 
-## What the other side argued
+## The WILL position at its strongest
 
-Team A's strongest line was not that mech interp will solve safety, but that *every other safety technique either depends on it or is incomplete without it*. Behavioural evaluations cannot distinguish "the model is safe" from "the model has not yet been incentivised to misbehave". Only inspection of internals can. Diagnoses through interp findings have, in Joy's reflection, real value even when they do not deliver guarantees. Lucas characterised mech interp as the icing on the cake, or as the swiss-cheese layer no other slice replaces. That is a defensible reading of the field's current trajectory and, I think, the most calibrated form of the WILL position. The disagreement is not about whether mech interp matters. It is about whether it carries the load alone.
+Team A's strongest line was not that mech interp will solve safety, but that *every other safety technique either depends on it or is incomplete without it*. Behavioural evaluations cannot distinguish "the model is safe" from "the model has not yet been incentivised to misbehave". Only inspection of internals can. Diagnoses through interp findings have real value even when they do not deliver guarantees. Lucas characterised mech interp as the icing on the cake, or as the swiss-cheese layer no other slice replaces. That is a defensible reading of the field's current trajectory and, on reflection, the most calibrated form of the WILL position. The disagreement is not about whether mech interp matters. It is about whether it carries the load alone. The post takes that line on board: the calibrated middle is what the synthesis ends on.
 
 ## Beyond the model: the ecosystem question
 
@@ -93,12 +93,8 @@ The third is an ecosystem-level theory that does for cross-system dynamics what 
 
 The action item I take from the unit is to track which interpretability findings can certify which kinds of safety claims, and how that maps onto formally verifiable properties at both the per-model and the ecosystem level. None of the three programmes is closed; each is an open target. The WILL NOT verdict converts cleanly into a list of things worth building, and the magnitude of that list is the actual content of the position.
 
-## Acknowledgements
+## Course context
 
-This article is the product of the discussion group of BlueDot Technical AI Safety Unit 4 (Group 03). The six operational arguments and the framing they produce came out of the breakout we ran together before the debate; the post is co-authored on that basis.
+BlueDot Technical AI Safety, Unit 4 (Understanding AI), discussion group 03. The session was facilitated by **Caroline**; the structure of the unit - reflection, teach-each-other, debate, final reflection - is what produced the depth this post tries to capture, and her pacing of the closing reflection is where the framing of "diagnoses through interp findings have value even when they do not deliver guarantees" emerged.
 
-Team A, who defended the WILL position: **Lucas**, **Abdullah**, **Janhavi**, and **Avni**. The "swiss-cheese" framing recovered in *What the other side argued* is theirs, and it is the most calibrated form of the WILL claim. Where this post grants ground, the grounding comes from the strength of their argument.
-
-**Caroline** facilitated. The arc of the session - reflection, teach-each-other, debate, final reflection - is what produced the depth of the conversation, and her pacing kept the room on it. The framing of "diagnoses through interp findings have value even when they do not deliver guarantees" came out of her timing of Joy's closing reflection.
-
-Course context: BlueDot Technical AI Safety, Unit 4 (Understanding AI), discussion group 03.
+The post is jointly written across both debate teams. Where the argument grants ground - which is most of the calibrated middle - the grounding comes from Team A's defense of the swiss-cheese position. Where it goes furthest - the bacteria and weaponisation analogies, the halting reduction, and the three research programmes - the move was stress-tested with the group during and after the session. The strength of the argument is the strength of the room.
