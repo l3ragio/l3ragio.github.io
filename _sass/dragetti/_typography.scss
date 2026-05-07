@@ -1,0 +1,94 @@
+// Typography pass.
+//
+// The reading column uses a single serif family (Spectral). Headings live
+// in the same family so weight contrast carries the hierarchy: research
+// notes feel like one continuous voice instead of an interface stitched
+// from sans chrome and serif body.
+//
+// UI chrome (sidebar, topbar, nav, panel headings, search results, toasts,
+// TOC popup) switches to Inter so navigation reads as data, not prose.
+//
+// Tags, code, keyboard glyphs use JetBrains Mono.
+
+// ── Body ──────────────────────────────────────────────────────────────
+body {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+// ── Headings ─────────────────────────────────────────────────────────
+// Chirpy ships h1..h5 at weight 400 in Lato. Reset family + weight here
+// once instead of patching site-wide.
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1.2rem;
+  line-height: 1.35;
+}
+
+// ── Post lead (the post-desc paragraph) ──────────────────────────────
+header .post-desc,
+article .post-desc {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--lead-size);
+  line-height: 1.55;
+  color: var(--text-muted-color);
+}
+
+// ── UI chrome: switch to sans ────────────────────────────────────────
+#sidebar,
+#topbar,
+.nav-link,
+.panel-heading,
+.btn,
+.post-preview .card-text,
+.post-preview .card-title,
+#search-results a,
+#toc-bar .label,
+#toc-popup .header .label,
+#toc-popup #toc-popup-content,
+#notification .toast-body {
+  font-family: var(--font-sans);
+}
+
+// Sidebar identity: punchy sans title, italic serif tagline. Together
+// they signal "this is a publication, not a CV".
+#sidebar .profile-wrapper {
+  .site-title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .site-subtitle {
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+}
+
+// ── Mono ─────────────────────────────────────────────────────────────
+code, pre, kbd, samp,
+.tag span {
+  font-family: var(--font-mono);
+}
+
+// ── Selection ────────────────────────────────────────────────────────
+::selection {
+  background: var(--accent-soft);
+}

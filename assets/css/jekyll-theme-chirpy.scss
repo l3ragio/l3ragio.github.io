@@ -7,6 +7,7 @@
 
 @import 'main';
 @import 'dragetti/tokens';
+@import 'dragetti/typography';
 
 :root {
   --orb-rgb: 0, 255, 198;
@@ -95,19 +96,6 @@ html:not([data-mode]) {
 .content a:not(.img-link):hover {
   color: #00ffc6 !important;
   border-bottom-color: #00ffc6 !important;
-}
-
-/* Post header: tighter heading, calmer description.
-   Default Chirpy H1 is heavy at desktop sizes; pull it back a touch. */
-#main-wrapper article > header > h1 {
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.25;
-}
-
-article .post-desc {
-  color: var(--text-muted-color);
-  font-style: italic;
 }
 
 /* Post-preview card without a hero image: when the layout falls back to
