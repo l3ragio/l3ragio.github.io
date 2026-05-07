@@ -195,9 +195,13 @@ html[data-mode="light"] {
   }
 }
 
+// Focus-visible: keyboard focus ring on topbar interactive elements.
+// #search-input is excluded — it has its own pill-shaped focus state
+// (border-color + box-shadow on the rounded input) that follows the
+// 999px radius. A rectangular outline-offset would clash with the
+// pill shape.
 #topbar #breadcrumb a:focus-visible,
-#topbar .btn:focus-visible,
-#topbar #search-input:focus-visible {
+#topbar .btn:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
   border-radius: 0.4rem;
@@ -245,10 +249,11 @@ html[data-mode="light"] {
       line-height: 36px;
     }
 
-    &:focus {
+    &:focus,
+    &:focus-visible {
       outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 0 1px var(--accent-soft);
+      box-shadow: 0 0 0 2px var(--accent-soft);
     }
   }
 }
