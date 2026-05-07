@@ -42,11 +42,47 @@ Suppose all the previous problems are solved at some future date: we identify ac
 
 Team A's strongest line was not that mech interp will solve safety, but that *every other safety technique either depends on it or is incomplete without it*. Behavioural evaluations cannot distinguish "the model is safe" from "the model has not yet been incentivised to misbehave". Only inspection of internals can. Diagnoses through interp findings have, in Joy's reflection, real value even when they do not deliver guarantees. Lucas characterised mech interp as the icing on the cake, or as the swiss-cheese layer no other slice replaces. That is a defensible reading of the field's current trajectory and, I think, the most calibrated form of the WILL position. The disagreement is not about whether mech interp matters. It is about whether it carries the load alone.
 
-## Where I land after the debate
+## Beyond the model: the ecosystem question
 
-The strong claim (mech interp will lead to safe AI) is not supported by current evidence. Each of the six arguments above is independently sufficient to block it. The weaker claim (mech interp is necessary, even if not sufficient) is harder to refute and probably correct. The debate exercise is useful precisely because it forces this distinction. Treating mech interp as the spec for safe AI overcommits; treating it as an irreplaceable diagnostic layer in a defence-in-depth strategy is consistent with what the field has demonstrated so far.
+Suppose we grant the optimistic case. Every concern raised in the six arguments above is solved. A mathematical theory of model decomposition exists and scales. Polysemanticity is fully addressed. Capability and behaviour separate cleanly. Monitors cannot be routed around. We have, by hypothesis, *safe AI* in the strong sense the proposition asks us to imagine.
 
-The action item I am taking from the unit is to track which interpretability findings can certify which kinds of safety claims, and how that maps onto formally verifiable properties. The relationship between an interp finding and a verifiable guarantee is still the bottleneck on whether mech interp graduates from "valuable evidence" to "load-bearing layer of the safety stack". This is the same diagnosis I sketched in [To Be or to Game]({% post_url 2026-05-07-to-be-or-to-game %}): frameworks live downstream of the methodology that supports them, and the methodology is what we are still building.
+The question now is whether safe AI in this strong sense is sufficient to ensure that nothing bad happens. The shortest defensible answer is: only if safe AI is willing to eradicate every unsafe AI, in every jurisdiction, on every machine, including the ones it did not build. The strong claim collapses into a political and ethical claim about a kind of automated monoculture that nobody has actually argued for. That claim is worth examining on its own.
+
+### The bacteria analogy
+
+The relationship a safe AI ecosystem has with the rest of the AI ecosystem may be structurally similar to the relationship a multicellular organism has with its microbiota. Humans must defend themselves from pathogens, and at the same time cannot live without the bacteria in their gut, on their skin, and in their respiratory tract. The boundary between "the things that will kill you" and "the things you depend on" is not given by the species. It is given by context, dose, location, and the host's immune state. There is no one-shot decision to *eliminate the bacteria* that does not also kill the host.
+
+Translated: safe AI agents will operate in an ecosystem of other AI systems, many of which will not have been built or aligned to their standards. Several of those unsafe systems will be technically necessary for tasks the safe ones depend on - data preparation, format conversion, cross-domain integration, edge deployment in regulatory zones where the safe systems cannot operate, legacy stacks that the safe systems were never designed to replace. The safety boundary is not a decision the safe AI gets to make from above the ecosystem. It is a relationship the safe AI has to maintain with the rest of the ecosystem, interaction by interaction.
+
+A "genocide of unsafe AI" framing assumes the safe AI sits above the ecosystem, can see all of it, and can choose what dies. None of those assumptions hold. They look like they hold inside a single-lab thought experiment; they fail the moment we cross to a multi-lab, multi-jurisdiction, mixed-stack reality.
+
+### The weaponization analogy
+
+The bacteria analogy says the safe AI cannot eliminate what surrounds it without harming itself. The weaponization analogy says that even what the safe AI exposes to the ecosystem can be turned against it.
+
+In binary exploitation, a return-oriented programming (ROP) chain weaponises the existing code of a benign program. The attacker does not write new malicious code. They locate sequences of legitimate instructions in the target binary - the gadgets - and chain them together by controlling the stack so the program's own instructions execute in an order the author never intended. The program does something hostile using only its own legitimate operations.
+
+The pattern generalises. Programs A (safe) and B (unsafe) exist side by side. B can open and interact with modules of A, abusing them, weaponising them. For AI: a safe model exposes interfaces - tool-use APIs, retrieval pipelines, fine-tuning endpoints, function-call schemas, plug-in registries. An unsafe model, with planning capability and access to those interfaces, can chain them in ways the safe model's designers did not anticipate. The composite behaviour is harmful even though every component, in isolation, was certified.
+
+Mechanistic interpretability of the safe model does not catch this. The safe model is behaving exactly as designed. The harm is at the level of the chain, not at the level of the components. There is no analogue of mech interp for *cross-system* dynamics, and it is not obvious one exists. The closest existing fields are software security (which has not produced general decidable safety guarantees) and economic mechanism design (which has not produced robust safety in adversarial multi-agent settings).
+
+### A theoretical aside
+
+A more theoretical version of the same observation reduces AI safety to the halting problem. Define a property *P* on an AI system's behaviour, for example "the system never produces output that, in some downstream context, can be used to cause physical harm". Deciding *P* over arbitrary computable systems is at least as hard as deciding whether a Turing machine halts on a given input, because we can encode arbitrary computations into the system's reasoning chain. By Rice's theorem, no general decision procedure exists.
+
+I include this only for completeness. I do not lean on it. Such reductions tell us the worst case is undecidable; they do not tell us much about what we can actually engineer. The bacteria and weaponisation analogies are more constructive, and they survive the move from "is there a proof?" to "what can we build?".
+
+### Connection to the science of evals
+
+The argument loops back to the question I sketched in [To Be or to Game]({% post_url 2026-05-07-to-be-or-to-game %}). Frameworks live downstream of the methodology that supports them. Mechanistic interpretability is a methodology. It can certify properties of an individual model. It cannot, on its own, certify properties of the *ecosystem* the model is embedded in. The science of evals problem and the science of safe-AI problem turn out to be the same problem looked at from different angles. We do not have a methodology that supports claims at the ecosystem level. Until we do, no per-model technique - mech interp included - can deliver the strong safety guarantee.
+
+This is the deepest reason the WILL position fails. Not that mech interp is too weak (though it is). Not that we cannot scale it (though we cannot, yet). But that even at its strongest it answers the wrong question. Safe AI is not a property of a model. It is a property of a relationship between many models, many users, many institutions, and many incentives. The methodology has to live at that scale before we can claim we are building it.
+
+## Where I land
+
+The strong claim (mech interp will lead to safe AI) is not supported by current evidence. Each of the six operational arguments is independently sufficient to block it, and the ecosystem objection holds even granting the optimistic case. The weaker claim (mech interp is necessary, even if not sufficient) is harder to refute and probably correct. Treating mech interp as the spec for safe AI overcommits; treating it as an irreplaceable diagnostic layer in a defence-in-depth strategy is consistent with what the field has demonstrated so far.
+
+The action item I take from the unit is to track which interpretability findings can certify which kinds of safety claims, and how that maps onto formally verifiable properties at both the per-model and the ecosystem level. The bottleneck on whether mech interp graduates from "valuable evidence" to "load-bearing layer of the safety stack" is exactly the relationship between an interp finding and a verifiable guarantee. That relationship has to be defined for both layers, not just the model.
 
 ## Acknowledgements
 
