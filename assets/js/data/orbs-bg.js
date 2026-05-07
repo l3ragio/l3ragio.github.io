@@ -47,13 +47,21 @@
       orbs.push({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: rand(-0.12, 0.12),
-        vy: rand(-0.10, 0.10),
+        vx: rand(-0.18, 0.18),
+        vy: rand(-0.14, 0.14),
         baseR: br,
         phase: Math.random() * Math.PI * 2,
-        phaseSpeed: rand(0.005, 0.012),
-        amp: rand(0.20, 0.40),
-        parallax: rand(0.02, 0.10)
+        phaseSpeed: rand(0.004, 0.010),
+        amp: rand(0.18, 0.36),
+        parallax: rand(0.02, 0.10),
+        // Organic floating perturbation: independent sin-wave offset
+        // per orb so each drifts on its own rhythm.
+        wobblePhaseX: Math.random() * Math.PI * 2,
+        wobblePhaseY: Math.random() * Math.PI * 2,
+        wobbleSpeedX: rand(0.003, 0.008),
+        wobbleSpeedY: rand(0.0025, 0.007),
+        wobbleAmpX: rand(0.15, 0.35),
+        wobbleAmpY: rand(0.10, 0.28)
       });
     }
   }
@@ -70,8 +78,12 @@
     for (var i = 0; i < orbs.length; i++) {
       var o = orbs[i];
 
-      o.x += o.vx;
-      o.y += o.vy;
+      // Organic float: linear drift + per-orb sin perturbation so the
+      // motion feels alive instead of mechanically straight-line.
+      o.wobblePhaseX += o.wobbleSpeedX;
+      o.wobblePhaseY += o.wobbleSpeedY;
+      o.x += o.vx + Math.sin(o.wobblePhaseX) * o.wobbleAmpX;
+      o.y += o.vy + Math.cos(o.wobblePhaseY) * o.wobbleAmpY;
 
       var pad = o.baseR * 1.5;
       if (o.x < -pad)        o.x = w + pad;

@@ -4,6 +4,35 @@
 // The principle is one: every margin and padding pulls from --space-*.
 // No hardcoded rem values that bypass the scale.
 
+// ── Page canvas: html paints, body transparent ───────────────────────
+// Move the page background from body to html so the orbs canvas
+// (z-index:-1 inside body, position:fixed) can render in front of
+// the page color and become visible page-wide. body transparent so
+// the canvas is not painted over before reaching elements above.
+html {
+  background: var(--bg-primary);
+}
+
+body {
+  background: transparent !important;
+}
+
+// Article reading column: blurred backdrop. The orbs visible behind
+// the prose get a soft focus so the text stays readable while the
+// atmosphere stays present.
+article > .content {
+  position: relative;
+  background: rgba(11, 15, 20, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+
+html[data-mode="light"] article > .content {
+  background: rgba(250, 248, 242, 0.65);
+}
+
 // ── Content column ───────────────────────────────────────────────────
 // Cap the prose container at a research-blog measure. Figures, code,
 // callouts, tables, and embeds break out by overriding their own

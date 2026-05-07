@@ -13,11 +13,11 @@
 
 html[data-mode="dark"],
 html:not([data-mode]) {
-  // Backgrounds — sidebar shares canvas (separated by hairline only).
-  // Cards float above; code blocks sink. Step uniformi su scala
-  // elevation: sunken < canvas < raised < overlay.
-  --main-bg:           var(--bg-primary);
-  --sidebar-bg:        var(--bg-primary);
+  // Backgrounds — sidebar transparent so orbs canvas shows through;
+  // body becomes transparent and html paints the page color so the
+  // orbs are visible page-wide (not hidden behind body bg).
+  --main-bg:           transparent;
+  --sidebar-bg:        transparent;
   --topbar-bg:         rgba(11, 15, 20, 0.72);
   --card-bg:           var(--bg-secondary);
   --card-header-bg:    var(--bg-elevated);
