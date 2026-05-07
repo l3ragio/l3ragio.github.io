@@ -65,29 +65,52 @@ main #tags > a.tag {
 }
 
 // ── Archives: timeline-style year markers ────────────────────────────
-// Year heading becomes an editorial section anchor: large mono accent
-// label, sticky at the top of its year group, with a vertical hairline
-// extending down through the listed posts.
+// Chirpy renders the archives as:
+//   <div id="archives">
+//     <time class="year lead d-block">2026</time>
+//     <ul class="list-unstyled">
+//       <li><span class="date day">07</span><span class="date month">May</span>
+//           <a>Title</a></li>
+//     </ul>
+//     ...
+// Year markers become editorial section anchors; date day/month become
+// mono uppercase eyebrows; post title in serif.
 #archives {
   ul {
     list-style: none;
     padding-left: 0;
+
+    > li {
+      list-style: none;
+      padding-left: var(--space-3);
+      padding-top: var(--space-1);
+      padding-bottom: var(--space-1);
+      border-left: 1px solid var(--border-subtle);
+      margin-bottom: 0;
+    }
   }
 
-  // Year group header
-  ul > li.lead,
-  .lead.mt-5 {
-    font-family: var(--font-mono);
-    font-size: var(--text-2xl);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--accent);
+  // Year header (time.year.lead.d-block)
+  time.year,
+  time.lead {
+    font-family: var(--font-mono) !important;
+    font-size: var(--text-2xl) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em !important;
+    color: var(--accent) !important;
     margin-top: var(--space-6) !important;
     margin-bottom: var(--space-3) !important;
+    display: block !important;
   }
 
-  // Date markers (day month) on each entry: mono uppercase eyebrow.
+  // First year header has no top margin (it's the first heading)
+  time.year:first-of-type {
+    margin-top: var(--space-3) !important;
+  }
+
+  // Date markers
   .date.day,
+  .date.month,
   .date {
     font-family: var(--font-mono) !important;
     font-size: var(--text-xs) !important;
@@ -96,10 +119,19 @@ main #tags > a.tag {
     color: var(--text-muted) !important;
   }
 
+  .date.day {
+    font-weight: 600;
+    color: var(--text-emphasis) !important;
+    min-width: 2em;
+    display: inline-block;
+  }
+
   // Post title link
-  a {
+  li > a {
     font-family: var(--font-serif);
+    font-size: var(--text-md);
     color: var(--text-primary);
+    margin-left: var(--space-2);
 
     &:hover {
       color: var(--accent);
