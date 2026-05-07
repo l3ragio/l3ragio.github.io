@@ -13,15 +13,17 @@
 
 html[data-mode="dark"],
 html:not([data-mode]) {
-  // Backgrounds
+  // Backgrounds — sidebar shares canvas (separated by hairline only).
+  // Cards float above; code blocks sink. Step uniformi su scala
+  // elevation: sunken < canvas < raised < overlay.
   --main-bg:           var(--bg-primary);
-  --sidebar-bg:        var(--bg-elevated);
+  --sidebar-bg:        var(--bg-primary);
   --topbar-bg:         rgba(11, 15, 20, 0.72);
   --card-bg:           var(--bg-secondary);
   --card-header-bg:    var(--bg-elevated);
   --card-hover-bg:     var(--bg-elevated);
   --button-bg:         var(--bg-secondary);
-  --highlight-bg-color: #0A0D12;
+  --highlight-bg-color: var(--bg-sunken);
 
   // Text
   --text-color:           var(--text-primary);
@@ -48,15 +50,15 @@ html:not([data-mode]) {
 }
 
 html[data-mode="light"] {
-  // Backgrounds
+  // Backgrounds (light parity)
   --main-bg:           var(--bg-primary);
-  --sidebar-bg:        var(--bg-elevated);
+  --sidebar-bg:        var(--bg-primary);
   --topbar-bg:         rgba(250, 248, 242, 0.85);
   --card-bg:           var(--bg-secondary);
   --card-header-bg:    var(--bg-elevated);
   --card-hover-bg:     var(--bg-elevated);
   --button-bg:         var(--bg-secondary);
-  --highlight-bg-color: var(--bg-elevated);
+  --highlight-bg-color: var(--bg-sunken);
 
   // Text
   --text-color:           var(--text-primary);

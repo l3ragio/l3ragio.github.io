@@ -1,0 +1,97 @@
+// Cross-cutting layout: content column, vertical rhythm between
+// sections, footer separation, post-list gutter, widget rhythm.
+//
+// The principle is one: every margin and padding pulls from --space-*.
+// No hardcoded rem values that bypass the scale.
+
+// ── Content column ───────────────────────────────────────────────────
+// Cap the prose container at a research-blog measure. Figures, code,
+// callouts, tables, and embeds break out by overriding their own
+// max-width; that ruleset already lives in _prose.scss.
+article > .content {
+  max-width: 720px;
+}
+
+// ── Article body section rhythm (token scale 8/16/24/32/48/64) ──────
+article .content {
+  > h2 {
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-2);
+  }
+
+  > h3 {
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+  }
+
+  > h4 {
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-1);
+  }
+
+  > p,
+  > ul,
+  > ol,
+  > blockquote {
+    margin-bottom: var(--space-2);
+  }
+
+  > .footnotes {
+    margin-top: var(--space-6);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-subtle);
+    font-size: var(--text-sm);
+  }
+}
+
+// ── Post-list gutter (home feed) ────────────────────────────────────
+// Chirpy default mb-3 (16px) feels packed; --space-3 (24px) gives the
+// cards room to breathe without losing the list rhythm.
+#post-list > .post-preview + .post-preview {
+  margin-top: var(--space-3);
+}
+
+// ── Right panel widgets rhythm ───────────────────────────────────────
+#panel-wrapper .access > section {
+  margin-top: var(--space-5);
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+#panel-wrapper .panel-heading {
+  margin-bottom: var(--space-2);
+}
+
+#panel-wrapper #access-lastmod ul {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+// ── TOC panel rhythm ────────────────────────────────────────────────
+#toc-wrapper {
+  font-size: var(--text-sm);
+
+  .panel-heading {
+    margin-bottom: var(--space-2);
+  }
+}
+
+// ── Footer separation ───────────────────────────────────────────────
+// Closure: footer needs a top border + breath above so the page
+// "ends" with intention rather than fading.
+#tail-wrapper > footer {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-5);
+  border-top: 1px solid var(--border-subtle);
+  font-size: var(--text-xs);
+  color: var(--text-subtle);
+}
+
+// ── Post-navigation rhythm above footer ─────────────────────────────
+.post-navigation {
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-3);
+}
