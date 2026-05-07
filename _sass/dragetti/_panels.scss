@@ -1,0 +1,87 @@
+// Sidebar panels and tag pills.
+//
+// Panel headings ("Recently Updated", "Topics", "Contents") become
+// small mono uppercase labels — they act as section dividers, not
+// page-level headings. Tag pills move from Bootstrap btn-outline
+// rectangles to mono pills tinted with --accent-soft.
+
+// ── Panel headings ────────────────────────────────────────────────────
+.panel-heading {
+  font-family: var(--font-mono) !important;
+  font-size: 0.78rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+  color: var(--text-muted) !important;
+}
+
+// Recently Updated list link tone
+#access-lastmod a {
+  color: var(--text-muted) !important;
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--accent) !important;
+  }
+}
+
+// ── Tag pills ─────────────────────────────────────────────────────────
+// Applies in three contexts: post-tail tags, Trending Tags / Topics
+// widget, search panel hints. The Bootstrap btn-outline-primary
+// utility class on widget pills is overridden in place.
+.post-tag {
+  font-family: var(--font-mono) !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.02em;
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+  border: 1px solid transparent !important;
+  border-radius: 999px !important;
+  padding: 0.25em 0.7em !important;
+  line-height: 1.4 !important;
+  transition: background var(--transition-fast),
+              border-color var(--transition-fast);
+
+  &:hover {
+    background: rgba(0, 255, 198, 0.15) !important;
+    color: var(--accent) !important;
+    border-color: var(--accent) !important;
+  }
+}
+
+html[data-mode="light"] .post-tag:hover {
+  background: rgba(0, 120, 88, 0.14) !important;
+}
+
+.post-tag::before {
+  color: var(--accent) !important;
+}
+
+// Bootstrap btn-outline-primary classes on widget tags: remove the
+// default blue outline so widget pills look identical to post-tail.
+.post-tag.btn.btn-outline-primary {
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+  border-color: transparent !important;
+  --bs-btn-color: var(--accent);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-color: var(--accent);
+  --bs-btn-hover-bg: rgba(0, 255, 198, 0.15);
+  --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-active-color: var(--accent);
+  --bs-btn-active-bg: rgba(0, 255, 198, 0.20);
+  --bs-btn-active-border-color: var(--accent);
+}
+
+// Categories list (categories page) tone
+main .categories .list-group-item {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-subtle);
+}
+
+main .categories .card-header {
+  background-color: var(--card-header-bg) !important;
+  color: var(--text-heading) !important;
+}
