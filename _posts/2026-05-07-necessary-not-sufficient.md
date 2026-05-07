@@ -5,14 +5,15 @@ categories: [ai-safety]
 tags: [mechanistic-interpretability, interpretability, debate, bluedot, ai-safety]
 description: "Six arguments against the strong claim that mechanistic interpretability will lead to safe AI. Notes from the BlueDot Unit 4 debate."
 math: false
+authors: [davide, liz_tan, joy_yang]
 ---
 
-> **TL;DR.** In Unit 4 of the BlueDot Technical AI Safety course, my team (Liz Tan, Joy Yang, and myself) was assigned to defend the position that mechanistic interpretability *will not* lead to safe AI. Six arguments are worth carrying out of that debate. Each is independently sufficient to undermine the strong claim that mech interp is *the* path. None denies that it is a useful diagnostic. The conclusion is calibration, not dismissal: mech interp is a load-bearing component of the safety stack, not the spec for the whole stack.
+> **TL;DR.** In Unit 4 of the BlueDot Technical AI Safety course, our team was assigned to defend the position that mechanistic interpretability *will not* lead to safe AI. Six arguments are worth carrying out of that debate. Each is independently sufficient to undermine the strong claim that mech interp is *the* path. None denies that it is a useful diagnostic. The conclusion is calibration, not dismissal: mech interp is a load-bearing component of the safety stack, not the spec for the whole stack.
 {: .prompt-tip }
 
 ## The proposition
 
-The unit's closing exercise asked the group to defend one of two positions: *Mechanistic interpretability techniques will lead to safe AI models* (Team A: Lucas, Abdullah, Janhavi, Avni), or *Mechanistic interpretability techniques will not lead to safe AI models* (Team B: Liz Tan, Joy Yang, myself). The framing matters. The claim under contention is not "mech interp is useful". Few researchers in the room would have disputed that. The claim is whether mech interp, pursued to its limits, gets us all the way to safe deployment of frontier systems. Our six arguments target the second claim.
+The unit's closing exercise asked the group to defend one of two positions: *Mechanistic interpretability techniques will lead to safe AI models* (Team A: Lucas, Abdullah, Janhavi, Avni), or *Mechanistic interpretability techniques will not lead to safe AI models* (Team B: the three of us). The framing matters. The claim under contention is not "mech interp is useful". Few researchers in the room would have disputed that. The claim is whether mech interp, pursued to its limits, gets us all the way to safe deployment of frontier systems. Our six arguments target the second claim.
 
 ## 1. The "complete understanding" assumption is very strong
 
@@ -94,14 +95,10 @@ The action item I take from the unit is to track which interpretability findings
 
 ## Acknowledgements
 
-This article would not exist without the discussion group of BlueDot Technical AI Safety Unit 4 (Group 03). The intellectual content of the session is collective; what follows tries to credit each contribution honestly.
-
-Co-defenders on the WILL NOT side: **Liz Tan** and **Joy Yang**. The six operational arguments were stress-tested between the three of us in the breakout before the debate. Where they survive scrutiny here, it is because they survived that room first.
+This article is the product of the discussion group of BlueDot Technical AI Safety Unit 4 (Group 03). The six operational arguments and the framing they produce came out of the breakout we ran together before the debate; the post is co-authored on that basis.
 
 Team A, who defended the WILL position: **Lucas**, **Abdullah**, **Janhavi**, and **Avni**. The "swiss-cheese" framing recovered in *What the other side argued* is theirs, and it is the most calibrated form of the WILL claim. Where this post grants ground, the grounding comes from the strength of their argument.
 
 **Caroline** facilitated. The arc of the session - reflection, teach-each-other, debate, final reflection - is what produced the depth of the conversation, and her pacing kept the room on it. The framing of "diagnoses through interp findings have value even when they do not deliver guarantees" came out of her timing of Joy's closing reflection.
-
-The elaborations *after* the session - the bacteria and weaponisation analogies, the halting-problem aside, the three research programmes in *Where I land* - are my own extensions of the collective work. Any errors in stretching the arguments past the original consensus are mine alone.
 
 Course context: BlueDot Technical AI Safety, Unit 4 (Understanding AI), discussion group 03.

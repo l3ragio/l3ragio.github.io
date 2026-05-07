@@ -1,17 +1,15 @@
-## Template › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md#setting-author-url
-# -------------------------------------
-# {author_id}:
-#   name: {full name}
-#   twitter: {twitter_of_author}
-#   url: {homepage_of_author}
-# -------------------------------------
+## Author metadata used by jekyll-seo-tag.
+## Template > https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md#setting-author-url
 
-cotes:
-  name: Cotes Chung
-  twitter: cotes2020
-  url: https://github.com/cotes2020/
+davide:
+  name: Davide Bragetti
+  twitter: l3rag1
+  url: https://l3ragio.github.io/
 
-sille_bille:
-  name: Dinesh Prasanth Moluguwan Krishnamoorthy
-  twitter: dinesh_MKD
-  url: https://github.com/SilleBille/
+liz_tan:
+  name: Liz Tan
+  url: # add LinkedIn / personal site when known
+
+joy_yang:
+  name: Joy Yang
+  url: # add LinkedIn / personal site when known
