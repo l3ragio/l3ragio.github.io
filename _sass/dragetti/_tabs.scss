@@ -1,0 +1,121 @@
+// Tab pages (about, archives, categories, tags, visual stories index).
+// Cross-cutting fixes for the secondary pages.
+
+// ── Defensive bullet removal on widget + content lists ───────────────
+// The "Recently Updated" list inside #access-lastmod (and similar
+// widget lists) was rendering disc bullets despite Bootstrap's
+// .list-unstyled. Force list-style:none on every widget list and
+// the access wrapper.
+.access ul,
+.access ul li,
+#access-lastmod ul,
+#access-lastmod ul li,
+#search-hints ul,
+#search-hints ul li {
+  list-style: none !important;
+  list-style-type: none !important;
+  padding-left: 0 !important;
+
+  &::marker {
+    content: none;
+  }
+}
+
+// ── Tags index page: pills wrap as a grid, not a vertical stack ──────
+// Default rendering had each tag on its own line. Force flex-wrap so
+// pills tile horizontally with consistent gaps.
+#page-tag,
+#tags {
+  > ul,
+  ul.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    padding-left: 0;
+    list-style: none;
+
+    > li {
+      list-style: none;
+
+      a {
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+  }
+}
+
+// Tags page main wrapper: just in case Chirpy renders differently
+main #tags > ul {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-1);
+  list-style: none;
+  padding-left: 0;
+}
+
+// ── Archives: timeline-style year markers ────────────────────────────
+// Year heading becomes an editorial section anchor: large mono accent
+// label, sticky at the top of its year group, with a vertical hairline
+// extending down through the listed posts.
+#archives {
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  // Year group header
+  ul > li.lead,
+  .lead.mt-5 {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    margin-top: var(--space-6) !important;
+    margin-bottom: var(--space-3) !important;
+  }
+
+  // Date markers (day month) on each entry: mono uppercase eyebrow.
+  .date.day,
+  .date {
+    font-family: var(--font-mono) !important;
+    font-size: var(--text-xs) !important;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted) !important;
+  }
+
+  // Post title link
+  a {
+    font-family: var(--font-serif);
+    color: var(--text-primary);
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+}
+
+// ── About page: keep widgets quieter on tab pages ────────────────────
+// Recently Updated + Topics show on every tab page (Chirpy default).
+// On tab pages they read as redundant chrome below the actual content.
+// Reduce their visual weight: make them feel like a footer reference
+// strip rather than primary content.
+.layout-page,
+[data-tab-id] {
+  .access {
+    margin-top: var(--space-6);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-subtle);
+    opacity: 0.85;
+
+    .panel-heading {
+      font-size: var(--text-xs);
+    }
+
+    section {
+      max-width: 720px;
+    }
+  }
+}
