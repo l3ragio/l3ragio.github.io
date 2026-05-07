@@ -6,7 +6,7 @@
 // bridged to them in a follow-up commit without rewriting consumers.
 
 :root {
-  // Surfaces (dark) — uniform ~3-5% L steps so elevation is felt as
+  // Surfaces (dark) - uniform ~3-5% L steps so elevation is felt as
   // gradient, not announced as slabs. Order: sunken < canvas < raised
   // < overlay. Sidebar / chrome share canvas (separated from page by
   // hairline only); cards take raised; modals/search take overlay;
@@ -64,16 +64,16 @@
   --measure: 68ch;
   --lead-size: 1.125rem;
 
-  // Type scale — minor third (1.200). Modular.
-  --text-xs:   0.78rem;     // 12.5px — labels, small caps
-  --text-sm:   0.92rem;     // 14.7px — UI chrome, captions
-  --text-base: 1.0625rem;   // 17px   — body
-  --text-md:   1.125rem;    // 18px   — lead
-  --text-lg:   1.25rem;     // 20px   — pull quote
-  --text-xl:   1.5rem;      // 24px   — h2
-  --text-2xl:  1.875rem;    // 30px   — h2 large
-  --text-3xl:  2.25rem;     // 36px   — h1 small
-  --text-4xl:  2.8125rem;   // 45px   — h1 large
+  // Type scale - minor third (1.200). Modular.
+  --text-xs:   0.78rem;     // 12.5px - labels, small caps
+  --text-sm:   0.92rem;     // 14.7px - UI chrome, captions
+  --text-base: 1.0625rem;   // 17px   - body
+  --text-md:   1.125rem;    // 18px   - lead
+  --text-lg:   1.25rem;     // 20px   - pull quote
+  --text-xl:   1.5rem;      // 24px   - h2
+  --text-2xl:  1.875rem;    // 30px   - h2 large
+  --text-3xl:  2.25rem;     // 36px   - h1 small
+  --text-4xl:  2.8125rem;   // 45px   - h1 large
 
   // Text emphasis (between primary and heading). Used for time / em
   // / author byline so they step up from muted labels but do not

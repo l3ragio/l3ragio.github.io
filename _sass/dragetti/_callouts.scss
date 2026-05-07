@@ -36,7 +36,7 @@ html[data-mode="light"] {
 }
 
 // Left rule across all four variants for the consistent "callout rail"
-// feel — Chirpy ships only the background.
+// feel - Chirpy ships only the background.
 article .content blockquote[class^="prompt-"] {
   border-left: 3px solid transparent;
 }

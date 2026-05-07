@@ -32,7 +32,7 @@ article .content a:not(.img-link):not(.anchor):not(.popup) {
 // ── Section divider ──────────────────────────────────────────────────
 // A quiet ornamental break before secondary H2 sections (skip the
 // first H2 of a post). Three diamond glyphs in accent at watermark
-// alpha — readable as "section change" without competing with the
+// alpha - readable as "section change" without competing with the
 // heading itself.
 article .content > h2:not(:first-of-type)::before {
   content: '\25C7\00a0\00a0\25C7\00a0\00a0\25C7';   // ◇  ◇  ◇

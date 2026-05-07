@@ -3,7 +3,7 @@
  *
  * Two responsibilities:
  *
- * 1. Make the Update button actually update — unregister all service
+ * 1. Make the Update button actually update - unregister all service
  *    workers, clear Cache Storage, then replace location with a
  *    cache-busting query. Default Chirpy mechanism left users on the
  *    cached page after clicking Update.
@@ -39,7 +39,7 @@
       return;
     }
 
-    // Within the suppression window — hide the toast now and keep
+    // Within the suppression window - hide the toast now and keep
     // hiding it if Chirpy tries to show it again via .show class.
     var notif = document.getElementById('notification');
     hideToast(notif);

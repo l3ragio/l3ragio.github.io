@@ -85,7 +85,7 @@ article .content {
 // catches orbs + hairline border marking it as a distinct zone.
 // Coupled with main-wrapper padding-right so content does NOT
 // visually slide under the rail (the user flagged "constraints not
-// respected" — this is the lateral constraint pass).
+// respected" - this is the lateral constraint pass).
 @media (min-width: 992px) {
   body::after {
     content: '';

@@ -1,0 +1,33 @@
+# Per-post front-matter overrides for Medium-synced posts.
+#
+# The ZMediumToMarkdown action overwrites front matter on every sync
+# (monthly cron). This file is the source of truth for fields that
+# Medium does not provide - categories, custom tags, pin status, etc.
+#
+# scripts/apply_post_overrides.rb reads this file after the sync and
+# re-applies the listed fields to the matching post in
+# _posts/zmediumtomarkdown/.
+#
+# Key = the Medium post slug (the ID after the date in the filename).
+# Allowed override fields: categories, tags, pin, image_alt.
+# Categories must come from the closed taxonomy in docs/CONVENTIONS.md.
+
+e3a6a1939162:                # 2022-08-15 - Babuk v4 Ransomware
+  categories: [security]
+
+685de7093e5:                 # 2022-08-28 - Unpacking Malware
+  categories: [security]
+  pin: true
+
+4c7f612584c6:                # 2022-11-10 - Diffie-Hellman Key Exchange
+  categories: [cryptography]
+
+dacd4e915676:                # 2023-04-12 - Auto-GPT - Welcome to the Botnet
+  categories: [ai-safety]
+  pin: true
+
+393bf888b4e8:                # 2024-08-23 - Choose Your Words Carefully
+  categories: [ai-safety]
+
+a7953a82fd2b:                # 2025-02-28 - Kerberos
+  categories: [security]

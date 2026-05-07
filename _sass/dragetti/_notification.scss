@@ -4,7 +4,7 @@
 // btn-primary). Tokenize the popup so it reads as a single coherent
 // notification with a working Update action.
 
-// Target both .toast and .toast.show — Chirpy's .toast.show rule has
+// Target both .toast and .toast.show - Chirpy's .toast.show rule has
 // higher specificity and would otherwise overwrite our bg + colors
 // the moment the toast becomes visible.
 #notification.toast,

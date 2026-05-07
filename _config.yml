@@ -19,7 +19,7 @@ title: Davide Bragetti
 tagline: Serving Europe.
 
 description: >- # used by seo meta and the atom feed
-  Davide Bragetti — independent research on AI safety, formal methods,
+  Davide Bragetti - independent research on AI safety, formal methods,
   and adversarial security. Technical notes, papers, and visual stories.
 
 # Fill in the protocol & hostname for your site.
@@ -86,8 +86,8 @@ pageviews:
 #
 # Available options:
 #
-#     light — Use the light color scheme
-#     dark — Use the dark color scheme
+#     light - Use the light color scheme
+#     dark - Use the dark color scheme
 #
 theme_mode: dark # [light | dark]
 
@@ -144,7 +144,7 @@ medium_username: dbragetti
 pwa:
   enabled: true # The option for PWA feature (installable)
   cache:
-    enabled: false # Offline cache disabled — was triggering the
+    enabled: false # Offline cache disabled - was triggering the
                    # "new version available" toast on every reload
                    # because Chirpy's SW kept seeing version mismatches.
     # Paths defined here will be excluded from the PWA cache.

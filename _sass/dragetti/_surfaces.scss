@@ -13,7 +13,7 @@
 
 html[data-mode="dark"],
 html:not([data-mode]) {
-  // Backgrounds — sidebar transparent so orbs canvas shows through;
+  // Backgrounds - sidebar transparent so orbs canvas shows through;
   // body becomes transparent and html paints the page color so the
   // orbs are visible page-wide (not hidden behind body bg).
   --main-bg:           transparent;

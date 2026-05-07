@@ -63,7 +63,7 @@ article .content > blockquote:not([class^="prompt-"]) {
 // ── Anchor (hashtag) links on headings ────────────────────────────────
 // Chirpy emits a permalink hash icon next to each heading. Default is
 // always-visible. Hide unless the heading is hovered or the anchor is
-// keyboard-focused — same pattern most research-blog tools use.
+// keyboard-focused - same pattern most research-blog tools use.
 article .content {
   h1 a.anchor,
   h2 a.anchor,

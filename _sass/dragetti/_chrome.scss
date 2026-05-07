@@ -21,7 +21,7 @@ html[data-mode="light"] {
 #sidebar {
   border-right: 1px solid var(--border-subtle);
 
-  // Defensive list-style reset — kill any residual marker that might
+  // Defensive list-style reset - kill any residual marker that might
   // slip through from browser default or Bootstrap reset edge cases.
   // The icons in <i class="fa-fw"> are the only visual marker we want.
   nav ul,
@@ -34,7 +34,7 @@ html[data-mode="light"] {
     }
   }
 
-  // Make the FA icons visible and properly sized — the source of the
+  // Make the FA icons visible and properly sized - the source of the
   // perceived "dots" was the fixed-width icons rendering smaller than
   // the label. Bring them up to text-base + accent-soft tint.
   nav ul li.nav-item a.nav-link i {
@@ -45,7 +45,7 @@ html[data-mode="light"] {
     flex-shrink: 0;
   }
 
-  // Profile rhythm tokenized — replace Chirpy's 2.5/3.5rem hardcoded
+  // Profile rhythm tokenized - replace Chirpy's 2.5/3.5rem hardcoded
   // padding with --space-* steps. Avatar to title to subtitle in a
   // tight block, then breath before the nav.
   .profile-wrapper {
@@ -196,7 +196,7 @@ html[data-mode="light"] {
 }
 
 // Focus-visible: keyboard focus ring on topbar interactive elements.
-// #search-input is excluded — it has its own pill-shaped focus state
+// #search-input is excluded - it has its own pill-shaped focus state
 // (border-color + box-shadow on the rounded input) that follows the
 // 999px radius. A rectangular outline-offset would clash with the
 // pill shape.
@@ -258,7 +258,7 @@ html[data-mode="light"] {
   }
 }
 
-// Hide the Cancel button on desktop — it is only useful when the
+// Hide the Cancel button on desktop - it is only useful when the
 // mobile search overlay is open. Removing the redundant element
 // improves the topbar visual rhythm.
 @media (min-width: 850px) {

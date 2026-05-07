@@ -22,9 +22,9 @@
 }
 
 // Category + tag listing pages: Chirpy paints a 5px gray ::before dot
-// before each post link. Redundant — the link itself is the only
+// before each post link. Redundant - the link itself is the only
 // marker we want. Replace with a mono dash glyph so the row reads as
-// "DATE — TITLE — DATE" editorial format, or hide outright. Going
+// "DATE - TITLE - DATE" editorial format, or hide outright. Going
 // with hide: cleaner.
 #page-category ul > li::before,
 #page-tag ul > li::before {

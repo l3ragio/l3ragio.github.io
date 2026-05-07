@@ -102,7 +102,7 @@
       // brighter so the atmospheric rail zone breathes more.
       var rightBias = 1 + Math.max(0, (o.x / w - 0.5)) * 2;
 
-      // Hollow rings — only the stroke is visible, no fill. Replaces
+      // Hollow rings - only the stroke is visible, no fill. Replaces
       // the soft radial-gradient blob look with a quieter outline
       // that reads as a discreet glyph rather than a paint stain.
       ctx.strokeStyle = 'rgba(' + accent + ', ' + (0.30 * rightBias).toFixed(3) + ')';

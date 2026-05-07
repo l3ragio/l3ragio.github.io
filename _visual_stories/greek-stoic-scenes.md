@@ -1,7 +1,7 @@
 ---
-title: Greek Stoic Scenes — Panel 1–3
+title: Greek Stoic Scenes - Panel 1-3
 subtitle: Outside the theatres, managing emotions
-summary: "Outside the theatres, ancient Greeks practice Stoic discipline—silence in hardship, shared joy in public."
+summary: "Outside the theatres, ancient Greeks practice Stoic discipline-silence in hardship, shared joy in public."
 date: 2025-09-17
 hero: "/assets/visual-stories/greek-stoic-scenes/panel-01.png"
 image: "/assets/og/greek-stoic-scenes.jpg"
@@ -16,7 +16,7 @@ panels:
 
   - img: "/assets/visual-stories/greek-stoic-scenes/panel-02.png"
     alt: Holding silence in hardship
-    caption: When life is hard, keep your mouth shut—avoid polluting the agora.
+    caption: When life is hard, keep your mouth shut-avoid polluting the agora.
     bubbles:
       - speaker: Mentor
         text: Guard the commons with your silence.
