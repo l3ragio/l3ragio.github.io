@@ -1,0 +1,120 @@
+// Long-form prose polish.
+//
+// Concerns: reading measure (cap line length for prose, never for
+// figures or code), a tasteful drop cap on the opening paragraph,
+// plain-blockquote treatment that does not collide with Chirpy's
+// prompt-* callouts, anchor (#) links that show only on heading
+// hover, and a calmer footnotes block with the existing
+// --footnote-target-bg highlight.
+
+// ── Reading measure ───────────────────────────────────────────────────
+// Cap prose at the design measure (~68ch). Figures, code blocks, video
+// embeds, and tables explicitly opt out so they keep page width.
+article .content {
+  > p,
+  > ul,
+  > ol,
+  > h2,
+  > h3,
+  > h4,
+  > .footnotes {
+    max-width: var(--measure);
+  }
+
+  > figure,
+  > .highlight,
+  > div[class^="language-"],
+  > table,
+  > .table-wrapper,
+  > .embed-video,
+  > blockquote[class^="prompt-"] {
+    max-width: none;
+  }
+}
+
+// ── Drop cap ──────────────────────────────────────────────────────────
+// Skippable per post by adding `class: no-dropcap` to the post layout
+// wrapper (the .content div) via a future Liquid hook; for now applies
+// to every post. 3em is the largest size that does not feel kitschy
+// at a 17px body.
+article .content:not(.no-dropcap) > p:first-of-type::first-letter {
+  font-family: var(--font-serif);
+  font-size: 3em;
+  line-height: 0.92;
+  font-weight: 600;
+  float: left;
+  margin: 0.05em 0.12em -0.05em 0;
+  color: var(--text-heading);
+}
+
+// ── Plain blockquotes ─────────────────────────────────────────────────
+// Distinct from Chirpy's prompt-* callouts (those are styled in the
+// callout commit). A left rule in accent-soft + muted italic carries
+// the academic register without competing with the cyan accent.
+article .content > blockquote:not([class^="prompt-"]) {
+  border-left: 3px solid var(--accent-soft);
+  padding-left: 1.1rem;
+  margin-left: 0;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+// ── Anchor (hashtag) links on headings ────────────────────────────────
+// Chirpy emits a permalink hash icon next to each heading. Default is
+// always-visible. Hide unless the heading is hovered or the anchor is
+// keyboard-focused — same pattern most research-blog tools use.
+article .content {
+  h1 a.anchor,
+  h2 a.anchor,
+  h3 a.anchor,
+  h4 a.anchor,
+  h5 a.anchor,
+  h6 a.anchor {
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    margin-left: 0.4em;
+    font-size: 0.7em;
+
+    &:hover {
+      color: var(--accent) !important;
+    }
+  }
+
+  h1:hover a.anchor,
+  h2:hover a.anchor,
+  h3:hover a.anchor,
+  h4:hover a.anchor,
+  h5:hover a.anchor,
+  h6:hover a.anchor,
+  a.anchor:focus-visible {
+    opacity: 1;
+  }
+}
+
+// ── Footnote markers and block ────────────────────────────────────────
+article .content sup {
+  font-family: var(--font-mono);
+  font-size: 0.72em;
+  font-weight: 500;
+}
+
+article .content .footnotes {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+
+  ol > li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+// Highlight the targeted footnote item or back-reference (Chirpy's
+// --footnote-target-bg is bridged in surfaces.scss to accent-tinted).
+article .content sup:target,
+article .content .footnotes ol > li:target {
+  background: var(--footnote-target-bg);
+  border-radius: var(--radius-sm);
+  padding: 0.1em 0.3em;
+}
