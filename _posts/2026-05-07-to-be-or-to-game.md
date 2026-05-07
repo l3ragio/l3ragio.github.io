@@ -12,7 +12,7 @@ math: true
 
 ## The problem
 
-The word "evaluation" is doing a lot of work that nobody has sorted out properly. Each paper, each benchmark, each company defines its own implicit notion of what is being measured. There is no shared formal specification of what an evaluation should certify. Apollo Research's *We need a Science of Evals* lays out the diagnosis cleanly: the field is closer to a best-practice checklist than to a science.
+The word "evaluation" is doing a lot of work that nobody has sorted out properly. Each paper, each benchmark, each company defines its own implicit notion of what is being measured. There is no shared formal specification of what an evaluation should certify. Apollo Research's *We need a Science of Evals* lays out the diagnosis cleanly: the field is closer to a best-practice checklist than to a science. Stein-Perlman's [AI Lab Watch](https://ailabwatch.org/) makes the diagnosis concrete by attempting an external side-by-side comparison of the major labs' safety claims, and the very need for such a dashboard signals that there is no agreed internal rubric the labs can be measured against from inside the field.
 
 I am writing this partly because I have a stake in it. While serving as an AI Risk Management Framework Expert at the United Nations Joint Staff Pension Fund (UNJSPF), I have proposed a solution that is on its way to publication. The framing in this post grew out of that work: a structural answer to why a science of evals is hard, and what a viable starting point looks like.
 
@@ -20,7 +20,7 @@ I am writing this partly because I have a stake in it. While serving as an AI Ri
 
 Evaluation is not exotic. It is the everyday discipline of any mature field.
 
-Particle physics has the Standard Model, a body of falsifiable predictions, and a global experimental apparatus that evaluates the model against nature year after year. Mathematics has proof systems and peer review. Engineering has reliability standards. Risk management has frameworks (ISO 31000, NIST AI RMF, the EU AI Act risk tiers, METR's five-criterion rubric for frontier safety policies, and the four corporate frameworks of Anthropic, OpenAI, Google DeepMind, and Meta). Every mature field has converged on some way to evaluate its own claims.
+Particle physics has the Standard Model, a body of falsifiable predictions, and a global experimental apparatus that evaluates the model against nature year after year. Mathematics has proof systems and peer review. Engineering has reliability standards. Risk management has frameworks: ISO 31000, NIST AI RMF, the EU AI Act risk tiers, METR's five-criterion rubric for frontier safety policies (limits, protections, evaluation, response, accountability), and the four lab-internal frameworks the field reads side by side, Anthropic's Responsible Scaling Policy, OpenAI's Preparedness Framework, Google DeepMind's Frontier Safety Framework, and Meta's Frontier AI Framework. Every mature field has converged on some way to evaluate its own claims.
 
 AI has not yet. The pattern, then, is not "AI needs something new"; it is "AI needs the analogue of what every other field eventually built". The question is what that analogue looks like.
 
@@ -36,7 +36,7 @@ Three structural difficulties stand in the way before we can claim that this sha
 
 **Yet we can start anyway.** Bottom-up, the axioms are buildable. Top-down, a process can govern the growth. We do not need a closed-form solution to the whole domain to start the work.
 
-**There is an elephant in the room: gaming.** What if the subject of the evaluation games the evaluator? Particle physics teaches that experiments can depend on the presence of the observer (the evaluator in our case). AI evaluation is meeting this advanced setting now. Comparing chain-of-thought traces with the final chatbot answer reveals subjects that behave differently when they realise they are being watched, or that produce reasoning intended to be inspected separately from the action they actually take.
+**There is an elephant in the room: gaming.** What if the subject of the evaluation games the evaluator? Particle physics teaches that experiments can depend on the presence of the observer (the evaluator in our case). AI evaluation is meeting this advanced setting now. Anthropic's Claude Opus 4.6 system card devotes a section to white-box probes for "eval-context recognition", measuring whether the model can tell it is being evaluated. Comparing chain-of-thought traces with the final chatbot answer reveals subjects that behave differently when they realise they are being watched, or that produce reasoning intended to be inspected separately from the action they actually take. The gaming question has moved from thought experiment to instrumentation problem.
 
 So we are solving a problem that is infinitely complex, evolves through time, and may attempt to game us.
 
@@ -45,6 +45,8 @@ So we are solving a problem that is infinitely complex, evolves through time, an
 Cryptography crossed a similar threshold around 1985, when soundness definitions turned a collection of clever ideas into a field with theorems. The bet here is the same: model the problem as computationally constrained, build definitions that admit theorems, and let practice close the gap behind the theory.
 
 ### Top-down: governance that grows with the problem
+
+Existing lab frameworks already lean on tiered structures, but along a different axis. Anthropic's RSP defines AI Safety Levels (ASL 1 through 5+) keyed to capability thresholds. Google DeepMind's Frontier Safety Framework defines Critical Capability Levels per risk domain (cyber, bio, ML R&D, persuasion, autonomy). OpenAI's Preparedness Framework assigns Low, Medium, High, or Critical per category, distinguishing pre-mitigation from post-mitigation risk. Meta's Frontier AI Framework classifies outcomes as high-risk or critical-risk, gating the open-weight release decision. These are tiers of capability or outcome. The proposal here is orthogonal: tier the deception mechanism itself, not the capability level.
 
 Establish a process that takes care of the problem while it grows. Model deception as a tiered phenomenon and impose constraints tier by tier.
 
@@ -83,7 +85,7 @@ Two honest constraints on the approach are worth naming.
 
 **Practical solutions may not scale across tiers.** It is feasible to build immediate, concrete interventions at any single tier (Tier 1 chain-of-thought monitoring is largely tractable today, for example). The harder claim is that a working Tier 1 solution generalises to Tier 2, where the agent is reasoning about its own chain of thought. The mechanisms differ, the instrumentation differs, and the cost of intervention may grow non-linearly with tier depth. We can win locally without winning globally.
 
-**Solving the formula on specific parameters may not generalise.** The negligibility statement $\Pr(\text{harm} \mid \text{constraints}) \le \mathrm{negl}(n)$ is an instance schema. Proving it for a specific (model, capability, deployment) tuple may be computationally demanding, and the proof may be silent on neighbouring instances. A soundness bound for text-to-text models tells us little about text-to-image, image-to-image, or video-to-action settings. Multimodal and agentic deployments may each need their own re-derivation. The science of evals risks being modality-specific in the same way that early cryptography was algorithm-specific before the field abstracted up to indistinguishability arguments.
+**Solving the formula on specific parameters may not generalise.** The negligibility statement $\Pr(\text{harm} \mid \text{constraints}) \le \mathrm{negl}(n)$ is an instance schema. Proving it for a specific (model, capability, deployment) tuple may be computationally demanding, and the proof may be silent on neighbouring instances. A soundness bound for text-to-text models tells us little about text-to-image, image-to-image, or video-to-action settings. Multimodal and agentic deployments may each need their own re-derivation. Existing frameworks already partition risk by modality or domain (Google DeepMind's Frontier Safety Framework runs separate Critical Capability Levels for cyber, bio, ML R&D, persuasion, autonomy; Meta's Llama Guard is a content classifier, not an alignment-behaviour evaluator), and the partitions exist precisely because no general specification has been found. The science of evals risks being modality-specific in the same way that early cryptography was algorithm-specific before the field abstracted up to indistinguishability arguments.
 
 These limitations do not invalidate the shape of the solution. They set realistic expectations about how slowly the formal frontier will advance, and where the field should pour effort.
 
@@ -123,7 +125,37 @@ The proposal mentioned in the introduction was developed in the context of my ro
 
 ## References
 
-- Apollo Research, *We need a Science of Evals*.
-- BlueDot Impact, [Technical AI Safety course](https://bluedot.org/courses/technical-ai-safety).
-- METR, frontier safety framework rubric (limits, protections, evaluation, response, accountability).
-- Anthropic Responsible Scaling Policy, OpenAI Preparedness Framework, Google DeepMind Frontier Safety Framework, Meta Frontier AI Framework.
+The following resources, surveyed during the BlueDot Technical AI Safety course Unit 3, were used as concrete anchors for the claims above.
+
+**Cross-lab and methodology.**
+
+- Apollo Research, *We need a Science of Evals*. The diagnostic piece on why the field lacks a shared formal specification.
+- Stein-Perlman, [AI Lab Watch](https://ailabwatch.org/). External side-by-side dashboard of safety practices across labs.
+- METR, *Responsible Scaling Policies* (2023). Source of the five-criterion rubric (limits, protections, evaluation, response, accountability) the field now reads RSPs against.
+
+**Anthropic.**
+
+- *Responsible Scaling Policy* v3 (2026). AI Safety Levels (ASL 1 to 5+) with capability thresholds and required protective measures per level.
+- *System Card Claude Opus 4.6*, section 8 (2026). Documented safety evaluations for a flagship release, including white-box probes for eval-context recognition, persuasion-versus-truth measurements, and capability uplift evaluations on autonomy, biosecurity, and cybersecurity.
+- *Threat Intelligence Report* (2025). Real-world misuse attempts observed against deployed Anthropic models.
+- The Long-Term Benefit Trust (LTBT). Independent governance body with authority over key strategic decisions.
+
+**OpenAI.**
+
+- *Preparedness Framework* v2 (2025). Tracked categories (Cybersecurity, Biosecurity, Persuasion, Autonomy) with risk levels (Low, Medium, High, Critical) and pre- versus post-mitigation evaluation.
+- *GPT-5 System Card*, section 5 (2025). Cross-lab counterpart to the Opus 4.6 safety evaluations.
+- The Safety Advisory Group, OpenAI's deployment-decision body.
+
+**Google DeepMind.**
+
+- *Frontier Safety Framework* v2.0 (2025). Critical Capability Levels per risk domain (cyber, bio, ML R&D, persuasion, autonomy), with explicit acknowledgement of AI-driven AI research as a tracked risk.
+- *Gemini 3 Pro Model Card* (2025). Capabilities, evaluations, and safety measures.
+
+**Meta.**
+
+- *Frontier AI Framework* (Feb 2025). Outcome-centric framework focused on the open-weight release decision.
+- *Llama Guard 4 Model Card* (2025). Content-moderation model with a defined harm taxonomy, distinct in shape from frontier-model cards.
+
+**Course.**
+
+- BlueDot Impact, [Technical AI Safety course](https://bluedot.org/courses/technical-ai-safety). The four-framework side-by-side reading paired with METR's rubric is the design move that surfaced the framework-downstream-of-evaluations observation underpinning this post.
