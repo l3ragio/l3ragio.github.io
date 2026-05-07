@@ -21,6 +21,18 @@
   }
 }
 
+// Category + tag listing pages: Chirpy paints a 5px gray ::before dot
+// before each post link. Redundant — the link itself is the only
+// marker we want. Replace with a mono dash glyph so the row reads as
+// "DATE — TITLE — DATE" editorial format, or hide outright. Going
+// with hide: cleaner.
+#page-category ul > li::before,
+#page-tag ul > li::before {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+}
+
 // ── Tags index page: pills tile as a grid ────────────────────────────
 // Chirpy renders tags as <div id="tags" class="d-flex flex-wrap"> with
 // direct <a class="tag"> children (no list). Earlier selector targeted
