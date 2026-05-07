@@ -63,7 +63,9 @@ article .content {
     padding-top: var(--space-5);
     padding-left: var(--space-3);
     padding-right: var(--space-2);
-    border-left: 1px solid var(--border-subtle);
+    border-left: 4px solid red !important; /* DEBUG */
+    background: rgba(255,0,0,0.15) !important; /* DEBUG */
+    min-height: 300px !important;
     position: relative;
 
     // Accent atmosphere: subtle vertical gradient on the rail's left
