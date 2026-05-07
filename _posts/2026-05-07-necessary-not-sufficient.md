@@ -1,14 +1,14 @@
 ---
-title: "Necessary, not sufficient"
+title: "Does Safe AI mean nothing bad can ever happen?"
 date: 2026-05-07T09:30:00+02:00
 categories: [ai-safety]
 tags: [mechanistic-interpretability, interpretability, debate, bluedot, ai-safety]
-description: "Six arguments against the strong claim that mechanistic interpretability will lead to safe AI. Notes from the BlueDot Unit 4 debate."
+description: "Even granting that mechanistic interpretability gets us to safe AI, does that guarantee a safe world? Notes from the BlueDot Unit 4 debate."
 math: false
 authors: [davide, liz_tan, joy_yang]
 ---
 
-> **TL;DR.** In Unit 4 of the BlueDot Technical AI Safety course, our team was assigned to defend the position that mechanistic interpretability *will not* lead to safe AI. Six arguments are worth carrying out of that debate. Each is independently sufficient to undermine the strong claim that mech interp is *the* path. None denies that it is a useful diagnostic. The conclusion is calibration, not dismissal: mech interp is a load-bearing component of the safety stack, not the spec for the whole stack.
+> **TL;DR.** Two questions, not one. Can mechanistic interpretability lead us to safe AI? And if it can, does that guarantee that nothing bad ever happens? In Unit 4 of the BlueDot Technical AI Safety course our team defended the position that the answer to the first question is "not on its own", with six operational arguments. The deeper move - and the focus of this post - is that the answer to the second question is also "no", on grounds the operational arguments do not depend on. Safe AI is not a property of a model. It is a property of the relationship between many models, many users, many institutions, and many incentives.
 {: .prompt-tip }
 
 ## The proposition
