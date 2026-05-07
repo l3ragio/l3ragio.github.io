@@ -94,4 +94,14 @@ The action item I take from the unit is to track which interpretability findings
 
 ## Acknowledgements
 
-Co-defenders: Liz Tan and Joy Yang. Course context: BlueDot Technical AI Safety, Unit 4 (Understanding AI), discussion group 03. Thanks to Caroline for facilitating, and to Lucas, Abdullah, Janhavi, and Avni for arguing the strongest version of the WILL position.
+This article would not exist without the discussion group of BlueDot Technical AI Safety Unit 4 (Group 03). The intellectual content of the session is collective; what follows tries to credit each contribution honestly.
+
+Co-defenders on the WILL NOT side: **Liz Tan** and **Joy Yang**. The six operational arguments were stress-tested between the three of us in the breakout before the debate. Where they survive scrutiny here, it is because they survived that room first.
+
+Team A, who defended the WILL position: **Lucas**, **Abdullah**, **Janhavi**, and **Avni**. The "swiss-cheese" framing recovered in *What the other side argued* is theirs, and it is the most calibrated form of the WILL claim. Where this post grants ground, the grounding comes from the strength of their argument.
+
+**Caroline** facilitated. The arc of the session - reflection, teach-each-other, debate, final reflection - is what produced the depth of the conversation, and her pacing kept the room on it. The framing of "diagnoses through interp findings have value even when they do not deliver guarantees" came out of her timing of Joy's closing reflection.
+
+The elaborations *after* the session - the bacteria and weaponisation analogies, the halting-problem aside, the three research programmes in *Where I land* - are my own extensions of the collective work. Any errors in stretching the arguments past the original consensus are mine alone.
+
+Course context: BlueDot Technical AI Safety, Unit 4 (Understanding AI), discussion group 03.
