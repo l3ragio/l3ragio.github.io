@@ -78,6 +78,50 @@ article .content {
   }
 }
 
+// ── TOC bar (sticky horizontal at the top of post on narrow widths) ─
+// Default Chirpy renders the post title + a Contents button as a
+// pill-styled bar. Tokenize so it reads as part of the surface system
+// rather than a Bootstrap leftover.
+#toc-bar {
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-1) var(--space-2);
+  margin-bottom: var(--space-3);
+
+  .label {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .toc-trigger {
+    color: var(--text-muted);
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+}
+
+#toc-solo-trigger {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-color: var(--border-subtle);
+  color: var(--text-muted);
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .label {
+    color: inherit;
+  }
+}
+
 // ── Footer separation ───────────────────────────────────────────────
 // Closure: footer needs a top border + breath above so the page
 // "ends" with intention rather than fading.
