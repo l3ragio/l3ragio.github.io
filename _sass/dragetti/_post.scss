@@ -1,0 +1,38 @@
+// Post header polish.
+//
+// Binds .post-meta to monospace so the data line (Posted, Updated, By,
+// reading time) reads as metadata, not prose; tightens the header
+// rhythm; tunes the mid-tone (time/em) to step up from muted labels
+// without competing with body text.
+
+.post-meta {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+
+  time, em, a {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-weight: 500;
+  }
+}
+
+#main-wrapper article > header {
+  margin-bottom: 2rem;
+
+  > h1 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+article .post-desc {
+  margin-bottom: 1.25rem;
+}
+
+// Category + tags + license/share footer stays mono for consistency
+// with the header data line.
+.post-tail-wrapper {
+  font-family: var(--font-mono);
+}

@@ -9,12 +9,14 @@
 html[data-mode="dark"],
 html:not([data-mode]) {
   --sidebar-hover-bg:            rgba(0, 255, 198, 0.08);
-  --text-muted-highlight-color:  var(--text-muted);
+  // A brighter mid-tone for time/em/author so the data steps up from
+  // the muted "Posted"/"Updated" labels without rivalling body text.
+  --text-muted-highlight-color:  rgba(229, 231, 235, 0.72);
 }
 
 html[data-mode="light"] {
   --sidebar-hover-bg:            rgba(0, 120, 88, 0.08);
-  --text-muted-highlight-color:  var(--text-muted);
+  --text-muted-highlight-color:  rgba(26, 26, 26, 0.72);
 }
 
 // ── Sidebar ───────────────────────────────────────────────────────────
