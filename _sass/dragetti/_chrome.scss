@@ -21,6 +21,56 @@ html[data-mode="light"] {
 #sidebar {
   border-right: 1px solid var(--border-subtle);
 
+  // Profile rhythm tokenized — replace Chirpy's 2.5/3.5rem hardcoded
+  // padding with --space-* steps. Avatar to title to subtitle in a
+  // tight block, then breath before the nav.
+  .profile-wrapper {
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-5);
+    padding-left: var(--space-4);
+    padding-right: var(--space-3);
+
+    #avatar {
+      margin-bottom: var(--space-2);
+    }
+
+    .site-title {
+      margin-top: var(--space-1);
+      margin-bottom: var(--space-1);
+      font-size: var(--text-md);
+    }
+
+    .site-subtitle {
+      margin-top: 0;
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+  }
+
+  // Nav-list tokenized: padding y on --space-1, padding x on --space-3,
+  // gap between items consistent.
+  ul li.nav-item {
+    padding-left: var(--space-3) !important;
+    padding-right: var(--space-3) !important;
+
+    a.nav-link {
+      padding-top: var(--space-1) !important;
+      padding-bottom: var(--space-1) !important;
+      font-size: var(--text-sm);
+      letter-spacing: 0.04em;
+
+      i {
+        margin-right: var(--space-1);
+      }
+    }
+  }
+
+  // Sidebar bottom social row gap on --space-1.
+  .sidebar-bottom {
+    gap: var(--space-1);
+    padding-bottom: var(--space-3);
+  }
+
   // Chirpy zooms the avatar 1.2x on hover, which is jarring. 1.05 reads
   // as a quiet acknowledgement, not a pop.
   #avatar img:hover {
@@ -59,6 +109,35 @@ html[data-mode="light"] {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-subtle);
+
+  // Token-aligned height: 56px is a clean multiple of 8 baseline and
+  // sits comfortably above content without dominating.
+  height: 56px;
+}
+
+#topbar {
+  font-size: var(--text-sm);
+  letter-spacing: 0.02em;
+
+  #breadcrumb {
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+
+    a {
+      color: var(--text-muted);
+
+      &:hover {
+        color: var(--accent);
+      }
+    }
+
+    span:last-of-type {
+      color: var(--text-emphasis);
+      font-weight: 500;
+    }
+  }
 }
 
 #topbar #breadcrumb a:focus-visible,
