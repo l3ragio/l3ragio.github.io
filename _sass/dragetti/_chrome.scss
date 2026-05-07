@@ -1,0 +1,70 @@
+// Sidebar + topbar polish.
+//
+// Builds on the surface tier (commit 3): bridges the remaining Chirpy
+// hover variables to accent-soft tints so the chrome reads as one
+// system, adds a left-accent bar on the active nav item, calms the
+// avatar hover, gives the topbar a glass blur and a hairline divider,
+// and wires explicit focus-visible rings for keyboard nav.
+
+html[data-mode="dark"],
+html:not([data-mode]) {
+  --sidebar-hover-bg:            rgba(0, 255, 198, 0.08);
+  --text-muted-highlight-color:  var(--text-muted);
+}
+
+html[data-mode="light"] {
+  --sidebar-hover-bg:            rgba(0, 120, 88, 0.08);
+  --text-muted-highlight-color:  var(--text-muted);
+}
+
+// ── Sidebar ───────────────────────────────────────────────────────────
+#sidebar {
+  border-right: 1px solid var(--border-subtle);
+
+  // Chirpy zooms the avatar 1.2x on hover, which is jarring. 1.05 reads
+  // as a quiet acknowledgement, not a pop.
+  #avatar img:hover {
+    transform: scale(1.05);
+  }
+
+  // Active nav item: a 3px left accent bar with soft glow makes the
+  // current location obvious without relying on background alone.
+  ul li.nav-item.active .nav-link {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -0.4rem;
+      top: 0.45rem;
+      bottom: 0.45rem;
+      width: 3px;
+      border-radius: 2px;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+  }
+
+  a:focus-visible,
+  .sidebar-bottom a:focus-visible,
+  .sidebar-bottom #mode-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 0.5rem;
+  }
+}
+
+// ── Topbar ────────────────────────────────────────────────────────────
+#topbar-wrapper {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+#topbar #breadcrumb a:focus-visible,
+#topbar .btn:focus-visible,
+#topbar #search-input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 0.4rem;
+}
