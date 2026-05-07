@@ -86,9 +86,14 @@
       var range = h + pad * 2;
       var py = ((o.y + dy) % range + range) % range - pad;
 
+      // Bias visibility: orbs get up to 2x intensity on the right
+      // side of the viewport so the right rail acts as the
+      // atmospheric zone. Alpha at left ~ base, alpha at right ~ 2x.
+      var rightBias = 1 + Math.max(0, (o.x / w - 0.5)) * 2;
+
       var g = ctx.createRadialGradient(o.x, py, 0, o.x, py, r);
-      g.addColorStop(0,   'rgba(' + accent + ', 0.07)');
-      g.addColorStop(0.6, 'rgba(' + accent + ', 0.02)');
+      g.addColorStop(0,   'rgba(' + accent + ', ' + (0.13 * rightBias).toFixed(3) + ')');
+      g.addColorStop(0.6, 'rgba(' + accent + ', ' + (0.04 * rightBias).toFixed(3) + ')');
       g.addColorStop(1,   'rgba(' + accent + ', 0)');
       ctx.fillStyle = g;
       ctx.beginPath();

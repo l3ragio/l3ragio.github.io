@@ -51,7 +51,49 @@ article .content {
   margin-top: var(--space-3);
 }
 
-// ── Right panel widgets rhythm ───────────────────────────────────────
+// ── Right rail (panel-wrapper) ───────────────────────────────────────
+// Chirpy hides #panel-wrapper below xl (1200px). Force visible at lg
+// (>= 992px) so the right rail becomes a real always-present zone of
+// the layout, not a desktop-luxury widget. Tokenize the rail's padding
+// + sticky position so the TOC + Recently Updated + Topics widgets
+// align with the content baseline.
+@media (min-width: 992px) {
+  #panel-wrapper {
+    display: block !important;
+    padding-top: var(--space-5);
+    padding-left: var(--space-3);
+    padding-right: var(--space-2);
+    border-left: 1px solid var(--border-subtle);
+    position: relative;
+
+    // Accent atmosphere: subtle vertical gradient on the rail's left
+    // edge so the rail reads as the "atmospheric zone" of the page,
+    // catching orbs from the canvas while staying quiet.
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      pointer-events: none;
+      background: linear-gradient(
+        to right,
+        rgba(0, 255, 198, 0.06) 0%,
+        transparent 100%
+      );
+    }
+  }
+
+  // Make main column stop at the rail edge instead of extending into it
+  // (Chirpy at lg has main col-lg-11 = 91.66% which crowds out the
+  // panel; cap at lg-9 to leave 25% for the rail).
+  #main-wrapper > .container .col-lg-11 {
+    flex: 0 0 75% !important;
+    max-width: 75% !important;
+  }
+}
+
 #panel-wrapper .access > section {
   margin-top: var(--space-5);
 
@@ -67,6 +109,15 @@ article .content {
 #panel-wrapper #access-lastmod ul {
   font-size: var(--text-sm);
   line-height: 1.5;
+}
+
+// Light-mode rail edge gradient
+html[data-mode="light"] #panel-wrapper::before {
+  background: linear-gradient(
+    to right,
+    rgba(0, 120, 88, 0.06) 0%,
+    transparent 100%
+  );
 }
 
 // ── TOC panel rhythm ────────────────────────────────────────────────
