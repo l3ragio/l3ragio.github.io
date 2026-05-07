@@ -80,9 +80,17 @@ This is the deepest reason the WILL position fails. Not that mech interp is too 
 
 ## Where I land
 
-The strong claim (mech interp will lead to safe AI) is not supported by current evidence. Each of the six operational arguments is independently sufficient to block it, and the ecosystem objection holds even granting the optimistic case. The weaker claim (mech interp is necessary, even if not sufficient) is harder to refute and probably correct. Treating mech interp as the spec for safe AI overcommits; treating it as an irreplaceable diagnostic layer in a defence-in-depth strategy is consistent with what the field has demonstrated so far.
+The strong claim (mech interp will lead to safe AI) is not supported by current evidence. Each of the six operational arguments is independently sufficient to block it, and the ecosystem objection holds even granting the optimistic case. The weaker claim (mech interp is necessary, even if not sufficient) is harder to refute and probably correct.
 
-The action item I take from the unit is to track which interpretability findings can certify which kinds of safety claims, and how that maps onto formally verifiable properties at both the per-model and the ecosystem level. The bottleneck on whether mech interp graduates from "valuable evidence" to "load-bearing layer of the safety stack" is exactly the relationship between an interp finding and a verifiable guarantee. That relationship has to be defined for both layers, not just the model.
+The WILL NOT verdict is a calibration, not a refusal. None of the arguments above denies that safe AI via mech interp is *possible*; they enumerate what would have to be built first. That enumeration resolves into three adjacent research programmes.
+
+The first is a geometric or algebraic theory of representations strong enough to underwrite verifiable claims about model behaviour. The lineage from word2vec-style distributed representations through to current work on linear feature directions has visible momentum: the linear representation hypothesis (Park, Choe, Veitch, 2023) and the activation-steering literature converge on the conjecture that concepts compose linearly, transfer across models, and decompose under sparse projections. If that conjecture holds at frontier scale, it gives us the substrate for the formal claim mech interp currently lacks. Polysemanticity becomes an algebraic obstacle, not an empirical mystery; capability and behaviour become directions in a structured space rather than entangled by accident.
+
+The second is a *science of evaluations* in the strong sense - a methodology that says, given an interpretability finding *F*, here is the safety claim *S* we are entitled to assert, with explicit boundary conditions and adversarial robustness guarantees. This is the hinge between mech interp and safety. Every operational concern in the six arguments is at base an instance of "we cannot currently make that inference". This is also the bottleneck I identified in [To Be or to Game]({% post_url 2026-05-07-to-be-or-to-game %}) from a different angle, and the two arguments meet here.
+
+The third is an ecosystem-level theory that does for cross-system dynamics what mech interp does for per-model internals. We do not have one. The absence of a candidate is not a proof that none exists, but the field probably spends the next decade here.
+
+The action item I take from the unit is to track which interpretability findings can certify which kinds of safety claims, and how that maps onto formally verifiable properties at both the per-model and the ecosystem level. None of the three programmes is closed; each is an open target. The WILL NOT verdict converts cleanly into a list of things worth building, and the magnitude of that list is the actual content of the position.
 
 ## Acknowledgements
 
