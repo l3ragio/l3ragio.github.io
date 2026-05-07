@@ -1,0 +1,126 @@
+// Search input + back-to-top + pagination + post-navigation.
+//
+// The remaining "small interactive bits" — UI controls not on the
+// reading column. Match the token palette and add focus-visible rings
+// so keyboard nav stays consistent across the chrome.
+
+// ── Search input (topbar) ─────────────────────────────────────────────
+#topbar #search-input {
+  font-family: var(--font-sans);
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+
+  &::placeholder {
+    color: var(--text-muted);
+  }
+
+  &:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent-soft);
+    outline: none;
+  }
+}
+
+// ── Search results panel ──────────────────────────────────────────────
+// Hover color for search result links: align with the accent palette
+// (extends commit 0 entry overlay which only covered breadcrumb /
+// post-meta / .content).
+#search-results a:hover,
+footer a:hover {
+  color: var(--accent) !important;
+  border-bottom-color: var(--accent) !important;
+}
+
+#search-results a {
+  font-family: var(--font-sans);
+  color: var(--text-primary) !important;
+  transition: color var(--transition-fast);
+}
+
+#search-results a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+// ── Back-to-top button ────────────────────────────────────────────────
+#back-to-top {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  transition: background var(--transition-fast),
+              border-color var(--transition-fast),
+              color var(--transition-fast),
+              transform var(--transition-medium);
+
+  &:hover {
+    background: var(--bg-elevated);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+// ── Pagination ────────────────────────────────────────────────────────
+.pagination {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+
+  .page-item .page-link {
+    color: var(--text-muted);
+    background-color: transparent;
+    transition: color var(--transition-fast),
+                box-shadow var(--transition-fast);
+
+    &:hover {
+      color: var(--accent);
+      box-shadow: inset 0 0 0 1px var(--accent-soft) !important;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+  }
+
+  .page-item.active .page-link {
+    background-color: var(--accent-soft);
+    color: var(--accent);
+  }
+}
+
+// ── Post-navigation (Older / Newer) ───────────────────────────────────
+// These render as Bootstrap btn-outline-primary buttons. Repaint to
+// the token palette in place via Bootstrap CSS variables.
+.post-navigation .btn.btn-outline-primary {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  padding: 0.6rem 1rem;
+
+  --bs-btn-color: var(--text-muted);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: var(--border-subtle);
+  --bs-btn-hover-color: var(--accent);
+  --bs-btn-hover-bg: var(--accent-soft);
+  --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-active-color: var(--accent);
+  --bs-btn-active-bg: var(--accent-soft);
+  --bs-btn-active-border-color: var(--accent);
+  --bs-btn-disabled-color: var(--text-muted);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--border-subtle);
+
+  p {
+    margin-bottom: 0;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+}
