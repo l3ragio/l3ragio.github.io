@@ -1,107 +1,72 @@
 /**
- * PWA "new version" notification handling.
+ * PWA cleanup + permanent toast suppression.
  *
- * Two responsibilities:
+ * Original purpose was to make the Update button work. We have since
+ * disabled PWA entirely (pwa.enabled: false in _config.yml), but this
+ * script still runs because users who visited while PWA was on may
+ * have an active service worker and a populated Cache Storage that
+ * keep generating spurious "new version" toasts.
  *
- * 1. Make the Update button actually update - unregister all service
- *    workers, clear Cache Storage, then replace location with a
- *    cache-busting query. Default Chirpy mechanism left users on the
- *    cached page after clicking Update.
+ * On every page load this script:
  *
- * 2. Suppress the toast for 30s after an Update click. Without this,
- *    Chirpy's SW reasserts "new version" detection on the very next
- *    page load and the toast pops back up immediately. The 30-second
- *    window covers reload + reinstall + first paint.
+ *   1. Unregisters every service worker registered for the origin.
+ *   2. Clears every entry in Cache Storage.
+ *   3. Hides the #notification toast immediately.
+ *   4. Installs a MutationObserver that re-hides the toast if any
+ *      remaining script tries to add the .show class later in the
+ *      page lifecycle.
+ *
+ * Result: the toast cannot persist after one page load, regardless
+ * of which prior PWA state the browser was in. After the SW is
+ * unregistered once, future visits will not see the toast at all.
  */
 (function () {
   'use strict';
 
-  var FLAG_KEY = 'dragetti_update_done';
-  var SUPPRESS_MS = 30000;
-
-  function hideToast(el) {
-    if (!el) return;
-    el.style.display = 'none';
-    el.classList.remove('show');
+  function hideToast() {
+    var notif = document.getElementById('notification');
+    if (!notif) return;
+    notif.style.display = 'none';
+    notif.classList.remove('show');
   }
 
-  function maybeSuppressOnLoad() {
-    var raw = sessionStorage.getItem(FLAG_KEY);
-    if (!raw) return;
-    var ts = parseInt(raw, 10);
-    if (!isFinite(ts)) {
-      sessionStorage.removeItem(FLAG_KEY);
-      return;
-    }
-    var age = Date.now() - ts;
-    if (age >= SUPPRESS_MS) {
-      sessionStorage.removeItem(FLAG_KEY);
-      return;
-    }
+  function unregisterAllServiceWorkers() {
+    if (!('serviceWorker' in navigator)) return Promise.resolve();
+    return navigator.serviceWorker.getRegistrations()
+      .then(function (regs) {
+        return Promise.all(regs.map(function (r) {
+          return r.unregister();
+        }));
+      })
+      .catch(function () { /* swallow */ });
+  }
 
-    // Within the suppression window - hide the toast now and keep
-    // hiding it if Chirpy tries to show it again via .show class.
+  function clearAllCaches() {
+    if (!('caches' in window)) return Promise.resolve();
+    return caches.keys()
+      .then(function (names) {
+        return Promise.all(names.map(function (n) {
+          return caches.delete(n);
+        }));
+      })
+      .catch(function () { /* swallow */ });
+  }
+
+  function watchAndHide() {
     var notif = document.getElementById('notification');
-    hideToast(notif);
-
     if (!notif || typeof MutationObserver !== 'function') return;
-    var obs = new MutationObserver(function () {
-      hideToast(notif);
-    });
+    var obs = new MutationObserver(hideToast);
     obs.observe(notif, {
       attributes: true,
       attributeFilter: ['class', 'style']
     });
-
-    var remaining = Math.max(0, SUPPRESS_MS - age);
-    setTimeout(function () {
-      obs.disconnect();
-      sessionStorage.removeItem(FLAG_KEY);
-    }, remaining);
-  }
-
-  function bindUpdate() {
-    var btn = document.querySelector('#notification button[aria-label="Update"]');
-    if (!btn) return;
-    if (btn.dataset.dragettiBound === '1') return;
-    btn.dataset.dragettiBound = '1';
-
-    btn.addEventListener('click', function () {
-      // Mark the suppression window before any async work so a
-      // synchronous reload still finds the flag on the next load.
-      sessionStorage.setItem(FLAG_KEY, Date.now().toString());
-
-      var tasks = [];
-
-      if ('serviceWorker' in navigator) {
-        tasks.push(
-          navigator.serviceWorker.getRegistrations().then(function (regs) {
-            return Promise.all(regs.map(function (r) { return r.unregister(); }));
-          }).catch(function () { /* swallow */ })
-        );
-      }
-
-      if ('caches' in window) {
-        tasks.push(
-          caches.keys().then(function (names) {
-            return Promise.all(names.map(function (n) { return caches.delete(n); }));
-          }).catch(function () { /* swallow */ })
-        );
-      }
-
-      Promise.all(tasks).then(function () {
-        var u = new URL(window.location.href);
-        u.searchParams.set('_v', Date.now().toString());
-        window.location.replace(u.toString());
-      }).catch(function () {
-        window.location.reload();
-      });
-    });
   }
 
   function run() {
-    maybeSuppressOnLoad();
-    bindUpdate();
+    hideToast();
+    watchAndHide();
+    unregisterAllServiceWorkers();
+    clearAllCaches();
   }
 
   if (document.readyState === 'loading') {

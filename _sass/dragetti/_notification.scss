@@ -1,8 +1,21 @@
 // PWA "new version of content is available" toast.
 //
-// Default Chirpy renders this completely unstyled (Bootstrap toast +
-// btn-primary). Tokenize the popup so it reads as a single coherent
-// notification with a working Update action.
+// PWA has been fully disabled in _config.yml; the JS counterpart in
+// notification-update.js unregisters any leftover service worker and
+// clears Cache Storage on every load. Defensive belt-and-braces:
+// keep the toast hidden via CSS so any race condition between SW
+// cleanup and Chirpy's bootstrapping cannot flash the toast on the
+// page even momentarily.
+#notification.toast,
+#notification.toast.show {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+// Original tokenized styling kept below for the case where we ever
+// re-enable PWA: it ensures the toast at least looks right.
 
 // Target both .toast and .toast.show - Chirpy's .toast.show rule has
 // higher specificity and would otherwise overwrite our bg + colors

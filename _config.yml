@@ -142,11 +142,15 @@ assets:
 medium_username: dbragetti
 
 pwa:
-  enabled: true # The option for PWA feature (installable)
+  enabled: false # Disabled entirely. With PWA on, even with cache off,
+                 # Chirpy's service worker kept showing the "new version
+                 # available" toast on every page change. The
+                 # installable-as-PWA feature is not worth that UX
+                 # cost on a research blog. notification-update.js also
+                 # actively unregisters any leftover SW for users who
+                 # had it from an earlier deploy.
   cache:
-    enabled: false # Offline cache disabled - was triggering the
-                   # "new version available" toast on every reload
-                   # because Chirpy's SW kept seeing version mismatches.
+    enabled: false
     # Paths defined here will be excluded from the PWA cache.
     # Usually its value is the `baseurl` of another website that
     # shares the same domain name as the current website.

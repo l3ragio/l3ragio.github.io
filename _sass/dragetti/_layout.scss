@@ -157,25 +157,33 @@ html[data-mode="light"] #panel-wrapper::before {
   }
 }
 
-// ── TOC bar (sticky title-echo with embedded TOC trigger) ──────────
-// Default Chirpy renders the post title + a Contents button as a
-// pill-styled bar. Tokenize so it reads as part of the surface system
-// rather than a Bootstrap leftover.
+// ── TOC bar (centered, fit-content, single affordance) ────────────
+// Centered pill, only as wide as title + trigger plus padding.
+// Replaces Chirpy's full-row layout. Reads as a discrete pill rather
+// than a top-bar.
 #toc-bar {
+  display: flex !important;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: var(--space-3);
   background: var(--card-bg);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
+  border-radius: 999px;
   padding: var(--space-1) var(--space-2);
-  margin-bottom: var(--space-3);
+  gap: var(--space-2);
 
   .label {
     font-family: var(--font-sans);
     font-size: var(--text-sm);
     color: var(--text-muted);
+    max-width: 60ch;
   }
 
   .toc-trigger {
     color: var(--text-muted);
+    transition: color var(--transition-fast);
 
     &:hover {
       color: var(--accent);
@@ -188,6 +196,91 @@ html[data-mode="light"] #panel-wrapper::before {
 // title. Hide the solo-trigger; the bar is the single affordance.
 #toc-solo-trigger {
   display: none !important;
+}
+
+// ── TOC popup dialog (opened from the toc-bar trigger) ────────────
+// The dialog needs full token treatment - default Chirpy renders it
+// as a near-bare <dialog> element.
+#toc-popup {
+  background: var(--bg-elevated) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 0;
+  max-width: 480px;
+  min-width: 280px;
+  width: auto;
+  font-family: var(--font-sans);
+  overflow: hidden;
+
+  &::backdrop {
+    background: rgba(11, 15, 20, 0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .header {
+    background: transparent;
+    border-bottom: 1px solid var(--border-subtle);
+    padding: var(--space-1) var(--space-2);
+
+    .label {
+      font-family: var(--font-mono) !important;
+      font-size: var(--text-xs) !important;
+      letter-spacing: 0.06em !important;
+      text-transform: uppercase !important;
+      color: var(--text-muted) !important;
+      margin: 0 !important;
+      padding: var(--space-1) var(--space-2) !important;
+    }
+  }
+
+  #toc-popup-close {
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+    transition: color var(--transition-fast);
+    background: transparent;
+
+    &:hover {
+      color: var(--accent) !important;
+    }
+  }
+
+  #toc-popup-content {
+    padding: var(--space-2) var(--space-3) var(--space-3) !important;
+    font-size: var(--text-sm) !important;
+    line-height: 1.5;
+
+    a,
+    .toc-link {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.15rem 0;
+      display: block;
+      transition: color var(--transition-fast);
+
+      &:hover,
+      &.is-active-link {
+        color: var(--accent);
+      }
+    }
+
+    ul {
+      list-style: none !important;
+      padding-left: 0;
+
+      ul {
+        padding-left: var(--space-2);
+      }
+    }
+  }
+}
+
+html[data-mode="light"] #toc-popup::backdrop {
+  background: rgba(250, 248, 242, 0.55);
 }
 
 #toc-solo-trigger {
