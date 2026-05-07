@@ -1,0 +1,70 @@
+// Motion + a11y pass.
+//
+// Quiet entrance animations on first paint, a global focus-visible
+// fallback that ensures keyboard nav is never lost in default
+// browser styles, and a prefers-reduced-motion override that turns
+// every animation and transition into an instant change.
+
+// ── Keyframes ─────────────────────────────────────────────────────────
+@keyframes dragettiFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes dragettiFadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ── Apply ─────────────────────────────────────────────────────────────
+// Article content and panel widgets fade up on load — the orbs canvas
+// fades at the same time so the page does not stutter into existence.
+#main-wrapper article > .content,
+#main-wrapper article > header,
+#access-lastmod,
+#search-hints {
+  animation: dragettiFadeInUp var(--transition-medium) ease both;
+}
+
+#main-wrapper article > header { animation-delay: 0ms; }
+#main-wrapper article > .content { animation-delay: 80ms; }
+#access-lastmod { animation-delay: 120ms; }
+
+// Post list (homepage feed): each card staggers in.
+#post-list > .post-preview {
+  animation: dragettiFadeInUp var(--transition-medium) ease both;
+}
+@for $i from 1 through 10 {
+  #post-list > .post-preview:nth-child(#{$i}) {
+    animation-delay: #{$i * 50}ms;
+  }
+}
+
+// ── Global focus-visible fallback ─────────────────────────────────────
+// Specific elements (sidebar, topbar, search, back-to-top, pagination)
+// already have their own rings. This catches anything missed.
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+// ── Tag count badge font (Oswald → mono) ──────────────────────────────
+// Cleanup left from commit 8: Chirpy ships .tag span with Oswald at
+// higher specificity than my typography selector caught. Force mono
+// where the tag pill carries a count.
+.tag span {
+  font-family: var(--font-mono) !important;
+}
+
+// ── prefers-reduced-motion ────────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
