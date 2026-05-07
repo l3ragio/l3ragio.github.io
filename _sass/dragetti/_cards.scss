@@ -74,15 +74,18 @@
     }
   }
 
-  // Hero image: keep proportions consistent across cards. 16:9 aspect
-  // ratio means cards with images don't dominate cards without.
+  // Hero image: cap max-height so the flex equal-height row does not
+  // inherit a tall natural image height. aspect-ratio alone is ignored
+  // by Chirpy's height:100% in flex rows; max-height + object-fit:cover
+  // forces a consistent proportion across cards with and without hero.
   .preview-img {
-    aspect-ratio: 16 / 9;
+    max-height: 200px;
+    overflow: hidden;
 
     img {
-      object-fit: cover;
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
 }
