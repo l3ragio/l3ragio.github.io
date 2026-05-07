@@ -77,6 +77,16 @@ We write down how properties emerge from the most computationally constrained en
 
 Once both directions are running, we work them toward each other. The top-down governance descends from policy to implementation; the bottom-up axiomatisation ascends from primitives to richer properties. The two efforts meet in the middle, much like a meet-in-the-middle attack on a hash function, except the output length is conceptually infinite. Every meeting fixes a property; the next iteration extends the construction further.
 
+## Limitations
+
+Two honest constraints on the approach are worth naming.
+
+**Practical solutions may not scale across tiers.** It is feasible to build immediate, concrete interventions at any single tier (Tier 1 chain-of-thought monitoring is largely tractable today, for example). The harder claim is that a working Tier 1 solution generalises to Tier 2, where the agent is reasoning about its own chain of thought. The mechanisms differ, the instrumentation differs, and the cost of intervention may grow non-linearly with tier depth. We can win locally without winning globally.
+
+**Solving the formula on specific parameters may not generalise.** The negligibility statement $\Pr(\text{harm} \mid \text{constraints}) \le \mathrm{negl}(n)$ is an instance schema. Proving it for a specific (model, capability, deployment) tuple may be computationally demanding, and the proof may be silent on neighbouring instances. A soundness bound for text-to-text models tells us little about text-to-image, image-to-image, or video-to-action settings. Multimodal and agentic deployments may each need their own re-derivation. The science of evals risks being modality-specific in the same way that early cryptography was algorithm-specific before the field abstracted up to indistinguishability arguments.
+
+These limitations do not invalidate the shape of the solution. They set realistic expectations about how slowly the formal frontier will advance, and where the field should pour effort.
+
 ## How do we start?
 
 This is the part that worries people the most, and it is the part with the cleanest answer.
