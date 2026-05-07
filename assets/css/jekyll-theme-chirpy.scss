@@ -8,15 +8,10 @@
 @import 'main';
 @import 'dragetti/tokens';
 @import 'dragetti/typography';
+@import 'dragetti/surfaces';
 
 :root {
   --orb-rgb: 0, 255, 198;
-}
-
-html[data-mode="dark"],
-html:not([data-mode]) {
-  --link-color: #00ffc6;
-  --link-underline-color: rgba(0, 255, 198, 0.4);
 }
 
 #orbs-bg {

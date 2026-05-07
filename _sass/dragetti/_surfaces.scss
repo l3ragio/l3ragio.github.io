@@ -1,0 +1,83 @@
+// Surfaces and color tier.
+//
+// Bridges design tokens onto Chirpy's existing CSS variable layer so the
+// theme picks up the new palette without consumer rewrites. Dark is the
+// default (per _config.yml theme_mode: dark and html:not([data-mode])
+// fallback). Light parity is wired so a user who flips the toggle gets
+// the manuscript-warm scheme rather than Chirpy's clinical white.
+//
+// Bridge philosophy: only foundational variables move to tokens.
+// Specialised Chirpy variables (kbd, prompt-*, code-header subtones)
+// are left alone in this commit; they will be tightened in dedicated
+// callout/code commits where the full scope can be reasoned about.
+
+html[data-mode="dark"],
+html:not([data-mode]) {
+  // Backgrounds
+  --main-bg:           var(--bg-primary);
+  --sidebar-bg:        var(--bg-elevated);
+  --topbar-bg:         rgba(11, 15, 20, 0.72);
+  --card-bg:           var(--bg-secondary);
+  --card-header-bg:    var(--bg-elevated);
+  --card-hover-bg:     var(--bg-elevated);
+  --button-bg:         var(--bg-secondary);
+  --highlight-bg-color: #0A0D12;
+
+  // Text
+  --text-color:           var(--text-primary);
+  --text-muted-color:     var(--text-muted);
+  --heading-color:        var(--text-heading);
+  --site-title-color:     var(--text-heading);
+  --site-subtitle-color:  var(--text-muted);
+  --sidebar-muted-color:  var(--text-muted);
+  --sidebar-active-color: var(--accent);
+  --topbar-text-color:    var(--text-primary);
+
+  // Lines
+  --main-border-color:       var(--border-subtle);
+  --btn-border-color:         var(--border-subtle);
+  --blockquote-border-color:  var(--border-strong);
+  --blockquote-text-color:    var(--text-muted);
+
+  // Accent and inline glyphs
+  --link-color:             var(--accent);
+  --link-underline-color:   rgba(0, 255, 198, 0.40);
+  --inline-code-bg:         rgba(0, 255, 198, 0.07);
+  --code-color:             var(--text-primary);
+  --footnote-target-bg:     rgba(0, 255, 198, 0.18);
+}
+
+html[data-mode="light"] {
+  // Backgrounds
+  --main-bg:           var(--bg-primary);
+  --sidebar-bg:        var(--bg-elevated);
+  --topbar-bg:         rgba(250, 248, 242, 0.85);
+  --card-bg:           var(--bg-secondary);
+  --card-header-bg:    var(--bg-elevated);
+  --card-hover-bg:     var(--bg-elevated);
+  --button-bg:         var(--bg-secondary);
+  --highlight-bg-color: var(--bg-elevated);
+
+  // Text
+  --text-color:           var(--text-primary);
+  --text-muted-color:     var(--text-muted);
+  --heading-color:        var(--text-heading);
+  --site-title-color:     var(--text-heading);
+  --site-subtitle-color:  var(--text-muted);
+  --sidebar-muted-color:  var(--text-muted);
+  --sidebar-active-color: var(--accent);
+  --topbar-text-color:    var(--text-primary);
+
+  // Lines
+  --main-border-color:       var(--border-subtle);
+  --btn-border-color:         var(--border-subtle);
+  --blockquote-border-color:  var(--border-strong);
+  --blockquote-text-color:    var(--text-muted);
+
+  // Accent and inline glyphs (deeper teal-green for AA on warm paper)
+  --link-color:             var(--accent);
+  --link-underline-color:   rgba(0, 120, 88, 0.40);
+  --inline-code-bg:         rgba(0, 120, 88, 0.08);
+  --code-color:             var(--text-primary);
+  --footnote-target-bg:     rgba(0, 120, 88, 0.14);
+}
