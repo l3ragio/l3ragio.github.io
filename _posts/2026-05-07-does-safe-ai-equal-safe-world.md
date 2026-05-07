@@ -6,6 +6,10 @@ tags: [mechanistic-interpretability, interpretability, debate, bluedot, ai-safet
 description: "Even granting that mechanistic interpretability gets us to safe AI, does that guarantee a safe world? Notes from the BlueDot Unit 4 debate."
 math: false
 authors: [davide, abdullah, avni, caroline, janhavi, joy_yang, liz_tan, lucas]
+image:
+  path: /assets/img/heroes/does-safe-ai-equal-safe-world.png
+  alt: "A meditating monk in saffron robes at the centre of a temple veranda overlooking misty mountains; behind him a stack of virtue-labelled books (Ethics, Compassion, Non-Harm, Mindfulness, Wisdom, Right Intent, Interdependence, Patience, Equanimity, Right Action) is being consulted by a small grey creature reading from a Rogue Manual; three other grey creatures carry a log and tend a fire on the right, going about ordinary work. Allegory for safe AI coexisting with unsafe AI in a shared ecosystem."
+  lqip: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNiM2EzN2EiLz48L3N2Zz4=
 ---
 
 > **TL;DR.** Two questions, not one. Can mechanistic interpretability lead us to safe AI? And if it can, does that guarantee that nothing bad ever happens? Unit 4 of the BlueDot Technical AI Safety course closed with a debate on the first question. This post is the synthesis our discussion group co-wrote afterwards: six operational arguments showing that the answer to the first question is "not on its own", and a structural argument that the answer to the second question is "no" on independent grounds. Safe AI is not a property of a model. It is a property of the relationship between many models, many users, many institutions, and many incentives.
