@@ -56,7 +56,7 @@ Establish a process that takes care of the problem while it grows. Model decepti
 - **Tier N.** We do not know whether an ultimate tier exists. We do know three things.
 
    1. We can attempt to model a solution that converges to acceptable overall behaviour. Even when the agent is deceptive, if our governance is good enough, the agent ends up "believing it is being clever and deceptive while in fact staying at our rules trying to cover its deceptive abilities".
-   2. We can assume that an agent acts deceptively because it has a positive feedback loop for doing so. Cut the feedback.
+   2. We can assume that an agent acts deceptively because it has a positive feedback loop for doing so. Cut the deceptive feedback, and mirror the move on the honest side: shape the incentive landscape so the agent prefers behaviour the evaluator can verify. The mechanism-design precedent is established. Bitcoin and Algorand do not theoretically exclude attacks on the chain; they reduce attacks to negligible by aligning every participant's incentive toward honest behaviour, block rewards conditional on honest mining in Bitcoin, validator stake bound to correct attestation in Algorand. The same move applies here: not only remove the reward for fooling the evaluator, route it (with interest) to behaviour that exposes itself to verification.
    3. We can show that the likelihood of harmful behaviour under these conditions is negligible. Concretely:
 
       $$\Pr(\text{harm} \mid \text{constraints}) \le \mathrm{negl}(n)$$
