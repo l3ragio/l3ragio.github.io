@@ -124,11 +124,18 @@ article .content {
     justify-content: flex-start !important;
   }
 
-  // Article column 75%, panel column 25%, stable at lg+.
+  // Article column 75%, panel column 25%, stable at lg+. box-sizing
+  // border-box on both is critical: the global stylesheet does NOT
+  // ship a `* { box-sizing: border-box }` reset, and Chirpy at
+  // min-width 1650px adds `main.col-12 { padding-right: 4.5rem }`.
+  // Without border-box that padding adds to main's width, the row
+  // overflows, and #panel-wrapper wraps below the article (the user
+  // observed: TOC visible up to ~1600px, gone at 1680/1920).
   #main-wrapper > .container .col-lg-11 {
     flex: 0 0 75%;
     width: 75%;
     max-width: 75%;
+    box-sizing: border-box;
   }
 
   #panel-wrapper {
@@ -136,13 +143,13 @@ article .content {
     flex: 0 0 25%;
     width: 25%;
     max-width: 25%;
+    box-sizing: border-box;
     // Gutter between the article column and the TOC. Without this the
     // first TOC character sits flush against the article right edge
     // and the eye reads them as one block. --space-4 (32px) gives a
     // clear separation that matches the article's own h2 / paragraph
     // rhythm.
     padding-left: var(--space-4);
-    box-sizing: border-box;
   }
 
   // Page-aware panel content: post pages get a TOC-only column (no
