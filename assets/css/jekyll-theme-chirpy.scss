@@ -79,17 +79,17 @@
   }
 }
 
-/* Sidebar social icons: keep them on a single horizontal row at the bottom,
-   evenly distributed, with symmetric padding and no per-icon side margins.
-   Padding tightened from 1rem to 0.5rem to match the narrower 220px
-   sidebar - 6 icons (github, X, email, linkedin, RSS, theme toggle)
-   need to fit without wrapping. */
+/* Sidebar social icons: 5 icons (github, X, email, linkedin, RSS) on a
+   single horizontal row, pulled in from both edges so they don't sit
+   flush against the sidebar's right border (where they'd visually
+   merge with orbs in the article column). 1rem padding each side
+   gives a tap-target margin and a clear visual gap to the boundary. */
 #sidebar .sidebar-bottom {
   flex-wrap: nowrap;
   justify-content: space-around;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  gap: 0.2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  gap: 0.25rem;
 
   > a,
   > #mode-toggle {
