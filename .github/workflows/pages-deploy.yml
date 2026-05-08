@@ -45,6 +45,13 @@ jobs:
           ruby-version: 3.3
           bundler-cache: true
 
+      - name: Apply post overrides
+        # Re-applies _data/post_overrides.yml (categories, tags, pin) onto
+        # Medium-synced posts in _posts/zmediumtomarkdown/. Necessary
+        # because ZMediumToMarkdown overwrites front matter on every sync
+        # and Medium does not provide categories.
+        run: ruby scripts/apply_post_overrides.rb
+
       - name: Build site
         run: bundle exec jekyll b -d "_site"
         env:
@@ -53,10 +60,10 @@ jobs:
       - name: Test site
         run: |
           bundle exec htmlproofer _site \
-            \-\-disable-external \
-            \-\-no-enforce-https \
-            \-\-ignore-empty-alt \
-            \-\-ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
+            --disable-external \
+            --no-enforce-https \
+            --ignore-empty-alt \
+            --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
 
       - name: Deploy
         run: bash tools/deploy.sh

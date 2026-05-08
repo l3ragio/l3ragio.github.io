@@ -35,7 +35,10 @@ jobs:
           command: >
             --cookie_uid ${{ secrets.MEDIUM_COOKIE_UID }}
             --cookie_sid ${{ secrets.MEDIUM_COOKIE_SID }}
-            -j ${{ env.MEDIUM_USER }}
+            -j dbragetti
+
+      - name: Apply per-post overrides (categories, pin, etc.)
+        run: ruby scripts/apply_post_overrides.rb
 
       - name: Install ImageMagick
         run: |

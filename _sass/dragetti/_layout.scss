@@ -111,11 +111,16 @@ article .content {
     align-self: stretch;
   }
 
+  // align-items defaults to `stretch` so panel-wrapper grows to the
+  // row height (= the height of the much-taller article column). This
+  // gives the inner sticky #toc-wrapper a tall track to stick along
+  // as the user scrolls; with align-items:flex-start the panel is
+  // only as tall as its own content and sticky has no room to act.
   #main-wrapper > .container > .row {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: flex-start !important;
   }
 
@@ -266,36 +271,40 @@ article .content {
   }
 }
 
-// ── TOC bar (centered, fit-content, single affordance) ────────────
-// Centered pill, only as wide as title + trigger plus padding.
-// Replaces Chirpy's full-row layout. Reads as a discrete pill rather
-// than a top-bar.
-#toc-bar {
-  display: flex !important;
-  width: fit-content;
-  max-width: 100%;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-bottom: var(--space-3);
-  background: var(--card-bg);
-  border: 1px solid var(--border-subtle);
-  border-radius: 999px;
-  padding: var(--space-1) var(--space-2);
-  gap: var(--space-2);
+// ── TOC bar (mobile/tablet only: centered pill above the post) ─────
+// At lg+ the inline TOC in the right panel takes over and toc-bar is
+// hidden by the @media (min-width: 992px) rule earlier in this file.
+// We wrap the pill styling itself in @media (max-width: 991.98px) so
+// the unconditional display:flex !important does not leak into the
+// desktop range and override the lg+ display:none.
+@media (max-width: 991.98px) {
+  #toc-bar {
+    display: flex !important;
+    width: fit-content;
+    max-width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: var(--space-3);
+    background: var(--card-bg);
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    padding: var(--space-1) var(--space-2);
+    gap: var(--space-2);
 
-  .label {
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    color: var(--text-muted);
-    max-width: 60ch;
-  }
+    .label {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      max-width: 60ch;
+    }
 
-  .toc-trigger {
-    color: var(--text-muted);
-    transition: color var(--transition-fast);
+    .toc-trigger {
+      color: var(--text-muted);
+      transition: color var(--transition-fast);
 
-    &:hover {
-      color: var(--accent);
+      &:hover {
+        color: var(--accent);
+      }
     }
   }
 }

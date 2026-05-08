@@ -250,10 +250,15 @@ html[data-mode="light"] {
     }
 
     &:focus,
-    &:focus-visible {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 2px var(--accent-soft);
+    &:focus-visible,
+    &:focus-within {
+      outline: none !important;
+      // Same border-width and border-radius as the resting state, just
+      // a colour change. Avoid box-shadow rings or rectangular outlines
+      // - both visually break the capsule shape on focus.
+      border: 1px solid var(--accent) !important;
+      border-radius: 999px !important;
+      box-shadow: none !important;
     }
   }
 }
