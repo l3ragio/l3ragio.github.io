@@ -140,23 +140,25 @@ article .content {
     justify-content: flex-start !important;
   }
 
-  // Split shifted from golden 61.8/38.2 to 55/45 (silver-ish): the
-  // user wanted more visual weight on the right column. The narrower
-  // sidebar (220px instead of 260) compounds the effect - the article
-  // sits in less screen real estate, leaving more room on both sides
-  // for the orbs and the TOC panel.
+  // Article column 70%, panel column 30%. Standard ratio used by
+  // Bootstrap-derived themes, Linear docs, Stripe docs, GitHub
+  // file-tree views: main:aside ~ 7:3 (= 2.33) is close to phi*sqrt(2)
+  // (= 2.29) so it reads as harmonic, and it keeps the article column
+  // wide enough for the 720px reading cap while giving the TOC enough
+  // width without wasting space - tocbot's link list is light and a
+  // wider aside just reads as void.
   #main-wrapper > .container .col-lg-11 {
-    flex: 0 0 55%;
-    width: 55%;
-    max-width: 55%;
+    flex: 0 0 70%;
+    width: 70%;
+    max-width: 70%;
     box-sizing: border-box;
   }
 
   #panel-wrapper {
     display: block !important;
-    flex: 0 0 45%;
-    width: 45%;
-    max-width: 45%;
+    flex: 0 0 30%;
+    width: 30%;
+    max-width: 30%;
     box-sizing: border-box;
     // Gutter between the article column and the panel content. Even
     // when the panel renders empty (lg-only) this padding keeps the
