@@ -100,10 +100,12 @@ article .content {
 // with `max-width: calc(1200px - 1px)` for that range. From xl up,
 // Chirpy itself reveals the column - we just normalise its width.
 @media (min-width: 992px) {
-  // Force the container row + container to fill main-wrapper. Without
-  // this, flex-shrink on the container keeps it at content width and
-  // the col-* percentages collapse around the article column - panel
-  // ends up with effectively zero width on the right.
+  // The site does not ship the Bootstrap grid stylesheet - .row,
+  // .col-*, and .d-flex are inert except where Chirpy adds custom
+  // rules. Chirpy only defines column widths inside specific media
+  // queries and never sets the row to a flex container. Make the row
+  // a real flex container at lg+ so the panel actually sits beside
+  // main instead of stacking below it.
   #main-wrapper > .container {
     width: 100%;
     align-self: stretch;
@@ -111,6 +113,17 @@ article .content {
 
   #main-wrapper > .container > .row {
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start !important;
+  }
+
+  // Article column 75%, panel column 25%, stable at lg+.
+  #main-wrapper > .container .col-lg-11 {
+    flex: 0 0 75%;
+    width: 75%;
+    max-width: 75%;
   }
 
   #panel-wrapper {
@@ -118,19 +131,6 @@ article .content {
     flex: 0 0 25%;
     width: 25%;
     max-width: 25%;
-    background: rgba(255, 0, 128, 0.4); // TEMP debug - delete next pass
-    border: 4px solid lime !important; // TEMP debug
-    min-height: 400px !important; // TEMP debug
-  }
-
-  // Below xl Chirpy gives main col-lg-11 (96% wide on its own row),
-  // which leaves no room for a side panel. The Chirpy selector is
-  // `#main-wrapper > .container .col-lg-11` (specificity 0,1,2,1) so
-  // we match it to override.
-  #main-wrapper > .container .col-lg-11 {
-    flex: 0 0 75%;
-    width: 75%;
-    max-width: 75%;
   }
 }
 
