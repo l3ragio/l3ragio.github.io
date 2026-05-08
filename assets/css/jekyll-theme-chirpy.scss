@@ -81,14 +81,15 @@
 
 /* Sidebar social icons: keep them on a single horizontal row at the bottom,
    evenly distributed, with symmetric padding and no per-icon side margins.
-   Chirpy default is flex-wrap with asymmetric left padding, which on a
-   narrow sidebar causes the icons to wrap and look misaligned. */
+   Padding tightened from 1rem to 0.5rem to match the narrower 220px
+   sidebar - 6 icons (github, X, email, linkedin, RSS, theme toggle)
+   need to fit without wrapping. */
 #sidebar .sidebar-bottom {
   flex-wrap: nowrap;
   justify-content: space-around;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  gap: 0.35rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  gap: 0.2rem;
 
   > a,
   > #mode-toggle {

@@ -18,6 +18,31 @@ html[data-mode="light"] {
 }
 
 // ── Sidebar ───────────────────────────────────────────────────────────
+// Narrower sidebar than Chirpy default (220px instead of 260px) to
+// shift visual weight toward the article + right TOC column. Below,
+// matching overrides for #main-wrapper margin-left, profile-wrapper
+// padding (so the avatar still has comfortable margin), nav-item
+// padding (so labels have room), and the xxl breakpoint where Chirpy
+// would otherwise widen sidebar to 300px - we cap it at 260px to
+// preserve the proportional shift at every desktop width.
+#sidebar {
+  width: 220px !important;
+}
+
+#main-wrapper {
+  margin-left: 220px !important;
+}
+
+@media (min-width: 1650px) {
+  #sidebar {
+    width: 260px !important;
+  }
+
+  #main-wrapper {
+    margin-left: 260px !important;
+  }
+}
+
 #sidebar {
   border-right: 1px solid var(--border-subtle);
 
@@ -45,25 +70,30 @@ html[data-mode="light"] {
     flex-shrink: 0;
   }
 
-  // Profile rhythm tokenized - replace Chirpy's 2.5/3.5rem hardcoded
-  // padding with --space-* steps. Avatar to title to subtitle in a
-  // tight block, then breath before the nav.
+  // Profile rhythm tokenized. Padding shrunk to match the narrower
+  // sidebar (220px outer): too much padding here would crowd the
+  // avatar and leave the site title to wrap on two lines.
   .profile-wrapper {
     margin-top: var(--space-5);
     margin-bottom: var(--space-5);
-    padding-left: var(--space-4);
-    padding-right: var(--space-3);
+    padding-left: var(--space-3);
+    padding-right: var(--space-2);
 
     #avatar {
       margin-bottom: var(--space-2);
+      // Avatar shrinks proportionally with sidebar so the visual
+      // weight ratio between avatar and column is preserved.
+      width: 5rem !important;
+      height: 5rem !important;
     }
 
     .site-title {
       margin-top: var(--space-1);
       margin-bottom: var(--space-1);
-      // --text-xl gives the brand presence without the heavy 28px
-      // 900-weight that Chirpy ships. 24px Inter 600 holds the column.
-      font-size: var(--text-xl);
+      // --text-lg (20px) instead of --text-xl (24px): name fits on one
+      // line in the narrower column and reads as a clean brand mark
+      // rather than a wrapped headline.
+      font-size: var(--text-lg);
       line-height: 1.2;
     }
 
@@ -74,11 +104,11 @@ html[data-mode="light"] {
     }
   }
 
-  // Nav-list tokenized: padding y on --space-1, padding x on --space-3,
-  // gap between items consistent.
+  // Nav-list padding tuned for the narrower column: --space-2 (16px)
+  // each side leaves room for the icon + label without truncation.
   ul li.nav-item {
-    padding-left: var(--space-3) !important;
-    padding-right: var(--space-3) !important;
+    padding-left: var(--space-2) !important;
+    padding-right: var(--space-2) !important;
 
     a.nav-link {
       padding-top: var(--space-1) !important;
@@ -94,21 +124,23 @@ html[data-mode="light"] {
 
   // Sidebar bottom social row: explicit horizontal layout. Default
   // Chirpy can wrap them vertically on narrow viewports; force row
-  // and even distribution at all widths.
+  // and even distribution at all widths. Padding tightened to match
+  // the narrower sidebar (220px outer): 5 icons + theme toggle + RSS
+  // need to fit without wrapping or shrinking below tap-target size.
   .sidebar-bottom {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-evenly;
-    gap: var(--space-1);
+    gap: 0.25rem;
     width: 100%;
-    padding: var(--space-2) var(--space-2) var(--space-3);
+    padding: var(--space-2) var(--space-1) var(--space-3);
 
     > a,
     > #mode-toggle {
       margin: 0 !important;
-      font-size: var(--text-base);
+      font-size: var(--text-sm);
     }
   }
 
