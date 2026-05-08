@@ -99,12 +99,19 @@ article .content {
 // required at lg-only (992-1199px) because Chirpy ships display:none
 // with `max-width: calc(1200px - 1px)` for that range. From xl up,
 // Chirpy itself reveals the column - we just normalise its width.
-// DEBUG (always-on, no @media wrap): if magenta does not appear,
-// something else is removing or replacing #panel-wrapper.
+// DEBUG: pin panel-wrapper to top-left, fixed, huge, in front of
+// everything. If this magenta box does NOT appear at all sizes, the
+// element is being removed from the DOM by JS.
 #panel-wrapper {
-  background: rgba(255, 0, 128, 0.5) !important;
-  outline: 4px dashed magenta !important;
-  min-height: 200px !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 300px !important;
+  height: 300px !important;
+  background: rgba(255, 0, 128, 0.85) !important;
+  outline: 6px dashed magenta !important;
+  z-index: 99999 !important;
+  display: block !important;
 }
 
 @media (min-width: 992px) {
