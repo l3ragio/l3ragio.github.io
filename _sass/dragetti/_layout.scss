@@ -38,35 +38,14 @@ html[data-mode="light"] article > .content {
 // callouts, tables, and embeds break out by overriding their own
 // max-width; that ruleset already lives in _prose.scss.
 //
-// 720px is the cap when the right TOC panel is visible (xl+, the
-// panel takes 25% of the row so 720px leaves comfortable margin).
-// Below xl the panel is hidden and the article column has the full
-// width to itself - the wider cap below avoids a narrow body column
-// with empty space to its right.
+// 720px is the reading cap. Auto margins centre the prose inside its
+// flex column so the article reads as a centred block whether the
+// right panel hosts the TOC (xl+) or stays empty as breathing room
+// for the orbs background (lg-only).
 article > .content {
   max-width: 720px;
-}
-
-@media (max-width: 1199.98px) {
-  article > .content {
-    max-width: 880px;
-  }
-
-  // Loosen the prose measure too so paragraphs / lists / headings
-  // follow the wider article cap. 80ch is the upper end of comfortable
-  // reading length on a body-text scale.
-  article .content {
-    > p,
-    > ul,
-    > ol,
-    > h2,
-    > h3,
-    > h4,
-    > .footnotes,
-    > blockquote {
-      max-width: 80ch;
-    }
-  }
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // ── Article body section rhythm (token scale 8/16/24/32/48/64) ──────
@@ -109,48 +88,50 @@ article .content {
 }
 
 // ── Right panel column (Recently Updated / Topics / Contents) ───────
-// Chirpy hides #panel-wrapper below xl with display:none and only
-// promotes it to a real column at xl (col-xl-3). We promote it from
-// lg (>=992px) so the always-visible TOC + widget stack are available
-// on the typical laptop viewport, not only on wide. Below lg the
-// panel hides entirely and TOC navigation falls back to the capsule
-// (#toc-bar) above the post.
-
-// Below xl: hide panel. The breakpoint is 1200px (xl), NOT 992px (lg),
-// because Chirpy's tocbot init uses `matchMedia("(min-width: 1200px)")`
-// to decide whether to populate `<nav id="toc">` (inline) or
-// `#toc-popup-content` (the popup dialog). At lg-only widths
-// (992-1199px) the inline TOC stays empty - Chirpy populates the
-// popup instead. Showing the panel column there would render only
-// the "CONTENTS" header above an empty `<nav id="toc"></nav>`. Below
-// xl the user navigates via the capsule TOC (#toc-bar) above the post
-// which opens the popup.
-@media (max-width: 1199.98px) {
+// Below lg (mobile / tablet): the panel hides; the capsule TOC
+// (#toc-bar) sits above the post and opens the popup dialog with the
+// chapter list.
+@media (max-width: 991.98px) {
   #panel-wrapper {
     display: none !important;
   }
 }
 
-// xl and up: panel is the right column. Chirpy itself reveals the
-// column at xl via removing display:none, plus tocbot populates the
-// inline TOC at this breakpoint so the chapter list is non-empty.
-@media (min-width: 1200px) {
-  // The site does not ship the Bootstrap grid stylesheet - .row,
-  // .col-*, and .d-flex are inert except where Chirpy adds custom
-  // rules. Chirpy only defines column widths inside specific media
-  // queries and never sets the row to a flex container. Make the row
-  // a real flex container at lg+ so the panel actually sits beside
-  // main instead of stacking below it.
+// lg and up (>=992px): the right column is reserved at every desktop
+// width so the article stays visually constrained and the orbs
+// background gets breathing room on the right (the user's request:
+// "lasciamo che il testo si adatti, non solo titolo ed immagine"
+// without the column the article expanded too much sub-1200).
+//
+// Content-wise the panel is page-aware:
+//   - post pages, viewport >=1200px: TOC inline (Chirpy's tocbot
+//     populates `<nav id="toc">` only at this breakpoint via
+//     matchMedia("(min-width: 1200px)") in post.min.js)
+//   - post pages, viewport 992-1199px: column visible but empty (TOC
+//     navigation handled by the capsule that triggers the popup
+//     dialog with the populated list)
+//   - non-post pages: Recently Updated + Topics widgets
+//
+// Column proportions follow the golden ratio (phi = 1.618):
+//   main : panel = 1 : 1/phi = 61.8% : 38.2%
+// The 720px article cap inside main + auto margins centres the prose
+// inside the wider main column for visual symmetry with the panel.
+//
+// box-sizing:border-box on both columns is critical: the global
+// stylesheet does NOT ship a `* { box-sizing: border-box }` reset,
+// and Chirpy at min-width 1650px adds `main.col-12 { padding-right:
+// 4.5rem }`. Without border-box that padding adds to main's width,
+// the row overflows, and #panel-wrapper wraps below the article.
+@media (min-width: 992px) {
+  // Force the row into a real flex container - .row, .d-flex, .col-*
+  // are inert without Bootstrap's grid stylesheet (which Chirpy does
+  // not ship). align-items:stretch lets panel-wrapper grow to the
+  // tall article height so #toc-wrapper sticky has room to act.
   #main-wrapper > .container {
     width: 100%;
     align-self: stretch;
   }
 
-  // align-items defaults to `stretch` so panel-wrapper grows to the
-  // row height (= the height of the much-taller article column). This
-  // gives the inner sticky #toc-wrapper a tall track to stick along
-  // as the user scrolls; with align-items:flex-start the panel is
-  // only as tall as its own content and sticky has no room to act.
   #main-wrapper > .container > .row {
     width: 100%;
     display: flex;
@@ -159,31 +140,22 @@ article .content {
     justify-content: flex-start !important;
   }
 
-  // Article column 75%, panel column 25%, stable at lg+. box-sizing
-  // border-box on both is critical: the global stylesheet does NOT
-  // ship a `* { box-sizing: border-box }` reset, and Chirpy at
-  // min-width 1650px adds `main.col-12 { padding-right: 4.5rem }`.
-  // Without border-box that padding adds to main's width, the row
-  // overflows, and #panel-wrapper wraps below the article (the user
-  // observed: TOC visible up to ~1600px, gone at 1680/1920).
   #main-wrapper > .container .col-lg-11 {
-    flex: 0 0 75%;
-    width: 75%;
-    max-width: 75%;
+    flex: 0 0 61.8%;
+    width: 61.8%;
+    max-width: 61.8%;
     box-sizing: border-box;
   }
 
   #panel-wrapper {
     display: block !important;
-    flex: 0 0 25%;
-    width: 25%;
-    max-width: 25%;
+    flex: 0 0 38.2%;
+    width: 38.2%;
+    max-width: 38.2%;
     box-sizing: border-box;
-    // Gutter between the article column and the TOC. Without this the
-    // first TOC character sits flush against the article right edge
-    // and the eye reads them as one block. --space-4 (32px) gives a
-    // clear separation that matches the article's own h2 / paragraph
-    // rhythm.
+    // Gutter between the article column and the panel content. Even
+    // when the panel renders empty (lg-only) this padding keeps the
+    // article's right edge from sitting flush against the orbs band.
     padding-left: var(--space-4);
   }
 
@@ -200,6 +172,17 @@ article .content {
   // .toc-border-cover is the visual divider Chirpy paints between
   // .access and #toc-wrapper; with .access hidden it is a stray line.
   body:has(article[data-toc="true"]) #panel-wrapper .toc-border-cover {
+    display: none;
+  }
+}
+
+// At lg-only (992-1199px) on post pages, the right panel column stays
+// reserved for layout / orbs breathing room but its content is empty
+// because tocbot populates only the popup at this breakpoint. Hide
+// the stray "Contents" heading + the empty <nav> so the column reads
+// as clean space rather than a half-rendered widget.
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  body:has(article[data-toc="true"]) #panel-wrapper #toc-wrapper {
     display: none;
   }
 }
