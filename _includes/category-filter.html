@@ -1,0 +1,43 @@
+{%- comment -%}
+  Category filter capsules. Sticky on the right side at lg+, collapses
+  to a horizontal scroller above the post-list at narrow widths.
+  Default state: every category active. Toggling a capsule hides
+  posts whose categories are entirely outside the active set. State
+  persists in localStorage via assets/js/data/category-filter.js.
+
+  We collect categories from posts only (not from page front matter)
+  so the filter set matches what the home actually paginates over.
+{%- endcomment -%}
+
+{%- assign cat_pairs = '' | split: '' -%}
+{%- for post in site.posts -%}
+  {%- for c in post.categories -%}
+    {%- assign slug = c | downcase -%}
+    {%- assign already = false -%}
+    {%- for entry in cat_pairs -%}
+      {%- assign parts = entry | split: '|' -%}
+      {%- if parts[0] == slug -%}{%- assign already = true -%}{%- endif -%}
+    {%- endfor -%}
+    {%- unless already -%}
+      {%- assign cat_pairs = cat_pairs | push: slug | append: '|' | append: c -%}
+    {%- endunless -%}
+  {%- endfor -%}
+{%- endfor -%}
+
+<aside id="category-filter" aria-label="Filter posts by category">
+  <div class="filter-heading">Filter</div>
+  <div class="filter-capsules">
+    {%- for entry in cat_pairs -%}
+      {%- assign parts = entry | split: '|' -%}
+      {%- assign slug = parts[0] -%}
+      {%- assign label = parts[1] -%}
+      <button
+        type="button"
+        class="filter-capsule is-active"
+        data-category="{{ slug }}"
+        aria-pressed="true"
+      >{{ label }}</button>
+    {%- endfor -%}
+  </div>
+  <button type="button" id="filter-reset" class="filter-reset" aria-label="Reset filter to all categories">All</button>
+</aside>
