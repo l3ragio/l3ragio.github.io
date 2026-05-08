@@ -37,8 +37,36 @@ html[data-mode="light"] article > .content {
 // Cap the prose container at a research-blog measure. Figures, code,
 // callouts, tables, and embeds break out by overriding their own
 // max-width; that ruleset already lives in _prose.scss.
+//
+// 720px is the cap when the right TOC panel is visible (xl+, the
+// panel takes 25% of the row so 720px leaves comfortable margin).
+// Below xl the panel is hidden and the article column has the full
+// width to itself - the wider cap below avoids a narrow body column
+// with empty space to its right.
 article > .content {
   max-width: 720px;
+}
+
+@media (max-width: 1199.98px) {
+  article > .content {
+    max-width: 880px;
+  }
+
+  // Loosen the prose measure too so paragraphs / lists / headings
+  // follow the wider article cap. 80ch is the upper end of comfortable
+  // reading length on a body-text scale.
+  article .content {
+    > p,
+    > ul,
+    > ol,
+    > h2,
+    > h3,
+    > h4,
+    > .footnotes,
+    > blockquote {
+      max-width: 80ch;
+    }
+  }
 }
 
 // ── Article body section rhythm (token scale 8/16/24/32/48/64) ──────
