@@ -105,12 +105,15 @@ article .content {
     flex: 0 0 auto;
     width: 25%;
     max-width: 25%;
+    // DEBUG: temporary background to confirm panel is rendering.
+    background: rgba(255, 0, 128, 0.08);
+    outline: 1px dashed magenta;
   }
 
   // Below xl Chirpy gives main col-lg-11 (96% wide on its own row),
   // which leaves no room for a side panel. Override main to 75% so
   // main + panel split cleanly at lg.
-  main.col-lg-11 {
+  #main-wrapper > .container .col-lg-11 {
     flex: 0 0 auto;
     width: 75%;
     max-width: 75%;
