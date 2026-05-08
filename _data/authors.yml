@@ -1,36 +1,38 @@
-## Author metadata used by jekyll-seo-tag.
+## Author metadata used by jekyll-seo-tag and the post header byline.
+## When `url` is set, Chirpy renders the name as a link inside <em>;
+## when omitted, it renders as plain <em>name</em>.
 ## Template > https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md#setting-author-url
 
 davide:
   name: Davide Bragetti
   twitter: l3rag1
-  url: https://l3ragio.github.io/
+  url: https://www.linkedin.com/in/davide-bragetti
   image: https://l3ragio.github.io/assets/img/avatar.png
 
 liz_tan:
   name: Liz Tan
-  url: # add LinkedIn / personal site when known
+  url: https://www.linkedin.com/in/elizabeth-sz-tan/
 
 joy_yang:
   name: Joy Yang
-  url: # add LinkedIn / personal site when known
+  url: https://www.linkedin.com/in/j0yy/
 
 lucas:
-  name: Lucas
-  url: # add LinkedIn / personal site when known
+  name: Lucas Biechy
+  url: https://www.linkedin.com/in/biechy/
 
 abdullah:
-  name: Abdullah
-  url: # add LinkedIn / personal site when known
+  name: Abdullah X
+  url: https://www.linkedin.com/in/abdullah-x-22a2211b7/
 
 janhavi:
-  name: Janhavi
-  url: # add LinkedIn / personal site when known
+  name: Janhavi Khindkar
+  url: https://www.linkedin.com/in/janhavi-khindkar/
 
 avni:
-  name: Avni
+  name: Avni Mittal
   url: # add LinkedIn / personal site when known
 
 caroline:
-  name: Caroline
-  url: # add LinkedIn / personal site when known
+  name: Caroline Shamiso
+  url: https://www.linkedin.com/in/%F0%9F%94%B8caroline-shamiso-chitongo-7724381a8/

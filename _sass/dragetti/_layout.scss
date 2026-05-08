@@ -132,6 +132,22 @@ article .content {
     width: 25%;
     max-width: 25%;
   }
+
+  // Page-aware panel content: post pages get a TOC-only column (no
+  // Recently Updated, no Topics); non-post pages (home, categories,
+  // tags, archives) get the .access widgets and have no #toc-wrapper
+  // to begin with. Posts are detected via Chirpy's `data-toc="true"`
+  // attribute on the article element. :has() is supported by all
+  // current browsers (Chrome 105+, Firefox 121+, Safari 15.4+).
+  body:has(article[data-toc="true"]) #panel-wrapper .access {
+    display: none;
+  }
+
+  // .toc-border-cover is the visual divider Chirpy paints between
+  // .access and #toc-wrapper; with .access hidden it is a stray line.
+  body:has(article[data-toc="true"]) #panel-wrapper .toc-border-cover {
+    display: none;
+  }
 }
 
 #panel-wrapper .access > section {

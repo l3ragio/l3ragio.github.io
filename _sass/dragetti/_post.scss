@@ -17,6 +17,22 @@
     font-style: normal;
     font-weight: 500;
   }
+
+  // Author byline links (LinkedIn, etc.). Plain - no underline, no
+  // border-bottom; the mono font + emphasis weight already signals
+  // "this is a name" without the visual noise of underlines.
+  em a,
+  > a {
+    color: var(--text-emphasis);
+    text-decoration: none !important;
+    border-bottom: 0 !important;
+    background-image: none !important;
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
 }
 
 #main-wrapper article > header {
