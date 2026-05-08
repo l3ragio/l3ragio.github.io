@@ -99,21 +99,6 @@ article .content {
 // required at lg-only (992-1199px) because Chirpy ships display:none
 // with `max-width: calc(1200px - 1px)` for that range. From xl up,
 // Chirpy itself reveals the column - we just normalise its width.
-// DEBUG: pin panel-wrapper to top-left, fixed, huge, in front of
-// everything. If this magenta box does NOT appear at all sizes, the
-// element is being removed from the DOM by JS.
-#panel-wrapper {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 300px !important;
-  height: 300px !important;
-  background: rgba(255, 0, 128, 0.85) !important;
-  outline: 6px dashed magenta !important;
-  z-index: 99999 !important;
-  display: block !important;
-}
-
 @media (min-width: 992px) {
   #panel-wrapper {
     display: block !important;
@@ -123,8 +108,9 @@ article .content {
   }
 
   // Below xl Chirpy gives main col-lg-11 (96% wide on its own row),
-  // which leaves no room for a side panel. Override main to 75% so
-  // main + panel split cleanly at lg.
+  // which leaves no room for a side panel. The Chirpy selector is
+  // `#main-wrapper > .container .col-lg-11` (specificity 0,1,2,1) so
+  // we match it to override.
   #main-wrapper > .container .col-lg-11 {
     flex: 0 0 auto;
     width: 75%;
