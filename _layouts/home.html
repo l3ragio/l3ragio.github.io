@@ -1,7 +1,6 @@
 ---
 layout: default
-refactor: true
-# Custom home layout - mirrors Chirpy's _layouts/home.html and adds:
+# Custom home layout - mirrors Chirpy v7.5.0 home.html and adds:
 # (a) data-categories on each post card so a client-side filter can
 #     show/hide cards by category
 # (b) a category filter aside (capsules) included from
@@ -14,8 +13,6 @@ refactor: true
 {% assign all_normal = site.posts | where_exp: 'item', 'item.pin != true and item.hidden != true' %}
 
 {% assign posts = '' | split: '' %}
-
-<!-- Get pinned posts on current page -->
 
 {% assign visible_start = paginator.page | minus: 1 | times: paginator.per_page %}
 {% assign visible_end = visible_start | plus: paginator.per_page %}
@@ -33,8 +30,6 @@ refactor: true
 {% else %}
   {% assign pinned_size = 0 %}
 {% endif %}
-
-<!-- Get normal posts on current page -->
 
 {% assign normal_size = paginator.posts | size | minus: pinned_size %}
 
@@ -66,20 +61,39 @@ refactor: true
 
         {% if post.image %}
           {% assign src = post.image.path | default: post.image %}
-          {% unless src contains '//' %}
-            {% assign src = post.media_subpath | append: '/' | append: src | replace: '//', '/' %}
-          {% endunless %}
+
+          {% if post.media_subpath %}
+            {% unless src contains '://' %}
+              {% assign src = post.media_subpath
+                | append: '/'
+                | append: src
+                | replace: '///', '/'
+                | replace: '//', '/'
+              %}
+            {% endunless %}
+          {% endif %}
+
+          {% if post.image.lqip %}
+            {% assign lqip = post.image.lqip %}
+
+            {% if post.media_subpath %}
+              {% unless lqip contains 'data:' %}
+                {% assign lqip = post.media_subpath
+                  | append: '/'
+                  | append: lqip
+                  | replace: '///', '/'
+                  | replace: '//', '/'
+                %}
+              {% endunless %}
+            {% endif %}
+
+            {% assign lqip_attr = 'lqip="' | append: lqip | append: '"' %}
+          {% endif %}
 
           {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
 
-          {% assign lqip = null %}
-
-          {% if post.image.lqip %}
-            {% capture lqip %}lqip="{{ post.image.lqip }}"{% endcapture %}
-          {% endif %}
-
           <div class="col-md-5">
-            <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}>
+            <img src="{{ src }}" alt="{{ alt }}" {{ lqip_attr }}>
           </div>
 
           {% assign card_body_col = '7' %}
@@ -90,7 +104,7 @@ refactor: true
             <h1 class="card-title my-2 mt-md-0">{{ post.title }}</h1>
 
             <div class="card-text content mt-0 mb-3">
-              <p>{% include post-description.html %}</p>
+              <p>{% include post-summary.html %}</p>
             </div>
 
             <div class="post-meta flex-grow-1 d-flex align-items-end">
