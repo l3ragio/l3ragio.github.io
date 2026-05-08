@@ -80,46 +80,33 @@ article .content {
   margin-top: var(--space-3);
 }
 
-// ── Right atmospheric rail (decorative, CSS-only) ────────────────────
-// Decorative zone on the right edge: soft vertical gradient that
-// catches orbs + hairline border marking it as a distinct zone.
-// Coupled with main-wrapper padding-right so content does NOT
-// visually slide under the rail (the user flagged "constraints not
-// respected" - this is the lateral constraint pass).
-@media (min-width: 992px) {
-  body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 200px;
-    pointer-events: none;
-    z-index: -1;
-    background: linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(0, 255, 198, 0.04) 60%,
-      rgba(0, 255, 198, 0.07) 100%
-    );
-    border-left: 1px solid var(--border-subtle);
-  }
-
-  // Reserve the right 200px for the atmospheric rail. Content stays
-  // left of the rail; topbar / footer / article all respect this
-  // constraint.
-  #main-wrapper {
-    padding-right: 200px;
+// ── Right panel column (Recently Updated / Topics / Contents) ───────
+// Chirpy promotes the panel to a real column only at xl (col-xl-3).
+// We promote it from lg (>=992px) so the always-visible TOC and the
+// widget stack are available on the typical laptop viewport. Below lg
+// the panel hides entirely and TOC navigation falls back to the inline
+// capsule (#toc-bar) above the post.
+@media (max-width: 991.98px) {
+  #panel-wrapper {
+    display: none !important;
   }
 }
 
-html[data-mode="light"] body::after {
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(0, 120, 88, 0.04) 60%,
-    rgba(0, 120, 88, 0.07) 100%
-  );
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  // Below xl Chirpy gives main col-lg-11 (no room for a side panel).
+  // Override so main and panel split 75/25 at lg, matching the xl
+  // behaviour and giving the always-visible TOC its own column.
+  main.col-lg-11 {
+    flex: 0 0 auto;
+    width: 75%;
+    max-width: 75%;
+  }
+
+  #panel-wrapper {
+    flex: 0 0 auto;
+    width: 25%;
+    max-width: 25%;
+  }
 }
 
 #panel-wrapper .access > section {
@@ -139,21 +126,102 @@ html[data-mode="light"] body::after {
   line-height: 1.5;
 }
 
-// Light-mode rail edge gradient
-html[data-mode="light"] #panel-wrapper::before {
-  background: linear-gradient(
-    to right,
-    rgba(0, 120, 88, 0.06) 0%,
-    transparent 100%
-  );
-}
+// ── TOC: always-visible inline navigator (right panel, lg+) ──────────
+// Replaces the click-to-expand capsule on desktop. Sticky to the post
+// content so the section index follows the reader; long section
+// titles truncate with ellipsis so they never wrap and never push the
+// column wider; the active section gets a left accent bar + soft tint
+// background via tocbot's .is-active-link.
+@media (min-width: 992px) {
+  #toc-wrapper {
+    position: sticky;
+    top: calc(56px + var(--space-3));
+    max-height: calc(100vh - 56px - var(--space-4));
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: var(--space-2);
+    font-size: var(--text-sm);
 
-// ── TOC panel rhythm ────────────────────────────────────────────────
-#toc-wrapper {
-  font-size: var(--text-sm);
+    // Bootstrap .invisible is added by tocbot during build and removed
+    // after, but the SSR snapshot keeps it. Force visibility so we
+    // never rely on JS to reveal the panel.
+    &.invisible {
+      visibility: visible !important;
+    }
 
-  .panel-heading {
-    margin-bottom: var(--space-2);
+    .panel-heading {
+      margin-bottom: var(--space-2);
+    }
+
+    // Subtle scrollbar so the index does not announce itself.
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--border-strong);
+      border-radius: 2px;
+    }
+  }
+
+  #toc {
+    ul {
+      list-style: none !important;
+      padding-left: 0;
+      margin: 0;
+
+      ul {
+        padding-left: var(--space-2);
+        margin-left: var(--space-1);
+        border-left: 1px solid var(--border-subtle);
+      }
+    }
+
+    li {
+      margin: 0;
+    }
+
+    a.toc-link {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      line-height: 1.4;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      border-left: 2px solid transparent;
+      margin-left: -2px;
+      // Truncate long section titles on a single line so the column
+      // never wraps. The full title remains accessible via title attr
+      // (tocbot copies it from the heading text by default).
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      transition:
+        color var(--transition-fast),
+        border-color var(--transition-fast),
+        background var(--transition-fast);
+
+      &:hover {
+        color: var(--accent);
+      }
+
+      &.is-active-link {
+        color: var(--accent);
+        border-left-color: var(--accent);
+        background: var(--accent-soft);
+      }
+    }
+  }
+
+  // The always-visible inline TOC is the single affordance at lg+ -
+  // hide the capsule trigger above the post at this breakpoint.
+  #toc-bar {
+    display: none !important;
   }
 }
 
@@ -317,4 +385,112 @@ html[data-mode="light"] #toc-popup::backdrop {
 .post-navigation {
   margin-top: var(--space-5);
   margin-bottom: var(--space-3);
+}
+
+// ── Responsive tuning (sm / md) ──────────────────────────────────────
+// The lg+ layout already promotes the inline TOC and a real right
+// column; below lg the article reads full-width with the capsule TOC
+// (#toc-bar) above it. The block below tightens lateral padding,
+// shrinks the drop cap, and softens vertical rhythm so the page does
+// not feel airy on narrow viewports.
+
+// md and below: tablet / large phone (< 992px).
+@media (max-width: 991.98px) {
+  article > .content {
+    padding: var(--space-3) var(--space-3);
+  }
+
+  article .content > h2 {
+    margin-top: var(--space-4);
+  }
+}
+
+// sm and below: phone (< 768px).
+@media (max-width: 767.98px) {
+  article > .content {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  // Tighten the post header / footer rhythm so the page does not feel
+  // padded out of proportion at phone widths.
+  #main-wrapper article > header {
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  #tail-wrapper > footer {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
+  }
+
+  .post-navigation {
+    margin-top: var(--space-4);
+  }
+
+  // Drop cap at 3em pushes 51px on a 17px body which dominates phone
+  // viewports. 2.4em keeps the editorial signal without crowding the
+  // first line.
+  article[data-toc] .content:not(.no-dropcap) > p:first-of-type::first-letter {
+    font-size: 2.4em;
+    margin: 0.05em 0.1em -0.05em 0;
+  }
+
+  // Capsule TOC: at very narrow widths fit-content can still be wide
+  // because the title nests inline. Cap label width with ellipsis so
+  // the pill never overflows the column.
+  #toc-bar {
+    max-width: 100%;
+
+    .label {
+      max-width: 60vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  // Footer was set up as a flex row; keep it readable and centered on
+  // narrow viewports without wrapping into a tall stack.
+  #tail-wrapper > footer {
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    text-align: center;
+  }
+}
+
+// xs: very narrow phones (< 380px).
+@media (max-width: 379.98px) {
+  article > .content {
+    padding: var(--space-2) var(--space-2);
+  }
+
+  // H1 clamp already tracks viewport width via 4vw; below 380px the
+  // computed value is comfortable. Nothing else needed here for now.
+}
+
+// ── Long-content overflow guards ─────────────────────────────────────
+// The article column has a 720px cap; figures, tables, code, and
+// pre-formatted blocks already opt out of the prose measure. Make
+// sure they cannot push horizontal scroll on the page itself - they
+// scroll inside their own wrapper instead.
+article .content {
+  > pre,
+  > .highlight,
+  > div[class^="language-"] {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  > .table-wrapper,
+  > table {
+    overflow-x: auto;
+    display: block;
+    max-width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
