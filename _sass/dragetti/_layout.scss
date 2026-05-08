@@ -88,18 +88,25 @@ article .content {
 // panel hides entirely and TOC navigation falls back to the capsule
 // (#toc-bar) above the post.
 
-// Below lg: hide panel.
-@media (max-width: 991.98px) {
+// Below xl: hide panel. The breakpoint is 1200px (xl), NOT 992px (lg),
+// because Chirpy's tocbot init uses `matchMedia("(min-width: 1200px)")`
+// to decide whether to populate `<nav id="toc">` (inline) or
+// `#toc-popup-content` (the popup dialog). At lg-only widths
+// (992-1199px) the inline TOC stays empty - Chirpy populates the
+// popup instead. Showing the panel column there would render only
+// the "CONTENTS" header above an empty `<nav id="toc"></nav>`. Below
+// xl the user navigates via the capsule TOC (#toc-bar) above the post
+// which opens the popup.
+@media (max-width: 1199.98px) {
   #panel-wrapper {
     display: none !important;
   }
 }
 
-// lg and up: panel is the right column. The display:block override is
-// required at lg-only (992-1199px) because Chirpy ships display:none
-// with `max-width: calc(1200px - 1px)` for that range. From xl up,
-// Chirpy itself reveals the column - we just normalise its width.
-@media (min-width: 992px) {
+// xl and up: panel is the right column. Chirpy itself reveals the
+// column at xl via removing display:none, plus tocbot populates the
+// inline TOC at this breakpoint so the chapter list is non-empty.
+@media (min-width: 1200px) {
   // The site does not ship the Bootstrap grid stylesheet - .row,
   // .col-*, and .d-flex are inert except where Chirpy adds custom
   // rules. Chirpy only defines column widths inside specific media
@@ -186,13 +193,19 @@ article .content {
   line-height: 1.5;
 }
 
-// ── TOC: always-visible inline navigator (right panel, lg+) ──────────
+// ── TOC: always-visible inline navigator (right panel, xl+) ──────────
 // Replaces the click-to-expand capsule on desktop. Sticky to the post
 // content so the section index follows the reader; long section
 // titles truncate with ellipsis so they never wrap and never push the
 // column wider; the active section gets a left accent bar + soft tint
 // background via tocbot's .is-active-link.
-@media (min-width: 992px) {
+//
+// Breakpoint must be xl (1200px), not lg (992px), to match Chirpy's
+// matchMedia("(min-width: 1200px)") in post.min.js which decides
+// whether tocbot populates the inline #toc or the popup
+// #toc-popup-content. Below 1200px tocbot populates only the popup;
+// the capsule (#toc-bar) is the navigation affordance.
+@media (min-width: 1200px) {
   #toc-wrapper {
     position: sticky;
     top: calc(56px + var(--space-3));
@@ -285,13 +298,13 @@ article .content {
   }
 }
 
-// ── TOC bar (mobile/tablet only: centered pill above the post) ─────
-// At lg+ the inline TOC in the right panel takes over and toc-bar is
-// hidden by the @media (min-width: 992px) rule earlier in this file.
-// We wrap the pill styling itself in @media (max-width: 991.98px) so
-// the unconditional display:flex !important does not leak into the
-// desktop range and override the lg+ display:none.
-@media (max-width: 991.98px) {
+// ── TOC bar (mobile through laptop: centered pill above the post) ───
+// At xl+ the inline TOC in the right panel takes over and toc-bar is
+// hidden by the @media (min-width: 1200px) rule earlier in this file.
+// Below xl the capsule is the navigation affordance because tocbot
+// populates the popup (#toc-popup-content) it triggers; the inline
+// #toc nav stays empty until 1200px.
+@media (max-width: 1199.98px) {
   #toc-bar {
     display: flex !important;
     width: fit-content;
