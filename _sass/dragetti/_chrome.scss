@@ -38,25 +38,13 @@ html[data-mode="light"] {
   }
 }
 
-// Push the orbs canvas left edge past the sidebar so the decorative
-// circles never paint into the sidebar's right border zone (the user
-// observed visual ambiguity between an orb and the rightmost social
-// icon - the orb appearing to "touch" the icon). At lg+ the canvas
-// starts at the sidebar boundary; below lg there is no sidebar margin
-// so the canvas spans the viewport.
-@media (min-width: 992px) {
-  #orbs-bg {
-    left: 220px !important;
-    width: calc(100vw - 220px) !important;
-  }
-}
-
-@media (min-width: 1650px) {
-  #orbs-bg {
-    left: 260px !important;
-    width: calc(100vw - 260px) !important;
-  }
-}
+// Orbs canvas spans the full viewport (default). The sidebar's solid
+// var(--sidebar-bg) plus the strengthened border-right below already
+// mask the canvas behind the sidebar, and pulling the social icons
+// inward avoids the visual ambiguity at the seam. Letting the canvas
+// span 100vw means orbs naturally distribute across both the article
+// and the right TOC column - the user wants the atmospheric
+// background visible under the right column too, not capped at it.
 
 #sidebar {
   // border-strong (rgba 148,163,184,0.20) instead of border-subtle
