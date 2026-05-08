@@ -2,9 +2,15 @@ name: ZMediumToMarkdown
 
 on:
   workflow_dispatch:
-  push:
   schedule:
     - cron: '10 1 15 * *' # Monthly sync
+  # NOTE: `push:` trigger intentionally removed. Medium's Cloudflare
+  # bot management blocks the runner's datacenter IP (HTTP 403 at
+  # https://medium.com/_/graphql) when no Cloudflare Worker proxy is
+  # set up via the MEDIUM_HOST env var. Running on every push spammed
+  # failure emails. To re-enable per-push sync, first follow the
+  # ZMediumToMarkdown setup guide for a Cloudflare Worker proxy:
+  # https://github.com/ZhgChgLi/ZMediumToMarkdown/blob/main/wiki/Setting-Up-Medium-Cookies-and-a-Cloudflare-Worker-Proxy.md
 
 permissions:
   contents: write
