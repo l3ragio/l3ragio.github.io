@@ -43,6 +43,42 @@
     margin-top: 0;
     margin-bottom: var(--space-2);
   }
+
+  // Hero image polish (Chirpy emits <a class="preview-img blur"><img></a>
+  // inside the post header div). Rounded corners + subtle shadow read
+  // as editorial card without competing with the prose. max-height
+  // prevents tall hero images from dominating the page on wide
+  // viewports - Medium caps at ~520px for the same reason.
+  .preview-img {
+    display: block;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-3);
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 520px;
+      object-fit: cover;
+    }
+  }
+
+  // Figcaption (alt-text caption rendered when image has alt). Mono
+  // small caps eyebrow underneath the hero so it reads as visual
+  // metadata, not as another paragraph.
+  > figcaption,
+  .preview-img + figcaption {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    margin-top: var(--space-1);
+    margin-bottom: var(--space-3);
+    text-align: center;
+  }
 }
 
 // Lead is information about the title; --space-1 keeps it close to
