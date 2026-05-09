@@ -164,31 +164,31 @@ html[data-mode="light"] {
   // Force symmetric padding (1rem each side) and zero per-icon margin
   // at every breakpoint so the row's intrinsic width is just the
   // 5 icons + flex gap, well inside the sidebar.
-  // Switched from flex to grid auto-fit. flex with wrap could not
-  // beat Chirpy's per-icon sizing rules deterministically: when the
-  // 5 icons collectively exceeded the inner sidebar width by even a
-  // few px the row would not wrap (mathematically fit the natural
-  // sizes) and the trailing icon would clip past the sidebar's
-  // right border. grid auto-fit + minmax computes columns from the
-  // ACTUAL available width: as soon as one column would fall under
-  // the minmax floor, the row drops to fewer columns and the rest
-  // wrap to the next row.
+  // Grid auto-fit with a generous minmax floor so wrap is GUARANTEED
+  // when the icon count cannot fit in one row. minmax(3rem, 1fr): each
+  // column reserves 48px min including a tap-target margin, so 5 icons
+  // collectively need ~240px and cannot squeeze into the 172px inner
+  // sidebar width - the row must drop to 3 columns and the surplus
+  // wraps to a second row inside the sidebar. overflow:hidden is the
+  // belt: even if a future Chirpy-side rule forces a wider per-icon
+  // box, no glyph leaks past the sidebar boundary into the article
+  // column.
   .sidebar-bottom {
     display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(2.2rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr)) !important;
     align-items: center;
     justify-items: center;
-    gap: 0.5rem 0.25rem;
+    gap: 0.5rem 0.25rem !important;
     width: 100%;
     padding: var(--space-2) var(--space-3) var(--space-3) !important;
+    overflow: hidden;
 
     > a,
     > #mode-toggle {
       margin: 0 !important;
       font-size: var(--text-sm);
-      // Square the icon bubble so wrapped rows look uniform.
-      width: 2rem !important;
-      height: 2rem !important;
+      width: 1.75rem !important;
+      height: 1.75rem !important;
       min-width: 0;
       display: inline-flex;
       align-items: center;
