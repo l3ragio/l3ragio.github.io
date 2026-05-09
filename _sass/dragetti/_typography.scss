@@ -46,6 +46,17 @@ h1 {
   max-width: 100%;
 }
 
+// Mobile only: force H1 (and the lead) width to viewport so the wrap
+// algorithm uses the visible width, not the parent's intrinsic width.
+@media (max-width: 991.98px) {
+  #main-wrapper article > header > h1,
+  #main-wrapper article > header > .post-desc {
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    box-sizing: border-box;
+  }
+}
+
 h2 {
   font-size: var(--text-xl);
   line-height: 1.25;
