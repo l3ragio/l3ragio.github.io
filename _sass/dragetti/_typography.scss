@@ -40,10 +40,13 @@ h1 {
   font-size: clamp(1.4rem, 5vw, var(--text-3xl));
   line-height: 1.15;
   letter-spacing: -0.015em;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   word-break: break-word;
   hyphens: auto;
   max-width: 100%;
+  // DEBUG: outline H1 boundary so we can see if it overflows its
+  // container or not.
+  outline: 2px solid red;
 }
 
 h2 {
