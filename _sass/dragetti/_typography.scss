@@ -26,15 +26,18 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.005em;
 }
 
-// H1 scaled editorially - clamp from 1.5rem (24px) at the narrowest
-// phones to text-4xl (45px) on desktop. The 24px floor keeps the
-// 47-character test title ("Does Safe AI mean nothing bad can ever
-// happen?") from clipping at 360-414px viewports. overflow-wrap:
-// break-word is the belt for any single word longer than the column;
-// gentler than `anywhere`, which would split mid-word even when a
-// word boundary break would have worked.
+// H1 scaled editorially. The vw multiplier (5vw) and floor (1.4rem
+// = 22.4px) keep long titles legible on 360-414px viewports while
+// scaling up to text-3xl (36px) on desktop. Tested against the
+// 47-character canonical title; with 5vw at 390px viewport the
+// computed H1 is 22.4px and "Does Safe AI mean nothing" fits the
+// 358px line, leaving "bad can ever happen?" for line 2.
+//
+// The previous formula (clamp 1.5rem, 7vw, 45px) computed 27.3px at
+// 390px and overflowed the line by ~17px - "ng" of "nothing" got
+// clipped by overflow-x:clip.
 h1 {
-  font-size: clamp(1.5rem, 7vw, var(--text-4xl));
+  font-size: clamp(1.4rem, 5vw, var(--text-3xl));
   line-height: 1.15;
   letter-spacing: -0.015em;
   overflow-wrap: break-word;
