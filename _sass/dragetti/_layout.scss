@@ -296,23 +296,58 @@ article .content {
       }
     }
 
-    // Items collapsed by toc-collapse.js (outside the visible window).
+    // Smooth show/hide for items that toc-collapse.js toggles. We
+    // animate max-height + opacity + margin instead of using
+    // display:none so the TOC re-shapes fluidly as the active
+    // section changes during scroll.
+    //
+    // max-height bounds: 4rem covers a single-line H2 item; lis that
+    // contain a nested ul of H3s grow to 30rem (~10 nested items at
+    // text-sm). The :has() selector covers both cases without JS.
+    li {
+      max-height: 4rem;
+      opacity: 1;
+      overflow: hidden;
+      transition:
+        max-height var(--transition-medium),
+        opacity var(--transition-fast),
+        transform var(--transition-medium),
+        margin var(--transition-medium),
+        padding var(--transition-medium);
+    }
+
+    li:has(> ul) {
+      max-height: 30rem;
+    }
+
     li.is-collapsed {
-      display: none;
+      max-height: 0;
+      opacity: 0;
+      // Slight upward tuck so the collapse reads as a deliberate
+      // motion rather than a sudden disappearance.
+      transform: translateY(-4px);
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      pointer-events: none;
     }
 
     // Vertical-ellipsis separator inserted at every gap. Centred
     // within the panel column, mono so it reads as a typographic
     // marker rather than a list bullet, low opacity so the eye does
-    // not stop on it.
+    // not stop on it. Fade-in animation on insertion so the marker
+    // does not pop into existence.
     li.toc-ellipsis {
       list-style: none;
-      padding: 0.4rem 0;
+      max-height: 2.2rem;
+      padding: 0.35rem 0;
       text-align: center;
       pointer-events: none;
       user-select: none;
       color: var(--text-muted);
       opacity: 0.55;
+      animation: tocEllipsisIn var(--transition-medium) ease-out;
 
       &::before {
         content: '\22EE';            // U+22EE vertical ellipsis
@@ -322,6 +357,11 @@ article .content {
         letter-spacing: 0;
       }
     }
+  }
+
+  @keyframes tocEllipsisIn {
+    from { opacity: 0; transform: translateY(-2px); }
+    to   { opacity: 0.55; transform: translateY(0); }
   }
 
   // The always-visible inline TOC is the single affordance at lg+ -
