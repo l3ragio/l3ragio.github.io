@@ -164,20 +164,21 @@ html[data-mode="light"] {
   // Force symmetric padding (1rem each side) and zero per-icon margin
   // at every breakpoint so the row's intrinsic width is just the
   // 5 icons + flex gap, well inside the sidebar.
-  // Explicit grid column counts per sidebar width. auto-fit was
-  // unreliable: the 4th column would still squeeze in at 220px and
-  // clip its icon against the article column. Hard-coding the
-  // column count makes the wrap deterministic at every width:
-  //   - 220px sidebar (lg-xl): 3 cols  → 3 icons in row 1, 2 in row 2
-  //   - 260px sidebar (xxl):   5 cols  → all 5 fit in row 1
-  // overflow:hidden is the belt: any future per-icon padding side
-  // effect cannot push glyphs past the sidebar's right border.
+  // Flex with center justify + wrap. Grid was producing rightward
+  // clipping at narrow sidebars regardless of column count: even
+  // hard-coded 3 columns left the third icon at the right edge of
+  // the sidebar inner padding, which visually overlapped the article
+  // column. Center-justified flex clusters icons in the middle of
+  // their row, so the leftmost and rightmost icon both have equal
+  // breathing room from the sidebar borders. flex-wrap takes any
+  // surplus to the next row.
   .sidebar-bottom {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
     align-items: center;
-    justify-items: center;
-    gap: 0.5rem 0.25rem !important;
+    justify-content: center !important;
+    gap: 0.5rem;
     width: 100%;
     padding: var(--space-2) var(--space-3) var(--space-3) !important;
     overflow: hidden;
@@ -188,16 +189,10 @@ html[data-mode="light"] {
       font-size: var(--text-sm);
       width: 1.75rem !important;
       height: 1.75rem !important;
-      min-width: 0;
+      flex: 0 0 auto;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-    }
-  }
-
-  @media (min-width: 1650px) {
-    .sidebar-bottom {
-      grid-template-columns: repeat(5, 1fr) !important;
     }
   }
 
