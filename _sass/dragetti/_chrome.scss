@@ -164,18 +164,17 @@ html[data-mode="light"] {
   // Force symmetric padding (1rem each side) and zero per-icon margin
   // at every breakpoint so the row's intrinsic width is just the
   // 5 icons + flex gap, well inside the sidebar.
-  // Grid auto-fit with a generous minmax floor so wrap is GUARANTEED
-  // when the icon count cannot fit in one row. minmax(3rem, 1fr): each
-  // column reserves 48px min including a tap-target margin, so 5 icons
-  // collectively need ~240px and cannot squeeze into the 172px inner
-  // sidebar width - the row must drop to 3 columns and the surplus
-  // wraps to a second row inside the sidebar. overflow:hidden is the
-  // belt: even if a future Chirpy-side rule forces a wider per-icon
-  // box, no glyph leaks past the sidebar boundary into the article
-  // column.
+  // Explicit grid column counts per sidebar width. auto-fit was
+  // unreliable: the 4th column would still squeeze in at 220px and
+  // clip its icon against the article column. Hard-coding the
+  // column count makes the wrap deterministic at every width:
+  //   - 220px sidebar (lg-xl): 3 cols  → 3 icons in row 1, 2 in row 2
+  //   - 260px sidebar (xxl):   5 cols  → all 5 fit in row 1
+  // overflow:hidden is the belt: any future per-icon padding side
+  // effect cannot push glyphs past the sidebar's right border.
   .sidebar-bottom {
     display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr)) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     align-items: center;
     justify-items: center;
     gap: 0.5rem 0.25rem !important;
@@ -193,6 +192,12 @@ html[data-mode="light"] {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+    }
+  }
+
+  @media (min-width: 1650px) {
+    .sidebar-bottom {
+      grid-template-columns: repeat(5, 1fr) !important;
     }
   }
 
