@@ -49,6 +49,12 @@ h1 {
   outline: 2px solid red;
 }
 
+// DEBUG outlines for parent containers
+article { outline: 2px solid yellow !important; }
+main { outline: 2px solid lime !important; }
+#main-wrapper > .container { outline: 2px solid cyan !important; }
+#main-wrapper > .container > .row { outline: 2px solid magenta !important; }
+
 h2 {
   font-size: var(--text-xl);
   line-height: 1.25;
