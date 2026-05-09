@@ -86,21 +86,52 @@
 
     updating = true;
     try {
-      clearEllipses();
-
       var items = getTopLevelItems();
       var TOTAL = items.length;
       if (TOTAL === 0) return;
 
-      // Slot budget. With first+last+window the natural cap is
-      // FIRST_KEEP + LAST_KEEP + WINDOW_BEFORE + 1 + WINDOW_AFTER = 6.
-      // If the whole list is small we just show everything.
-      var ALWAYS_VISIBLE = FIRST_KEEP + LAST_KEEP + WINDOW_BEFORE + 1 + WINDOW_AFTER;
-      if (TOTAL <= ALWAYS_VISIBLE) {
-        for (var x = 0; x < items.length; x++) items[x].classList.remove('is-collapsed');
+      var tocWrapper = document.getElementById('toc-wrapper');
+      if (!tocWrapper) return;
+
+      // Step 1: clear ellipses + uncollapse all so we can measure the
+      // unconstrained TOC height. Disable transitions during the
+      // measurement window so max-height animations do not lie about
+      // the natural content size.
+      var prevTransitions = [];
+      for (var pi = 0; pi < items.length; pi++) {
+        prevTransitions.push(items[pi].style.transition);
+        items[pi].style.transition = 'none';
+        items[pi].classList.remove('is-collapsed');
+      }
+      clearEllipses();
+
+      // Force layout flush so scrollHeight reflects the uncollapsed state.
+      void tocWrapper.offsetHeight;
+
+      // Step 2: compare actual TOC height to the available sticky window.
+      // 24px bottom buffer keeps the last item from sitting flush against
+      // the viewport edge. If the TOC fits, leave everything visible.
+      var rect = tocWrapper.getBoundingClientRect();
+      var available = window.innerHeight - rect.top - 24;
+      var fullHeight = tocWrapper.scrollHeight;
+
+      function restoreTransitions() {
+        // Restore on the next frame so any class change made above
+        // animates from the new state, not the measurement-time state.
+        requestAnimationFrame(function () {
+          for (var ri = 0; ri < items.length; ri++) {
+            items[ri].style.transition = prevTransitions[ri] || '';
+          }
+        });
+      }
+
+      if (fullHeight <= available) {
+        // Whole index fits in the window - no collapse, no ellipses.
+        restoreTransitions();
         return;
       }
 
+      // Step 3: doesn't fit - apply windowing.
       var activeIdx = findActiveIndex(items);
 
       var visible = {};
@@ -141,6 +172,8 @@
           insertEllipsisAfter(items[sorted[n]]);
         }
       }
+
+      restoreTransitions();
     } finally {
       updating = false;
     }
