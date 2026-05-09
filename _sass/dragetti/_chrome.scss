@@ -51,6 +51,11 @@ html[data-mode="light"] {
   // (0.10) so the sidebar's right edge reads as a clean separator
   // even when the orbs background pulses near it.
   border-right: 1px solid var(--border-strong);
+  // Explicit positive z-index so the sidebar's solid background
+  // always paints over the orbs canvas (which lives at z:-1). Without
+  // this the implicit z:auto + position:fixed sometimes lets cyan
+  // rings show through inside the sidebar area on certain browsers.
+  z-index: 1;
 
   // Defensive list-style reset - kill any residual marker that might
   // slip through from browser default or Bootstrap reset edge cases.
