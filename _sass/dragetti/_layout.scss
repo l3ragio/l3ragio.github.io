@@ -11,10 +11,14 @@
 // the canvas is not painted over before reaching elements above.
 html {
   background: var(--bg-primary);
+  // Belt against horizontal overflow from any source (orbs canvas,
+  // long code lines, runaway columns). Vertical scroll is fine.
+  overflow-x: hidden;
 }
 
 body {
   background: transparent !important;
+  overflow-x: hidden;
 }
 
 // Article reading column: blurred backdrop. The orbs visible behind

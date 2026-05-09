@@ -20,12 +20,22 @@ html[data-mode="light"] {
 // ── Sidebar ───────────────────────────────────────────────────────────
 // Narrower sidebar than Chirpy default (220px instead of 260px) to
 // shift visual weight toward the article + right TOC column.
-#sidebar {
-  width: 220px !important;
-}
+//
+// Crucially, the width / margin overrides are gated to lg+ (>=992).
+// Below lg Chirpy hides the sidebar (transform: translateX(-100%))
+// and zeroes the wrapper margin so the article reads full-width with
+// the topbar drawer affordance. Without the lg+ gate the !important
+// margin-left bleeds into mobile and pushes the article 220px off the
+// viewport - the bug that caused mid-word right-edge clipping at
+// every phone width.
+@media (min-width: 992px) {
+  #sidebar {
+    width: 220px !important;
+  }
 
-#main-wrapper {
-  margin-left: 220px !important;
+  #main-wrapper {
+    margin-left: 220px !important;
+  }
 }
 
 @media (min-width: 1650px) {
