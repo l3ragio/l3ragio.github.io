@@ -72,10 +72,12 @@ html[data-mode="light"] article > .content {
 // callouts, tables, and embeds break out by overriding their own
 // max-width; that ruleset already lives in _prose.scss.
 //
-// 720px is the reading cap. Auto margins centre the prose inside its
-// flex column so the article reads as a centred block whether the
-// right panel hosts the TOC (xl+) or stays empty as breathing room
-// for the orbs background (lg-only).
+// 720px is the reading cap. On mobile / tablet the article centres
+// inside its column. On desktop (lg+) the article right-aligns
+// inside main so it sits closer to the right TOC panel - this pulls
+// the article visually toward the viewport centre and lets the
+// transparent sidebar's orbs breathe in the gap on the article's
+// left side. See the lg+ block below for the right-align rule.
 article > .content {
   max-width: 720px;
   margin-left: auto;
@@ -194,10 +196,21 @@ article .content {
     width: 30%;
     max-width: 30%;
     box-sizing: border-box;
-    // Gutter between the article column and the panel content. Even
-    // when the panel renders empty (lg-only) this padding keeps the
-    // article's right edge from sitting flush against the orbs band.
-    padding-left: var(--space-4);
+    // Modest left gutter (16px). The article right-aligns inside
+    // main below so the visual gap between article right edge and
+    // panel content is just this padding plus the article's right-
+    // side margin (which is now 0 due to the margin-right override).
+    padding-left: var(--space-2);
+  }
+
+  // Right-align article inside main on desktop. Combined with the
+  // transparent sidebar this pulls the article toward the viewport
+  // centre, exposes the orbs in the gap on the article's left, and
+  // keeps the article close to the right TOC panel for a tight
+  // reading rhythm.
+  #main-wrapper main > article > .content {
+    margin-left: auto !important;
+    margin-right: 0 !important;
   }
 
   // Page-aware panel content: post pages get a TOC-only column (no
