@@ -51,11 +51,17 @@ html[data-mode="light"] {
   // (0.10) so the sidebar's right edge reads as a clean separator
   // even when the orbs background pulses near it.
   border-right: 1px solid var(--border-strong);
-  // Explicit positive z-index so the sidebar's solid background
-  // always paints over the orbs canvas (which lives at z:-1). Without
-  // this the implicit z:auto + position:fixed sometimes lets cyan
-  // rings show through inside the sidebar area on certain browsers.
+  // Explicit positive z-index keeps the sidebar above the orbs canvas
+  // (z:-1). The translucent --sidebar-bg + backdrop-filter blur do the
+  // visual masking - z-index alone could not, since transparent fill
+  // does not paint over what is behind.
   z-index: 1;
+  // Soft blur of whatever lives behind the sidebar (orbs canvas + the
+  // article column scrolling under). Combined with --sidebar-bg ~0.82
+  // alpha this lets the cyan glow stay perceptible as atmosphere
+  // without leaking sharp rings into the icon zone.
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   // Defensive list-style reset - kill any residual marker that might
   // slip through from browser default or Bootstrap reset edge cases.

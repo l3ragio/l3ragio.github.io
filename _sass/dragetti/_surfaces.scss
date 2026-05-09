@@ -13,11 +13,14 @@
 
 html[data-mode="dark"],
 html:not([data-mode]) {
-  // Backgrounds - sidebar transparent so orbs canvas shows through;
-  // body becomes transparent and html paints the page color so the
-  // orbs are visible page-wide (not hidden behind body bg).
+  // Backgrounds. Body is transparent and html paints the page color so
+  // the orbs canvas (z:-1, 100vw) is visible page-wide. The sidebar
+  // gets a translucent fill (not full transparent) so orbs become a
+  // soft suggestion behind it rather than a clear ring leaking into
+  // the icon zone. Same blur recipe used for the article column in
+  // _layout.scss; see _chrome.scss for the matching backdrop-filter.
   --main-bg:           transparent;
-  --sidebar-bg:        transparent;
+  --sidebar-bg:        rgba(11, 15, 20, 0.82);
   --topbar-bg:         rgba(11, 15, 20, 0.72);
   --card-bg:           var(--bg-secondary);
   --card-header-bg:    var(--bg-elevated);
@@ -50,9 +53,11 @@ html:not([data-mode]) {
 }
 
 html[data-mode="light"] {
-  // Backgrounds (light parity)
+  // Backgrounds (light parity). Sidebar matches dark-mode philosophy:
+  // translucent fill so the orbs' soft glow stays visible behind but
+  // does not bleed into the icon zone.
   --main-bg:           var(--bg-primary);
-  --sidebar-bg:        var(--bg-primary);
+  --sidebar-bg:        rgba(250, 248, 242, 0.85);
   --topbar-bg:         rgba(250, 248, 242, 0.85);
   --card-bg:           var(--bg-secondary);
   --card-header-bg:    var(--bg-elevated);
