@@ -299,66 +299,67 @@ html[data-mode="light"] {
   border-radius: 0.4rem;
 }
 
-// Search field: explicit flex item that does not grow / shrink, sized
-// 13rem so it sits on the right of the topbar without competing with
-// the breadcrumb. Icon vertically centered inside the input via
-// position:absolute + top:50% transform.
-#topbar #search {
-  display: flex;
-  align-items: center;
-  position: relative;
-  flex: 0 0 13rem;
-  height: 36px;
-  margin-left: auto;
-
-  > i.fas.fa-search {
-    position: absolute;
-    left: 0.6rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: var(--text-sm);
-    color: var(--text-muted);
-    pointer-events: none;
-    margin: 0;
-  }
-
-  #search-input {
-    height: 100%;
-    line-height: 36px;
-    padding: 0 var(--space-2) 0 2rem;
-    font-size: var(--text-sm);
-    font-family: var(--font-sans);
-    background: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--border-subtle);
-    border-radius: 999px;
-    width: 100%;
-    transition: border-color var(--transition-fast),
-                box-shadow var(--transition-fast);
-
-    &::placeholder {
-      color: var(--text-muted);
-      line-height: 36px;
-    }
-
-    &:focus,
-    &:focus-visible,
-    &:focus-within {
-      outline: none !important;
-      // Same border-width and border-radius as the resting state, just
-      // a colour change. Avoid box-shadow rings or rectangular outlines
-      // - both visually break the capsule shape on focus.
-      border: 1px solid var(--accent) !important;
-      border-radius: 999px !important;
-      box-shadow: none !important;
-    }
-  }
-}
-
-// Hide the Cancel button on desktop - it is only useful when the
-// mobile search overlay is open. Removing the redundant element
-// improves the topbar visual rhythm.
+// Search field styling for desktop (>=850px). Below 850 Chirpy hides
+// the inline search input and shows only the search-trigger icon
+// which expands an overlay; forcing flex 0 0 13rem at mobile widths
+// shoves a 208px input into a 360-414px topbar, displacing the title
+// and the hamburger trigger. Gating the entire block to lg+ restores
+// Chirpy's mobile topbar behaviour.
 @media (min-width: 850px) {
+  #topbar #search {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex: 0 0 13rem;
+    height: 36px;
+    margin-left: auto;
+
+    > i.fas.fa-search {
+      position: absolute;
+      left: 0.6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      pointer-events: none;
+      margin: 0;
+    }
+
+    #search-input {
+      height: 100%;
+      line-height: 36px;
+      padding: 0 var(--space-2) 0 2rem;
+      font-size: var(--text-sm);
+      font-family: var(--font-sans);
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      width: 100%;
+      transition: border-color var(--transition-fast),
+                  box-shadow var(--transition-fast);
+
+      &::placeholder {
+        color: var(--text-muted);
+        line-height: 36px;
+      }
+
+      &:focus,
+      &:focus-visible,
+      &:focus-within {
+        outline: none !important;
+        // Same border-width and border-radius as the resting state,
+        // just a colour change. Avoid box-shadow rings or rectangular
+        // outlines - both visually break the capsule shape on focus.
+        border: 1px solid var(--accent) !important;
+        border-radius: 999px !important;
+        box-shadow: none !important;
+      }
+    }
+  }
+
+  // Hide the Cancel button on desktop - it is only useful when the
+  // mobile search overlay is open.
   #topbar #search-cancel {
     display: none !important;
   }
