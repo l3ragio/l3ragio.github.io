@@ -26,12 +26,16 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.005em;
 }
 
-// H1 scaled editorially - clamp from 3xl (36px) to 4xl (45px). On a
-// 720px column this reads as a real arrival, not a timid label.
+// H1 scaled editorially - clamp from 2xl (30px) at narrow phones to
+// 4xl (45px) on desktop. The 2xl floor (was 3xl/36px) keeps long
+// titles from overflowing 360-414px viewports; overflow-wrap: anywhere
+// is the belt against any single word that still exceeds the column.
 h1 {
-  font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl));
+  font-size: clamp(var(--text-2xl), 6vw, var(--text-4xl));
   line-height: 1.1;
   letter-spacing: -0.015em;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
 h2 {
