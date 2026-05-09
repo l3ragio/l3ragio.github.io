@@ -12,13 +12,17 @@
 html {
   background: var(--bg-primary);
   // Belt against horizontal overflow from any source (orbs canvas,
-  // long code lines, runaway columns). Vertical scroll is fine.
-  overflow-x: hidden;
+  // long code lines, runaway columns). Use overflow-x:clip instead
+  // of hidden: with `hidden`, browsers silently promote overflow-y
+  // from `visible` to `auto` and that creates a redundant interior
+  // scrollbar alongside the normal page scrollbar. `clip` is the
+  // modern equivalent that does not trigger that promotion.
+  overflow-x: clip;
 }
 
 body {
   background: transparent !important;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 // Article reading column: blurred backdrop. The orbs visible behind
