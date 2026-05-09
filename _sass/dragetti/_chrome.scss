@@ -167,13 +167,19 @@ html[data-mode="light"] {
   .sidebar-bottom {
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: nowrap;
+    // Allow wrap. With nowrap any FA icon padding edge-case (or a
+    // future 6th icon) pushes the row past the sidebar bound and the
+    // overflowing tail visually overlaps the article column. wrap
+    // sends the surplus to a second row inside the sidebar.
+    flex-wrap: wrap !important;
     align-items: center;
     // space-evenly gives true equal spacing including the outer gaps,
     // unlike space-around which halves the outer gap and lets the
     // first/last icon sit closer to the edge than to its neighbour.
     justify-content: space-evenly;
-    gap: 0.25rem;
+    // row-gap, column-gap. row-gap kicks in only when icons wrap to
+    // a second row; column-gap keeps the per-icon spacing tight.
+    gap: 0.5rem 0.25rem;
     width: 100%;
     // Inner padding bumped to --space-3 (24px) on left/right so the
     // first and last icon never sit closer than a full token unit to
@@ -195,6 +201,11 @@ html[data-mode="light"] {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      // flex-shrink:0 keeps each icon at its declared width even when
+      // the row is wrap-pressured. Without this, flex would try to
+      // fit them on one row by shrinking, and the visual would still
+      // be a cramped single line instead of a clean wrap.
+      flex-shrink: 0;
     }
   }
 
