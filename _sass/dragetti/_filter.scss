@@ -111,6 +111,80 @@ html[data-mode="light"] #category-filter {
   background: rgba(250, 248, 242, 0.6);
 }
 
+// Sort toggle on the home feed: swaps between #post-list (Recent) and
+// #post-list-curated (Selected). Sits as a small bar above the post
+// list; visual language mirrors the category filter capsules.
+#sort-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  margin: 0 0 var(--space-3) 0;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: rgba(11, 15, 20, 0.45);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+
+  .sort-heading {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding-right: var(--space-2);
+    border-right: 1px solid var(--border-subtle);
+    margin-right: var(--space-1);
+    flex-shrink: 0;
+  }
+
+  .sort-capsule {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.04em;
+    padding: 0.28em 0.85em;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent);
+    cursor: pointer;
+    line-height: 1.3;
+    transition:
+      background var(--transition-fast),
+      color var(--transition-fast),
+      border-color var(--transition-fast),
+      opacity var(--transition-fast);
+
+    &:hover {
+      background: rgba(0, 255, 198, 0.16);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    &:not(.is-active) {
+      background: transparent;
+      color: var(--text-muted);
+      border-color: var(--border-strong);
+      border-style: dashed;
+      opacity: 0.7;
+
+      &:hover {
+        color: var(--text-emphasis);
+        border-color: var(--text-muted);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+html[data-mode="light"] #sort-toggle {
+  background: rgba(250, 248, 242, 0.6);
+}
+
 // Smooth fade-out on filtered cards
 #post-list .card-wrapper {
   transition:

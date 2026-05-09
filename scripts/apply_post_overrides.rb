@@ -10,7 +10,7 @@ require "date"
 
 POSTS_DIR     = "_posts/zmediumtomarkdown"
 OVERRIDES_YML = "_data/post_overrides.yml"
-ALLOWED_KEYS  = %w[categories tags pin image_alt].freeze
+ALLOWED_KEYS  = %w[categories tags pin image_alt rank].freeze
 
 def split_front_matter(text)
   parts = text.split(/^---\s*$\n/, 3)
