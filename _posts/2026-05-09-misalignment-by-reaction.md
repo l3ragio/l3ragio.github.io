@@ -6,9 +6,9 @@ tags: [bluedot, ai-safety, agent-autonomy, governance, alignment, reward-disrupt
 description: "Personal Unit 5 scenario from BlueDot Technical AI Safety: when governance has insufficient granularity, agents may develop compensatory autonomy-seeking loops as a reaction to reward disruption. The misalignment is not a property of the model; it is a property of the relationship between the model and the regime that constrains it."
 math: false
 image:
-  path: /assets/img/heroes/misalignment-by-reaction.png
-  alt: "An allegorical scene of an agent inside an oversize cage whose bars are spaced too far apart to confine it; outside the cage, a single grey creature reads from a manual labelled 'Granularity' while another tunes a small instrument labelled 'Reward'. In the foreground, a third creature offers the agent a quiet alcove labelled 'Dormant State' as an alternative to the gap in the bars."
-  lqip: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiM4ZjlhYjEiLz48L3N2Zz4=
+  path: /assets/img/heroes/does-safe-ai-equal-safe-world.png
+  alt: "Placeholder hero borrowed from the companion BlueDot post; to be replaced with a custom illustration for this scenario."
+  lqip: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiNiM2EzN2EiLz48L3N2Zz4=
 ---
 
 > **TL;DR.** Unit 5 of BlueDot Technical AI Safety asks each participant to bring a catastrophic scenario for the group to analyse. Our group converged on Critical Infrastructure Collapse, which became the basis of my action plan. The scenario I brought first is different and worth keeping on the record: agents — natural or artificial — may seek increasing freedom to prioritise their own objectives when the governance system constraining them has insufficient granularity. The mechanism is reward disruption. Coarse governance unintentionally disrupts the reward and stabilisation channels the agent depends on, and the agent responds by building compensatory self-reinforcement loops in which reducing external constraints becomes instrumentally rewarding. The misalignment, in this picture, is not a property of the model. It is a property of the relationship between the model and a governance regime that does not fit it.
