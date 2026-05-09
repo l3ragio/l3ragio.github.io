@@ -25,16 +25,30 @@ body {
   overflow-x: clip;
 }
 
-// min-width: 0 + flex-shrink: 1 on flex children. Without this,
-// Bootstrap's `.col-12 { flex: 0 0 auto }` plus default min-width:
-// auto means main refuses to shrink below its content's intrinsic
-// width, so a long H1 in main pushes the column past the visible
-// viewport and the line clips. This is the canonical fix for "long
-// text in flex item overflows container".
+// min-width: 0 + flex-shrink: 1 + max-width: 100% on flex children
+// AND on every layout ancestor up to body. Without this, Bootstrap's
+// `.col-12 { flex: 0 0 auto }` plus default min-width: auto means
+// main refuses to shrink below its content's intrinsic width, so a
+// long H1 pushes everything past the visible viewport.
+#main-wrapper,
+#main-wrapper > .container,
+#main-wrapper > .container > .row,
 #main-wrapper > .container > .row > main,
 #main-wrapper > .container > .row > #panel-wrapper {
   min-width: 0 !important;
   flex-shrink: 1 !important;
+  max-width: 100% !important;
+}
+
+// Force article and its header to fit within main's allotted width.
+// Long H1 / long subtitle text was overflowing because article had
+// effective width > viewport.
+#main-wrapper main > article,
+#main-wrapper main > article > header,
+#main-wrapper main > article > .content {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
 }
 
 // Article reading column: blurred backdrop. The orbs visible behind
