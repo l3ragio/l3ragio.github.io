@@ -1,4 +1,12 @@
-// Inline TOC populator for the right column at lg-only (992-1199px).
+// Inline TOC populator + capsule TOC label rewrite.
+//
+// Capsule (#toc-bar) ships from Chirpy with the full post title as
+// its label - looks like a duplicated headline above the article.
+// Replace with the generic "Contents" so it reads as navigation
+// affordance, not as a second-instance title. Runs on every page
+// load regardless of breakpoint.
+//
+// Inline TOC populator follows below.
 //
 // Chirpy's bundled tocbot is gated to matchMedia("(min-width: 1200px)")
 // in post.min.js, so the inline <nav id="toc"> stays empty between
@@ -120,9 +128,20 @@
     }
   }
 
+  function rewriteCapsuleLabel() {
+    var label = document.querySelector('#toc-bar .label');
+    if (label && label.textContent.trim() !== 'Contents') {
+      label.textContent = 'Contents';
+    }
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', refresh);
+    document.addEventListener('DOMContentLoaded', function () {
+      rewriteCapsuleLabel();
+      refresh();
+    });
   } else {
+    rewriteCapsuleLabel();
     refresh();
   }
 
