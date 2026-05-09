@@ -41,7 +41,20 @@ h1 {
   line-height: 1.15;
   letter-spacing: -0.015em;
   overflow-wrap: break-word;
+  word-break: break-word;
   hyphens: auto;
+  // Belt cap: even if a parent container ends up wider than the
+  // viewport (Chirpy's Bootstrap col-12 + container can drift past
+  // 100vw at narrow widths), the H1 itself never exceeds the visible
+  // viewport so the wrap algorithm has correct constraints.
+  max-width: calc(100vw - 2rem);
+}
+
+// Same belt for the lead paragraph - same root cause as H1.
+header .post-desc,
+article .post-desc {
+  max-width: calc(100vw - 2rem);
+  overflow-wrap: break-word;
 }
 
 h2 {
