@@ -1,0 +1,73 @@
+// About page (/about/).
+//
+// Two goals on desktop:
+//   1. Let the hero image fill the full width of the main column
+//      instead of being capped at the 720px reading measure.
+//   2. Drop the content background to a low-opacity glass so the orbs
+//      backdrop bleeds through; on the rest of the site the article's
+//      .content panel is opaque-ish for prose readability, but the
+//      About page wants an "atmospheric" feel.
+//
+// Mobile / tablet keep the existing block flow — at narrow widths the
+// hero already fills the column and the orbs are far enough behind that
+// extra transparency would just hurt legibility on small screens.
+//
+// Activation: about.md wraps its content in `<div class="about-page"
+// markdown="1">` so we can scope all rules with :has(.about-page) on
+// the article's .content and with descendant selectors below it.
+
+article > .content:has(.about-page) {
+  // Reduce the article-content backdrop so the orbs show through.
+  // Original (in _layout.scss): rgba(11, 15, 20, 0.55) + blur(10px).
+  background: rgba(11, 15, 20, 0.22);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+
+  // Allow the inner wrapper to fill the main column at lg+. The 720px
+  // cap from _layout.scss still applies to article > .content; we
+  // override it only here.
+  @media (min-width: 992px) {
+    max-width: 100%;
+    // _layout.scss right-aligns article > .content at lg+
+    // (margin-left:auto, margin-right:0). Since we're now full-width
+    // there is nothing to right-align — neutralize the rule so the
+    // wider container does not get pushed off-axis.
+    margin-right: auto !important;
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+}
+
+html[data-mode="light"] article > .content:has(.about-page) {
+  background: rgba(250, 248, 242, 0.32);
+}
+
+.about-page {
+  // Hero image: break out of the prose measure and fill the column.
+  // kramdown's inline-attributes turn the markdown image into
+  // <img class="about-hero">; depending on its surrounding paragraph
+  // the parent <p> may still constrain it, so we relax both.
+  .about-hero,
+  p:has(> .about-hero) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .about-hero {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-4);
+  }
+
+  // Keep the prose readable even though the column is now wider.
+  // Centred max-width preserves a comfortable line length while the
+  // hero image above sits flush to the column edges.
+  > p:not(:has(> .about-hero)) {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
