@@ -225,11 +225,14 @@ article .content {
   #toc-wrapper {
     position: sticky;
     top: calc(56px + var(--space-3));
-    max-height: calc(100vh - 56px - var(--space-4));
-    overflow-y: auto;
-    overflow-x: hidden;
     padding-right: var(--space-2);
     font-size: var(--text-sm);
+
+    // No internal scroll. The dynamic collapse logic in
+    // assets/js/data/toc-collapse.js shows first 2 + active context +
+    // last 1 with ⋮ separators between gaps, so the index is never
+    // taller than the curated subset and the browser scrollbar
+    // remains the single vertical scroll affordance for the page.
 
     // Bootstrap .invisible is added by tocbot during build and removed
     // after, but the SSR snapshot keeps it. Force visibility so we
@@ -240,19 +243,6 @@ article .content {
 
     .panel-heading {
       margin-bottom: var(--space-2);
-    }
-
-    // Subtle scrollbar so the index does not announce itself.
-    scrollbar-width: thin;
-    scrollbar-color: var(--border-strong) transparent;
-
-    &::-webkit-scrollbar {
-      width: 4px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: var(--border-strong);
-      border-radius: 2px;
     }
   }
 
@@ -303,6 +293,33 @@ article .content {
         color: var(--accent);
         border-left-color: var(--accent);
         background: var(--accent-soft);
+      }
+    }
+
+    // Items collapsed by toc-collapse.js (outside the visible window).
+    li.is-collapsed {
+      display: none;
+    }
+
+    // Vertical-ellipsis separator inserted at every gap. Centred
+    // within the panel column, mono so it reads as a typographic
+    // marker rather than a list bullet, low opacity so the eye does
+    // not stop on it.
+    li.toc-ellipsis {
+      list-style: none;
+      padding: 0.4rem 0;
+      text-align: center;
+      pointer-events: none;
+      user-select: none;
+      color: var(--text-muted);
+      opacity: 0.55;
+
+      &::before {
+        content: '\22EE';            // U+22EE vertical ellipsis
+        font-family: var(--font-mono);
+        font-size: 1.15rem;
+        line-height: 1;
+        letter-spacing: 0;
       }
     }
   }
