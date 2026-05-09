@@ -183,16 +183,10 @@ article .content {
   }
 }
 
-// At lg-only (992-1199px) on post pages, the right panel column stays
-// reserved for layout / orbs breathing room but its content is empty
-// because tocbot populates only the popup at this breakpoint. Hide
-// the stray "Contents" heading + the empty <nav> so the column reads
-// as clean space rather than a half-rendered widget.
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  body:has(article[data-toc="true"]) #panel-wrapper #toc-wrapper {
-    display: none;
-  }
-}
+// Note: previously this breakpoint hid #toc-wrapper at lg-only because
+// Chirpy's bundled tocbot is gated to matchMedia("(min-width: 1200px)")
+// and left the inline TOC empty between 992-1199. Now populated by
+// assets/js/data/inline-toc.js so the panel renders fully at lg+.
 
 #panel-wrapper .access > section {
   margin-top: var(--space-5);
@@ -211,19 +205,19 @@ article .content {
   line-height: 1.5;
 }
 
-// ── TOC: always-visible inline navigator (right panel, xl+) ──────────
+// ── TOC: always-visible inline navigator (right panel, lg+) ──────────
 // Replaces the click-to-expand capsule on desktop. Sticky to the post
 // content so the section index follows the reader; long section
 // titles truncate with ellipsis so they never wrap and never push the
 // column wider; the active section gets a left accent bar + soft tint
-// background via tocbot's .is-active-link.
+// background.
 //
-// Breakpoint must be xl (1200px), not lg (992px), to match Chirpy's
-// matchMedia("(min-width: 1200px)") in post.min.js which decides
-// whether tocbot populates the inline #toc or the popup
-// #toc-popup-content. Below 1200px tocbot populates only the popup;
-// the capsule (#toc-bar) is the navigation affordance.
-@media (min-width: 1200px) {
+// Breakpoint is lg (992px), not xl (1200px). At xl+ Chirpy's bundled
+// tocbot populates #toc and adds .is-active-link on scroll. At lg+
+// our own assets/js/data/inline-toc.js populates #toc from h2/h3
+// headings and adds the same .is-active-link via IntersectionObserver,
+// so the panel is fully functional across the entire desktop range.
+@media (min-width: 992px) {
   #toc-wrapper {
     position: sticky;
     top: calc(56px + var(--space-3));
@@ -316,13 +310,11 @@ article .content {
   }
 }
 
-// ── TOC bar (mobile through laptop: centered pill above the post) ───
-// At xl+ the inline TOC in the right panel takes over and toc-bar is
-// hidden by the @media (min-width: 1200px) rule earlier in this file.
-// Below xl the capsule is the navigation affordance because tocbot
-// populates the popup (#toc-popup-content) it triggers; the inline
-// #toc nav stays empty until 1200px.
-@media (max-width: 1199.98px) {
+// ── TOC bar (mobile through tablet: centered pill above the post) ───
+// At lg+ the inline TOC in the right panel takes over and toc-bar is
+// hidden by the @media (min-width: 992px) rule earlier in this file.
+// Below lg the capsule is the only navigation affordance.
+@media (max-width: 991.98px) {
   #toc-bar {
     display: flex !important;
     width: fit-content;
