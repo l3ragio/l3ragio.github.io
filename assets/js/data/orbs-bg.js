@@ -98,14 +98,17 @@
       var range = h + pad * 2;
       var py = ((o.y + dy) % range + range) % range - pad;
 
-      // Right-bias: rings on the right side of the viewport are
-      // brighter so the atmospheric rail zone breathes more.
-      var rightBias = 1 + Math.max(0, (o.x / w - 0.5)) * 2;
+      // Uniform opacity across the page. The earlier right-bias
+      // formula scaled opacity from 0.30 (left) to 0.60 (right) so
+      // orbs were nearly invisible behind the transparent sidebar
+      // on the left. Now both columns read the orbs at the same
+      // intensity - the atmosphere is consistent across the page.
+      var orbOpacity = 0.45;
 
       // Hollow rings - only the stroke is visible, no fill. Replaces
       // the soft radial-gradient blob look with a quieter outline
       // that reads as a discreet glyph rather than a paint stain.
-      ctx.strokeStyle = 'rgba(' + accent + ', ' + (0.30 * rightBias).toFixed(3) + ')';
+      ctx.strokeStyle = 'rgba(' + accent + ', ' + orbOpacity.toFixed(3) + ')';
       ctx.lineWidth = 1.25;
       ctx.beginPath();
       ctx.arc(o.x, py, r, 0, Math.PI * 2);
