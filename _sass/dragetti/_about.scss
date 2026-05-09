@@ -44,13 +44,25 @@ html[data-mode="light"] article > .content:has(.about-page) {
 
 .about-page {
   // Hero image: break out of the prose measure and fill the column.
-  // kramdown's inline-attributes turn the markdown image into
-  // <img class="about-hero">; depending on its surrounding paragraph
-  // the parent <p> may still constrain it, so we relax both.
+  // kramdown wraps the image in <p><a class="popup img-link shimmer">
+  // <img class="about-hero"></a></p> (Chirpy auto-popup), so the
+  // about-hero img is two levels deep, not a direct child of <p>.
+  // Relax all three so nothing pinches the image's width.
   .about-hero,
-  p:has(> .about-hero) {
+  .popup:has(.about-hero),
+  p:has(.about-hero) {
     margin-left: 0;
     margin-right: 0;
+    text-align: left;
+    max-width: 100%;
+  }
+
+  // Chirpy paints a "shimmer" / cursor-zoom affordance on .popup links.
+  // Make the link block-level so its inner img can stretch to the
+  // paragraph's full width without being limited by inline-flow shrink.
+  p .popup:has(.about-hero) {
+    display: block;
+    line-height: 0;
   }
 
   .about-hero {
@@ -59,13 +71,13 @@ html[data-mode="light"] article > .content:has(.about-page) {
     max-width: 100%;
     height: auto;
     border-radius: var(--radius-md);
-    margin-bottom: var(--space-4);
+    margin: 0 0 var(--space-4) 0;
   }
 
   // Keep the prose readable even though the column is now wider.
   // Centred max-width preserves a comfortable line length while the
   // hero image above sits flush to the column edges.
-  > p:not(:has(> .about-hero)) {
+  > p:not(:has(.about-hero)) {
     max-width: 720px;
     margin-left: auto;
     margin-right: auto;
