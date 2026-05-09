@@ -79,23 +79,11 @@
   }
 }
 
-/* Sidebar social icons: 5 icons (github, X, email, linkedin, RSS) on a
-   single horizontal row, pulled in from both edges so they don't sit
-   flush against the sidebar's right border (where they'd visually
-   merge with orbs in the article column). 1rem padding each side
-   gives a tap-target margin and a clear visual gap to the boundary. */
-#sidebar .sidebar-bottom {
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  gap: 0.25rem;
-
-  > a,
-  > #mode-toggle {
-    margin: 0 !important;
-  }
-}
+/* Sidebar social icons: layout owned by _sass/dragetti/_chrome.scss
+   (grid auto-fit so icons wrap to a second row inside the sidebar
+   instead of overflowing into the article column). The early
+   prototype here used flex-wrap:nowrap which got loaded AFTER the
+   dragetti module and silently overrode it. */
 
 /* Hover colour: Chirpy hardcodes #d2603a (sand/orange) on link hover, which
    clashes with the cyan accent. Match accent on hover so the palette stays
