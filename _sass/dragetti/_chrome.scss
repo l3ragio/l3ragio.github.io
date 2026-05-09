@@ -159,15 +159,32 @@ html[data-mode="light"] {
     flex-direction: row !important;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-around;
+    // space-evenly gives true equal spacing including the outer gaps,
+    // unlike space-around which halves the outer gap and lets the
+    // first/last icon sit closer to the edge than to its neighbour.
+    justify-content: space-evenly;
     gap: 0.25rem;
     width: 100%;
-    padding: var(--space-2) var(--space-2) var(--space-3) !important;
+    // Inner padding bumped to --space-3 (24px) on left/right so the
+    // first and last icon never sit closer than a full token unit to
+    // the sidebar boundary - this is what the RSS icon was missing
+    // before, where it hugged the right border.
+    padding: var(--space-2) var(--space-3) var(--space-3) !important;
 
     > a,
     > #mode-toggle {
       margin: 0 !important;
       font-size: var(--text-sm);
+      // Cap the icon background bubble width so consecutive icons
+      // cannot grow past their natural glyph box. Some FA icons
+      // (especially fa-linkedin and fa-rss) render slightly wider in
+      // their bounding box; without this cap they steal width from
+      // their neighbours and from the outer gap.
+      width: 1.6em;
+      height: 1.6em;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
