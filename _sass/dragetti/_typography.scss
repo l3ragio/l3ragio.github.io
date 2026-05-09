@@ -26,15 +26,18 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.005em;
 }
 
-// H1 scaled editorially - clamp from 2xl (30px) at narrow phones to
-// 4xl (45px) on desktop. The 2xl floor (was 3xl/36px) keeps long
-// titles from overflowing 360-414px viewports; overflow-wrap: anywhere
-// is the belt against any single word that still exceeds the column.
+// H1 scaled editorially - clamp from 1.5rem (24px) at the narrowest
+// phones to text-4xl (45px) on desktop. The 24px floor keeps the
+// 47-character test title ("Does Safe AI mean nothing bad can ever
+// happen?") from clipping at 360-414px viewports. overflow-wrap:
+// break-word is the belt for any single word longer than the column;
+// gentler than `anywhere`, which would split mid-word even when a
+// word boundary break would have worked.
 h1 {
-  font-size: clamp(var(--text-2xl), 6vw, var(--text-4xl));
-  line-height: 1.1;
+  font-size: clamp(1.5rem, 7vw, var(--text-4xl));
+  line-height: 1.15;
   letter-spacing: -0.015em;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   hyphens: auto;
 }
 
