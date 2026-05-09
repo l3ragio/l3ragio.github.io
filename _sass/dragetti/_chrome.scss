@@ -128,10 +128,21 @@ html[data-mode="light"] {
     }
   }
 
-  // Sidebar bottom social row: explicit horizontal layout, icons
-  // pulled in from both edges so they don't sit flush against the
-  // sidebar's right border (where they'd visually merge with orbs in
-  // the article column).
+  // Sidebar bottom social row: explicit horizontal layout. Three
+  // overrides with !important are needed because Chirpy ships
+  // multiple competing rules:
+  //   - base: `#sidebar .sidebar-bottom { padding-left: 2rem;
+  //     padding-right: 1rem }`
+  //   - xxl:  `#sidebar .sidebar-bottom { padding-left: 2.75rem }`
+  //     (44px - this single rule pushed the row past the 220/260
+  //     sidebar bound and made the RSS icon overflow into the article
+  //     column at >=1650px viewports)
+  //   - per-icon: `#sidebar .sidebar-bottom a:not(:last-child) {
+  //     margin-right: 1rem }` adds 4rem total to the row width
+  //
+  // Force symmetric padding (1rem each side) and zero per-icon margin
+  // at every breakpoint so the row's intrinsic width is just the
+  // 5 icons + flex gap, well inside the sidebar.
   .sidebar-bottom {
     display: flex !important;
     flex-direction: row !important;
@@ -140,13 +151,21 @@ html[data-mode="light"] {
     justify-content: space-around;
     gap: 0.25rem;
     width: 100%;
-    padding: var(--space-2) var(--space-2) var(--space-3);
+    padding: var(--space-2) var(--space-2) var(--space-3) !important;
 
     > a,
     > #mode-toggle {
       margin: 0 !important;
       font-size: var(--text-sm);
     }
+  }
+
+  // Defeat Chirpy's `#sidebar .sidebar-bottom a:not(:last-child) {
+  // margin-right: 0.8rem | 1rem }` rule directly. The :not()
+  // pseudo-class adds a specificity bump that the bare `> a` selector
+  // above cannot beat without !important on margin-right specifically.
+  .sidebar-bottom a:not(:last-child) {
+    margin-right: 0 !important;
   }
 
   // Chirpy zooms the avatar 1.2x on hover, which is jarring. 1.05 reads
