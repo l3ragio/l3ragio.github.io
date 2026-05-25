@@ -46,15 +46,29 @@
 
   // Hero image polish (Chirpy emits <a class="preview-img blur"><img></a>
   // inside the post header div). Rounded corners + subtle shadow read
-  // as editorial card without competing with the prose. max-height
-  // caps tall hero images from dominating the page on wide viewports;
-  // object-fit: contain ensures the image is never cropped - if natural
-  // height exceeds the cap the image shrinks (uniformly) to fit instead
-  // of being clipped, which was the previous cover behaviour.
+  // as editorial card without competing with the prose.
+  //
+  // Chirpy's default rule on .preview-img forces aspect-ratio: 40/21
+  // and overflow: hidden on the container, which clamps the box to the
+  // OG-image aspect (~1.91:1) and crops anything outside via object-fit:
+  // cover on the inner img. Even with object-fit: contain the
+  // 40:21 container leaves horizontal letterbox bands and the image
+  // ends up smaller than the column. Override the container's
+  // aspect-ratio + height + overflow so the box sizes to the image's
+  // natural aspect, and override the img's aspect-ratio (set by the
+  // <img width="1200" height="630"> attributes via the UA stylesheet)
+  // so it uses the image file's intrinsic ratio. The net effect is the
+  // image rendering at its actual aspect, filling the column width
+  // without crop or letterbox.
+  //
+  // max-height caps the hero on wide viewports so a portrait image
+  // does not dominate the fold.
   .preview-img {
     display: block;
+    aspect-ratio: auto !important;
+    height: auto !important;
+    overflow: visible;
     border-radius: var(--radius-md);
-    overflow: hidden;
     box-shadow: var(--shadow-sm);
     margin-top: var(--space-3);
     margin-bottom: var(--space-3);
@@ -64,7 +78,9 @@
       width: 100%;
       height: auto;
       max-height: 720px;
+      aspect-ratio: auto;
       object-fit: contain;
+      border-radius: var(--radius-md);
     }
   }
 

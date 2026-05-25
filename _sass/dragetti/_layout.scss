@@ -43,11 +43,24 @@ body {
 // Force article and its header to fit within main's allotted width.
 // Long H1 / long subtitle text was overflowing because article had
 // effective width > viewport.
+//
+// NOTE: .content is intentionally excluded from this rule because the
+// content column has its own max-width cap (860px, set below). The
+// overflow-guard's max-width: 100% !important was clobbering that cap
+// (1 ID + 3 elements + !important beats 1 element + 1 class), so the
+// article body was sized to the full main column on desktop instead
+// of the 860px reading measure. Apply only min-width: 0 and box-sizing
+// to .content so prevention of horizontal overflow still works through
+// the content's own max-width: 860px rule.
 #main-wrapper main > article,
-#main-wrapper main > article > header,
-#main-wrapper main > article > .content {
+#main-wrapper main > article > header {
   min-width: 0 !important;
   max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+#main-wrapper main > article > .content {
+  min-width: 0 !important;
   box-sizing: border-box;
 }
 
