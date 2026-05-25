@@ -47,8 +47,10 @@
   // Hero image polish (Chirpy emits <a class="preview-img blur"><img></a>
   // inside the post header div). Rounded corners + subtle shadow read
   // as editorial card without competing with the prose. max-height
-  // prevents tall hero images from dominating the page on wide
-  // viewports - Medium caps at ~520px for the same reason.
+  // caps tall hero images from dominating the page on wide viewports;
+  // object-fit: contain ensures the image is never cropped - if natural
+  // height exceeds the cap the image shrinks (uniformly) to fit instead
+  // of being clipped, which was the previous cover behaviour.
   .preview-img {
     display: block;
     border-radius: var(--radius-md);
@@ -61,8 +63,8 @@
       display: block;
       width: 100%;
       height: auto;
-      max-height: 520px;
-      object-fit: cover;
+      max-height: 720px;
+      object-fit: contain;
     }
   }
 

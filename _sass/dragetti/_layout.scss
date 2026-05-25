@@ -72,14 +72,21 @@ html[data-mode="light"] article > .content {
 // callouts, tables, and embeds break out by overriding their own
 // max-width; that ruleset already lives in _prose.scss.
 //
-// 720px is the reading cap. On mobile / tablet the article centres
-// inside its column. On desktop (lg+) the article right-aligns
-// inside main so it sits closer to the right TOC panel - this pulls
-// the article visually toward the viewport centre and lets the
-// transparent sidebar's orbs breathe in the gap on the article's
-// left side. See the lg+ block below for the right-align rule.
+// 860px is the reading cap (raised from 720px on 2026-05-26: on
+// typical laptop viewports - 1366-1536px wide - the 70% main column
+// was leaving ~250-350px of empty space to the left of the article
+// because the prose stopped well before the column edge, so the
+// page read as under-filled). 860px gives ~75-80 chars of line
+// length (still inside the upper edge of comfortable reading) and
+// shrinks the left-side gap to ~150-200px - the atmosphere still
+// breathes but the article visibly occupies the column.
+//
+// On mobile / tablet the article centres inside its column. On
+// desktop (lg+) the article right-aligns inside main so it sits
+// closer to the right TOC panel; see the lg+ block below for the
+// right-align rule.
 article > .content {
-  max-width: 720px;
+  max-width: 860px;
   margin-left: auto;
   margin-right: auto;
 }
