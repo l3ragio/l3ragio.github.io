@@ -228,7 +228,16 @@ sass:
 compress_html:
   clippings: all
   comments: all
-  endings: all
+  # endings: previously was "all", which stripped </head> </body> </html>
+  # along with the other optional closing tags. HTML5 allows omitting
+  # these but WhatsApp's preview scraper (and some other strict OG
+  # parsers) bail out of head-parsing when </head> never appears -
+  # producing previews with only the bare domain as title and no
+  # image/description. Restricted to the inline-content optional
+  # closers (li, td, tr, etc.) so OG scrapers still see a well-formed
+  # head/body/html boundary while we keep compression on small
+  # repetitive elements.
+  endings: [dt, dd, optgroup, option, colgroup, caption, thead, tbody, tfoot, tr, td, th, li]
   profile: false
   blanklines: false
   ignore:
