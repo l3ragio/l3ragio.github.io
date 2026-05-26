@@ -108,6 +108,13 @@ social_preview_image: /assets/img/avatar.png
 # boolean type, the global switch for TOC in posts.
 toc: true
 
+# Reading-time WPM. Chirpy default is 180 wpm, which felt slow for
+# argumentative prose (long posts read at 36+ min when the natural
+# reading pace is closer to 25-30 min). 240 wpm brings the displayed
+# time into a range that matches actual reading on the blog's
+# typical content.
+words_per_minute: 240
+
 comments:
   # Global switch for the post-comment system. Keeping it empty means disabled.
   provider: # [disqus | utterances | giscus]
