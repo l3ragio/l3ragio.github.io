@@ -66,6 +66,24 @@ stays correct if a post switches between jpg/png/webp.
        og:image:secure_url and og:image:type. -->
   <meta property="og:image:secure_url" content="{{ _img_abs }}" />
   <meta property="og:image:type" content="{{ _img_mime }}" />
+
+  {%- comment -%}
+  Standalone og:description. jekyll-seo-tag emits the description as a
+  *combined* <meta name="twitter:description" property="og:description"
+  content="..."> single element. The Facebook Sharing Debugger flags
+  this as "og:description missing" and WhatsApp's preview scraper
+  appears to read only the name attribute (twitter:description) and
+  drop the property attribute, producing previews with no description.
+  Emit a clean standalone og:description so strict parsers find a
+  property-only tag. The combined tag stays; parsers that take the
+  last occurrence of an og:* key get the standalone one, parsers that
+  take the first still find a valid combined tag. Either way
+  og:description resolves.
+  {%- endcomment -%}
+  {%- assign _desc = page.description | default: page.subtitle | default: site.description | strip_html | strip_newlines | truncate: 300 | escape -%}
+  {%- if _desc -%}
+    <meta property="og:description" content="{{ _desc }}" />
+  {%- endif -%}
 {% endif %}
 
 <!-- Person schema for the primary author. Adds the avatar image to
