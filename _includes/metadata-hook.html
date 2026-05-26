@@ -56,15 +56,16 @@ stays correct if a post switches between jpg/png/webp.
     {% assign _img_mime = "image/jpeg" %}
   {% endif %}
 
-  <!-- WhatsApp/Slack/Telegram preview reinforcement (jekyll-seo-tag
-       does not emit these; some scrapers silently drop the preview
-       when type / dimensions are missing). -->
+  <!-- WhatsApp/Slack/Telegram preview reinforcement.
+       jekyll-seo-tag already emits og:image:width / og:image:height
+       when page.image.width / page.image.height are set in the
+       frontmatter, so those are NOT emitted here (re-emitting them
+       produced duplicate tags in the head, which WhatsApp can
+       silently drop the preview on).
+       Only emit the tags jekyll-seo-tag does not handle:
+       og:image:secure_url and og:image:type. -->
   <meta property="og:image:secure_url" content="{{ _img_abs }}" />
   <meta property="og:image:type" content="{{ _img_mime }}" />
-  {% if page.image.width and page.image.height %}
-    <meta property="og:image:width" content="{{ page.image.width }}" />
-    <meta property="og:image:height" content="{{ page.image.height }}" />
-  {% endif %}
 {% endif %}
 
 <!-- Person schema for the primary author. Adds the avatar image to
