@@ -8,29 +8,23 @@
 // --footnote-target-bg highlight.
 
 // ── Reading measure ───────────────────────────────────────────────────
-// Cap prose at the design measure (~68ch). Figures, code blocks, video
-// embeds, and tables explicitly opt out so they keep page width.
-article .content {
-  > p,
-  > ul,
-  > ol,
-  > h2,
-  > h3,
-  > h4,
-  > .footnotes {
-    max-width: var(--measure);
-  }
-
-  > figure,
-  > .highlight,
-  > div[class^="language-"],
-  > table,
-  > .table-wrapper,
-  > .embed-video,
-  > blockquote[class^="prompt-"] {
-    max-width: none;
-  }
-}
+// Previously this block capped prose at the design measure (--measure
+// = 68ch, ~580px) while letting figures, code, tables, and prompt-*
+// blockquotes break out to the column edge via max-width: none. The
+// effect on a 860px column was a visible asymmetry: the TL;DR
+// blockquote filled the column, while body paragraphs were noticeably
+// narrower. The user flagged this and asked for the body text to
+// occupy the full column, same as the TL;DR. Removed the per-element
+// cap on prose so the article body now inherits the column-width
+// constraint (860px, set in _layout.scss) directly. Block elements
+// (figures, code, tables, prompt-blockquotes) opt-in to the same
+// column via the inherited max-width on .content, no explicit opt-out
+// needed any more.
+//
+// Trade-off: 860px-wide body lines push to ~90-100 characters at the
+// body font, beyond the 50-75-char "ideal" range from typography
+// research. The user's preference for column-filling rhythm takes
+// precedence over the abstract ideal.
 
 // ── Drop cap ──────────────────────────────────────────────────────────
 // Restrict to the single-post article (Chirpy emits data-toc="true" on
