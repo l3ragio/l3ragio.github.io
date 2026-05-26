@@ -7,6 +7,8 @@ description: "Persona means mask in Latin and Etruscan. A person is such because
 math: false
 image:
   path: /assets/img/heroes/the-mask-is-the-person.jpg
+  width: 1200
+  height: 801
   alt: "Allegorical hero for the post. A bronze wheel of personas at centre, six radial sectors: five hold mask-archetypes (a boxer, a stadium-performer, a corrupted humanoid creature with split personality, a physicist, a protest mask), one sector is empty — the nessuno position, a window onto the substrate. Above the wheel a three-faced Janus floats as the centomila substrate, the multi-perspectival icon presiding over the activation. On the cathedral vault overhead, cherubim hover among golden clouds — the cherubic-child reading of nessuno as wholeness-before-masks. The Greek word ΠΡΟΣΩΠΟΝ is carved into the architrave. A silver light beam descends from above, activating one mask among the many the wheel could turn up."
   lqip: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiMzRDJGMUYiLz48L3N2Zz4=
 ---

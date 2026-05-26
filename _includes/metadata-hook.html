@@ -22,6 +22,51 @@
   {% endif %}
 {% endif %}
 
+{%- comment -%}
+Regular post: extend the og:image meta set with the dimensions / type /
+secure_url tags jekyll-seo-tag does NOT emit. These help WhatsApp,
+Slack, and Telegram render the preview reliably:
+  - og:image:secure_url tells the scraper the image is HTTPS-available
+  - og:image:type tells the scraper the MIME type without sniffing
+  - og:image:width / og:image:height let the scraper reserve the box
+    before the image loads, avoiding the "no preview while we wait"
+    drop some clients do
+WhatsApp specifically has been observed to fail silently when the
+type / dimensions are missing on first crawl; the tags also make
+re-scrape attempts deterministic.
+
+The MIME type is derived from the image path extension so the tag
+stays correct if a post switches between jpg/png/webp.
+{%- endcomment -%}
+{% if page.layout == "post" and page.image %}
+  {% if page.image.path %}
+    {% assign _img_src = page.image.path %}
+  {% else %}
+    {% assign _img_src = page.image %}
+  {% endif %}
+  {% assign _img_abs = _img_src | absolute_url %}
+  {% assign _img_ext = _img_src | split: '.' | last | downcase %}
+  {% if _img_ext == "png" %}
+    {% assign _img_mime = "image/png" %}
+  {% elsif _img_ext == "webp" %}
+    {% assign _img_mime = "image/webp" %}
+  {% elsif _img_ext == "gif" %}
+    {% assign _img_mime = "image/gif" %}
+  {% else %}
+    {% assign _img_mime = "image/jpeg" %}
+  {% endif %}
+
+  <!-- WhatsApp/Slack/Telegram preview reinforcement (jekyll-seo-tag
+       does not emit these; some scrapers silently drop the preview
+       when type / dimensions are missing). -->
+  <meta property="og:image:secure_url" content="{{ _img_abs }}" />
+  <meta property="og:image:type" content="{{ _img_mime }}" />
+  {% if page.image.width and page.image.height %}
+    <meta property="og:image:width" content="{{ page.image.width }}" />
+    <meta property="og:image:height" content="{{ page.image.height }}" />
+  {% endif %}
+{% endif %}
+
 <!-- Person schema for the primary author. Adds the avatar image to
      the Person object so social platforms (LinkedIn, X, Slack, etc.)
      have a non-obsolete profile picture next to the author name in
