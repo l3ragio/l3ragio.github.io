@@ -21,10 +21,12 @@
 // column via the inherited max-width on .content, no explicit opt-out
 // needed any more.
 //
-// Trade-off: 860px-wide body lines push to ~90-100 characters at the
-// body font, beyond the 50-75-char "ideal" range from typography
-// research. The user's preference for column-filling rhythm takes
-// precedence over the abstract ideal.
+// Trade-off: at the current 800px column width, body lines are
+// ~85-95 characters at the body font, above the 50-75-char "ideal"
+// range from typography research but kept deliberately wider so
+// the article rhythm fills the column rather than floats inside it.
+// The user's preference for column-filling rhythm takes precedence
+// over the abstract ideal.
 
 // ── Drop cap ──────────────────────────────────────────────────────────
 // Restrict to the single-post article (Chirpy emits data-toc="true" on
