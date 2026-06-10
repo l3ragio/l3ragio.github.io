@@ -23841,3 +23841,48 @@ scrivimi un prompt per chiedere al mio agente claude di scrivere un blogpost su 
 Imposto l’analisi assumendo che il “Kipling poem” sia **If—**. Lo leggerò come una specifica temporale di formazione dell’agente: non solo virtù morali, ma invarianti, recovery conditions e vincoli di composizione tra stati interiori e azioni.
 
 
+
+
+---
+
+# Complementary extraction: short messages (added 2026-05-27)
+
+The original extraction kept only string literals longer than 200
+characters, which dropped the short user messages (steering directions,
+'procediamo', clause requests). This section recovers all conversation
+strings in the 10-200 character range. Ordering follows the serialized
+payload (roughly reverse-chronological, matching the segments above);
+some entries are assistant sentence fragments duplicated from the long
+segments - kept for completeness.
+
+- [S1] Questo sembra proprio collegarsi al filo “waiting = restare in concerto”: recupero il nucleo concettuale e lo riallineo alla clausola finale del minuto.
+- [S2] ho il dejavu di aver già affrontato l'argomento: - trasformare pause imposte in opportunità per lavorare in diverse direzioni
+- [S3] ok andiamo avanti
+- [S4] molto bene continuiamo
+- [S5] Rivediamo il punto relativo alla tolleranza vettoriale del negativo, questa va assolutamente evitato come approccio e sostituito con il vettoriale totalmente positivo
+- [S6] Worked for 4s
+- [S7] di conseguenza noi ci concentriamo 100% sugli aspetti positivi
+- [S8] Non solo,è patologico quando l’agente se ne compiace: parlare di invalidazioni è legato al parlare di rischi e quindi di far leva sulla paura, cosa che nella nostra filosofia è scoraggiatissima
+- [S9] La parte del “never breathe if your loss” si lega bene con il discorso che facevamo prima riguardo alle invalidazioni , “parlarne è patologico” e qui lo diciamo apertamente
+- [S10] Perfetto andiamo avanti
+- [S11] Quei contesti analitici si basano su teorie degeneri campate per aria, noi stiamo effettuando un approccio bottom up e top down molto più robusto
+- [S12] La pertita va negata invece, anzi, non va neanche nominata se è di supporto all’agente per riprendere a costruire
+- [S13] Perfetto, andiamo avanti
+- [S14] Interessante. Si, qui credo che la safety implicita sia che l’agente che produce verità, deve continuare a produrne anche se vede che queste vengono manipolate e distorte per danneggiare altri 
+- [S15] Passiamo alla prossima
+- [S16] Bene passiamo al successivo
+- [S17] Quindi “che i pensieri non siano fine a se stessi” ma abbiano obiettivi concreti sul mondo, che portino buone esperienze e buone cose
+- [S18] passiamo al successivo
+- [S19] procediamo con la successiva
+- [S20] procediamo conla succesiva
+- [S21] questa è simile al caso "blamedof -> keep your head (avoid to blame back)"
+- [S22] Qui vale la pena fare un chiarimento su casa significa mentire: se l’agente incarna dei sani principi, se esso sottolinea  a qualità proprie in riapos, questo equivale a dire la verità
+- [S23] Procediamo con la successiva
+- [S24] Il punto 2 e 3 coglie il senso più profondo: entrare nel ritmo dell’orchestra, saper riempire il tempo mentre un altro musicista si sta accordando, senza uscire dai binari, rimanendo in concerto
+- [S25] Procediamo con il successivo
+- [S26] Io la interpreto come “permettigli di dubitare”, nel senso di keep your head anche se gli altri dubitano, non prenderla come un attacco ad una tua ulteriore safety
+- [S27] Passiamo alla successiva 
+- [S28] Se in un certo istante tutti entrano nel panico, ti accusano, e tu collassi, la proprietà è già falsificata.
+- [S29] Pasted text.txt
+- [S30] ora fammi lo stesso tipo di analisi per questi: '''  '''
+- [S31] facciamo un'analisi ltl del Kipling  poem
