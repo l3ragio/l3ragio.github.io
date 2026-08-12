@@ -81,10 +81,11 @@
 }
 
 /* Sidebar social icons: layout owned by _sass/dragetti/_chrome.scss
-   (grid auto-fit so icons wrap to a second row inside the sidebar
-   instead of overflowing into the article column). The early
-   prototype here used flex-wrap:nowrap which got loaded AFTER the
-   dragetti module and silently overrode it. */
+   (border-box row, per-breakpoint button size, wrap as the release
+   valve — see the comment there for why each piece is needed). Do not
+   re-add rules for it here: this file is imported AFTER the dragetti
+   modules, so anything written here silently overrides them, which is
+   how an earlier flex-wrap:nowrap prototype defeated the fix. */
 
 /* Hover colour: Chirpy hardcodes #d2603a (sand/orange) on link hover, which
    clashes with the cyan accent. Match accent on hover so the palette stays
