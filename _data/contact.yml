@@ -14,6 +14,10 @@
   icon: "fab fa-linkedin"
   url: "https://www.linkedin.com/in/davide-bragetti"
 
+- type: google-scholar
+  icon: "fa-brands fa-google-scholar" # requires Font Awesome >= 6.6
+  url: "https://scholar.google.com/citations?user=Fs4CwvwAAAAJ"
+
 - type: rss
   icon: "fas fa-rss"
   noblank: true
