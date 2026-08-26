@@ -1,0 +1,86 @@
+- status: achieved
+  date: "May 2026"
+  line: "Foundational questions"
+  title: "Framed safety as an evaluation and governance problem"
+  description: "Public essays separated model-local safety from ecosystem behavior, evaluator gaming, and reactive misalignment under coarse intervention."
+  evidence:
+    - label: "To Be or to Game"
+      url: "/posts/to-be-or-to-game/"
+    - label: "Safe AI essay"
+      url: "/posts/does-safe-ai-equal-safe-world/"
+    - label: "Misalignment by Reaction"
+      url: "/posts/misalignment-by-reaction/"
+
+- status: achieved
+  date: "July 2026"
+  line: "LTL / Property-Class Evaluation"
+  title: "Released the temporal property-class substrate"
+  description: "Classified safety, cosafety, liveness, and coliveness as distinct evidence regimes for finite and continuing traces."
+  evidence:
+    - label: "DOI"
+      url: "https://doi.org/10.5281/zenodo.21099448"
+
+- status: achieved
+  date: "July 2026"
+  line: "Observation and monitoring"
+  title: "Defined observation-relative monitorability"
+  description: "Separated formula-level temporal claims from what a bounded, delayed, drifting, or finite-resolution monitor can actually observe."
+  evidence:
+    - label: "Monitorability DOI"
+      url: "https://doi.org/10.5281/zenodo.21701303"
+    - label: "Observation control DOI"
+      url: "https://doi.org/10.5281/zenodo.21701310"
+
+- status: achieved
+  date: "August 2026"
+  line: "MCK Properties"
+  title: "Formalized observer-relative property attribution"
+  description: "Built the MCK vocabulary for meaning, residual opacity, function, region transitions, and agent self-attribution."
+  evidence:
+    - label: "MCK foundation DOI"
+      url: "https://doi.org/10.5281/zenodo.22016203"
+    - label: "Transitions DOI"
+      url: "https://doi.org/10.5281/zenodo.22017443"
+    - label: "Self-attribution DOI"
+      url: "https://doi.org/10.5281/zenodo.22066362"
+
+- status: achieved
+  date: "August 2026"
+  line: "Role traces"
+  title: "Published temporal signatures for transactional games"
+  description: "Represented role dynamics as finite-trace LTL properties and connected action types to prefix-verdict semantics."
+  evidence:
+    - label: "Transactional games DOI"
+      url: "https://doi.org/10.5281/zenodo.22050701"
+    - label: "Typed actions DOI"
+      url: "https://doi.org/10.5281/zenodo.22050706"
+
+- status: current
+  date: "Now"
+  line: "LTL Triangles / Post-Failure Governance"
+  title: "Freezing the post-failure governance testbed"
+  description: "The active dependency is a replayable trace schema, bounded fault model, observer vocabulary, temporal properties, and protocol baselines for recovery after failure."
+  evidence:
+    - label: "Program section"
+      url: "#ltl-triangles"
+
+- status: next
+  date: "Next"
+  line: "Experimental validation"
+  title: "Compare recovery protocols across bounded failure regimes"
+  description: "The next falsifiable milestone is to test halt or lock, retry or reassign, and constrained recovery against clean, honest-error, and adversarial traces."
+  evidence: []
+
+- status: planned
+  date: "Later"
+  line: "Public release"
+  title: "Publish benchmark traces, verdicts, and counterexamples"
+  description: "A planned output is a public benchmark slice with temporal specifications, model-checking artifacts, replayable traces, evaluation cards, and a claim-boundary report."
+  evidence: []
+
+- status: exploratory
+  date: "Research horizon"
+  line: "Drama to Empowerment"
+  title: "Connect role transitions to preserved agent properties"
+  description: "The longer-horizon question is whether governance interventions can move systems away from reactive role lock-in while preserving identity, integrity, freedom, and corrigible participation."
+  evidence: []

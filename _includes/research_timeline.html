@@ -1,0 +1,30 @@
+<section class="research-timeline" aria-label="Research progress and roadmap">
+  <ol class="timeline-list">
+    {% for milestone in site.data.research_timeline %}
+      {% assign status = milestone.status | downcase %}
+      <li class="timeline-item is-{{ status }}">
+        <div class="timeline-marker" aria-hidden="true"></div>
+        <div class="timeline-card">
+          <div class="timeline-meta">
+            <span class="timeline-date">{{ milestone.date }}</span>
+            <span class="timeline-status">{{ status }}</span>
+          </div>
+          <h3>{{ milestone.title }}</h3>
+          <p class="timeline-line">{{ milestone.line }}</p>
+          <p>{{ milestone.description }}</p>
+          {% if milestone.evidence and milestone.evidence.size > 0 %}
+            <p class="timeline-evidence">
+              {% for item in milestone.evidence %}
+                {% if item.url contains '://' or item.url contains '#' %}
+                  <a href="{{ item.url }}">{{ item.label }}</a>
+                {% else %}
+                  <a href="{{ item.url | relative_url }}">{{ item.label }}</a>
+                {% endif %}
+              {% endfor %}
+            </p>
+          {% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+</section>
