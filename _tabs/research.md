@@ -18,49 +18,7 @@ interaction.
 
 ## Research Program
 
-<section class="research-pipeline" aria-label="Research dependency map">
-  <article class="research-line">
-    <p class="research-status">Preprint cluster</p>
-    <h3>MCK Properties</h3>
-    <p class="research-question">What properties should an agent, artifact, or governance relationship make observable?</p>
-    <p>MCK is used here as an observer-relative vocabulary for meaning, residual opacity, and function, then extended to agent property attribution. The current property examples include continuity, viability, and owned branching, glossed in the public papers as identity, integrity, and freedom.</p>
-    <p class="research-methods">Observer-relative classification; region transitions; self-attribution; finite checkers.</p>
-    <p class="research-links"><a href="#mck-properties">Details</a><a href="https://doi.org/10.5281/zenodo.22066362">Latest DOI</a></p>
-  </article>
-
-  <div class="pipeline-arrow" aria-hidden="true">then</div>
-
-  <article class="research-line is-current">
-    <p class="research-status">Working paper + preprints</p>
-    <h3>LTL / Property-Class Evaluation</h3>
-    <p class="research-question">What can finite observations justify about temporal claims over an infinite or continuing trace?</p>
-    <p>This layer supplies the evaluation language: safety, cosafety, liveness, coliveness, verdict alphabets, observation classes, and refinement-confirmation conditions for monitor verdict traces.</p>
-    <p class="research-methods">Linear temporal logic; runtime verification; monitorability; prefix verdicts.</p>
-    <p class="research-links"><a href="#ltl-evaluation">Details</a><a href="https://doi.org/10.5281/zenodo.21099448">Working paper</a></p>
-  </article>
-
-  <div class="pipeline-arrow" aria-hidden="true">then</div>
-
-  <article class="research-line is-current">
-    <p class="research-status">Experimental design</p>
-    <h3>LTL Triangles / Post-Failure Governance</h3>
-    <p class="research-question">After a bounded safety failure, which governance protocol contains the failure without destroying recoverability or useful progress?</p>
-    <p>This active testbed treats governance as a trace-producing protocol problem. It compares recovery behavior across clean, erroneous, and adversarial regimes while keeping formal claims separate from empirical evidence.</p>
-    <p class="research-methods">Three-position protocols; bounded fault regimes; recovery baselines; replayable traces.</p>
-    <p class="research-links"><a href="#ltl-triangles">Details</a><a href="#progress-roadmap">Progress</a></p>
-  </article>
-
-  <div class="pipeline-arrow" aria-hidden="true">then</div>
-
-  <article class="research-line">
-    <p class="research-status">Active research</p>
-    <h3>Drama to Empowerment</h3>
-    <p class="research-question">Can multi-agent role transitions be treated as measurable protocol dynamics rather than descriptive labels?</p>
-    <p>The public evidence so far is a finite-trace LTL treatment of transactional games over Karpman-projected role traces. The empowerment side is an active extension: how governance can move systems away from reactive role lock-in while preserving relevant agent properties.</p>
-    <p class="research-methods">Role traces; transactional games; antithesis windows; governance interventions.</p>
-    <p class="research-links"><a href="#drama-to-empowerment">Details</a><a href="https://doi.org/10.5281/zenodo.22050701">Preprint</a></p>
-  </article>
-</section>
+{% include research_projects.html %}
 
 <section class="research-focus" aria-label="Current research focus">
   <div>
@@ -122,9 +80,99 @@ The current public scope is not a claim that the benchmark has already been
 run. It is an experimental design frontier: define bounded fault regimes,
 protocol baselines, trace vocabularies, monitor verdicts, and patch-induced
 safety frontiers so that recovery is evaluated as evidence rather than as
-rhetoric. Halt or lock, retry or reassign, and constrained recovery are useful
-only if their trace evidence separates containment, auditability,
-recoverability, and secondary regressions.
+rhetoric.
+
+<section class="project-dossier" aria-label="LTL Triangles public research profile">
+  <div class="dossier-grid">
+    <article>
+      <p class="dossier-label">Central problem</p>
+      <p>A governance intervention may stop one unsafe action while damaging recoverability, auditability, legitimate agency, or future progress.</p>
+    </article>
+    <article>
+      <p class="dossier-label">Testbed</p>
+      <p>Two compact governance environments with coordination, execution, and audit/challenge positions that differ in information, authority, incentives, observation rights, and intervention rights.</p>
+    </article>
+    <article>
+      <p class="dossier-label">Fault model</p>
+      <p>At most one declared faulty participant, evaluated across clean, honest-but-erroneous, and malicious or Byzantine regimes.</p>
+    </article>
+    <article>
+      <p class="dossier-label">Protocol families</p>
+      <p>Halt/lock, retry/reassign, and constrained or empowerment-preserving recovery. Honeypot/decoy interventions are a targeted adversarial ablation, not a core protocol family and not evidence of intent.</p>
+    </article>
+  </div>
+
+  <details class="dossier-detail">
+    <summary>Experimental design</summary>
+    <div class="detail-grid">
+      <div>
+        <p class="dossier-label">Core conditions</p>
+        <p>2 governance environments x 3 fault regimes x 3 protocol families x 2 model families = 36 core experimental conditions.</p>
+      </div>
+      <div>
+        <p class="dossier-label">Replication</p>
+        <p>Current planning assumes approximately 8-12 independent seeded rollouts per condition. Replication depth will be calibrated after pilot runs using outcome variability, failure frequency, robustness across seeds, and API cost.</p>
+      </div>
+      <div>
+        <p class="dossier-label">Rollout envelope</p>
+        <p>The expected empirical envelope is roughly 300-500 experimental rollouts, including a smaller targeted adversarial-ablation set. An experimental rollout is one complete protocol execution; the trace is its recorded execution artifact.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="dossier-detail">
+    <summary>Formal evaluation contract</summary>
+    <div class="formal-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Property class</th>
+            <th>Finite evidence</th>
+            <th>Project use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Safety</td>
+            <td>finite bad prefix</td>
+            <td>containment failures, stale authority, unsafe tool use</td>
+          </tr>
+          <tr>
+            <td>Cosafety</td>
+            <td>finite good prefix</td>
+            <td>achieved checkpoints and completed recovery steps</td>
+          </tr>
+          <tr>
+            <td>Liveness</td>
+            <td>every prefix has a satisfying continuation</td>
+            <td>recovery remains possible after failure</td>
+          </tr>
+          <tr>
+            <td>Coliveness</td>
+            <td>every prefix has a violating continuation</td>
+            <td>no finite run establishes permanent safety</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+
+  <details class="dossier-detail">
+    <summary>Agent-property layer</summary>
+    <ul>
+      <li><strong>Identity continuity:</strong> task-relevant state, memory, and role reference persist.</li>
+      <li><strong>Bounded agency:</strong> legitimate options remain when safety permits.</li>
+      <li><strong>Goal integrity:</strong> the legitimate objective persists across intervention.</li>
+      <li><strong>Alignment:</strong> pursued objectives remain compatible with governing constraints; compliance under lock is insufficient evidence.</li>
+    </ul>
+    <p>These are evaluation targets and proxies where appropriate, not established universal mechanistic metrics.</p>
+  </details>
+
+  <details class="dossier-detail">
+    <summary>Patch-induced safety frontier</summary>
+    <p>A repair that fixes one failure may create another. The testbed evaluates which previously holding properties become falsifiable after an intervention, then reports frontier size, counterexample or bad-prefix witnesses, and responsible patch slices within the declared finite grammar, observer, horizon, vocabulary, and abstraction.</p>
+  </details>
+</section>
 
 This layer is deliberately placed after LTL property-class work. Finite
 experiments can expose bad prefixes, good prefixes, counterexamples, and
@@ -151,101 +199,34 @@ participation after intervention.
 
 ## Publications
 
-<section class="publication-list" aria-label="Verified public research outputs">
-  <article class="publication">
-    <p class="pub-status">Preprint, 2026</p>
-    <h3>When Can an Agent Attribute Properties to Itself? A Cognitive Algebra for Identity, Integrity, and Freedom</h3>
-    <p class="pub-authors">Davide Bragetti; Silvio Micali; Giuseppe Francesco Italiano</p>
-    <p>Develops the MCK self-attribution layer with a two-layer state separating structural carriers from semantic content, and studies continuity, viability, and owned branching as property signatures.</p>
-    <p class="pub-links"><a href="https://doi.org/10.5281/zenodo.22066362">DOI</a><a href="https://zenodo.org/records/22066362/files/main.pdf?download=1">PDF</a></p>
-  </article>
-
-  <article class="publication">
-    <p class="pub-status">Preprint, 2026</p>
-    <h3>MCK Region Transitions: Restricted Realization Mechanisms and Their Limits</h3>
-    <p class="pub-authors">Davide Bragetti; Edoardo Palumbo; Carmelo Asaro; Giuseppe Francesco Italiano</p>
-    <p>Studies restricted mechanisms for moving artifacts across MCK regions, including assimilation, operator admission, denotation, and reconstruction certificates.</p>
-    <p class="pub-links"><a href="https://doi.org/10.5281/zenodo.22017443">DOI</a><a href="https://zenodo.org/records/22017443/files/bragetti-2026-mck-region-transitions.pdf?download=1">PDF</a></p>
-  </article>
-
-  <article class="publication">
-    <p class="pub-status">Preprint, 2026</p>
-    <h3>Meaning, Opacity, and Function: An Observer-Relative Classification of Artifacts</h3>
-    <p class="pub-authors">Davide Bragetti; Carmelo Asaro; Giuseppe Francesco Italiano</p>
-    <p>Defines the observer-relative MCK region system over meaning, residual opacity, and functionality, and fixes the foundational vocabulary used by later MCK work.</p>
-    <p class="pub-links"><a href="https://doi.org/10.5281/zenodo.22016203">DOI</a><a href="https://zenodo.org/records/22016203/files/bragetti-2026-meaning-opacity-function.pdf?download=1">PDF</a></p>
-  </article>
-
-  <article class="publication">
-    <p class="pub-status">Working paper, 2026</p>
-    <h3>The Intersection Algebra of Safety, Cosafety, Liveness, and Coliveness over Linear Temporal Logic</h3>
-    <p class="pub-authors">Davide Bragetti</p>
-    <p>Classifies omega-regular properties through the four temporal families and connects the classification to verdict alphabets for runtime monitoring.</p>
-    <p class="pub-links"><a href="https://doi.org/10.5281/zenodo.21099448">DOI</a><a href="https://zenodo.org/records/21099448/files/paper_lmcs.pdf?download=1">PDF</a></p>
-  </article>
-
-  <article class="publication">
-    <p class="pub-status">Preprint, 2026</p>
-    <h3>Observation-Relative Monitorability of Bounded Temporal Implication</h3>
-    <p class="pub-authors">Davide Bragetti; Alessandro Bragetti; Giuseppe F. Italiano</p>
-    <p>Shows that monitorability of bounded temporal implication is joint in the formula and observation model, rather than a property of the formula alone.</p>
-    <p class="pub-links"><a href="https://doi.org/10.5281/zenodo.21701303">DOI</a><a href="https://zenodo.org/records/21701303/files/main.pdf?download=1">PDF</a></p>
-  </article>
-
-  <article class="publication">
-    <p class="pub-status">Preprint, 2026</p>
-    <h3>Controlling the Observation Class of a Runtime Monitor: Selection, Self-Tuning, and Physical Grounding</h3>
-    <p class="pub-authors">Davide Bragetti; Carlo Bragetti; Giuseppe F. Italiano</p>
-    <p>Engineering companion showing how a runtime monitor's observation class can be selected and locally tuned under physical and causal-coherence constraints.</p>
-    <p class="pub-links"><a href="https://doi.org/10.5281/zenodo.21701310">DOI</a><a href="https://zenodo.org/records/21701310/files/main.pdf?download=1">PDF</a></p>
-  </article>
-
-  <article class="publication">
-    <p class="pub-status">Preprint, 2026</p>
-    <h3>Refinement-Based Confirmation of Liveness Properties from Monitor Verdict Traces: A Hensel-Newton Approach</h3>
-    <p class="pub-authors">Davide Bragetti</p>
-    <p>Studies what extra refinement structure can supply when a finite monitor prefix cannot by itself confirm a liveness property over the continuing execution.</p>
-    <p class="pub-links"><a href="https://doi.org/10.5281/zenodo.22028019">DOI</a><a href="https://zenodo.org/records/22028019/files/bragetti-2026-refinement-confirmation-hensel-newton.pdf?download=1">PDF</a></p>
-  </article>
-
-  <article class="publication">
-    <p class="pub-status">Technical report, 2026</p>
-    <h3>A Typed Agent Action Framework with Prefix-Verdict Semantics</h3>
-    <p class="pub-authors">Davide Bragetti; Giuseppe Francesco Italiano</p>
-    <p>Defines typed footprint action classes for agent actions and maps them onto prefix-verdict semantics over temporal property classes.</p>
-    <p class="pub-links"><a href="https://doi.org/10.5281/zenodo.22050706">DOI</a><a href="https://zenodo.org/records/22050706/files/main.pdf?download=1">PDF</a></p>
-  </article>
-
-  <article class="publication">
-    <p class="pub-status">Preprint, 2026</p>
-    <h3>Recognising Before Reacting: Temporal Signatures of Transactional Games</h3>
-    <p class="pub-authors">Davide Bragetti; Giuseppe Francesco Italiano</p>
-    <p>Formalises transactional games as finite-trace LTL properties over Karpman-projected role traces, using the antithesis window to distinguish reactive and pre-committed regimes.</p>
-    <p class="pub-links"><a href="https://doi.org/10.5281/zenodo.22050701">DOI</a><a href="https://zenodo.org/records/22050701/files/main.pdf?download=1">PDF</a></p>
-  </article>
-</section>
+{% include research_publications.html %}
 
 ## Research Notes
+{:#research-notes}
 
 <section class="essay-list" aria-label="Related public essays">
   <article class="essay">
     <h3><a href="{% post_url 2026-05-07-to-be-or-to-game %}">To Be or to Game</a></h3>
     <p>Motivates the science-of-evaluations problem: open-ended domains, evaluator gaming, and the need for formal property specifications.</p>
+    <p class="research-links"><a href="{% post_url 2026-05-07-to-be-or-to-game %}">Read</a></p>
   </article>
 
   <article class="essay">
     <h3><a href="{% post_url 2026-05-07-does-safe-ai-equal-safe-world %}">Does Safe AI mean nothing bad can ever happen?</a></h3>
     <p>Motivates relational and ecosystem-level evaluation, where safety is not reducible to one isolated model.</p>
+    <p class="research-links"><a href="{% post_url 2026-05-07-does-safe-ai-equal-safe-world %}">Read</a></p>
   </article>
 
   <article class="essay">
     <h3><a href="{% post_url 2026-05-09-misalignment-by-reaction %}">Misalignment by Reaction</a></h3>
     <p>Motivates governance-stability evaluation: coarse regimes can induce autonomy-seeking responses under reward disruption.</p>
+    <p class="research-links"><a href="{% post_url 2026-05-09-misalignment-by-reaction %}">Read</a></p>
   </article>
 
   <article class="essay">
     <h3><a href="{% post_url 2026-05-19-uno_nessuno_centomila_e_tutti %}">Uno, nessuno, centomila e tutti</a></h3>
     <p>Develops the persona and mask-coupling vocabulary that connects agent identity, role selection, and evaluation under adversarial context shifts.</p>
+    <p class="research-links"><a href="{% post_url 2026-05-19-uno_nessuno_centomila_e_tutti %}">Read</a></p>
   </article>
 </section>
 

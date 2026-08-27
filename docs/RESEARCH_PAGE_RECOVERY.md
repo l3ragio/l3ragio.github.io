@@ -113,3 +113,29 @@ experiments.
 
 See `docs/RESEARCH_TIMELINE_V2.md` for the provenance table, status
 audit, and update instructions.
+
+## v3 Publication And Project Controls
+
+The v3 page adds data-driven publication and project components:
+
+- `_data/research_publications.yml`
+- `_data/research_projects.yml`
+- `_includes/research_publications.html`
+- `_includes/research_projects.html`
+
+Publications now expose DOI, PDF, ABS, and CITE controls where verified
+metadata exists. ABS uses source-grounded summaries derived from Zenodo
+metadata rather than private drafts. CITE uses explicit BibTeX blocks.
+
+Project cards now expose meaningful controls only where resources exist:
+details, papers, notes, and progress. No CODE buttons are shown because no
+exact public project-specific code repository was found for the current
+research lines.
+
+The LTL Triangles public dossier was updated from the current validated
+BlueDot package. It uses 36 core experimental conditions, adaptive replication
+of approximately 8-12 seeded rollouts per condition, and a rough 300-500
+rollout envelope. The page does not present a grant as awarded and does not
+publish the grant amount.
+
+See `docs/RESEARCH_PAGE_V3.md` for the data model and update workflow.

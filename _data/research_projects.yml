@@ -1,0 +1,83 @@
+- id: mck-properties
+  status: "Preprint cluster"
+  title: "MCK Properties"
+  question: "What properties should an agent, artifact, or governance relationship make observable?"
+  description: "MCK is an observer-relative vocabulary for meaning, residual opacity, function, and agent property attribution. It supports property candidates such as identity, integrity, and freedom only when the carrier, evidence, and observer assumptions are declared."
+  methods: "Observer-relative classification; region transitions; two-layer agent state; self-attribution; finite checkers."
+  current_state: "Public preprint cluster. No peer-review acceptance is claimed."
+  buttons:
+    - label: "Details"
+      url: "#mck-properties"
+    - label: "Papers"
+      url: "#pub-self-attribution"
+    - label: "Progress"
+      url: "#progress-roadmap"
+  related_publications:
+    - self-attribution
+    - mck-transitions
+    - mck-foundation
+
+- id: ltl-evaluation
+  status: "Working paper + preprints"
+  title: "LTL / Property-Class Evaluation"
+  question: "What can finite observations justify about temporal claims over an infinite or continuing trace?"
+  description: "This line supplies the temporal evaluation language: safety, cosafety, liveness, coliveness, verdict alphabets, observation classes, and refinement-confirmation conditions for monitor verdict traces."
+  methods: "Linear temporal logic; runtime verification; monitorability; prefix verdicts; refinement confirmation."
+  current_state: "Public working paper and preprints. Active formal-methods line."
+  buttons:
+    - label: "Details"
+      url: "#ltl-evaluation"
+    - label: "Papers"
+      url: "#pub-ltl-intersection"
+    - label: "Progress"
+      url: "#progress-roadmap"
+  related_publications:
+    - ltl-intersection
+    - observation-monitorability
+    - observation-control
+    - refinement-liveness
+    - typed-agent-actions
+
+- id: ltl-triangles
+  status: "Active research / experimental design"
+  title: "LTL Triangles / Post-Failure Governance"
+  question: "Which governance protocols contain a bounded failure while preserving unaffected invariants and restoring useful operation?"
+  description: "The testbed evaluates what a governance intervention repairs, preserves, and newly makes unsafe after one bounded safety failure. It separates coordination, execution, and audit/challenge positions under asymmetric information, authority, incentives, observation rights, and intervention rights."
+  methods: "Three-position protocols; one-fault bound; clean, honest-error, and malicious regimes; replayable traces; temporal verdicts."
+  current_state: "Experimental design. The benchmark has not yet been run."
+  buttons:
+    - label: "Overview"
+      url: "#ltl-triangles"
+    - label: "Papers"
+      url: "#pub-ltl-intersection"
+    - label: "Notes"
+      url: "#research-notes"
+    - label: "Progress"
+      url: "#progress-roadmap"
+  related_publications:
+    - ltl-intersection
+    - observation-monitorability
+    - observation-control
+    - refinement-liveness
+    - transactional-games
+    - typed-agent-actions
+
+- id: drama-to-empowerment
+  status: "Active research"
+  title: "Drama to Empowerment"
+  question: "Can multi-agent role transitions be treated as measurable protocol dynamics rather than descriptive labels?"
+  description: "The public evidence is a finite-trace LTL treatment of transactional games over projected role traces. The empowerment direction remains an active extension about moving away from reactive role lock-in while preserving relevant agent properties."
+  methods: "Role traces; transactional games; antithesis windows; governance interventions; property preservation."
+  current_state: "Active research framing. Not a proved theory or published result under this exact title."
+  buttons:
+    - label: "Details"
+      url: "#drama-to-empowerment"
+    - label: "Paper"
+      url: "#pub-transactional-games"
+    - label: "Notes"
+      url: "#research-notes"
+    - label: "Progress"
+      url: "#progress-roadmap"
+  related_publications:
+    - transactional-games
+    - typed-agent-actions

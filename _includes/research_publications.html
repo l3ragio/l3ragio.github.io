@@ -1,0 +1,41 @@
+<section class="publication-list" aria-label="Verified public research outputs">
+  {% for pub in site.data.research_publications %}
+    <article class="publication" id="pub-{{ pub.id }}">
+      <p class="pub-status">{{ pub.status }}, {{ pub.year }}{% if pub.research_line %} / {{ pub.research_line }}{% endif %}</p>
+      <h3>{{ pub.title }}</h3>
+      <p class="pub-authors">{{ pub.authors }}</p>
+      {% if pub.venue %}
+        <p class="pub-venue">{{ pub.venue }}</p>
+      {% endif %}
+      <p>{{ pub.description }}</p>
+      <div class="pub-actions" aria-label="Publication controls">
+        {% if pub.abstract %}
+          <details class="pub-disclosure">
+            <summary>ABS</summary>
+            <div class="pub-disclosure-body">
+              {{ pub.abstract | markdownify }}
+            </div>
+          </details>
+        {% endif %}
+        {% if pub.bibtex %}
+          <details class="pub-disclosure pub-citation">
+            <summary>CITE</summary>
+            <pre><code>{{ pub.bibtex | escape }}</code></pre>
+          </details>
+        {% endif %}
+        {% if pub.pdf %}
+          <a href="{{ pub.pdf }}">PDF</a>
+        {% endif %}
+        {% if pub.code %}
+          <a href="{{ pub.code }}">CODE</a>
+        {% endif %}
+        {% if pub.project %}
+          <a href="{{ pub.project }}">PROJECT</a>
+        {% endif %}
+        {% if pub.doi %}
+          <a href="https://doi.org/{{ pub.doi }}">DOI</a>
+        {% endif %}
+      </div>
+    </article>
+  {% endfor %}
+</section>
