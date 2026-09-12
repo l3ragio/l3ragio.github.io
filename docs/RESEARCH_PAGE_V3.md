@@ -47,6 +47,22 @@ Rendering is handled by:
 - `_includes/research_publications.html`;
 - `_includes/research_timeline.html`.
 
+The publication include accepts an optional `project_id`. Dedicated project
+pages use that filter to render only the publications listed in the matching
+project's `related_publications`, so DOI, PDF, abstract, and citation metadata
+remain centralized in `_data/research_publications.yml`.
+
+## Dedicated Project Pages
+
+The research overview remains at `/research/`. Longer public dossiers live at:
+
+- `/research/chronospec/`, sourced from `research/chronospec.md`;
+- `/research/ltl-triangles/`, sourced from `research/ltl-triangles.md`.
+
+These are ordinary Jekyll pages rather than sidebar tabs or a new collection.
+The overview cards link to them, and the two pages state their upstream /
+downstream relationship explicitly.
+
 ## Publication QA
 
 Publication metadata was rechecked through Zenodo public records on
@@ -63,8 +79,8 @@ was found for these research lines.
 
 ## LTL Triangles Public Dossier
 
-The LTL Triangles section was expanded from the current validated grant
-package:
+The LTL Triangles dossier at `/research/ltl-triangles/` was developed from the
+current validated grant package:
 
 - `06_UPDATED_ACTION_PLAN.md`;
 - `17_UPDATED_GRANT_ONE_PAGER.md`;

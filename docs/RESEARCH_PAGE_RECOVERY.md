@@ -132,10 +132,11 @@ details, papers, notes, and progress. No CODE buttons are shown because no
 exact public project-specific code repository was found for the current
 research lines.
 
-The LTL Triangles public dossier was updated from the current validated
-BlueDot package. It uses 36 core experimental conditions, adaptive replication
-of approximately 8-12 seeded rollouts per condition, and a rough 300-500
-rollout envelope. The page does not present a grant as awarded and does not
-publish the grant amount.
+The LTL Triangles public dossier now lives at `/research/ltl-triangles/` and
+retains the validated experimental design: 36 core conditions, adaptive
+replication of approximately 8-12 seeded rollouts per condition, and a rough
+300-500 rollout envelope. The overview at `/research/` links this downstream
+testbed to the upstream ChronoSpec dossier at `/research/chronospec/`. Neither
+page presents a grant as awarded or publishes a grant amount.
 
 See `docs/RESEARCH_PAGE_V3.md` for the data model and update workflow.

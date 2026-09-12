@@ -1,8 +1,11 @@
 <section class="research-pipeline" aria-label="Research dependency map">
   {% for project in site.data.research_projects %}
-    <article class="research-line{% if project.id == 'ltl-triangles' or project.id == 'ltl-evaluation' %} is-current{% endif %}" id="project-{{ project.id }}">
+    <article class="research-line{% if project.id == 'chronospec' or project.id == 'ltl-triangles' or project.id == 'ltl-evaluation' %} is-current{% endif %}" id="project-{{ project.id }}">
       <p class="research-status">{{ project.status }}</p>
       <h3>{{ project.title }}</h3>
+      {% if project.subtitle %}
+        <p class="research-subtitle">{{ project.subtitle }}</p>
+      {% endif %}
       <p class="research-question">{{ project.question }}</p>
       <p>{{ project.description }}</p>
       <p class="research-methods">{{ project.methods }}</p>

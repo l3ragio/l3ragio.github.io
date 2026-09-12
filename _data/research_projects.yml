@@ -38,6 +38,30 @@
     - refinement-liveness
     - typed-agent-actions
 
+- id: chronospec
+  status: "Active research / feasibility design"
+  title: "ChronoSpec"
+  subtitle: "Integrating Linear Temporal Logic into LLMs"
+  question: "Can one machine-checkable temporal semantics connect learning, behavioral analysis, runtime monitoring, and enforcement?"
+  description: "ChronoSpec moves the temporal-property program upstream: it tests whether explicit LTL contracts can shape an LLM's learned behavior while remaining available outside the model as an independent reference semantics. Integration is the research program; internalization is an empirical hypothesis, and a latent temporal representation is a possible result rather than an assumption."
+  methods: "LTL-specified traces; model adaptation; counterexample-guided training; held-out temporal compositions; representation probes; runtime monitors and shields."
+  current_state: "Active research direction and feasibility design. No successful internalization, formal certification of general safety, or funding outcome is claimed."
+  buttons:
+    - label: "Project page"
+      url: "/research/chronospec/"
+    - label: "Papers"
+      url: "#pub-ltl-intersection"
+    - label: "Downstream"
+      url: "#ltl-triangles"
+    - label: "Progress"
+      url: "#progress-roadmap"
+  related_publications:
+    - ltl-intersection
+    - observation-monitorability
+    - observation-control
+    - refinement-liveness
+    - typed-agent-actions
+
 - id: ltl-triangles
   status: "Active research / experimental design"
   title: "LTL Triangles / Post-Failure Governance"
@@ -46,8 +70,8 @@
   methods: "Three-position protocols; one-fault bound; clean, honest-error, and malicious regimes; replayable traces; temporal verdicts."
   current_state: "Experimental design. The benchmark has not yet been run."
   buttons:
-    - label: "Overview"
-      url: "#ltl-triangles"
+    - label: "Project page"
+      url: "/research/ltl-triangles/"
     - label: "Papers"
       url: "#pub-ltl-intersection"
     - label: "Notes"

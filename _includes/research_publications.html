@@ -1,5 +1,10 @@
+{% assign selected_project = nil %}
+{% if include.project_id %}
+  {% assign selected_project = site.data.research_projects | where: "id", include.project_id | first %}
+{% endif %}
 <section class="publication-list" aria-label="Verified public research outputs">
   {% for pub in site.data.research_publications %}
+    {% if include.project_id == nil or selected_project.related_publications contains pub.id %}
     <article class="publication" id="pub-{{ pub.id }}">
       <p class="pub-status">{{ pub.status }}, {{ pub.year }}{% if pub.research_line %} / {{ pub.research_line }}{% endif %}</p>
       <h3>{{ pub.title }}</h3>
@@ -37,5 +42,6 @@
         {% endif %}
       </div>
     </article>
+    {% endif %}
   {% endfor %}
 </section>
