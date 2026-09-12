@@ -13,7 +13,7 @@ ChronoSpec investigates whether one explicit, machine-checkable temporal
 semantics can connect LLM training or adaptation, learned temporal competence,
 formal behavioral analysis, runtime monitoring, and enforcement.
 
-<p class="research-links"><a href="{{ '/research/' | relative_url }}">Research program</a><a href="{{ '/research/ltl-triangles/' | relative_url }}">Downstream: LTL Triangles</a></p>
+<p class="research-links"><a href="{{ '/research/' | relative_url }}">Research program</a><a href="{{ '/research/ltl-evaluation/' | relative_url }}">Previous: LTL Evaluation</a><a href="{{ '/research/ltl-triangles/' | relative_url }}">Next: LTL Triangles</a></p>
 
 ## Motivation
 

@@ -61,8 +61,8 @@
   title: "Designing a falsifiable LTL-integration study"
   description: "The active upstream question is whether a shared temporal contract can improve held-out temporal generalization and reduce violating proposals or shield interventions without sacrificing task utility."
   evidence:
-    - label: "Program section"
-      url: "#chronospec"
+    - label: "Project page"
+      url: "/research/chronospec/"
 
 - status: current
   date: "Now"
@@ -70,8 +70,8 @@
   title: "Freezing the post-failure governance testbed"
   description: "The active dependency is a replayable trace schema, bounded fault model, observer vocabulary, temporal properties, and protocol baselines for recovery after failure."
   evidence:
-    - label: "Program section"
-      url: "#ltl-triangles"
+    - label: "Project page"
+      url: "/research/ltl-triangles/"
 
 - status: next
   date: "Next"

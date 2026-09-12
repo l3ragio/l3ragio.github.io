@@ -13,7 +13,7 @@ LTL Triangles is the downstream protocol testbed in the research program. It
 asks what can be repaired, preserved, or newly broken after a bounded safety
 failure has already occurred.
 
-<p class="research-links"><a href="{{ '/research/' | relative_url }}">Research program</a><a href="{{ '/research/chronospec/' | relative_url }}">Upstream: ChronoSpec</a></p>
+<p class="research-links"><a href="{{ '/research/' | relative_url }}">Research program</a><a href="{{ '/research/chronospec/' | relative_url }}">Previous: ChronoSpec</a><a href="{{ '/research/drama-to-empowerment/' | relative_url }}">Next: Drama to Empowerment</a></p>
 
 ## Relationship to ChronoSpec
 

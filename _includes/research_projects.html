@@ -1,42 +1,44 @@
 <section class="research-pipeline" aria-label="Research dependency map">
+  <div class="pipeline-legend" aria-hidden="true">
+    <span>Research architecture</span>
+    <span>Foundation &rarr; application</span>
+  </div>
   {% for project in site.data.research_projects %}
-    <article class="research-line{% if project.id == 'chronospec' or project.id == 'ltl-triangles' or project.id == 'ltl-evaluation' %} is-current{% endif %}" id="project-{{ project.id }}">
-      <p class="research-status">{{ project.status }}</p>
-      <h3>{{ project.title }}</h3>
-      {% if project.subtitle %}
-        <p class="research-subtitle">{{ project.subtitle }}</p>
-      {% endif %}
-      <p class="research-question">{{ project.question }}</p>
-      <p>{{ project.description }}</p>
-      <p class="research-methods">{{ project.methods }}</p>
-      <p class="research-current-state">{{ project.current_state }}</p>
-      {% if project.buttons and project.buttons.size > 0 %}
-        <p class="research-links">
-          {% for item in project.buttons %}
-            {% if item.url contains '://' or item.url contains '#' %}
-              <a href="{{ item.url }}">{{ item.label }}</a>
-            {% else %}
-              <a href="{{ item.url | relative_url }}">{{ item.label }}</a>
+    <a class="research-line{% if project.id == 'chronospec' or project.id == 'ltl-triangles' or project.id == 'ltl-evaluation' %} is-current{% endif %}"
+       id="project-{{ project.id }}"
+       href="{{ project.url | relative_url }}"
+       aria-label="Open the {{ project.title }} project page">
+      <span class="research-stage" aria-hidden="true">
+        <span class="research-index">0{{ forloop.index }}</span>
+        <span class="research-layer">{{ project.layer }}</span>
+      </span>
+      <article class="research-line-card">
+        <header class="research-line-header">
+          <div>
+            <p class="research-status">{{ project.status }}</p>
+            <h3>{{ project.title }}</h3>
+            {% if project.subtitle %}
+              <p class="research-subtitle">{{ project.subtitle }}</p>
             {% endif %}
+          </div>
+          <span class="research-open-mark" aria-hidden="true">&nearr;</span>
+        </header>
+        <p class="research-question">{{ project.question }}</p>
+        <p class="research-description">{{ project.description }}</p>
+        {% assign project_methods = project.methods | split: ';' %}
+        <span class="research-method-tags" aria-label="Methods">
+          {% for method in project_methods %}
+            <span>{{ method | strip }}</span>
           {% endfor %}
-        </p>
-      {% endif %}
-      {% if project.related_publications and project.related_publications.size > 0 %}
-        <details class="project-publications">
-          <summary>Related papers</summary>
-          <ul>
-            {% for pub_id in project.related_publications %}
-              {% assign pub = site.data.research_publications | where: "id", pub_id | first %}
-              {% if pub %}
-                <li><a href="#pub-{{ pub.id }}">{{ pub.title }}</a></li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        </details>
-      {% endif %}
-    </article>
+        </span>
+        <span class="research-card-footer">
+          <span>{{ project.current_state }}</span>
+          <strong>View project</strong>
+        </span>
+      </article>
+    </a>
     {% unless forloop.last %}
-      <div class="pipeline-arrow" aria-hidden="true">then</div>
+      <div class="pipeline-arrow" aria-hidden="true"><span>feeds</span></div>
     {% endunless %}
   {% endfor %}
 </section>
