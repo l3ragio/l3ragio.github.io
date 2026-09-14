@@ -77,6 +77,11 @@
   description: "The testbed evaluates what a governance intervention repairs, preserves, and newly makes unsafe after one bounded safety failure. It separates coordination, execution, and audit/challenge positions under asymmetric information, authority, incentives, observation rights, and intervention rights."
   methods: "Three-position protocols; one-fault bound; clean, honest-error, and malicious regimes; replayable traces; temporal verdicts."
   current_state: "Experimental design. The benchmark has not yet been run."
+  funding:
+    funder: "BlueDot Impact"
+    type: "Rapid Grant"
+    amount_usd: 650
+    purpose: "LTL Triangles: a pilot evaluation of whether post-failure governance protocols for agentic AI contain one bounded fault while preserving recovery."
   buttons:
     - label: "Project page"
       url: "/research/ltl-triangles/"

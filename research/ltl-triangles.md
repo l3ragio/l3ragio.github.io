@@ -15,6 +15,16 @@ failure has already occurred.
 
 <p class="research-links"><a href="{{ '/research/' | relative_url }}">Research program</a><a href="{{ '/research/chronospec/' | relative_url }}">Previous: ChronoSpec</a><a href="{{ '/research/drama-to-empowerment/' | relative_url }}">Next: Drama to Empowerment</a></p>
 
+{% assign project = site.data.research_projects | where: "id", "ltl-triangles" | first %}
+
+## Funding
+
+<section class="research-funding-panel" aria-label="LTL Triangles funding">
+  <p class="funding-line">Supported by a {{ project.funding.type }} from {{ project.funding.funder }} &mdash; ${{ project.funding.amount_usd }}.</p>
+  <p><span class="funding-kicker">Grant purpose</span><q>{{ project.funding.purpose }}</q></p>
+  <p class="funding-boundary">Support is specific to the LTL Triangles pilot and does not imply experimental completion or validation of scientific conclusions.</p>
+</section>
+
 ## Relationship to ChronoSpec
 
 [ChronoSpec]({{ '/research/chronospec/' | relative_url }}) asks whether a
@@ -125,9 +135,9 @@ horizon, vocabulary, and abstraction.
 
 ## Current status
 
-LTL Triangles is active research and experimental design. The benchmark has
-not yet been run. The page makes no claim of an awarded grant or completed
-empirical validation.
+LTL Triangles is active research and experimental design. The pilot is
+supported by a $650 Rapid Grant from BlueDot Impact. The benchmark has not yet
+been run, and no empirical containment or recovery result is claimed yet.
 
 ## Selected prior artifacts
 

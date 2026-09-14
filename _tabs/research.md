@@ -16,6 +16,16 @@ governance. The public dependency runs from observer-relative properties and
 temporal evidence, through ChronoSpec's model-level integration question, to
 post-failure governance and role dynamics in multi-agent interaction.
 
+{% assign funded_project = site.data.research_projects | where: "id", "ltl-triangles" | first %}
+<aside class="research-grant-note" aria-label="Current funded pilot">
+  <div>
+    <p class="funding-kicker">Current funded pilot</p>
+    <p class="research-grant-title">{{ funded_project.title }}</p>
+    <p>Supported by a {{ funded_project.funding.type }} from {{ funded_project.funding.funder }} &middot; ${{ funded_project.funding.amount_usd }}.</p>
+  </div>
+  <a class="research-grant-cta" href="{{ funded_project.url | relative_url }}">View funded project <span aria-hidden="true">&rarr;</span></a>
+</aside>
+
 ## Research Program
 
 {% include research_projects.html %}
