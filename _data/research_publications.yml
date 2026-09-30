@@ -5,19 +5,19 @@
   year: "2026"
   title: "When Can an Agent Attribute Properties to Itself? A Cognitive Algebra for Identity, Integrity, and Freedom"
   authors: "Davide Bragetti; Silvio Micali; Giuseppe Francesco Italiano"
-  venue: "Zenodo preprint, version 2"
+  venue: "Zenodo preprint, version 3"
   description: "Develops the MCK self-attribution layer with a two-layer state separating structural carriers from semantic content, then studies continuity, viability, and owned branching as property signatures."
   abstract: "This preprint distinguishes structural realizability from semantic calibration in agent self-attribution. It uses the MCK observer-relative framework to model capability carriers, evidence content, self-reference, other-models, operator composition, and finite decision procedures for continuity, viability, and owned branching."
-  doi: "10.5281/zenodo.22066362"
-  record: "https://zenodo.org/records/22066362"
-  pdf: "https://zenodo.org/records/22066362/files/main.pdf?download=1"
+  doi: "10.5281/zenodo.23041633"
+  record: "https://zenodo.org/records/23041633"
+  pdf: "https://zenodo.org/records/23041633/files/main.pdf?download=1"
   bibtex: |
     @misc{bragetti2026agentattributeproperties,
       title = {When Can an Agent Attribute Properties to Itself? A Cognitive Algebra for Identity, Integrity, and Freedom},
       author = {Bragetti, Davide and Micali, Silvio and Italiano, Giuseppe Francesco},
       year = {2026},
-      month = aug,
-      doi = {10.5281/zenodo.22066362},
+      month = sep,
+      doi = {10.5281/zenodo.23041633},
       publisher = {Zenodo},
       note = {Preprint}
     }
@@ -32,16 +32,16 @@
   venue: "Zenodo preprint"
   description: "Studies restricted mechanisms for moving artifacts across MCK regions, including assimilation, operator admission, denotation, and reconstruction certificates."
   abstract: "This preprint starts from the MCK region system and asks which restricted realization families can actually move artifacts between observer-relative regions. It separates algebraic transition possibility from concrete procedures and records where each mechanism stops."
-  doi: "10.5281/zenodo.22017443"
-  record: "https://zenodo.org/records/22017443"
-  pdf: "https://zenodo.org/records/22017443/files/bragetti-2026-mck-region-transitions.pdf?download=1"
+  doi: "10.5281/zenodo.23041603"
+  record: "https://zenodo.org/records/23041603"
+  pdf: "https://zenodo.org/records/23041603/files/bragetti-2026-mck-region-transitions.pdf?download=1"
   bibtex: |
     @misc{bragetti2026mckregiontransitions,
       title = {MCK Region Transitions: Restricted Realization Mechanisms and Their Limits},
       author = {Bragetti, Davide and Palumbo, Edoardo and Asaro, Carmelo and Italiano, Giuseppe Francesco},
       year = {2026},
-      month = aug,
-      doi = {10.5281/zenodo.22017443},
+      month = sep,
+      doi = {10.5281/zenodo.23041603},
       publisher = {Zenodo},
       note = {Preprint}
     }
@@ -80,16 +80,16 @@
   venue: "Zenodo working paper"
   description: "Classifies omega-regular properties through temporal evidence classes and connects the classification to verdict alphabets for runtime monitoring."
   abstract: "This working paper integrates safety, cosafety, liveness, and coliveness into a single classification over omega-regular properties. It relates topological and prefix-quantifier structure to monitor verdict alphabets and finite evidence limits."
-  doi: "10.5281/zenodo.21099448"
-  record: "https://zenodo.org/records/21099448"
-  pdf: "https://zenodo.org/records/21099448/files/paper_lmcs.pdf?download=1"
+  doi: "10.5281/zenodo.23043255"
+  record: "https://zenodo.org/records/23043255"
+  pdf: "https://zenodo.org/records/23043255/files/paper_lmcs.pdf?download=1"
   bibtex: |
     @misc{bragetti2026intersectionalgebra,
       title = {The Intersection Algebra of Safety, Cosafety, Liveness, and Coliveness over Linear Temporal Logic},
       author = {Bragetti, Davide},
       year = {2026},
-      month = jul,
-      doi = {10.5281/zenodo.21099448},
+      month = sep,
+      doi = {10.5281/zenodo.23043255},
       publisher = {Zenodo},
       note = {Working paper}
     }
@@ -104,16 +104,16 @@
   venue: "Zenodo preprint"
   description: "Shows that monitorability of bounded temporal implication is joint in the formula and observation model, not a property of the formula alone."
   abstract: "This preprint analyzes temporal implication under finite observation, delay, drift, jitter, and finite resolution. The result is an observation-relative view of monitorability: verdicts depend on both the formula and the observation regime."
-  doi: "10.5281/zenodo.21701303"
-  record: "https://zenodo.org/records/21701303"
-  pdf: "https://zenodo.org/records/21701303/files/main.pdf?download=1"
+  doi: "10.5281/zenodo.23041615"
+  record: "https://zenodo.org/records/23041615"
+  pdf: "https://zenodo.org/records/23041615/files/main.pdf?download=1"
   bibtex: |
     @misc{bragetti2026observationrelative,
       title = {Observation-Relative Monitorability of Bounded Temporal Implication},
       author = {Bragetti, Davide and Bragetti, Alessandro and Italiano, Giuseppe F.},
       year = {2026},
-      month = jul,
-      doi = {10.5281/zenodo.21701303},
+      month = sep,
+      doi = {10.5281/zenodo.23041615},
       publisher = {Zenodo},
       note = {Preprint}
     }
@@ -128,16 +128,16 @@
   venue: "Zenodo preprint"
   description: "Engineering companion showing how a runtime monitor's observation class can be selected and locally tuned under physical and causal-coherence constraints."
   abstract: "This preprint treats a runtime monitor's observation class as a controlled quantity. It studies monitor-type selection, self-tuning, and physical grounding for bounded-eventuality temporal implication."
-  doi: "10.5281/zenodo.21701310"
-  record: "https://zenodo.org/records/21701310"
-  pdf: "https://zenodo.org/records/21701310/files/main.pdf?download=1"
+  doi: "10.5281/zenodo.23041626"
+  record: "https://zenodo.org/records/23041626"
+  pdf: "https://zenodo.org/records/23041626/files/main.pdf?download=1"
   bibtex: |
     @misc{bragetti2026observationclass,
       title = {Controlling the Observation Class of a Runtime Monitor: Selection, Self-Tuning, and Physical Grounding},
       author = {Bragetti, Davide and Bragetti, Carlo and Italiano, Giuseppe F.},
       year = {2026},
-      month = jul,
-      doi = {10.5281/zenodo.21701310},
+      month = sep,
+      doi = {10.5281/zenodo.23041626},
       publisher = {Zenodo},
       note = {Preprint}
     }
@@ -176,16 +176,16 @@
   venue: "Zenodo technical report"
   description: "Defines typed footprint action classes for agent actions and maps them onto prefix-verdict semantics over temporal property classes."
   abstract: "This technical report gives typed signatures for agent action footprints and carrier persistence. It connects action classes to safety, cosafety, liveness, and coliveness verdict semantics over finite observation prefixes."
-  doi: "10.5281/zenodo.22050706"
-  record: "https://zenodo.org/records/22050706"
-  pdf: "https://zenodo.org/records/22050706/files/main.pdf?download=1"
+  doi: "10.5281/zenodo.23041634"
+  record: "https://zenodo.org/records/23041634"
+  pdf: "https://zenodo.org/records/23041634/files/main.pdf?download=1"
   bibtex: |
     @misc{bragetti2026typedagentaction,
       title = {A Typed Agent Action Framework with Prefix-Verdict Semantics},
       author = {Bragetti, Davide and Italiano, Giuseppe Francesco},
       year = {2026},
-      month = aug,
-      doi = {10.5281/zenodo.22050706},
+      month = sep,
+      doi = {10.5281/zenodo.23041634},
       publisher = {Zenodo},
       note = {Technical report}
     }
