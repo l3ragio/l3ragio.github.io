@@ -16,6 +16,10 @@ image:
 
 ## A Poem as a Specification
 
+<blockquote class="verse verse-title">
+  <span>If—</span>
+</blockquote>
+
 Kipling's *If—* is usually read as moral encouragement, a Victorian list of virtues to cultivate. That reading is not wrong, but it misses a structural fact worth taking seriously. *If—* is a single long conditional, and what sits on the antecedent side is not a set of facts but a set of *temporal invariants and response policies*. The reward (the man at the end) is what falls out when an agent satisfies the entire specification across its life.
 
 If the poem is not fresh in your ear, it is worth hearing whole before it is taken apart. Michael Caine's reading is unhurried enough to let the conditional structure show: every stanza opens another *if*, and the main clause is held back until the last two lines.
@@ -35,6 +39,10 @@ If, along the trace of a life, the agent maintains a conjunction of invariants `
 The formulas are a reading of the poem, not a verified model. The atomic propositions (`Loss`, `KeepHead`, …) are informal, and I assume throughout that the environment can produce any trigger at any time: blame, loss, and flattery are not under the agent's control. What the formalism buys is not a mechanical check. It is the *class* each clause falls into, and the class turns out to say something precise about what any observer, including the agent itself, can ever know about whether the clause holds.
 
 ## From Virtues to Temporal Properties
+
+<blockquote class="verse">
+  <span class="in">And yet don't look too good, nor talk too wise:</span>
+</blockquote>
 
 The poem reads on the surface as a list of virtues: patience, self-trust, steadfastness, magnanimity. The reading to resist is the punctual one (*do this thing once, be virtuous in this moment*). Maturity, on this poem's terms, is not a property of any moment. It is a property of the trace:
 
@@ -65,6 +73,10 @@ The crucial feature of this automaton is the last line. `Mature` is not reached 
 
 ## What a Finite Life Can Settle
 
+<blockquote class="verse">
+  <span>If you can …</span>
+</blockquote>
+
 Before reading the clauses one by one, it helps to fix the vocabulary that sorts them. A life, observed so far, is a finite prefix of an infinite trace. A prefix is *bad* for a property if every continuation violates it, and *good* if every continuation satisfies it. Four classes follow from asking which kinds of prefix a property has:
 
 - **Safety**: every violation has a bad prefix. Something bad happens at a finite moment, and nothing afterwards can undo it.
@@ -85,6 +97,11 @@ It also pays to keep three questions apart that everyday moral language runs tog
 The poem is written entirely in the third register: *if you can*. The world, as we will see, keeps answering in the second.
 
 ## Safety: The Ethics of Not Breaking
+
+<blockquote class="verse">
+  <span>If you can keep your head when all about you</span>
+  <span class="in">Are losing theirs and blaming it on you,</span>
+</blockquote>
 
 A safety property is one that a finite trace can refute: one bad event falsifies it for the whole trace. Many of Kipling's clauses have exactly this form.
 
@@ -111,6 +128,10 @@ This makes "keep your head" a second-order property. It does not protect any spe
 
 There is a sharper reason the poem phrases these clauses as standing policies rather than as advice for the moment. In [*Recognising Before Reacting: Temporal Signatures of Transactional Games*](https://doi.org/10.5281/zenodo.22050701), Giuseppe Italiano and I model the games of the Drama Triangle as finite-trace temporal properties and measure, for each game, a signed *antithesis window*: the gap between the last moment at which a reaction can still redirect the game and the moment at which an observer can tell which game is being played. When the window is positive, recognising and then reacting is enough. When it is negative, recognition arrives too late, and only a policy committed in advance works. The sign also depends on what the observer has to tell the game apart from. Kipling, in effect, writes for the negative window. By the time you are sure you are being baited, the bait has already been taken, unless "do not deal in lies" was already the policy before the lie arrived.
 
+<blockquote class="verse">
+  <span class="in">Or being lied about, don't deal in lies,</span>
+</blockquote>
+
 **Not answering lies with lies.** The clause about being lied about and not dealing in lies is an anti-contagion property:
 
 ```
@@ -118,6 +139,10 @@ There is a sharper reason the poem phrases these clauses as standing policies ra
 ```
 
 Readers who work on distributed systems will recognise the shape. This is moral Byzantine resilience: `□(ByzantineInput → NonByzantineResponse)`. The environment may be corrupted; the agent's transition function must not become corrupted by contact. A single corrupt response to a corrupt input falsifies the property, which is what makes it safety.
+
+<blockquote class="verse">
+  <span>Or being hated, don't give way to hating,</span>
+</blockquote>
 
 **Not hating back.** The clause about being hated and not giving way to hating is harder than the lying clause, and the formalism shows why. Lying is a discrete action; hatred is a persistent state. The honest formalisation is not "do not perform a hateful act in the next step" but:
 
@@ -130,6 +155,11 @@ Once hatred is received, the agent must *never* convert it into hatred of its ow
 All three clauses share a second, less comfortable feature. They are safety, but they are also coliveness: no prefix is ever good, because the next provocation can always arrive. A single moment can refute them; no length of life can certify them. The monitor watching the agent has two possible outputs, *violated* and *not yet*, and it never gets to say *done*. The poem's virtues are of exactly this kind: they are never banked, only kept.
 
 ## Self-Trust and the Hospitality of Doubt
+
+<blockquote class="verse">
+  <span>If you can trust yourself when all men doubt you,</span>
+  <span class="in">But make allowance for their doubting too;</span>
+</blockquote>
 
 The clause about trusting yourself when all men doubt you, while making allowance for their doubting too, is the poem's most epistemically subtle moment, and the easy formalisation gets it wrong twice.
 
@@ -147,6 +177,10 @@ Runtime verification says why this allowance is not mere generosity. The people 
 There is also a quieter property hiding here. "Allowance for their doubting" keeps the agent's belief-revision channel open: self-trust without closure to correction. Stated properly, it is a response property, `□(CounterEvidence → ◊ Revise)`: whenever real counter-evidence arrives, revision eventually follows. That is liveness, and it is what separates self-trust from dogmatism. Hold on to its class; it comes back in the next section.
 
 ## Patience, and Waiting as Reallocation
+
+<blockquote class="verse">
+  <span>If you can wait and not be tired by waiting,</span>
+</blockquote>
 
 The waiting clause ("if you can wait and not be tired by waiting") packs two properties into one line, and the second is easy to miss. Waiting has an external face and an internal face:
 
@@ -168,6 +202,11 @@ Waiting, on this reading, is progress that has changed direction, not progress t
 
 ## Liveness: Recovery After Ruin
 
+<blockquote class="verse">
+  <span>Or watch the things you gave your life to, broken,</span>
+  <span class="in">And stoop and build 'em up with worn-out tools:</span>
+</blockquote>
+
 Some of the poem's clauses are not satisfied by *not breaking*. They are satisfied only by an eventual positive action. These are liveness properties: no finite trace can falsify them, because the required action could always still come.
 
 The clause about losing everything you have built and stooping to rebuild it with worn-out tools is the cleanest case:
@@ -180,6 +219,10 @@ Whenever loss occurs, restart must eventually happen. There is no time bound; th
 
 This is not a defect of the poem; it is a fact about recoveries. It means evidence of recovery cannot come from the observed prefix alone. It has to come from additional structure: a model of how the rebuilding is converging, a sequence of partial reconstructions that can be shown to approach the restart. In [*Refinement-Based Confirmation of Liveness Properties from Monitor Verdict Traces*](https://doi.org/10.5281/zenodo.22028019) I study one such structure, a refinement chain with a convergence criterion, and what it can and cannot supply. The man rebuilding with worn-out tools is, quite literally, producing that structure: a trace of partial rebuilds that makes the eventual restart credible before it is observable.
 
+<blockquote class="verse">
+  <span class="in">And never breathe a word about your loss;</span>
+</blockquote>
+
 The poem then says more, and this is where the formalism gets genuinely elegant. The clause about never breathing a word about your loss adds a safety condition that holds *during* the recovery window. Combining them needs the until operator:
 
 ```
@@ -190,6 +233,12 @@ After loss, *until* the restart occurs, the agent must not let the narrative of 
 
 The composite is also precise about what the silence clause does and does not demand. It does not demand that loss never be spoken of. Speaking about a loss is pathological under two specific conditions: when it installs the loss as identity, and, more subtly, when the agent begins to draw reward from narrating it. The second is a form of internal reward hacking: the agent gains energy not from rebuilding but from evoking the wound, the risk, the drama. The clean separation is between risk intelligence (sober, technical, proportionate, oriented to action) and fear rhetoric (repetitive, identity-forming, contagious, self-rewarding). The rule that survives formalisation is: name the loss only where naming it supports repair, prevention, or proportionate coordination.
 
+<blockquote class="verse">
+  <span>If you can make one heap of all your winnings</span>
+  <span class="in">And risk it on one turn of pitch-and-toss,</span>
+  <span>And lose, and start again at your beginnings</span>
+</blockquote>
+
 The same trace-logic applies to the things the agent has won. The pitch-and-toss clause, risking the whole heap of winnings and starting again at the beginnings, is not primarily about gambling. It is about non-possession in the other direction: achievements must not become an identity prison. The successful agent faces a capture every bit as real as the ruined one: *I have built this, I am recognised for this, therefore I must protect this identity, therefore I can no longer risk, therefore I can no longer begin again.* The healthy relation is:
 
 ```
@@ -199,6 +248,11 @@ Winnings ∈ Trace(I), not I = Winnings
 Achievements are witnesses, not chains. And the classification produces a small paradox worth savouring. Independence from one's winnings is not observable while the winnings are intact: every prefix in which nothing is lost is compatible with an agent who would collapse if it were. Actually losing everything and starting again is the one event that finitely *witnesses* that independence. What looks like the worst case for the agent is the confirming evidence for the property that matters most.
 
 ## Semantic Integrity Under Distortion
+
+<blockquote class="verse">
+  <span>If you can bear to hear the truth you've spoken</span>
+  <span class="in">Twisted by knaves to make a trap for fools,</span>
+</blockquote>
 
 The clause about hearing the truth you have spoken twisted by knaves to make a trap for fools names a different kind of perturbation. It is not provocation and not loss. It is an attack on *meaning*: an adversary takes what you said and reinterprets it as a weapon.
 
@@ -218,6 +272,11 @@ The adversary can reclassify the utterance in other minds. The mature agent's pr
 
 ## Triumph and Disaster as Identity-Capture Attacks
 
+<blockquote class="verse">
+  <span>If you can meet with Triumph and Disaster</span>
+  <span class="in">And treat those two impostors just the same;</span>
+</blockquote>
+
 The poem's most-quoted clause treats triumph and disaster as impostors, and the formal reading is sharper than the cliché. Both events are attempts to define the agent. Success says `ThisEvent = YourWorth`. Failure says `ThisEvent = YourUnworth`. Each tries to install itself as the agent's self-model:
 
 ```
@@ -234,6 +293,11 @@ Identity = PropertyOverTrace
 You are not the event. You are the temporal policy that crosses the events. The capture is bidirectional, and the triumph branch is the one people underestimate: a victory that becomes "I am the kind of person who wins at this" has captured the agent exactly as thoroughly as a disaster that becomes "I am the kind of person who fails". Both make the self a function of the latest external outcome, and a self that is a function of the latest outcome has no stable policy across the trace, which is what every other clause of the poem demands. (The theatrical version of this capture, the mask that takes over the face, is the subject of [an earlier post on Pirandello](/posts/uno_nessuno_centomila_e_tutti/).)
 
 ## Dreams and Thoughts: The Internal Attractors
+
+<blockquote class="verse">
+  <span>If you can dream—and not make dreams your master;</span>
+  <span class="in">If you can think—and not make thoughts your aim;</span>
+</blockquote>
 
 Halfway through the poem the threat model changes, and the change is structural. The early clauses defend against *external* inputs: blame, doubt, lies, hatred. The dreaming and thinking clauses turn to *internally generated* inputs, and the poem's insight is that these can capture the agent just as completely.
 
@@ -260,6 +324,13 @@ The thinking clause ("think, and not make thoughts your aim") is the same proper
 
 ## Context Invariance and Relational Boundedness
 
+<blockquote class="verse">
+  <span>If you can talk with crowds and keep your virtue,</span>
+  <span class="in">Or walk with Kings—nor lose the common touch,</span>
+  <span>If neither foes nor loving friends can hurt you,</span>
+  <span class="in">If all men count with you, but none too much;</span>
+</blockquote>
+
 Two clauses near the end deal with social mobility: talking with crowds and keeping your virtue, walking with kings without losing the common touch. Both have the shape:
 
 ```
@@ -285,6 +356,11 @@ Everyone counts; no one counts absolutely. If no one counts, the agent is cold. 
 
 ## The Unforgiving Minute
 
+<blockquote class="verse">
+  <span>If you can fill the unforgiving minute</span>
+  <span class="in">With sixty seconds' worth of distance run,</span>
+</blockquote>
+
 The closing clause, filling the unforgiving minute with sixty seconds' worth of distance run, is a property of temporal density. Naively absolutised, it becomes toxic productivism: every instant maximised. The defensible version is narrower and stronger, and it has a bound in it:
 
 ```
@@ -296,6 +372,12 @@ Not every minute is the unforgiving one. But when the decisive interval opens, t
 Read together with the orchestral account of waiting, the clause completes a pair. The waiting clause governs the intervals when your line is paused: stay in concert, reallocate, preserve momentum. The minute clause governs the intervals when your line is live: be entirely there, within the bound. Between them they specify an agent whose relationship to time is never passive: either deliberately reallocating or fully present, and the choice between the two is set by the tempo of the trace, not by the agent's moods. The two clauses also mark the poem's two kinds of time: the unbounded time of recovery, where the poem is patient, and the bounded time of the decisive minute, where it is not.
 
 ## The Dangerous Reading: When Resilience Becomes Self-Erasure
+
+<blockquote class="verse">
+  <span>If you can force your heart and nerve and sinew</span>
+  <span class="in">To serve your turn long after they are gone,</span>
+  <span>And so hold on when there is nothing in you</span>
+</blockquote>
 
 This is the section the poem most needs, and the place where formal analysis stops being decoration and starts doing safety work.
 
@@ -326,6 +408,10 @@ The exhaustion clause deserves the hardest look, because here the poem's surface
 Endurance when the duty window is genuinely critical and recovery is genuinely possible afterward; recovery in every other case. The two triggers are complementary, so every exhausted moment gets exactly one instruction. The poem's rhetoric jumps straight from courage to self-destruction and skips the ground between them. The formal reading restores that ground, and the restoration is precisely the difference between a literature of resilience and a literature of self-erasure. A poem can leave the missing case implicit and trust the reader. A specification cannot, and treating the poem as a specification is what makes the hidden assumption visible enough to fix.
 
 ## The Mature Agent as Trace-Sovereign
+
+<blockquote class="verse">
+  <span class="in">Except the Will which says to them: 'Hold on!'</span>
+</blockquote>
 
 Pulling the threads together: the strongest reading of *If—* is not that it is a list of virtues. It is a specification of *agentic non-capturability*. Every clause defends against a specific channel through which the world tries to install itself as the agent's controller:
 
@@ -377,6 +463,11 @@ And the capture table is, read sideways, a taxonomy of failure modes for agentic
 
 ## The Shape of the Promise
 
+<blockquote class="verse">
+  <span>If you can …</span>
+  <span class="in">… you'll be a Man, my son!</span>
+</blockquote>
+
 There remains the poem's own top-level formula, `(⋀ᵢ □φᵢ) → ◊ Maturity`, and its class holds one last surprise.
 
 Restrict the antecedent to the safety clauses, and the implication becomes cosafety. The negation of a conjunction of safety properties is cosafety (a finite violation of any of them settles the matter), `◊ Maturity` is cosafety, and so is their disjunction. The promise, unlike the virtues, can be confirmed in finite time, and there are exactly two ways to confirm it. One is the intended way: maturity is reached. The other is that some invariant is broken, after which the implication holds vacuously, whatever happens to maturity. The second is close kin to what the observation-relative monitorability paper calls a *phantom trigger*: a conditional reported as satisfied when it was only ever satisfied vacuously. The full antecedent, which includes the recovery clauses, has no such clean class, but the point survives: a reader who breaks the spec still "satisfies" the poem, and has learned nothing from it.
@@ -384,6 +475,10 @@ Restrict the antecedent to the safety clauses, and the implication becomes cosaf
 Kipling closes off that reading with his last move. The poem never states its conclusion as a fact. It is a conditional addressed to the second person and held open. The vacuous confirmation is formally available and morally worthless; the only confirmation the poem cares about is the non-vacuous one.
 
 ## Yours Is the Earth: Inhabitability, Not Ownership
+
+<blockquote class="verse">
+  <span>Yours is the Earth and everything that's in it,</span>
+</blockquote>
 
 The poem's final movement grants the satisfying agent "the Earth and everything that's in it". The naive reading, virtue as title deed (`Virtue → Ownership(World)`), misreads the reward exactly as the impostors misread identity. The Earth here is the sum of every field the poem has crossed: the crowd, the court, the ruin, the triumph, the long wait, the decisive minute. What the mature agent receives is not possession of that world but *inhabitability*:
 
@@ -394,6 +489,10 @@ MatureAgency → WorldInhabitability
 The world becomes "yours" because no part of it retains absolute power to capture you. Every field can be entered, crossed, and left with the policy intact. And the closing promise ("you'll be a Man") should be read agentically rather than biologically: `◊ FullAgenthood`, the terminal state of an entity that can walk through the world without being possessed by what happens in it. The reward of the specification is not the world as property. It is the world as a place you can now cross.
 
 ## You Are Not the Event, You Are the Policy Across Events
+
+<blockquote class="verse">
+  <span class="in">And—which is more—you'll be a Man, my son!</span>
+</blockquote>
 
 Read as a specification, *If—* gives a complete taxonomy. Safety clauses: never lie back, never hate back, never let triumph or disaster install themselves as your self-model, never let the loss-narrative own the recovery window, never let an internally generated dream outrank the properties that keep you whole. Liveness clauses: after loss, eventually restart; after a dead dream, eventually recompose meaning; across a life, eventually mature. Invariance clauses: the same core through crowds and kings, the same meaning under hostile reinterpretation, no relationship as single point of failure. A bound that turns one promise into an obligation: the unforgiving minute. And one honest inconsistency, at exhaustion, that the formal reading repairs by restoring the case the rhetoric skipped.
 

@@ -1,0 +1,69 @@
+// Verse epigraphs.
+//
+// A short quotation from a poem set under a section heading, e.g. the
+// line of Kipling's If— that a section of the post analyses. Usage:
+//
+//   <blockquote class="verse">
+//     <span>First line of the quotation</span>
+//     <span class="in">Indented second line,</span>
+//   </blockquote>
+//
+// Calligraphic italic serif in the warm secondary accent, so the
+// epigraph reads as the poem's voice, distinct from both the body
+// (Spectral) and the plain blockquote (muted italic with left rule).
+// Each <span> is one verse line; .in reproduces the poem's indentation
+// of alternate lines. Selector repeats the :not() of the plain
+// blockquote rule in _prose.scss so it wins regardless of order.
+article .content > blockquote.verse:not([class^="prompt-"]) {
+  border: none;
+  margin: calc(-1 * var(--space-1)) 0 var(--space-4);
+  padding: 0 0 0 var(--space-3);
+  font-family: var(--font-verse);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.32rem;
+  line-height: 1.45;
+  letter-spacing: 0.005em;
+  color: var(--accent-alt);
+  position: relative;
+
+  // A thin vertical hairline in the same amber, fading downwards.
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.3em;
+    bottom: 0.3em;
+    width: 1px;
+    background: linear-gradient(var(--accent-alt), transparent);
+    opacity: 0.6;
+  }
+
+  span {
+    display: block;
+  }
+
+  span.in {
+    padding-left: 1.6em;
+  }
+
+  // Single-word epigraphs (the poem's title) set larger, centred.
+  &.verse-title {
+    padding-left: 0;
+    text-align: center;
+    font-size: 2rem;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.15rem;
+    padding-left: var(--space-2);
+
+    span.in {
+      padding-left: 1em;
+    }
+  }
+}
