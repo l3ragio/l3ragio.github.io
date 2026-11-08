@@ -1,0 +1,131 @@
+// Always-available sharing, in the same places as "Contents".
+//
+// The share bar at the bottom of each post (Chirpy's post-sharing include)
+// is cloned by the script in _includes/post-sharing.html into:
+//   - #share-panel   desktop: top of the sticky right panel, above Contents;
+//   - .share-trigger   mobile and tablet: an icon inside the "Contents"
+//     capsule (#toc-bar), opening #share-popup;
+//   - #share-fab     fallback for posts without a table of contents.
+
+.share-anywhere-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.8rem;
+
+  a,
+  button {
+    background: none;
+    border: 0;
+    padding: 0;
+    line-height: 1;
+    font-size: 1.125rem;
+    color: var(--btn-share-color);
+    cursor: pointer;
+
+    i {
+      color: var(--btn-share-color);
+      transition: color var(--transition-fast);
+    }
+
+    &:hover i,
+    &:focus-visible i {
+      color: var(--accent);
+    }
+  }
+
+  // Undo the prose link underline from _flourishes.scss.
+  a {
+    background-image: none !important;
+  }
+}
+
+// Desktop: a block above Contents inside the sticky panel.
+#share-panel {
+  margin-bottom: 1.25rem;
+
+  .share-anywhere-icons {
+    gap: 0.5rem 0.6rem;
+    padding: 0.5rem 0 0 1rem;
+  }
+}
+
+// Fallback when the post has no table of contents: its own sticky block.
+#share-panel.standalone {
+  position: sticky;
+  top: 0;
+  margin-top: 2rem;
+}
+
+// Mobile and tablet: the share icon inside the "Contents" capsule,
+// styled like the capsule's own TOC trigger (_layout.scss).
+#toc-bar .share-bar-actions {
+  display: flex;
+  align-items: center;
+}
+
+#toc-bar .share-trigger {
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+// Floating fallback for posts without Contents (mobile and tablet only).
+#share-fab {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 5.5rem;
+  z-index: 10;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 1px solid var(--btn-border-color);
+  background: var(--main-bg);
+  color: var(--text-muted-color);
+  box-shadow: var(--shadow-sm);
+
+  @media (min-width: 992px) {
+    display: none !important;
+  }
+}
+
+// The share sheet opened on mobile.
+#share-popup {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  height: fit-content;
+  width: min(26rem, calc(100vw - 2rem));
+  max-width: calc(100vw - 2rem);
+  padding: 0;
+  border: 1px solid var(--main-border-color);
+  border-radius: 0.75rem;
+  background: var(--main-bg);
+  color: var(--text-color);
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+  }
+
+  .share-popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem 0.5rem 1.25rem;
+    border-bottom: 1px solid var(--main-border-color);
+    font-weight: 600;
+  }
+
+  .share-anywhere-icons {
+    padding: 1.25rem;
+    gap: 1rem 1.4rem;
+
+    a,
+    button {
+      font-size: 1.6rem;
+    }
+  }
+}

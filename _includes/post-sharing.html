@@ -84,15 +84,15 @@
 <script>
   (function () {
     var btn = document.getElementById('native-share');
-    if (!btn || typeof navigator.share !== 'function') return;
-    btn.classList.remove('d-none');
+    if (!btn) return;
 
-    btn.addEventListener('click', async function () {
-      var title = btn.dataset.shareTitle;
-      var url = btn.dataset.shareUrl;
+    var title = btn.dataset.shareTitle;
+    var url = btn.dataset.shareUrl;
+    var image = btn.dataset.shareImage;
+    var canNative = typeof navigator.share === 'function';
+
+    async function nativeShare() {
       var data = { title: title, text: title, url: url };
-      var image = btn.dataset.shareImage;
-
       if (image && typeof navigator.canShare === 'function') {
         try {
           var res = await fetch(image);
@@ -105,12 +105,135 @@
           /* fall back to sharing the link only */
         }
       }
-
       try {
         await navigator.share(data);
       } catch (e) {
         /* the user closed the share sheet */
       }
+    }
+
+    if (canNative) {
+      btn.classList.remove('d-none');
+      btn.addEventListener('click', nativeShare);
+    }
+
+    /* ---- Always-available sharing, in the same places as "Contents" ---- */
+
+    function iconButton(icon, label) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.title = label;
+      b.setAttribute('aria-label', label);
+      b.innerHTML = '<i class="fa-fw fas ' + icon + '"></i>';
+      return b;
+    }
+
+    function buildIcons() {
+      var box = document.createElement('div');
+      box.className = 'share-anywhere-icons';
+      if (canNative) {
+        var n = iconButton('fa-share-nodes', 'Share via apps (Instagram, TikTok, WhatsApp Status...)');
+        n.addEventListener('click', nativeShare);
+        box.appendChild(n);
+      }
+      document.querySelectorAll('.share-wrapper .share-icons > a').forEach(function (a) {
+        var c = a.cloneNode(true);
+        c.removeAttribute('data-bs-toggle');
+        c.removeAttribute('data-bs-placement');
+        c.title = a.getAttribute('aria-label') || '';
+        box.appendChild(c);
+      });
+      var copy = iconButton('fa-link', 'Copy link');
+      copy.addEventListener('click', function () {
+        if (!navigator.clipboard) return;
+        navigator.clipboard.writeText(url).then(function () {
+          var i = copy.querySelector('i');
+          i.className = 'fa-fw fas fa-check';
+          setTimeout(function () { i.className = 'fa-fw fas fa-link'; }, 1500);
+        });
+      });
+      box.appendChild(copy);
+      return box;
+    }
+
+    var popup = null;
+    function openPopup() {
+      if (!popup) {
+        popup = document.createElement('dialog');
+        popup.id = 'share-popup';
+        popup.innerHTML =
+          '<div class="share-popup-header"><span>Share</span>' +
+          '<button type="button" class="btn-close btn-sm" aria-label="Close"></button></div>';
+        popup.appendChild(buildIcons());
+        popup.querySelector('.btn-close').addEventListener('click', function () { popup.close(); });
+        popup.addEventListener('click', function (e) { if (e.target === popup) popup.close(); });
+        document.body.appendChild(popup);
+      }
+      if (typeof popup.showModal === 'function') popup.showModal();
+      else if (canNative) nativeShare();
+    }
+
+    function setup() {
+      /* Desktop: above Contents, inside the sticky right panel. */
+      var panel = document.getElementById('panel-wrapper');
+      if (panel && !document.getElementById('share-panel')) {
+        var section = document.createElement('section');
+        section.id = 'share-panel';
+        section.innerHTML = '<h2 class="panel-heading ps-3 pb-2 mb-0">Share</h2>';
+        section.appendChild(buildIcons());
+        var toc = document.getElementById('toc-wrapper');
+        if (toc) {
+          toc.insertBefore(section, toc.firstChild);
+        } else {
+          section.classList.add('standalone');
+          panel.appendChild(section);
+        }
+      }
+
+      /* Mobile and tablet: an icon in the "Contents" capsule (#toc-bar). */
+      var bar = document.getElementById('toc-bar');
+      var trigger = bar && bar.querySelector('.toc-trigger');
+      if (trigger && !bar.querySelector('.share-trigger')) {
+        var group = document.createElement('span');
+        group.className = 'share-bar-actions';
+        var t = document.createElement('button');
+        t.type = 'button';
+        t.className = 'share-trigger btn me-1';
+        t.setAttribute('aria-label', 'Share');
+        t.innerHTML = '<i class="fa-solid fa-share-nodes fa-fw"></i>';
+        t.addEventListener('click', openPopup);
+        trigger.parentNode.insertBefore(group, trigger);
+        group.appendChild(t);
+        group.appendChild(trigger);
+      }
+
+      /* Posts without Contents: a floating button on mobile and tablet. */
+      if (!bar && !document.getElementById('share-fab')) {
+        var f = document.createElement('button');
+        f.type = 'button';
+        f.id = 'share-fab';
+        f.setAttribute('aria-label', 'Share');
+        f.innerHTML = '<i class="fa-solid fa-share-nodes fa-fw"></i>';
+        f.addEventListener('click', openPopup);
+        document.body.appendChild(f);
+      }
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setup);
+    else setup();
+
+    /* If the post has a Contents panel that stays hidden (no headings),
+       move the Share block out of it so it remains visible. */
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var toc = document.getElementById('toc-wrapper');
+        var section = document.getElementById('share-panel');
+        var panel = document.getElementById('panel-wrapper');
+        if (toc && section && panel && toc.classList.contains('invisible') && section.parentNode === toc) {
+          section.classList.add('standalone');
+          panel.appendChild(section);
+        }
+      }, 1500);
     });
   })();
 </script>
