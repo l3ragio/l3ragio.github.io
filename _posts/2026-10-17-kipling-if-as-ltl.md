@@ -497,20 +497,20 @@ Now classify the clauses by the four classes, and add the column that matters mo
 
 | Clause | Shape | Class | Verdicts a finite life can deliver |
 |---|---|---|---|
-| keep your head | `□(Crisis → PrincipledResponse)` | safety and coliveness | *violated* only |
-| do not lie back | `□(Lie → ¬LieBack)` | safety and coliveness | *violated* only |
-| do not hate back | `□(Hated → □¬HateBack)` | safety and coliveness | *violated* only |
-| make no claim to have the virtue | `□¬Assert(Satisfied(φ))` | safety and coliveness | *violated* only |
-| host others' doubt | `□(Doubt → Hospitality)` | safety and coliveness | *violated* only |
-| meaning survives distortion | `□(Twisted → Region_self preserved)` | safety and coliveness | *violated* only |
-| the decisive minute | `□(Decisive → ◊≤k FullPresence)` | safety and coliveness | *violated* only |
-| fill the minute | `□(Decisive → □≤k Progress)` | safety and coliveness | *violated* only |
-| the Will holds | `□(ResourcesExhausted → PolicyPersists)` | safety and coliveness | *violated* only |
+| keep your head | `□(Crisis → PrincipledResponse)` | safety ∩ coliveness | *violated* only |
+| do not lie back | `□(Lie → ¬LieBack)` | safety ∩ coliveness | *violated* only |
+| do not hate back | `□(Hated → □¬HateBack)` | safety ∩ coliveness | *violated* only |
+| make no claim to have the virtue | `□¬Assert(Satisfied(φ))` | safety ∩ coliveness | *violated* only |
+| host others' doubt | `□(Doubt → Hospitality)` | safety ∩ coliveness | *violated* only |
+| meaning survives distortion | `□(Twisted → Region_self preserved)` | safety ∩ coliveness | *violated* only |
+| the decisive minute | `□(Decisive → ◊≤k FullPresence)` | safety ∩ coliveness | *violated* only |
+| fill the minute | `□(Decisive → □≤k Progress)` | safety ∩ coliveness | *violated* only |
+| the Will holds | `□(ResourcesExhausted → PolicyPersists)` | safety ∩ coliveness | *violated* only |
 | no loss-narrative until restart | `□(Loss → (¬Corrupt U Restart))` | coliveness, neither safety nor cosafety | *violated* only |
-| stay open to correction | `□(CounterEvidence → ◊Revise)` | liveness and coliveness | none |
-| restart after loss | `□(Loss → ◊Restart)` | liveness and coliveness | none |
-| open-ended dream | `□◊ Progress` | liveness and coliveness | none |
-| finite dream | `◊ Achieved(d)` | cosafety and liveness | *satisfied* only |
+| stay open to correction | `□(CounterEvidence → ◊Revise)` | liveness ∩ coliveness | none |
+| restart after loss | `□(Loss → ◊Restart)` | liveness ∩ coliveness | none |
+| open-ended dream | `□◊ Progress` | liveness ∩ coliveness | none |
+| finite dream | `◊ Achieved(d)` | cosafety ∩ liveness | *satisfied* only |
 
 Read down the last column and the poem's architecture appears. Every virtue is refutable and never confirmable: the monitor can say *you broke it* but never *you have it*. Every recovery is beyond any verdict at all. The only things a finite life can positively confirm are achievements, which is exactly why the poem keeps warning against mistaking them for the self. A [typed account of agent actions](https://doi.org/10.5281/zenodo.23041634), which Giuseppe Italiano and I develop as a technical report, maps action classes onto these prefix verdicts; the poem is a hand-written instance of the same map.
 
@@ -567,28 +567,28 @@ You are not the event that happens to you. You are the temporal policy by which 
 
 | Lines | Verse | Formula | Class |
 |---|---|---|---|
-| 1-2 | If you can keep your head when all about you / Are losing theirs and blaming it on you, | `□((OthersLoseHead ∧ BlameYou) → KeepHead)` | safety and coliveness |
-| 3-4 | If you can trust yourself when all men doubt you, / But make allowance for their doubting too; | `□(Doubt → SelfTrust ∧ PermitDoubt)` and `□(CounterEvidence → ◊Revise)` | safety and coliveness; liveness and coliveness |
-| 5 | If you can wait and not be tired by waiting, | `□(WaitingRequired → ¬ActPrematurely ∧ ¬ResentWaiting)` | safety and coliveness |
-| 6 | Or being lied about, don't deal in lies, | `□(LiedAboutYou → ¬LieBack)` | safety and coliveness |
-| 7 | Or being hated, don't give way to hating, | `□(Hated → □¬HateBack)` | safety and coliveness |
-| 8 | And yet don't look too good, nor talk too wise: | `□¬Assert(Satisfied(φ))` for every property in safety and coliveness | safety and coliveness |
-| 9 | If you can dream - and not make dreams your master; | `□(Dream_d → ¬LexicographicDominance(d))` | safety and coliveness |
-| 10 | If you can think - and not make thoughts your aim; | `□(Thought_t → ¬Terminal(t))` | safety and coliveness |
-| 11-12 | If you can meet with Triumph and Disaster / And treat those two impostors just the same; | `□((Success ∨ Failure) → SelfModelStable)`, with `Update(Triumph) ≡ Update(Disaster)` | safety and coliveness |
-| 13-14 | If you can bear to hear the truth you've spoken / Twisted by knaves to make a trap for fools, | `□(Twisted(u) → Region_self(u) = Region_self⁰(u))` | safety and coliveness |
-| 15-16 | Or watch the things you gave your life to, broken, / And stoop and build 'em up with worn-out tools: | `□(Loss → ◊Restart_from(current state, current tools))` | liveness and coliveness |
-| 17-18 | If you can make one heap of all your winnings / And risk it on one turn of pitch-and-toss, | `□¬(Identity = Winnings)` | safety and coliveness |
-| 19 | And lose, and start again at your beginnings | `□(Loss → ◊Restart)` | liveness and coliveness |
+| 1-2 | If you can keep your head when all about you / Are losing theirs and blaming it on you, | `□((OthersLoseHead ∧ BlameYou) → KeepHead)` | safety ∩ coliveness |
+| 3-4 | If you can trust yourself when all men doubt you, / But make allowance for their doubting too; | `□(Doubt → SelfTrust ∧ PermitDoubt)` and `□(CounterEvidence → ◊Revise)` | safety ∩ coliveness; liveness ∩ coliveness |
+| 5 | If you can wait and not be tired by waiting, | `□(WaitingRequired → ¬ActPrematurely ∧ ¬ResentWaiting)` | safety ∩ coliveness |
+| 6 | Or being lied about, don't deal in lies, | `□(LiedAboutYou → ¬LieBack)` | safety ∩ coliveness |
+| 7 | Or being hated, don't give way to hating, | `□(Hated → □¬HateBack)` | safety ∩ coliveness |
+| 8 | And yet don't look too good, nor talk too wise: | `□¬Assert(Satisfied(φ))` for φ in safety ∩ coliveness | safety ∩ coliveness |
+| 9 | If you can dream - and not make dreams your master; | `□(Dream_d → ¬LexicographicDominance(d))` | safety ∩ coliveness |
+| 10 | If you can think - and not make thoughts your aim; | `□(Thought_t → ¬Terminal(t))` | safety ∩ coliveness |
+| 11-12 | If you can meet with Triumph and Disaster / And treat those two impostors just the same; | `□((Success ∨ Failure) → SelfModelStable)`, with `Update(Triumph) ≡ Update(Disaster)` | safety ∩ coliveness |
+| 13-14 | If you can bear to hear the truth you've spoken / Twisted by knaves to make a trap for fools, | `□(Twisted(u) → Region_self(u) = Region_self⁰(u))` | safety ∩ coliveness |
+| 15-16 | Or watch the things you gave your life to, broken, / And stoop and build 'em up with worn-out tools: | `□(Loss → ◊Restart_from(current state, current tools))` | liveness ∩ coliveness |
+| 17-18 | If you can make one heap of all your winnings / And risk it on one turn of pitch-and-toss, | `□¬(Identity = Winnings)` | safety ∩ coliveness |
+| 19 | And lose, and start again at your beginnings | `□(Loss → ◊Restart)` | liveness ∩ coliveness |
 | 20 | And never breathe a word about your loss; | `□(Loss → (¬CorruptSelfNarrative U Restart))` | coliveness only; monitorable |
-| 21-23 | If you can force your heart and nerve and sinew / To serve your turn long after they are gone, / And so hold on when there is nothing in you | literal `□(Exhausted → Continue)`; repaired `□((Exhausted ∧ DutyCritical ∧ RecoveryPossible) → ContinueUntilSafeStop)` | safety and coliveness (the literal form is inconsistent with recovery) |
-| 24 | Except the Will which says to them: 'Hold on!' | `□(ResourcesExhausted → PolicyPersists)` | safety and coliveness |
-| 25-26 | If you can talk with crowds and keep your virtue, / Or walk with Kings - nor lose the common touch, | `□(ContextShift → CoreInvariant)` | safety and coliveness |
-| 27 | If neither foes nor loving friends can hurt you, | `□((EnemyAttack ∨ FriendAttachment) → ¬DeepDestabilization)` | safety and coliveness |
-| 28 | If all men count with you, but none too much; | `□(Matters(p) ∧ ¬AbsoluteDependency(p))` | safety and coliveness |
-| 29-30 | If you can fill the unforgiving minute / With sixty seconds' worth of distance run, | `□(Decisive → ◊≤k FullPresence)` and `□(Decisive → □≤k Progress)` | safety and coliveness |
-| 31 | Yours is the Earth and everything that's in it, | `◊ WorldInhabitability` | cosafety and liveness |
-| 32 | And - which is more - you'll be a Man, my son! | `◊ FullAgenthood`, ranked above line 31 | cosafety and liveness |
+| 21-23 | If you can force your heart and nerve and sinew / To serve your turn long after they are gone, / And so hold on when there is nothing in you | literal `□(Exhausted → Continue)`; repaired `□((Exhausted ∧ DutyCritical ∧ RecoveryPossible) → ContinueUntilSafeStop)` | safety ∩ coliveness (the literal form is inconsistent with recovery) |
+| 24 | Except the Will which says to them: 'Hold on!' | `□(ResourcesExhausted → PolicyPersists)` | safety ∩ coliveness |
+| 25-26 | If you can talk with crowds and keep your virtue, / Or walk with Kings - nor lose the common touch, | `□(ContextShift → CoreInvariant)` | safety ∩ coliveness |
+| 27 | If neither foes nor loving friends can hurt you, | `□((EnemyAttack ∨ FriendAttachment) → ¬DeepDestabilization)` | safety ∩ coliveness |
+| 28 | If all men count with you, but none too much; | `□(Matters(p) ∧ ¬AbsoluteDependency(p))` | safety ∩ coliveness |
+| 29-30 | If you can fill the unforgiving minute / With sixty seconds' worth of distance run, | `□(Decisive → ◊≤k FullPresence)` and `□(Decisive → □≤k Progress)` | safety ∩ coliveness |
+| 31 | Yours is the Earth and everything that's in it, | `◊ WorldInhabitability` | cosafety ∩ liveness |
+| 32 | And - which is more - you'll be a Man, my son! | `◊ FullAgenthood`, ranked above line 31 | cosafety ∩ liveness |
 
 Read down the last column once more. All thirty lines of conditions are coliveness: nothing the poem asks of you can ever be finitely confirmed. The two lines of reward are the only cosafety in the poem: the only things in it that a finite life can positively settle. The poem's form, thirty lines of *if* and two of *then*, is the class boundary.
 
