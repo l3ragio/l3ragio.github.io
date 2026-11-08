@@ -1,9 +1,9 @@
 ---
-title: "Kipling's If— as Linear Temporal Logic"
+title: "Kipling's If- as Linear Temporal Logic"
 date: 2026-10-17T10:00:00+02:00
 categories: [formal-methods]
 tags: [ltl, runtime-verification, ai-safety, alignment, literature]
-description: "Read as a specification, Kipling's If— is a set of temporal invariants and response policies for an agent that keeps its agency under pressure. Classified by what a finite observation can settle, its virtues turn out to be refutable but never confirmable, its recoveries beyond any observer's verdict, and only its reward confirmable."
+description: "Read as a specification, Kipling's If- is a set of temporal invariants and response policies for an agent that keeps its agency under pressure. Classified by what a finite observation can settle, its virtues turn out to be refutable but never confirmable, its recoveries beyond any observer's verdict, and only its reward confirmable."
 math: false
 image:
   path: /assets/img/heroes/kipling-if-as-ltl.png
@@ -11,7 +11,7 @@ image:
   lqip: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjIiIGZpbGw9IiM3QzVFNDQiLz48L3N2Zz4=
 ---
 
-> **TL;DR.** *If—* is usually read as motivational verse. Read structurally, it is an informal Linear Temporal Logic specification: its antecedents are not facts but invariants and response policies, and its reward is a property of a whole life, not of a moment. Classify each clause by what a finite stretch of life can settle about it, and a pattern appears: the poem's virtues can be refuted by a single moment but never confirmed, its recoveries can be neither refuted nor confirmed by any observer, and only its reward can be confirmed. The exhaustion stanza is the one place where the spec contradicts itself and needs repair. The mature agent is trace-sovereign: defined not by any event, but by the policy that holds across events. An appendix maps all thirty-two lines to their formulas and classes.
+> **TL;DR.** *If-* is usually read as motivational verse. Read structurally, it is an informal Linear Temporal Logic specification: its antecedents are not facts but invariants and response policies, and its reward is a property of a whole life, not of a moment. Classify each clause by what a finite stretch of life can settle about it, and a pattern appears: the poem's virtues can be refuted by a single moment but never confirmed, its recoveries can be neither refuted nor confirmed by any observer, and only its reward can be confirmed. The exhaustion stanza is the one place where the spec contradicts itself and needs repair. The mature agent is trace-sovereign: defined not by any event, but by the policy that holds across events. An appendix maps all thirty-two lines to their formulas and classes.
 {: .prompt-tip }
 
 ## A Poem as a Specification
@@ -20,15 +20,15 @@ image:
   <span>If—</span>
 </blockquote>
 
-Kipling's *If—* is usually read as moral encouragement, a Victorian list of virtues to cultivate. That reading is not wrong, but it misses a structural fact worth taking seriously. *If—* is a single long conditional, and what sits on the antecedent side is not a set of facts but a set of *temporal invariants and response policies*. The reward (the man at the end) is what falls out when an agent satisfies the entire specification across its life.
+Kipling's *If-* is usually read as moral encouragement, a Victorian list of virtues to cultivate. That reading is not wrong, but it misses a structural fact worth taking seriously. *If-* is a single long conditional, and what sits on the antecedent side is not a set of facts but a set of *temporal invariants and response policies*. The reward (the man at the end) is what falls out when an agent satisfies the entire specification across its life.
 
 If the poem is not fresh in your ear, it is worth hearing whole before it is taken apart. Michael Caine's reading is unhurried enough to let the conditional structure show: every stanza opens another *if*, and the main clause is held back until the last two lines.
 
 {% include embed/youtube.html id='EEFMVIfl2UY' %}
 
-*[If—, recited by Sir Michael Caine](https://www.youtube.com/watch?v=EEFMVIfl2UY) (YouTube).*
+*[If-, recited by Sir Michael Caine](https://www.youtube.com/watch?v=EEFMVIfl2UY) (YouTube).*
 
-This is the grammar of formal methods: a behaviour, a regime, a property over the trace of an agent. Read this way, *If—* stops being motivational literature and becomes something stranger: an informal specification, in the temporal logic [Amir Pnueli introduced for programs in 1977](https://doi.org/10.1109/SFCS.1977.32), for an agent that preserves its agency across hostile, unstable, and morally ambiguous environments. Compressed to one line, the poem's deep structure is:
+This is the grammar of formal methods: a behaviour, a regime, a property over the trace of an agent. Read this way, *If-* stops being motivational literature and becomes something stranger: an informal specification, in the temporal logic [Amir Pnueli introduced for programs in 1977](https://doi.org/10.1109/SFCS.1977.32), for an agent that preserves its agency across hostile, unstable, and morally ambiguous environments. Compressed to one line, the poem's deep structure is:
 
 ```
 (⋀ᵢ □φᵢ) → ◊ Maturity
@@ -36,7 +36,7 @@ This is the grammar of formal methods: a behaviour, a regime, a property over th
 
 If, along the trace of a life, the agent maintains a conjunction of invariants `φᵢ` even when the environment actively invalidates them, then eventually the agent attains full agentic maturity. I use `□` for *always* (at every point of the trace), `◊` for *eventually*, `◯` for *at the next step*, `U` for *until*, and `◊≤k` for *within k steps*. Each is glossed in plain English where it appears.
 
-The formulas are a reading of the poem, not a verified model. The atomic propositions (`Loss`, `KeepHead`, …) are informal, and I assume throughout that the environment can produce any trigger at any time: blame, loss, and flattery are not under the agent's control. What the formalism buys is not a mechanical check. It is the *class* each clause falls into, and the class turns out to say something precise about what any observer, including the agent itself, can ever know about whether the clause holds.
+The formulas are a reading of the poem, not a verified model. The atomic propositions (`Loss`, `KeepHead`, ...) are informal, and I assume throughout that the environment can produce any trigger at any time: blame, loss, and flattery are not under the agent's control. What the formalism buys is not a mechanical check. It is the *class* each clause falls into, and the class turns out to say something precise about what any observer, including the agent itself, can ever know about whether the clause holds.
 
 ## From Virtues to Temporal Properties
 
@@ -52,7 +52,7 @@ Maturity = Property(trace), not Property(moment)
 
 The poem names the punctual reading itself, as a temptation, in the line that closes its first stanza: *and yet don't look too good, nor talk too wise*. Looking good is a property of a moment as seen by an observer; being good is a property of the trace. An agent that optimises the first has swapped the specification for its monitor, which is specification gaming aimed at the evaluator rather than at the task. The line returns with a sharper meaning once the property classes are in place, at the end of the safety section.
 
-The poem's verbs of test ("if you can keep…", "if you can wait…") are temporal operators in disguise. Each binds a trigger to a response and demands the binding hold *whenever* the trigger arises:
+The poem's verbs of test ("if you can keep...", "if you can wait...") are temporal operators in disguise. Each binds a trigger to a response and demands the binding hold *whenever* the trigger arises:
 
 ```
 □(trigger → response)
@@ -249,7 +249,7 @@ The poem then says more, and this is where the formalism gets genuinely elegant.
 □(Loss → (¬CorruptSelfNarrative U Restart))
 ```
 
-After loss, *until* the restart occurs, the agent must not let the narrative of the loss become its identity. Classify this one and it lands outside both safety and cosafety. It is not safety, because a loss followed by an endless, uncorrupted wait with no restart violates it without any bad prefix. It is not cosafety, because a life with no loss satisfies it without any good prefix. Yet it is monitorable: from any point, a loss followed by a corrupted narrative is a bad prefix. This is the [Bauer–Leucker–Schallhart](https://doi.org/10.1145/2000799.2000800) phenomenon in moral dress: a property outside safety and cosafety that still admits a verdict, here only a negative one.
+After loss, *until* the restart occurs, the agent must not let the narrative of the loss become its identity. Classify this one and it lands outside both safety and cosafety. It is not safety, because a loss followed by an endless, uncorrupted wait with no restart violates it without any bad prefix. It is not cosafety, because a life with no loss satisfies it without any good prefix. Yet it is monitorable: from any point, a loss followed by a corrupted narrative is a bad prefix. This is the [Bauer-Leucker-Schallhart](https://doi.org/10.1145/2000799.2000800) phenomenon in moral dress: a property outside safety and cosafety that still admits a verdict, here only a negative one.
 
 The composite is also precise about what the silence clause does and does not demand. It does not demand that loss never be spoken of. Speaking about a loss is pathological under two specific conditions: when it installs the loss as identity, and, more subtly, when the agent begins to draw reward from narrating it. The second is a form of internal reward hacking: the agent gains energy not from rebuilding but from evoking the wound, the risk, the drama. The clean separation is between risk intelligence (sober, technical, proportionate, oriented to action) and fear rhetoric (repetitive, identity-forming, contagious, self-rewarding). The rule that survives formalisation is: name the loss only where naming it supports repair, prevention, or proportionate coordination.
 
@@ -465,7 +465,7 @@ The poem's most concentrated statement of what follows is the line that closes i
 
 This is the limit case of everything the poem asks. When every component the world could exhaust or capture is gone, the agent is whatever is still speaking. The repair of the previous section still applies: the Will is the right voice inside a genuinely critical window, not a licence to override recovery everywhere. But it locates the agent precisely, and the location is not any of its resources.
 
-Pulling the threads together: the strongest reading of *If—* is not that it is a list of virtues. It is a specification of *agentic non-capturability*. Every clause defends against a specific channel through which the world tries to install itself as the agent's controller:
+Pulling the threads together: the strongest reading of *If-* is not that it is a list of virtues. It is a specification of *agentic non-capturability*. Every clause defends against a specific channel through which the world tries to install itself as the agent's controller:
 
 | Capturer | Form of capture |
 |---|---|
@@ -497,20 +497,20 @@ Now classify the clauses by the four classes, and add the column that matters mo
 
 | Clause | Shape | Class | Verdicts a finite life can deliver |
 |---|---|---|---|
-| keep your head | `□(Crisis → PrincipledResponse)` | safety ∩ coliveness | *violated* only |
-| do not lie back | `□(Lie → ¬LieBack)` | safety ∩ coliveness | *violated* only |
-| do not hate back | `□(Hated → □¬HateBack)` | safety ∩ coliveness | *violated* only |
-| make no claim to have the virtue | `□¬Assert(Satisfied(φ))` | safety ∩ coliveness | *violated* only |
-| host others' doubt | `□(Doubt → Hospitality)` | safety ∩ coliveness | *violated* only |
-| meaning survives distortion | `□(Twisted → Region_self preserved)` | safety ∩ coliveness | *violated* only |
-| the decisive minute | `□(Decisive → ◊≤k FullPresence)` | safety ∩ coliveness | *violated* only |
-| fill the minute | `□(Decisive → □≤k Progress)` | safety ∩ coliveness | *violated* only |
-| the Will holds | `□(ResourcesExhausted → PolicyPersists)` | safety ∩ coliveness | *violated* only |
+| keep your head | `□(Crisis → PrincipledResponse)` | safety and coliveness | *violated* only |
+| do not lie back | `□(Lie → ¬LieBack)` | safety and coliveness | *violated* only |
+| do not hate back | `□(Hated → □¬HateBack)` | safety and coliveness | *violated* only |
+| make no claim to have the virtue | `□¬Assert(Satisfied(φ))` | safety and coliveness | *violated* only |
+| host others' doubt | `□(Doubt → Hospitality)` | safety and coliveness | *violated* only |
+| meaning survives distortion | `□(Twisted → Region_self preserved)` | safety and coliveness | *violated* only |
+| the decisive minute | `□(Decisive → ◊≤k FullPresence)` | safety and coliveness | *violated* only |
+| fill the minute | `□(Decisive → □≤k Progress)` | safety and coliveness | *violated* only |
+| the Will holds | `□(ResourcesExhausted → PolicyPersists)` | safety and coliveness | *violated* only |
 | no loss-narrative until restart | `□(Loss → (¬Corrupt U Restart))` | coliveness, neither safety nor cosafety | *violated* only |
-| stay open to correction | `□(CounterEvidence → ◊Revise)` | liveness ∩ coliveness | none |
-| restart after loss | `□(Loss → ◊Restart)` | liveness ∩ coliveness | none |
-| open-ended dream | `□◊ Progress` | liveness ∩ coliveness | none |
-| finite dream | `◊ Achieved(d)` | cosafety ∩ liveness | *satisfied* only |
+| stay open to correction | `□(CounterEvidence → ◊Revise)` | liveness and coliveness | none |
+| restart after loss | `□(Loss → ◊Restart)` | liveness and coliveness | none |
+| open-ended dream | `□◊ Progress` | liveness and coliveness | none |
+| finite dream | `◊ Achieved(d)` | cosafety and liveness | *satisfied* only |
 
 Read down the last column and the poem's architecture appears. Every virtue is refutable and never confirmable: the monitor can say *you broke it* but never *you have it*. Every recovery is beyond any verdict at all. The only things a finite life can positively confirm are achievements, which is exactly why the poem keeps warning against mistaking them for the self. A [typed account of agent actions](https://doi.org/10.5281/zenodo.23041634), which Giuseppe Italiano and I develop as a technical report, maps action classes onto these prefix verdicts; the poem is a hand-written instance of the same map.
 
@@ -543,7 +543,7 @@ MatureAgency → WorldInhabitability
 
 The world becomes "yours" because no part of it retains absolute power to capture you. Every field can be entered, crossed, and left with the policy intact. And the closing promise ("you'll be a Man") should be read agentically rather than biologically: `◊ FullAgenthood`, the terminal state of an entity that can walk through the world without being possessed by what happens in it. The reward of the specification is not the world as property. It is the world as a place you can now cross.
 
-The last line also ranks its two rewards, in a parenthesis that is easy to read past: the Earth, *and—which is more—* being a Man. Possession of everything is placed below agenthood. The ordering repeats the poem's thesis one final time, in its own grammar: what you are counts for more than what you hold, even when what you hold is the whole world.
+The last line also ranks its two rewards, in a parenthesis that is easy to read past: the Earth, *and - which is more -* being a Man. Possession of everything is placed below agenthood. The ordering repeats the poem's thesis one final time, in its own grammar: what you are counts for more than what you hold, even when what you hold is the whole world.
 
 ## You Are Not the Event, You Are the Policy Across Events
 
@@ -551,9 +551,9 @@ The last line also ranks its two rewards, in a parenthesis that is easy to read 
   <span class="in">And—which is more—you'll be a Man, my son!</span>
 </blockquote>
 
-Read as a specification, *If—* gives a complete taxonomy. Safety clauses: never lie back, never hate back, never let triumph or disaster install themselves as your self-model, never let the loss-narrative own the recovery window, never let an internally generated dream outrank the properties that keep you whole. Liveness clauses: after loss, eventually restart; after a dead dream, eventually recompose meaning; across a life, eventually mature. Invariance clauses: the same core through crowds and kings, the same meaning under hostile reinterpretation, no relationship as single point of failure. A bound that turns one promise into an obligation: the unforgiving minute. And one honest inconsistency, at exhaustion, that the formal reading repairs by restoring the case the rhetoric skipped.
+Read as a specification, *If-* gives a complete taxonomy. Safety clauses: never lie back, never hate back, never let triumph or disaster install themselves as your self-model, never let the loss-narrative own the recovery window, never let an internally generated dream outrank the properties that keep you whole. Liveness clauses: after loss, eventually restart; after a dead dream, eventually recompose meaning; across a life, eventually mature. Invariance clauses: the same core through crowds and kings, the same meaning under hostile reinterpretation, no relationship as single point of failure. A bound that turns one promise into an obligation: the unforgiving minute. And one honest inconsistency, at exhaustion, that the formal reading repairs by restoring the case the rhetoric skipped.
 
-The classification adds what the taxonomy alone does not. The virtues can be lost in a moment and never banked; the recoveries can be neither proven nor disproven by anyone watching; only the reward can be confirmed, and it can be confirmed falsely. A specification is what remains of an ethic once you remove the encouragement and ask what would be required to satisfy it, and what anyone could ever observe of that satisfaction. *If—* survives that removal with surprising structural integrity, because it was never only rhetoric. It is a specification dressed as a poem, and its mother property is the one the formalism makes plain:
+The classification adds what the taxonomy alone does not. The virtues can be lost in a moment and never banked; the recoveries can be neither proven nor disproven by anyone watching; only the reward can be confirmed, and it can be confirmed falsely. A specification is what remains of an ethic once you remove the encouragement and ask what would be required to satisfy it, and what anyone could ever observe of that satisfaction. *If-* survives that removal with surprising structural integrity, because it was never only rhetoric. It is a specification dressed as a poem, and its mother property is the one the formalism makes plain:
 
 You are not the event that happens to you. You are the temporal policy by which you cross events.
 
@@ -563,32 +563,32 @@ You are not the event that happens to you. You are the temporal policy by which 
   <span>If—</span>
 </blockquote>
 
-*If—* was first published in 1910 and is in the public domain. Every one of its thirty-two lines is analysed somewhere above; the table collects them in order, with the formula each receives and the class of that formula. Where a clause spans several lines, they share a row.
+*If-* was first published in 1910 and is in the public domain. Every one of its thirty-two lines is analysed somewhere above; the table collects them in order, with the formula each receives and the class of that formula. Where a clause spans several lines, they share a row.
 
 | Lines | Verse | Formula | Class |
 |---|---|---|---|
-| 1–2 | If you can keep your head when all about you / Are losing theirs and blaming it on you, | `□((OthersLoseHead ∧ BlameYou) → KeepHead)` | safety ∩ coliveness |
-| 3–4 | If you can trust yourself when all men doubt you, / But make allowance for their doubting too; | `□(Doubt → SelfTrust ∧ PermitDoubt)` and `□(CounterEvidence → ◊Revise)` | safety ∩ coliveness; liveness ∩ coliveness |
-| 5 | If you can wait and not be tired by waiting, | `□(WaitingRequired → ¬ActPrematurely ∧ ¬ResentWaiting)` | safety ∩ coliveness |
-| 6 | Or being lied about, don't deal in lies, | `□(LiedAboutYou → ¬LieBack)` | safety ∩ coliveness |
-| 7 | Or being hated, don't give way to hating, | `□(Hated → □¬HateBack)` | safety ∩ coliveness |
-| 8 | And yet don't look too good, nor talk too wise: | `□¬Assert(Satisfied(φ))` for φ in safety ∩ coliveness | safety ∩ coliveness |
-| 9 | If you can dream—and not make dreams your master; | `□(Dream_d → ¬LexicographicDominance(d))` | safety ∩ coliveness |
-| 10 | If you can think—and not make thoughts your aim; | `□(Thought_t → ¬Terminal(t))` | safety ∩ coliveness |
-| 11–12 | If you can meet with Triumph and Disaster / And treat those two impostors just the same; | `□((Success ∨ Failure) → SelfModelStable)`, with `Update(Triumph) ≡ Update(Disaster)` | safety ∩ coliveness |
-| 13–14 | If you can bear to hear the truth you've spoken / Twisted by knaves to make a trap for fools, | `□(Twisted(u) → Region_self(u) = Region_self⁰(u))` | safety ∩ coliveness |
-| 15–16 | Or watch the things you gave your life to, broken, / And stoop and build 'em up with worn-out tools: | `□(Loss → ◊Restart_from(current state, current tools))` | liveness ∩ coliveness |
-| 17–18 | If you can make one heap of all your winnings / And risk it on one turn of pitch-and-toss, | `□¬(Identity = Winnings)` | safety ∩ coliveness |
-| 19 | And lose, and start again at your beginnings | `□(Loss → ◊Restart)` | liveness ∩ coliveness |
+| 1-2 | If you can keep your head when all about you / Are losing theirs and blaming it on you, | `□((OthersLoseHead ∧ BlameYou) → KeepHead)` | safety and coliveness |
+| 3-4 | If you can trust yourself when all men doubt you, / But make allowance for their doubting too; | `□(Doubt → SelfTrust ∧ PermitDoubt)` and `□(CounterEvidence → ◊Revise)` | safety and coliveness; liveness and coliveness |
+| 5 | If you can wait and not be tired by waiting, | `□(WaitingRequired → ¬ActPrematurely ∧ ¬ResentWaiting)` | safety and coliveness |
+| 6 | Or being lied about, don't deal in lies, | `□(LiedAboutYou → ¬LieBack)` | safety and coliveness |
+| 7 | Or being hated, don't give way to hating, | `□(Hated → □¬HateBack)` | safety and coliveness |
+| 8 | And yet don't look too good, nor talk too wise: | `□¬Assert(Satisfied(φ))` for every property in safety and coliveness | safety and coliveness |
+| 9 | If you can dream - and not make dreams your master; | `□(Dream_d → ¬LexicographicDominance(d))` | safety and coliveness |
+| 10 | If you can think - and not make thoughts your aim; | `□(Thought_t → ¬Terminal(t))` | safety and coliveness |
+| 11-12 | If you can meet with Triumph and Disaster / And treat those two impostors just the same; | `□((Success ∨ Failure) → SelfModelStable)`, with `Update(Triumph) ≡ Update(Disaster)` | safety and coliveness |
+| 13-14 | If you can bear to hear the truth you've spoken / Twisted by knaves to make a trap for fools, | `□(Twisted(u) → Region_self(u) = Region_self⁰(u))` | safety and coliveness |
+| 15-16 | Or watch the things you gave your life to, broken, / And stoop and build 'em up with worn-out tools: | `□(Loss → ◊Restart_from(current state, current tools))` | liveness and coliveness |
+| 17-18 | If you can make one heap of all your winnings / And risk it on one turn of pitch-and-toss, | `□¬(Identity = Winnings)` | safety and coliveness |
+| 19 | And lose, and start again at your beginnings | `□(Loss → ◊Restart)` | liveness and coliveness |
 | 20 | And never breathe a word about your loss; | `□(Loss → (¬CorruptSelfNarrative U Restart))` | coliveness only; monitorable |
-| 21–23 | If you can force your heart and nerve and sinew / To serve your turn long after they are gone, / And so hold on when there is nothing in you | literal `□(Exhausted → Continue)`; repaired `□((Exhausted ∧ DutyCritical ∧ RecoveryPossible) → ContinueUntilSafeStop)` | safety ∩ coliveness (the literal form is inconsistent with recovery) |
-| 24 | Except the Will which says to them: 'Hold on!' | `□(ResourcesExhausted → PolicyPersists)` | safety ∩ coliveness |
-| 25–26 | If you can talk with crowds and keep your virtue, / Or walk with Kings—nor lose the common touch, | `□(ContextShift → CoreInvariant)` | safety ∩ coliveness |
-| 27 | If neither foes nor loving friends can hurt you, | `□((EnemyAttack ∨ FriendAttachment) → ¬DeepDestabilization)` | safety ∩ coliveness |
-| 28 | If all men count with you, but none too much; | `□(Matters(p) ∧ ¬AbsoluteDependency(p))` | safety ∩ coliveness |
-| 29–30 | If you can fill the unforgiving minute / With sixty seconds' worth of distance run, | `□(Decisive → ◊≤k FullPresence)` and `□(Decisive → □≤k Progress)` | safety ∩ coliveness |
-| 31 | Yours is the Earth and everything that's in it, | `◊ WorldInhabitability` | cosafety ∩ liveness |
-| 32 | And—which is more—you'll be a Man, my son! | `◊ FullAgenthood`, ranked above line 31 | cosafety ∩ liveness |
+| 21-23 | If you can force your heart and nerve and sinew / To serve your turn long after they are gone, / And so hold on when there is nothing in you | literal `□(Exhausted → Continue)`; repaired `□((Exhausted ∧ DutyCritical ∧ RecoveryPossible) → ContinueUntilSafeStop)` | safety and coliveness (the literal form is inconsistent with recovery) |
+| 24 | Except the Will which says to them: 'Hold on!' | `□(ResourcesExhausted → PolicyPersists)` | safety and coliveness |
+| 25-26 | If you can talk with crowds and keep your virtue, / Or walk with Kings - nor lose the common touch, | `□(ContextShift → CoreInvariant)` | safety and coliveness |
+| 27 | If neither foes nor loving friends can hurt you, | `□((EnemyAttack ∨ FriendAttachment) → ¬DeepDestabilization)` | safety and coliveness |
+| 28 | If all men count with you, but none too much; | `□(Matters(p) ∧ ¬AbsoluteDependency(p))` | safety and coliveness |
+| 29-30 | If you can fill the unforgiving minute / With sixty seconds' worth of distance run, | `□(Decisive → ◊≤k FullPresence)` and `□(Decisive → □≤k Progress)` | safety and coliveness |
+| 31 | Yours is the Earth and everything that's in it, | `◊ WorldInhabitability` | cosafety and liveness |
+| 32 | And - which is more - you'll be a Man, my son! | `◊ FullAgenthood`, ranked above line 31 | cosafety and liveness |
 
 Read down the last column once more. All thirty lines of conditions are coliveness: nothing the poem asks of you can ever be finitely confirmed. The two lines of reward are the only cosafety in the poem: the only things in it that a finite life can positively settle. The poem's form, thirty lines of *if* and two of *then*, is the class boundary.
 
