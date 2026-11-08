@@ -1,6 +1,6 @@
 ---
 title: "I Believe Only What I Can Prove"
-date: 2026-11-08T18:00:00+01:00
+date: 2026-11-08T09:00:00+01:00
 categories: [formal-methods]
 tags: [ltl, runtime-verification, ai-safety, epistemology, christian-tradition]
 description: "'I believe only what I can prove' sounds like the safest rule a mind can adopt. Read as a policy, it withdraws reliance from the recurring properties that sustain the body the mind comes from, and with every verdict correct it can defeat what it protects. A short tour of Autoimmune Rationalization, with narratives of the Christian tradition read with Father Paolo Benanti."
