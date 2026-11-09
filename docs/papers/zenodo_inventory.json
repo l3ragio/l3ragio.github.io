@@ -1,0 +1,967 @@
+{
+  "generated_by": "scripts/sync_zenodo_papers.py",
+  "source": "Zenodo public REST API (anonymous), queries by ORCID and by creator name, all versions",
+  "orcid": "0009-0008-7645-8241",
+  "concepts_found": 16,
+  "records_found": 34,
+  "works": [
+    {
+      "slug": "intersection-algebra-ltl",
+      "title": "The Intersection Algebra of Safety, Cosafety, Liveness, and Coliveness over Linear Temporal Logic",
+      "authors": [
+        "Bragetti, Davide"
+      ],
+      "type": "Working paper",
+      "concept_record": 20155195,
+      "concept_doi": "10.5281/zenodo.20155195",
+      "preferred_record": 23043255,
+      "preferred_doi": "10.5281/zenodo.23043255",
+      "preferred_version": null,
+      "publication_date": "2026-09-29",
+      "first_published": "2026-05-13",
+      "deposited": "2026-09-30",
+      "license": "cc-by-4.0",
+      "keywords": [
+        "linear temporal logic",
+        "runtime verification",
+        "safety",
+        "cosafety",
+        "liveness",
+        "coliveness",
+        "monitorability",
+        "verdict alphabet",
+        "omega-regular properties",
+        "property classification"
+      ],
+      "zenodo_pdf": "https://zenodo.org/records/23043255/files/paper_lmcs.pdf?download=1",
+      "site_page": "https://l3ragio.github.io/research/papers/intersection-algebra-ltl/",
+      "site_pdf": "https://l3ragio.github.io/research/papers/intersection-algebra-ltl/paper.pdf",
+      "pdf_bytes": 1536489,
+      "pdf_sha256": "73f489ed445e36b59b8d8c8b5fba0574497638c82538f07d904e35f23e802ee3",
+      "pdf_md5_matches_zenodo": true,
+      "pdf_under_5MB": true,
+      "pdf_checks": {
+        "pages": 78,
+        "text_extractable": true,
+        "first_page_title": true,
+        "first_page_title_words": "10/10",
+        "first_page_authors": {
+          "Bragetti": true
+        },
+        "references_section": true
+      },
+      "iris": [
+        "https://iris.uniroma1.it/handle/11573/1767773"
+      ],
+      "versions": [
+        {
+          "record": 20155196,
+          "doi": "10.5281/zenodo.20155196",
+          "version": null,
+          "date": "2026-05-13",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 21099448,
+          "doi": "10.5281/zenodo.21099448",
+          "version": null,
+          "date": "2026-07-01",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 23043255,
+          "doi": "10.5281/zenodo.23043255",
+          "version": null,
+          "date": "2026-09-29",
+          "access": "open",
+          "title": null
+        }
+      ]
+    },
+    {
+      "slug": "touch-and-crossing",
+      "title": "Touch and Crossing: Dual Primitive Modalities of Threshold Monitors",
+      "authors": [
+        "Bragetti, Davide"
+      ],
+      "type": "Preprint",
+      "concept_record": 21078483,
+      "concept_doi": "10.5281/zenodo.21078483",
+      "preferred_record": 23041651,
+      "preferred_doi": "10.5281/zenodo.23041651",
+      "preferred_version": null,
+      "publication_date": "2026-09-29",
+      "first_published": "2026-06-30",
+      "deposited": "2026-09-30",
+      "license": "cc-by-4.0",
+      "keywords": [
+        "runtime verification",
+        "threshold monitors",
+        "signal monitoring",
+        "crossing",
+        "touch",
+        "extremum detection",
+        "verdict alphabet",
+        "capability triple",
+        "LTL3",
+        "monitor tuning"
+      ],
+      "zenodo_pdf": "https://zenodo.org/records/23041651/files/main.pdf?download=1",
+      "site_page": "https://l3ragio.github.io/research/papers/touch-and-crossing/",
+      "site_pdf": "https://l3ragio.github.io/research/papers/touch-and-crossing/paper.pdf",
+      "pdf_bytes": 2311106,
+      "pdf_sha256": "b4b0d380f5300d048ca788da20da7f6160f14196022bc292bfe132e903465363",
+      "pdf_md5_matches_zenodo": true,
+      "pdf_under_5MB": true,
+      "pdf_checks": {
+        "pages": 105,
+        "text_extractable": true,
+        "first_page_title": true,
+        "first_page_title_words": "7/7",
+        "first_page_authors": {
+          "Bragetti": true
+        },
+        "references_section": true
+      },
+      "iris": [
+        "https://iris.uniroma1.it/handle/11573/1770547"
+      ],
+      "versions": [
+        {
+          "record": 21078484,
+          "doi": "10.5281/zenodo.21078484",
+          "version": null,
+          "date": "2026-06-30",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 23041651,
+          "doi": "10.5281/zenodo.23041651",
+          "version": null,
+          "date": "2026-09-29",
+          "access": "open",
+          "title": null
+        }
+      ]
+    },
+    {
+      "slug": "observation-relative-monitorability",
+      "title": "Observation-Relative Monitorability of Bounded Temporal Implication",
+      "authors": [
+        "Bragetti, Davide",
+        "Bragetti, Alessandro",
+        "Italiano, Giuseppe F."
+      ],
+      "type": "Preprint",
+      "concept_record": 21700205,
+      "concept_doi": "10.5281/zenodo.21700205",
+      "preferred_record": 23041615,
+      "preferred_doi": "10.5281/zenodo.23041615",
+      "preferred_version": null,
+      "publication_date": "2026-09-29",
+      "first_published": "2026-07-28",
+      "deposited": "2026-09-30",
+      "license": "cc-by-4.0",
+      "keywords": [
+        "runtime verification",
+        "monitorability",
+        "linear temporal logic",
+        "bounded temporal implication",
+        "observation model",
+        "safety",
+        "cosafety",
+        "liveness",
+        "coliveness",
+        "causal validity"
+      ],
+      "zenodo_pdf": "https://zenodo.org/records/23041615/files/main.pdf?download=1",
+      "site_page": "https://l3ragio.github.io/research/papers/observation-relative-monitorability/",
+      "site_pdf": "https://l3ragio.github.io/research/papers/observation-relative-monitorability/paper.pdf",
+      "pdf_bytes": 1532151,
+      "pdf_sha256": "e0ae1783aceed7022012d26b863c4fbe24c70034aa116a5115166c908c97b70a",
+      "pdf_md5_matches_zenodo": true,
+      "pdf_under_5MB": true,
+      "pdf_checks": {
+        "pages": 77,
+        "text_extractable": true,
+        "first_page_title": true,
+        "first_page_title_words": "6/6",
+        "first_page_authors": {
+          "Bragetti": true,
+          "Italiano": true
+        },
+        "references_section": true
+      },
+      "iris": [
+        "https://iris.uniroma1.it/handle/11573/1772220"
+      ],
+      "versions": [
+        {
+          "record": 21700206,
+          "doi": "10.5281/zenodo.21700206",
+          "version": "1.0",
+          "date": "2026-07-28",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 21701303,
+          "doi": "10.5281/zenodo.21701303",
+          "version": null,
+          "date": "2026-07-30",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 23041615,
+          "doi": "10.5281/zenodo.23041615",
+          "version": null,
+          "date": "2026-09-29",
+          "access": "open",
+          "title": null
+        }
+      ]
+    },
+    {
+      "slug": "observation-class-control",
+      "title": "Controlling the Observation Class of a Runtime Monitor: Selection, Self-Tuning, and Physical Grounding",
+      "authors": [
+        "Bragetti, Davide",
+        "Bragetti, Carlo",
+        "Italiano, Giuseppe F."
+      ],
+      "type": "Preprint",
+      "concept_record": 21700302,
+      "concept_doi": "10.5281/zenodo.21700302",
+      "preferred_record": 23041626,
+      "preferred_doi": "10.5281/zenodo.23041626",
+      "preferred_version": null,
+      "publication_date": "2026-09-29",
+      "first_published": "2026-07-28",
+      "deposited": "2026-09-30",
+      "license": "cc-by-4.0",
+      "keywords": [
+        "runtime verification",
+        "monitor synthesis",
+        "self-tuning",
+        "timing recovery",
+        "observation model",
+        "signature transition",
+        "stochastic approximation",
+        "monitorability",
+        "physical grounding"
+      ],
+      "zenodo_pdf": "https://zenodo.org/records/23041626/files/main.pdf?download=1",
+      "site_page": "https://l3ragio.github.io/research/papers/observation-class-control/",
+      "site_pdf": "https://l3ragio.github.io/research/papers/observation-class-control/paper.pdf",
+      "pdf_bytes": 1641309,
+      "pdf_sha256": "585b2ed16f7feea864214cb428380a7d1b7c9d1552ddf1d1f32137d304fd429f",
+      "pdf_md5_matches_zenodo": true,
+      "pdf_under_5MB": true,
+      "pdf_checks": {
+        "pages": 78,
+        "text_extractable": true,
+        "first_page_title": true,
+        "first_page_title_words": "10/10",
+        "first_page_authors": {
+          "Bragetti": true,
+          "Italiano": true
+        },
+        "references_section": true
+      },
+      "iris": [
+        "https://iris.uniroma1.it/handle/11573/1772243"
+      ],
+      "versions": [
+        {
+          "record": 21700303,
+          "doi": "10.5281/zenodo.21700303",
+          "version": "1.0",
+          "date": "2026-07-28",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 21701310,
+          "doi": "10.5281/zenodo.21701310",
+          "version": null,
+          "date": "2026-07-30",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 23041626,
+          "doi": "10.5281/zenodo.23041626",
+          "version": null,
+          "date": "2026-09-29",
+          "access": "open",
+          "title": null
+        }
+      ]
+    },
+    {
+      "slug": "meaning-opacity-function",
+      "title": "Meaning, Opacity, and Function: An Observer-Relative Classification of Artifacts",
+      "authors": [
+        "Bragetti, Davide",
+        "Asaro, Carmelo",
+        "Italiano, Giuseppe Francesco"
+      ],
+      "type": "Preprint",
+      "concept_record": 21772772,
+      "concept_doi": "10.5281/zenodo.21772772",
+      "preferred_record": 22016203,
+      "preferred_doi": "10.5281/zenodo.22016203",
+      "preferred_version": "v4",
+      "publication_date": "2026-08-19",
+      "first_published": "2026-07-25",
+      "deposited": "2026-08-19",
+      "license": "cc-by-4.0",
+      "keywords": [
+        "observer-relative classification",
+        "semantic opacity",
+        "functionality",
+        "region systems",
+        "agent modelling",
+        "structured ambiguity",
+        "denotation",
+        "compositional closure"
+      ],
+      "zenodo_pdf": "https://zenodo.org/records/22016203/files/bragetti-2026-meaning-opacity-function.pdf?download=1",
+      "site_page": "https://l3ragio.github.io/research/papers/meaning-opacity-function/",
+      "site_pdf": "https://l3ragio.github.io/research/papers/meaning-opacity-function/paper.pdf",
+      "pdf_bytes": 890532,
+      "pdf_sha256": "a5420bab9d4375600725de09de4a3008b360467deb7e92e2e660bbe70c568aba",
+      "pdf_md5_matches_zenodo": true,
+      "pdf_under_5MB": true,
+      "pdf_checks": {
+        "pages": 61,
+        "text_extractable": true,
+        "first_page_title": true,
+        "first_page_title_words": "7/7",
+        "first_page_authors": {
+          "Bragetti": true,
+          "Asaro": true,
+          "Italiano": true
+        },
+        "references_section": true
+      },
+      "iris": [
+        "https://iris.uniroma1.it/handle/11573/1772494"
+      ],
+      "versions": [
+        {
+          "record": 21772773,
+          "doi": "10.5281/zenodo.21772773",
+          "version": "v1",
+          "date": "2026-07-25",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 21841213,
+          "doi": "10.5281/zenodo.21841213",
+          "version": "v2",
+          "date": "2026-08-07",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 21853111,
+          "doi": "10.5281/zenodo.21853111",
+          "version": "v3",
+          "date": "2026-08-08",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 22016203,
+          "doi": "10.5281/zenodo.22016203",
+          "version": "v4",
+          "date": "2026-08-19",
+          "access": "open",
+          "title": null
+        }
+      ]
+    },
+    {
+      "slug": "mck-region-transitions",
+      "title": "MCK Region Transitions: Restricted Realization Mechanisms and Their Limits",
+      "authors": [
+        "Bragetti, Davide",
+        "Palumbo, Edoardo",
+        "Asaro, Carmelo",
+        "Italiano, Giuseppe Francesco"
+      ],
+      "type": "Preprint",
+      "concept_record": 22017442,
+      "concept_doi": "10.5281/zenodo.22017442",
+      "preferred_record": 23041603,
+      "preferred_doi": "10.5281/zenodo.23041603",
+      "preferred_version": null,
+      "publication_date": "2026-09-29",
+      "first_published": "2026-08-19",
+      "deposited": "2026-09-30",
+      "license": "cc-by-4.0",
+      "keywords": [
+        "MCK framework",
+        "region transitions",
+        "observer-relative classification",
+        "denotation graph",
+        "symbol classes",
+        "assimilation",
+        "residual opacity",
+        "functional certificate"
+      ],
+      "zenodo_pdf": "https://zenodo.org/records/23041603/files/bragetti-2026-mck-region-transitions.pdf?download=1",
+      "site_page": "https://l3ragio.github.io/research/papers/mck-region-transitions/",
+      "site_pdf": "https://l3ragio.github.io/research/papers/mck-region-transitions/paper.pdf",
+      "pdf_bytes": 1038564,
+      "pdf_sha256": "51a44226b501c469d99fe64c58747fdae9408907a83e0cb99558b5497386b5d7",
+      "pdf_md5_matches_zenodo": true,
+      "pdf_under_5MB": true,
+      "pdf_checks": {
+        "pages": 60,
+        "text_extractable": true,
+        "first_page_title": true,
+        "first_page_title_words": "7/7",
+        "first_page_authors": {
+          "Bragetti": true,
+          "Palumbo": true,
+          "Asaro": true,
+          "Italiano": true
+        },
+        "references_section": true
+      },
+      "iris": [],
+      "versions": [
+        {
+          "record": 22017443,
+          "doi": "10.5281/zenodo.22017443",
+          "version": "v1",
+          "date": "2026-08-19",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 23041603,
+          "doi": "10.5281/zenodo.23041603",
+          "version": null,
+          "date": "2026-09-29",
+          "access": "open",
+          "title": null
+        }
+      ]
+    },
+    {
+      "slug": "refinement-confirmation-liveness",
+      "title": "Refinement-Based Confirmation of Liveness Properties from Monitor Verdict Traces: A Hensel-Newton Approach",
+      "authors": [
+        "Bragetti, Davide"
+      ],
+      "type": "Preprint",
+      "concept_record": 22028018,
+      "concept_doi": "10.5281/zenodo.22028018",
+      "preferred_record": 22028019,
+      "preferred_doi": "10.5281/zenodo.22028019",
+      "preferred_version": "v1",
+      "publication_date": "2026-08-20",
+      "first_published": "2026-08-20",
+      "deposited": "2026-08-20",
+      "license": "cc-by-4.0",
+      "keywords": [
+        "runtime verification",
+        "liveness",
+        "monitorability",
+        "refinement",
+        "Hensel lifting",
+        "Newton iteration",
+        "finite confirmation",
+        "Lyapunov function"
+      ],
+      "zenodo_pdf": "https://zenodo.org/records/22028019/files/bragetti-2026-refinement-confirmation-hensel-newton.pdf?download=1",
+      "site_page": "https://l3ragio.github.io/research/papers/refinement-confirmation-liveness/",
+      "site_pdf": "https://l3ragio.github.io/research/papers/refinement-confirmation-liveness/paper.pdf",
+      "pdf_bytes": 785443,
+      "pdf_sha256": "7ba848908b1306e30465903467305e9900af2845c9f0ed3ccf079b68ccebffcd",
+      "pdf_md5_matches_zenodo": true,
+      "pdf_under_5MB": true,
+      "pdf_checks": {
+        "pages": 29,
+        "text_extractable": true,
+        "first_page_title": true,
+        "first_page_title_words": "12/12",
+        "first_page_authors": {
+          "Bragetti": true
+        },
+        "references_section": true
+      },
+      "iris": [],
+      "versions": [
+        {
+          "record": 22028019,
+          "doi": "10.5281/zenodo.22028019",
+          "version": "v1",
+          "date": "2026-08-20",
+          "access": "open",
+          "title": null
+        }
+      ]
+    },
+    {
+      "slug": "transactional-games-temporal-signatures",
+      "title": "Recognising Before Reacting: Temporal Signatures of Transactional Games",
+      "authors": [
+        "Bragetti, Davide",
+        "Italiano, Giuseppe Francesco"
+      ],
+      "type": "Preprint",
+      "concept_record": 22050700,
+      "concept_doi": "10.5281/zenodo.22050700",
+      "preferred_record": 22050701,
+      "preferred_doi": "10.5281/zenodo.22050701",
+      "preferred_version": "v1",
+      "publication_date": "2026-08-21",
+      "first_published": "2026-08-21",
+      "deposited": "2026-08-21",
+      "license": "cc-by-4.0",
+      "keywords": [
+        "linear temporal logic",
+        "finite-trace LTL",
+        "runtime verification",
+        "transactional analysis",
+        "drama triangle",
+        "Karpman projection",
+        "safety and cosafety",
+        "liveness and coliveness",
+        "monitorability"
+      ],
+      "zenodo_pdf": "https://zenodo.org/records/22050701/files/main.pdf?download=1",
+      "site_page": "https://l3ragio.github.io/research/papers/transactional-games-temporal-signatures/",
+      "site_pdf": "https://l3ragio.github.io/research/papers/transactional-games-temporal-signatures/paper.pdf",
+      "pdf_bytes": 957799,
+      "pdf_sha256": "08cda3aff7db16ec774635338996db188b28eff4a811b50f6aa6352a19b1b342",
+      "pdf_md5_matches_zenodo": true,
+      "pdf_under_5MB": true,
+      "pdf_checks": {
+        "pages": 39,
+        "text_extractable": true,
+        "first_page_title": true,
+        "first_page_title_words": "7/7",
+        "first_page_authors": {
+          "Bragetti": true,
+          "Italiano": true
+        },
+        "references_section": true
+      },
+      "iris": [],
+      "versions": [
+        {
+          "record": 22050701,
+          "doi": "10.5281/zenodo.22050701",
+          "version": "v1",
+          "date": "2026-08-21",
+          "access": "open",
+          "title": null
+        }
+      ]
+    },
+    {
+      "slug": "agent-self-attribution",
+      "title": "When Can an Agent Attribute Properties to Itself? A Cognitive Algebra for Identity, Integrity, and Freedom",
+      "authors": [
+        "Bragetti, Davide",
+        "Micali, Silvio",
+        "Italiano, Giuseppe Francesco"
+      ],
+      "type": "Preprint",
+      "concept_record": 22050703,
+      "concept_doi": "10.5281/zenodo.22050703",
+      "preferred_record": 23041633,
+      "preferred_doi": "10.5281/zenodo.23041633",
+      "preferred_version": null,
+      "publication_date": "2026-09-29",
+      "first_published": "2026-08-21",
+      "deposited": "2026-09-30",
+      "license": "cc-by-4.0",
+      "keywords": [
+        "agent architecture",
+        "self-attribution",
+        "cognitive algebra",
+        "MCK framework",
+        "realisability",
+        "attention",
+        "other-model",
+        "de se attitudes",
+        "reflexive attribution",
+        "runtime verification"
+      ],
+      "zenodo_pdf": "https://zenodo.org/records/23041633/files/main.pdf?download=1",
+      "site_page": "https://l3ragio.github.io/research/papers/agent-self-attribution/",
+      "site_pdf": "https://l3ragio.github.io/research/papers/agent-self-attribution/paper.pdf",
+      "pdf_bytes": 1511257,
+      "pdf_sha256": "55054b7265f7f1f97368b01cbc3c3009cf645003d170d42713288b678997f66b",
+      "pdf_md5_matches_zenodo": true,
+      "pdf_under_5MB": true,
+      "pdf_checks": {
+        "pages": 90,
+        "text_extractable": true,
+        "first_page_title": true,
+        "first_page_title_words": "10/10",
+        "first_page_authors": {
+          "Bragetti": true,
+          "Micali": true,
+          "Italiano": true
+        },
+        "references_section": true
+      },
+      "iris": [],
+      "versions": [
+        {
+          "record": 22050704,
+          "doi": "10.5281/zenodo.22050704",
+          "version": "v1",
+          "date": "2026-08-21",
+          "access": "open",
+          "title": "When Can an Agent Attribute Properties to Itself? A Typed Account of Identity, Integrity, and Freedom"
+        },
+        {
+          "record": 22066362,
+          "doi": "10.5281/zenodo.22066362",
+          "version": "v2",
+          "date": "2026-08-23",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 23041633,
+          "doi": "10.5281/zenodo.23041633",
+          "version": null,
+          "date": "2026-09-29",
+          "access": "open",
+          "title": null
+        }
+      ]
+    },
+    {
+      "slug": "typed-agent-action-framework",
+      "title": "A Typed Agent Action Framework with Prefix-Verdict Semantics",
+      "authors": [
+        "Bragetti, Davide",
+        "Italiano, Giuseppe Francesco"
+      ],
+      "type": "Technical report",
+      "concept_record": 22050705,
+      "concept_doi": "10.5281/zenodo.22050705",
+      "preferred_record": 23041634,
+      "preferred_doi": "10.5281/zenodo.23041634",
+      "preferred_version": null,
+      "publication_date": "2026-09-29",
+      "first_published": "2026-08-21",
+      "deposited": "2026-09-30",
+      "license": "cc-by-4.0",
+      "keywords": [
+        "agent architecture",
+        "typed actions",
+        "runtime verification",
+        "prefix-verdict semantics",
+        "footprint action classes",
+        "carrier persistence",
+        "reentry",
+        "temporal logic",
+        "technical report"
+      ],
+      "zenodo_pdf": "https://zenodo.org/records/23041634/files/main.pdf?download=1",
+      "site_page": "https://l3ragio.github.io/research/papers/typed-agent-action-framework/",
+      "site_pdf": "https://l3ragio.github.io/research/papers/typed-agent-action-framework/paper.pdf",
+      "pdf_bytes": 619727,
+      "pdf_sha256": "52188b039858e560ac1be7f85948104f37017b54282ae8ea5f77e3f0861de7d7",
+      "pdf_md5_matches_zenodo": true,
+      "pdf_under_5MB": true,
+      "pdf_checks": {
+        "pages": 15,
+        "text_extractable": true,
+        "first_page_title": true,
+        "first_page_title_words": "8/8",
+        "first_page_authors": {
+          "Bragetti": true,
+          "Italiano": true
+        },
+        "references_section": true
+      },
+      "iris": [],
+      "versions": [
+        {
+          "record": 22050706,
+          "doi": "10.5281/zenodo.22050706",
+          "version": "v1",
+          "date": "2026-08-21",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 23041634,
+          "doi": "10.5281/zenodo.23041634",
+          "version": null,
+          "date": "2026-09-29",
+          "access": "open",
+          "title": null
+        }
+      ]
+    },
+    {
+      "slug": "intentional-semantic-geometry",
+      "title": "Intentional Semantic Geometry: Statements as Grammar-Mediated References into Determinable Spectra",
+      "authors": [
+        "Bragetti, Davide",
+        "Spagnoletti, Paolo",
+        "Italiano, Giuseppe Francesco"
+      ],
+      "type": "Preprint",
+      "concept_record": 22062804,
+      "concept_doi": "10.5281/zenodo.22062804",
+      "preferred_record": 22062805,
+      "preferred_doi": "10.5281/zenodo.22062805",
+      "preferred_version": "v1",
+      "publication_date": "2026-08-23",
+      "first_published": "2026-08-23",
+      "deposited": "2026-08-22",
+      "license": "cc-by-4.0",
+      "keywords": [
+        "intentional semantic geometry",
+        "excluded interval",
+        "grammar-mediated reference",
+        "substrate indeterminacy",
+        "monitorability",
+        "finite confirmation",
+        "non-excisive classification",
+        "reflexive positioning",
+        "semantic spectrum"
+      ],
+      "zenodo_pdf": "https://zenodo.org/records/22062805/files/main.pdf?download=1",
+      "site_page": "https://l3ragio.github.io/research/papers/intentional-semantic-geometry/",
+      "site_pdf": "https://l3ragio.github.io/research/papers/intentional-semantic-geometry/paper.pdf",
+      "pdf_bytes": 959581,
+      "pdf_sha256": "7033848bf42bf9940cedef17d3100f6de9b1a5daaaee30c26a48735edda2bdbf",
+      "pdf_md5_matches_zenodo": true,
+      "pdf_under_5MB": true,
+      "pdf_checks": {
+        "pages": 42,
+        "text_extractable": true,
+        "first_page_title": true,
+        "first_page_title_words": "10/10",
+        "first_page_authors": {
+          "Bragetti": true,
+          "Spagnoletti": true,
+          "Italiano": true
+        },
+        "references_section": true
+      },
+      "iris": [],
+      "versions": [
+        {
+          "record": 22062805,
+          "doi": "10.5281/zenodo.22062805",
+          "version": "v1",
+          "date": "2026-08-23",
+          "access": "open",
+          "title": null
+        }
+      ]
+    },
+    {
+      "slug": "one-number-per-cell",
+      "title": "One Number Per Cell: A Separating-Family Encoding of Superimposed Discrete Curves",
+      "authors": [
+        "Bragetti, Davide"
+      ],
+      "type": "Preprint",
+      "concept_record": 21270849,
+      "concept_doi": "10.5281/zenodo.21270849",
+      "preferred_record": 21270850,
+      "preferred_doi": "10.5281/zenodo.21270850",
+      "preferred_version": "0.4-draft",
+      "publication_date": "2026-07-09",
+      "first_published": "2026-07-09",
+      "deposited": "2026-07-09",
+      "license": "cc-by-4.0",
+      "keywords": [
+        "digital geometry",
+        "chain codes",
+        "separating family",
+        "superimposed codes",
+        "cover-free families",
+        "Chinese remainder theorem",
+        "residue number system",
+        "unique factorisation",
+        "rotor-router",
+        "discrete curves",
+        "one number per cell"
+      ],
+      "zenodo_pdf": "https://zenodo.org/records/21270850/files/main.pdf?download=1",
+      "site_page": "https://l3ragio.github.io/research/papers/one-number-per-cell/",
+      "site_pdf": "https://l3ragio.github.io/research/papers/one-number-per-cell/paper.pdf",
+      "pdf_bytes": 650397,
+      "pdf_sha256": "4bbbe255f2b9f4a88042f676dc409408b86efbfdb45ec5b01a9512e01b0214c1",
+      "pdf_md5_matches_zenodo": true,
+      "pdf_under_5MB": true,
+      "pdf_checks": {
+        "pages": 25,
+        "text_extractable": true,
+        "first_page_title": true,
+        "first_page_title_words": "8/8",
+        "first_page_authors": {
+          "Bragetti": true
+        },
+        "references_section": true
+      },
+      "iris": [],
+      "versions": [
+        {
+          "record": 21270850,
+          "doi": "10.5281/zenodo.21270850",
+          "version": "0.4-draft",
+          "date": "2026-07-09",
+          "access": "open",
+          "title": null
+        }
+      ]
+    },
+    {
+      "slug": "autoimmune-rationalization",
+      "title": "Autoimmune Rationalization: A Protective-Systems Analogy and a Formal Mechanism for Self-Defeating Epistemic Protection",
+      "authors": [
+        "Bragetti, Davide"
+      ],
+      "type": "Preprint",
+      "concept_record": 24039575,
+      "concept_doi": "10.5281/zenodo.24039575",
+      "preferred_record": 24054353,
+      "preferred_doi": "10.5281/zenodo.24054353",
+      "preferred_version": "RC21",
+      "publication_date": "2026-11-08",
+      "first_published": "2026-11-07",
+      "deposited": "2026-11-08",
+      "license": "cc-by-4.0",
+      "keywords": [
+        "epistemic protection",
+        "self-defeating protection",
+        "autoimmune rationalization",
+        "finite confirmation",
+        "sustaining commitments",
+        "acceptance policies",
+        "temporal property classes",
+        "coliveness",
+        "monitorability",
+        "drama triangle",
+        "Büchi games",
+        "normative authority",
+        "protective inversion"
+      ],
+      "zenodo_pdf": "https://zenodo.org/records/24054353/files/autoimmune_rationalization_rc21.pdf?download=1",
+      "site_page": "https://l3ragio.github.io/research/papers/autoimmune-rationalization/",
+      "site_pdf": "https://l3ragio.github.io/research/papers/autoimmune-rationalization/paper.pdf",
+      "pdf_bytes": 937313,
+      "pdf_sha256": "0c15b773ae20fe8338a60662fa30368c48fd03ecf56b1a3993aec27588b73451",
+      "pdf_md5_matches_zenodo": true,
+      "pdf_under_5MB": true,
+      "pdf_checks": {
+        "pages": 35,
+        "text_extractable": true,
+        "first_page_title": true,
+        "first_page_title_words": "11/11",
+        "first_page_authors": {
+          "Bragetti": true
+        },
+        "references_section": true
+      },
+      "iris": [],
+      "versions": [
+        {
+          "record": 24039576,
+          "doi": "10.5281/zenodo.24039576",
+          "version": "RC18",
+          "date": "2026-11-07",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 24042725,
+          "doi": "10.5281/zenodo.24042725",
+          "version": "RC19",
+          "date": "2026-11-07",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 24051751,
+          "doi": "10.5281/zenodo.24051751",
+          "version": "RC20",
+          "date": "2026-11-08",
+          "access": "open",
+          "title": "Autoimmune Rationalization: When \"I Believe Only What I Can Prove\" Defeats What It Protects"
+        },
+        {
+          "record": 24054353,
+          "doi": "10.5281/zenodo.24054353",
+          "version": "RC21",
+          "date": "2026-11-08",
+          "access": "open",
+          "title": null
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "concept_record": 20173417,
+      "reason": "Access restricted, no public file. Metadata publication date 1979-03 and affiliation 'Institute for Advanced Study, Princeton' are not supported by any public evidence; flagged for the author.",
+      "records": [
+        {
+          "record": 20173418,
+          "title": "On a Classification of Temporal Properties of Concurrent Programs",
+          "date": "1979-03",
+          "access": "restricted",
+          "type": "Working paper"
+        }
+      ]
+    },
+    {
+      "concept_record": 20173419,
+      "reason": "Access restricted, no public file. Second concept carrying the title of the Intersection Algebra paper (whose open concept is 20155195) plus a 2003-11 version titled 'Toward a Four-Family Classification...'; flagged as a duplicate identity.",
+      "records": [
+        {
+          "record": 20173420,
+          "title": "Toward a Four-Family Classification of Omega-Regular Temporal Properties: A Topological Approach to Invariance, Eventuality, Infinitary Progress, and Asymptotic Vanishing",
+          "date": "2003-11",
+          "access": "restricted",
+          "type": "Working paper"
+        },
+        {
+          "record": 21078491,
+          "title": "The Intersection Algebra of Safety, Cosafety, Liveness, and Coliveness over Linear Temporal Logic",
+          "date": "2026-06-30",
+          "access": "restricted",
+          "type": "Working paper"
+        }
+      ]
+    },
+    {
+      "concept_record": 23220351,
+      "reason": "Software (reproducibility artifact, Apache-2.0), not a scholarly paper. The paper it supports is not on Zenodo.",
+      "records": [
+        {
+          "record": 23220352,
+          "title": "Reproducibility artifact for \"Causal Information Limits of Learning with a Noisy Persistent State\"",
+          "date": "2026-10-07",
+          "access": "open",
+          "type": "Software"
+        }
+      ]
+    }
+  ],
+  "unlisted_new_concepts": []
+}

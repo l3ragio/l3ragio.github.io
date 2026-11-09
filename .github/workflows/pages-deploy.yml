@@ -65,5 +65,11 @@ jobs:
             --ignore-empty-alt \
             --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
 
+      - name: Validate scholarly paper pages
+        # Google Scholar compliance + completeness of /research/papers/
+        # (citation_* tags, PDF in the page directory, PDF = Zenodo file,
+        # abstract visible without JS, sitemap and link coverage).
+        run: python3 scripts/validate_papers.py --site _site
+
       - name: Deploy
         run: bash tools/deploy.sh

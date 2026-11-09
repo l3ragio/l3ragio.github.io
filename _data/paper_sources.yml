@@ -1,0 +1,116 @@
+# Curated gate for the scholarly paper pages under /research/papers/.
+#
+# Each entry names ONE scholarly work by its Zenodo concept record id.
+# `scripts/sync_zenodo_papers.py` reads this file, fetches the public
+# Zenodo metadata, mirrors the preferred version's PDF into
+# research/papers/<slug>/paper.pdf and (re)generates _papers/<slug>.md.
+#
+# A Zenodo record that the sync discovers but that is NOT listed here
+# (under `papers` or `excluded`) is reported as NEW and is never
+# published automatically. Add it here deliberately after checking that
+# it belongs to the public scholarly collection.
+#
+# Fields (papers):
+#   slug           kebab-case, stable; becomes the URL and must never change
+#   concept        Zenodo concept record id (the work identity)
+#   record         optional: pin the preferred version record id
+#                  (default: latest open version carrying exactly one PDF)
+#   bibtex_key     stable citation key (kept from the earlier site list)
+#   research_line  optional label shown on the page
+#   project        optional site path of the related research line page
+#   iris           optional verified IRIS Sapienza handle URL(s)
+#
+# Only facts verified at the source go here. Bibliographic data (title,
+# authors, dates, abstract, DOIs, licence) is NOT entered by hand: it is
+# taken from Zenodo by the sync script.
+
+papers:
+  - slug: intersection-algebra-ltl
+    concept: 20155195
+    bibtex_key: bragetti2026intersectionalgebra
+    research_line: Temporal Evaluation
+    project: /research/ltl-evaluation/
+    iris: [https://iris.uniroma1.it/handle/11573/1767773]
+
+  - slug: touch-and-crossing
+    concept: 21078483
+    bibtex_key: bragetti2026touchcrossing
+    research_line: Temporal Evaluation
+    project: /research/ltl-evaluation/
+    iris: [https://iris.uniroma1.it/handle/11573/1770547]
+
+  - slug: observation-relative-monitorability
+    concept: 21700205
+    bibtex_key: bragetti2026observationrelative
+    research_line: Temporal Evaluation
+    project: /research/ltl-evaluation/
+    iris: [https://iris.uniroma1.it/handle/11573/1772220]
+
+  - slug: observation-class-control
+    concept: 21700302
+    bibtex_key: bragetti2026observationclass
+    research_line: Temporal Evaluation
+    project: /research/ltl-evaluation/
+    # Two IRIS records exist; 1772243 carries the full author list and the
+    # concept DOI, 1772221 lists one author and no DOI (see
+    # docs/papers/SCHOLAR_RECONCILIATION.md). Only the complete one is linked.
+    iris: [https://iris.uniroma1.it/handle/11573/1772243]
+
+  - slug: meaning-opacity-function
+    concept: 21772772
+    bibtex_key: bragetti2026meaningopacityfunction
+    research_line: MCK Properties
+    project: /research/mck-properties/
+    iris: [https://iris.uniroma1.it/handle/11573/1772494]
+
+  - slug: mck-region-transitions
+    concept: 22017442
+    bibtex_key: bragetti2026mckregiontransitions
+    research_line: MCK Properties
+    project: /research/mck-properties/
+
+  - slug: refinement-confirmation-liveness
+    concept: 22028018
+    bibtex_key: bragetti2026refinementliveness
+    research_line: Temporal Evaluation
+    project: /research/ltl-evaluation/
+
+  - slug: transactional-games-temporal-signatures
+    concept: 22050700
+    bibtex_key: bragetti2026recognisingreacting
+    research_line: Agent / Triangle Dynamics
+    project: /research/ltl-triangles/
+
+  - slug: agent-self-attribution
+    concept: 22050703
+    bibtex_key: bragetti2026agentattributeproperties
+    research_line: MCK Properties
+    project: /research/mck-properties/
+
+  - slug: typed-agent-action-framework
+    concept: 22050705
+    bibtex_key: bragetti2026typedagentaction
+    research_line: Agent / Triangle Dynamics
+    project: /research/ltl-triangles/
+
+  - slug: intentional-semantic-geometry
+    concept: 22062804
+    bibtex_key: bragetti2026isg
+
+  - slug: one-number-per-cell
+    concept: 21270849
+    bibtex_key: bragetti2026onenumberpercell
+
+  - slug: autoimmune-rationalization
+    concept: 24039575
+    bibtex_key: bragetti2026autoimmune
+
+# Zenodo concepts found under the author's name that are deliberately NOT
+# given a scholarly page. Reason codes are reported by the sync script.
+excluded:
+  - concept: 20173417
+    reason: "Access restricted, no public file. Metadata publication date 1979-03 and affiliation 'Institute for Advanced Study, Princeton' are not supported by any public evidence; flagged for the author."
+  - concept: 20173419
+    reason: "Access restricted, no public file. Second concept carrying the title of the Intersection Algebra paper (whose open concept is 20155195) plus a 2003-11 version titled 'Toward a Four-Family Classification...'; flagged as a duplicate identity."
+  - concept: 23220351
+    reason: "Software (reproducibility artifact, Apache-2.0), not a scholarly paper. The paper it supports is not on Zenodo."

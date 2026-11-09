@@ -99,10 +99,15 @@ awarded, and does not expose private application materials.
 
 ## Update Workflow
 
-To add a paper:
+To add a paper (full procedure: `docs/papers/README.md`):
 
 1. Verify metadata from DOI/Zenodo or the canonical publication page.
-2. Add one entry to `_data/research_publications.yml`.
+2. For a Zenodo paper, add it to `_data/paper_sources.yml` and run
+   `python scripts/sync_zenodo_papers.py`; this generates its scholarly page
+   under `/research/papers/<slug>/`.
+3. Add one entry to `_data/research_publications.yml` with `paper: <slug>`
+   (editorial fields only; title, authors, abstract, PDF, DOI and BibTeX come
+   from the generated page).
 3. Include `code` only if an exact public repository or directory exists.
 4. Add the publication ID to a project in `_data/research_projects.yml` if it
    belongs to a research line.

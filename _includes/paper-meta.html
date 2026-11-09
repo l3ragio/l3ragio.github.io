@@ -1,0 +1,70 @@
+{%- comment -%}
+  Bibliographic metadata for ONE paper page (collection `papers`).
+  Included from metadata-hook.html only when page.collection == "papers",
+  so no multi-paper page ever carries citation_* tags.
+
+  Google Scholar (scholar.google.com/intl/en/scholar/inclusion.html):
+    - citation_title, >= 1 citation_author (one tag each, names only),
+      citation_publication_date (YYYY/MM/DD) are the required core;
+    - citation_pdf_url must be absolute and in the same directory as this
+      page, hence <page url>/paper.pdf;
+    - no journal / conference / institution tags: these are Zenodo
+      preprints, working papers and reports, and none is invented.
+  citation_doi carries the concept DOI, the identifier IRIS Sapienza also
+  uses for these works, so all representations share one DOI.
+{%- endcomment -%}
+{%- assign p = page -%}
+{%- assign page_abs = p.url | absolute_url -%}
+{%- assign pdf_abs = p.url | append: p.pdf.file | absolute_url -%}
+<meta name="citation_title" content="{{ p.title | escape }}">
+{%- for a in p.authors %}
+<meta name="citation_author" content="{{ a | escape }}">
+{%- endfor %}
+<meta name="citation_publication_date" content="{{ p.publication_date | replace: '-', '/' }}">
+<meta name="citation_online_date" content="{{ p.online_date | replace: '-', '/' }}">
+<meta name="citation_doi" content="{{ p.concept_doi }}">
+<meta name="citation_pdf_url" content="{{ pdf_abs }}">
+<meta name="citation_abstract_html_url" content="{{ page_abs }}">
+<meta name="citation_language" content="en">
+{%- if p.keywords %}
+<meta name="citation_keywords" content="{{ p.keywords | join: '; ' | escape }}">
+{%- endif %}
+<link rel="alternate" type="application/pdf" href="{{ pdf_abs }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "@id": {{ page_abs | jsonify }},
+  "url": {{ page_abs | jsonify }},
+  "mainEntityOfPage": {{ page_abs | jsonify }},
+  "headline": {{ p.title | jsonify }},
+  "name": {{ p.title | jsonify }},
+  "author": [
+    {%- for a in p.authors_display -%}
+    {"@type": "Person", "name": {{ a | jsonify }}}{% unless forloop.last %}, {% endunless %}
+    {%- endfor -%}
+  ],
+  "datePublished": {{ p.publication_date | jsonify }},
+  "description": {{ p.description | jsonify }},
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  {%- if p.version %}
+  "version": {{ p.version | jsonify }},
+  {%- endif %}
+  {%- if p.keywords %}
+  "keywords": {{ p.keywords | join: ", " | jsonify }},
+  {%- endif %}
+  {%- if p.license == "cc-by-4.0" %}
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  {%- endif %}
+  "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": {{ p.concept_doi | jsonify }}},
+  "sameAs": [{{ p.concept_doi | prepend: "https://doi.org/" | jsonify }}, {{ p.zenodo_record | prepend: "https://zenodo.org/records/" | jsonify }}],
+  "publisher": {"@type": "Organization", "name": "Zenodo"},
+  "encoding": {
+    "@type": "MediaObject",
+    "contentUrl": {{ pdf_abs | jsonify }},
+    "encodingFormat": "application/pdf",
+    "contentSize": "{{ p.pdf.bytes }}"
+  }
+}
+</script>

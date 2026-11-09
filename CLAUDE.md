@@ -37,6 +37,12 @@ authoritative.
 | `_drafts/<slug>.md`                  | Drafts (not built)                                  |
 | `_posts/YYYY-MM-DD-<slug>.md`        | Native published posts                              |
 | `_posts/zmediumtomarkdown/`          | Auto-synced Medium posts (do not hand-edit)         |
+| `_data/paper_sources.yml`           | Gate: which Zenodo papers get a /research/papers/ page |
+| `_papers/<slug>.md`                 | GENERATED scholarly paper pages (never hand-edit)   |
+| `research/papers/<slug>/paper.pdf`  | Byte-identical Zenodo PDF mirror (sync only)        |
+| `scripts/sync_zenodo_papers.py`     | Zenodo -> paper pages; `--check` reports NEW records |
+| `scripts/validate_papers.py`        | Scholar compliance checks (CI; `--live`)            |
+| `docs/papers/`                      | Paper-page workflow, inventory, Scholar reconciliation |
 | `_visual_stories/.template.md`       | Canonical scaffold for new Visual Stories           |
 | `_visual_stories/YYYY-MM-DD-<slug>.md` | Published Visual Stories                          |
 | `_layouts/visual_story.html`         | Layout for the Visual Stories collection            |
@@ -98,6 +104,10 @@ bash tools/test.sh    # build + html-proofer (what CI runs)
 ```
 
 ## Hard rules
+
+- **Do not hand-edit `_papers/*.md` or `research/papers/*/paper.pdf`.**
+  Change `_data/paper_sources.yml` and run `scripts/sync_zenodo_papers.py`
+  (see `docs/papers/README.md`).
 
 - **Do not hand-edit `_posts/zmediumtomarkdown/*.md`.** Use the
   override file. The next monthly sync resets your changes otherwise.

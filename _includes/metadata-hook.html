@@ -86,6 +86,15 @@ stays correct if a post switches between jpg/png/webp.
   {%- endif -%}
 {% endif %}
 
+{%- comment -%}
+Scholarly paper pages (collection `papers`): Google Scholar Highwire
+citation_* tags and ScholarlyArticle JSON-LD. Emitted for single-paper
+pages only.
+{%- endcomment -%}
+{% if page.collection == "papers" %}
+  {% include paper-meta.html %}
+{% endif %}
+
 <!-- Person schema for the primary author. Adds the avatar image to
      the Person object so social platforms (LinkedIn, X, Slack, etc.)
      have a non-obsolete profile picture next to the author name in

@@ -1,215 +1,112 @@
+# Editorial list of publications shown on /research/ and on the project pages.
+#
+# `paper:` names a generated scholarly page in _papers/<slug>.md (see
+# _data/paper_sources.yml and scripts/sync_zenodo_papers.py). When it is set,
+# the title, authors, year, abstract, PDF, DOI and BibTeX are taken from that
+# page, which is generated from the public Zenodo record, so they are not
+# repeated here. This file keeps only the editorial fields: status label,
+# research line, venue line and the one-paragraph description.
+#
+# An entry without `paper:` may still carry title / authors / year / abstract /
+# pdf / doi / bibtex directly (the include falls back to them).
+
 - id: self-attribution
+  paper: agent-self-attribution
   featured: true
   research_line: "MCK Properties"
   status: "Preprint"
-  year: "2026"
-  title: "When Can an Agent Attribute Properties to Itself? A Cognitive Algebra for Identity, Integrity, and Freedom"
-  authors: "Davide Bragetti; Silvio Micali; Giuseppe Francesco Italiano"
   venue: "Zenodo preprint, version 3"
   description: "Develops the MCK self-attribution layer with a two-layer state separating structural carriers from semantic content, then studies continuity, viability, and owned branching as property signatures."
-  abstract: "This preprint distinguishes structural realizability from semantic calibration in agent self-attribution. It uses the MCK observer-relative framework to model capability carriers, evidence content, self-reference, other-models, operator composition, and finite decision procedures for continuity, viability, and owned branching."
-  doi: "10.5281/zenodo.23041633"
-  record: "https://zenodo.org/records/23041633"
-  pdf: "https://zenodo.org/records/23041633/files/main.pdf?download=1"
-  bibtex: |
-    @misc{bragetti2026agentattributeproperties,
-      title = {When Can an Agent Attribute Properties to Itself? A Cognitive Algebra for Identity, Integrity, and Freedom},
-      author = {Bragetti, Davide and Micali, Silvio and Italiano, Giuseppe Francesco},
-      year = {2026},
-      month = sep,
-      doi = {10.5281/zenodo.23041633},
-      publisher = {Zenodo},
-      note = {Preprint}
-    }
 
 - id: mck-transitions
+  paper: mck-region-transitions
   featured: true
   research_line: "MCK Properties"
   status: "Preprint"
-  year: "2026"
-  title: "MCK Region Transitions: Restricted Realization Mechanisms and Their Limits"
-  authors: "Davide Bragetti; Edoardo Palumbo; Carmelo Asaro; Giuseppe Francesco Italiano"
   venue: "Zenodo preprint"
   description: "Studies restricted mechanisms for moving artifacts across MCK regions, including assimilation, operator admission, denotation, and reconstruction certificates."
-  abstract: "This preprint starts from the MCK region system and asks which restricted realization families can actually move artifacts between observer-relative regions. It separates algebraic transition possibility from concrete procedures and records where each mechanism stops."
-  doi: "10.5281/zenodo.23041603"
-  record: "https://zenodo.org/records/23041603"
-  pdf: "https://zenodo.org/records/23041603/files/bragetti-2026-mck-region-transitions.pdf?download=1"
-  bibtex: |
-    @misc{bragetti2026mckregiontransitions,
-      title = {MCK Region Transitions: Restricted Realization Mechanisms and Their Limits},
-      author = {Bragetti, Davide and Palumbo, Edoardo and Asaro, Carmelo and Italiano, Giuseppe Francesco},
-      year = {2026},
-      month = sep,
-      doi = {10.5281/zenodo.23041603},
-      publisher = {Zenodo},
-      note = {Preprint}
-    }
 
 - id: mck-foundation
+  paper: meaning-opacity-function
   featured: true
   research_line: "MCK Properties"
   status: "Preprint"
-  year: "2026"
-  title: "Meaning, Opacity, and Function: An Observer-Relative Classification of Artifacts"
-  authors: "Davide Bragetti; Carmelo Asaro; Giuseppe Francesco Italiano"
   venue: "Zenodo preprint"
   description: "Defines the observer-relative MCK region system over meaning, residual opacity, and functionality, fixing the vocabulary used by later MCK work."
-  abstract: "This preprint treats meaning, opacity, and functionality as observer-relative predicates over artifacts. It studies the finite region system induced by those predicates and supplies the baseline vocabulary later used for property attribution."
-  doi: "10.5281/zenodo.22016203"
-  record: "https://zenodo.org/records/22016203"
-  pdf: "https://zenodo.org/records/22016203/files/bragetti-2026-meaning-opacity-function.pdf?download=1"
-  bibtex: |
-    @misc{bragetti2026meaningopacityfunction,
-      title = {Meaning, Opacity, and Function: An Observer-Relative Classification of Artifacts},
-      author = {Bragetti, Davide and Asaro, Carmelo and Italiano, Giuseppe Francesco},
-      year = {2026},
-      month = aug,
-      doi = {10.5281/zenodo.22016203},
-      publisher = {Zenodo},
-      note = {Preprint}
-    }
 
 - id: ltl-intersection
+  paper: intersection-algebra-ltl
   featured: true
   research_line: "Temporal Evaluation"
   status: "Working paper"
-  year: "2026"
-  title: "The Intersection Algebra of Safety, Cosafety, Liveness, and Coliveness over Linear Temporal Logic"
-  authors: "Davide Bragetti"
   venue: "Zenodo working paper"
   description: "Classifies omega-regular properties through temporal evidence classes and connects the classification to verdict alphabets for runtime monitoring."
-  abstract: "This working paper integrates safety, cosafety, liveness, and coliveness into a single classification over omega-regular properties. It relates topological and prefix-quantifier structure to monitor verdict alphabets and finite evidence limits."
-  doi: "10.5281/zenodo.23043255"
-  record: "https://zenodo.org/records/23043255"
-  pdf: "https://zenodo.org/records/23043255/files/paper_lmcs.pdf?download=1"
-  bibtex: |
-    @misc{bragetti2026intersectionalgebra,
-      title = {The Intersection Algebra of Safety, Cosafety, Liveness, and Coliveness over Linear Temporal Logic},
-      author = {Bragetti, Davide},
-      year = {2026},
-      month = sep,
-      doi = {10.5281/zenodo.23043255},
-      publisher = {Zenodo},
-      note = {Working paper}
-    }
+
+- id: touch-crossing
+  paper: touch-and-crossing
+  featured: true
+  research_line: "Temporal Evaluation"
+  status: "Preprint"
+  venue: "Zenodo preprint"
+  description: "Argues that the touch and crossing modalities of threshold monitors are dual primitives with incomparable minimal resource requirements, and orders the tuning powers that realise the verdict-alphabet rungs."
 
 - id: observation-monitorability
+  paper: observation-relative-monitorability
   featured: true
   research_line: "Temporal Evaluation"
   status: "Preprint"
-  year: "2026"
-  title: "Observation-Relative Monitorability of Bounded Temporal Implication"
-  authors: "Davide Bragetti; Alessandro Bragetti; Giuseppe F. Italiano"
   venue: "Zenodo preprint"
   description: "Shows that monitorability of bounded temporal implication is joint in the formula and observation model, not a property of the formula alone."
-  abstract: "This preprint analyzes temporal implication under finite observation, delay, drift, jitter, and finite resolution. The result is an observation-relative view of monitorability: verdicts depend on both the formula and the observation regime."
-  doi: "10.5281/zenodo.23041615"
-  record: "https://zenodo.org/records/23041615"
-  pdf: "https://zenodo.org/records/23041615/files/main.pdf?download=1"
-  bibtex: |
-    @misc{bragetti2026observationrelative,
-      title = {Observation-Relative Monitorability of Bounded Temporal Implication},
-      author = {Bragetti, Davide and Bragetti, Alessandro and Italiano, Giuseppe F.},
-      year = {2026},
-      month = sep,
-      doi = {10.5281/zenodo.23041615},
-      publisher = {Zenodo},
-      note = {Preprint}
-    }
 
 - id: observation-control
+  paper: observation-class-control
   featured: true
   research_line: "Temporal Evaluation"
   status: "Preprint"
-  year: "2026"
-  title: "Controlling the Observation Class of a Runtime Monitor: Selection, Self-Tuning, and Physical Grounding"
-  authors: "Davide Bragetti; Carlo Bragetti; Giuseppe F. Italiano"
   venue: "Zenodo preprint"
   description: "Engineering companion showing how a runtime monitor's observation class can be selected and locally tuned under physical and causal-coherence constraints."
-  abstract: "This preprint treats a runtime monitor's observation class as a controlled quantity. It studies monitor-type selection, self-tuning, and physical grounding for bounded-eventuality temporal implication."
-  doi: "10.5281/zenodo.23041626"
-  record: "https://zenodo.org/records/23041626"
-  pdf: "https://zenodo.org/records/23041626/files/main.pdf?download=1"
-  bibtex: |
-    @misc{bragetti2026observationclass,
-      title = {Controlling the Observation Class of a Runtime Monitor: Selection, Self-Tuning, and Physical Grounding},
-      author = {Bragetti, Davide and Bragetti, Carlo and Italiano, Giuseppe F.},
-      year = {2026},
-      month = sep,
-      doi = {10.5281/zenodo.23041626},
-      publisher = {Zenodo},
-      note = {Preprint}
-    }
 
 - id: refinement-liveness
+  paper: refinement-confirmation-liveness
   featured: true
   research_line: "Temporal Evaluation"
   status: "Preprint"
-  year: "2026"
-  title: "Refinement-Based Confirmation of Liveness Properties from Monitor Verdict Traces: A Hensel-Newton Approach"
-  authors: "Davide Bragetti"
   venue: "Zenodo preprint"
   description: "Studies what extra refinement structure can supply when a finite monitor prefix cannot by itself confirm a liveness property over a continuing execution."
-  abstract: "This preprint studies how external refinement structure can support missing verdicts for temporal properties that finite prefixes cannot settle alone. It introduces a refinement chain and convergence criterion for liveness confirmation."
-  doi: "10.5281/zenodo.22028019"
-  record: "https://zenodo.org/records/22028019"
-  pdf: "https://zenodo.org/records/22028019/files/bragetti-2026-refinement-confirmation-hensel-newton.pdf?download=1"
-  bibtex: |
-    @misc{bragetti2026refinementliveness,
-      title = {Refinement-Based Confirmation of Liveness Properties from Monitor Verdict Traces: A Hensel-Newton Approach},
-      author = {Bragetti, Davide},
-      year = {2026},
-      month = aug,
-      doi = {10.5281/zenodo.22028019},
-      publisher = {Zenodo},
-      note = {Preprint}
-    }
 
 - id: typed-agent-actions
+  paper: typed-agent-action-framework
   featured: true
   research_line: "Agent / Triangle Dynamics"
   status: "Technical report"
-  year: "2026"
-  title: "A Typed Agent Action Framework with Prefix-Verdict Semantics"
-  authors: "Davide Bragetti; Giuseppe Francesco Italiano"
   venue: "Zenodo technical report"
   description: "Defines typed footprint action classes for agent actions and maps them onto prefix-verdict semantics over temporal property classes."
-  abstract: "This technical report gives typed signatures for agent action footprints and carrier persistence. It connects action classes to safety, cosafety, liveness, and coliveness verdict semantics over finite observation prefixes."
-  doi: "10.5281/zenodo.23041634"
-  record: "https://zenodo.org/records/23041634"
-  pdf: "https://zenodo.org/records/23041634/files/main.pdf?download=1"
-  bibtex: |
-    @misc{bragetti2026typedagentaction,
-      title = {A Typed Agent Action Framework with Prefix-Verdict Semantics},
-      author = {Bragetti, Davide and Italiano, Giuseppe Francesco},
-      year = {2026},
-      month = sep,
-      doi = {10.5281/zenodo.23041634},
-      publisher = {Zenodo},
-      note = {Technical report}
-    }
 
 - id: transactional-games
+  paper: transactional-games-temporal-signatures
   featured: true
   research_line: "Agent / Triangle Dynamics"
   status: "Preprint"
-  year: "2026"
-  title: "Recognising Before Reacting: Temporal Signatures of Transactional Games"
-  authors: "Davide Bragetti; Giuseppe Francesco Italiano"
   venue: "Zenodo preprint"
   description: "Formalises transactional games as finite-trace LTL properties over Karpman-projected role traces, using the antithesis window to distinguish reactive and pre-committed regimes."
-  abstract: "This preprint models seven transactional games as finite-trace LTL properties over projected role traces. It introduces the antithesis window as a temporal invariant separating reactive, knife-edge, pre-committed, and unresolved regimes."
-  doi: "10.5281/zenodo.22050701"
-  record: "https://zenodo.org/records/22050701"
-  pdf: "https://zenodo.org/records/22050701/files/main.pdf?download=1"
-  bibtex: |
-    @misc{bragetti2026recognisingreacting,
-      title = {Recognising Before Reacting: Temporal Signatures of Transactional Games},
-      author = {Bragetti, Davide and Italiano, Giuseppe Francesco},
-      year = {2026},
-      month = aug,
-      doi = {10.5281/zenodo.22050701},
-      publisher = {Zenodo},
-      note = {Preprint}
-    }
+
+- id: autoimmune-rationalization
+  paper: autoimmune-rationalization
+  featured: true
+  status: "Preprint"
+  venue: "Zenodo preprint"
+  description: "Shows that \"I believe only what I can prove\", read as an acceptance policy over finite confirmation, can defeat the system it protects without a single false verdict, and characterises when such protection is self-defeating."
+
+- id: intentional-semantic-geometry
+  paper: intentional-semantic-geometry
+  featured: true
+  status: "Preprint"
+  venue: "Zenodo preprint"
+  description: "Proposes Intentional Semantic Geometry: statements as grammar-mediated pointers into semantic spectra, with a typed calculus for the gap a partition leaves and for its reintegration."
+
+- id: one-number-per-cell
+  paper: one-number-per-cell
+  featured: true
+  status: "Preprint"
+  venue: "Zenodo preprint"
+  description: "Encodes several superimposed discrete curves with a single static number per cell, read as a member of a separating family, and proves the local-indistinguishability boundary for state-blind tracers."

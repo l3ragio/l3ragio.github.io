@@ -48,6 +48,8 @@ post-failure governance and role dynamics in multi-agent interaction.
 
 ## Publications
 
+<p class="research-links"><a href="{{ '/research/papers/' | relative_url }}">All papers, one page each</a></p>
+
 {% include research_publications.html %}
 
 ## Research Notes
