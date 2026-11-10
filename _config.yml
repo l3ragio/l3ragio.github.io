@@ -226,6 +226,12 @@ defaults:
       layout: visual_story
       comments: false
       toc: false
+  # The mirrored PDFs are full-text files, not landing pages: keep them out of
+  # sitemap.xml (their mtime would be the CI checkout time anyway).
+  - scope:
+      path: "research/papers/*/paper.pdf"
+    values:
+      sitemap: false
   # Defaults for scholarly paper pages
   - scope:
       path: ""
