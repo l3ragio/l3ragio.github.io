@@ -46,6 +46,17 @@ post-failure governance and role dynamics in multi-agent interaction.
 
 {% include research_timeline.html %}
 
+## Doctoral Thesis
+{:#doctoral-thesis}
+
+<section class="essay-list" aria-label="Doctoral thesis">
+  <article class="essay">
+    <h3><a href="{{ '/research/thesis/' | relative_url }}">{{ site.data.thesis.title }}</a></h3>
+    <p>Doctoral thesis, {{ site.data.thesis.institution }}, {{ site.data.thesis.issued | slice: 0, 4 }}. Abstract, record in the institutional repository (IRIS {{ site.data.thesis.handle }}), citation, and the papers it draws on.</p>
+    <p class="research-links"><a href="{{ '/research/thesis/' | relative_url }}">Thesis page</a><a href="{{ site.data.thesis.iris_url }}">IRIS record</a></p>
+  </article>
+</section>
+
 ## Publications
 
 <p class="research-links"><a href="{{ '/research/papers/' | relative_url }}">All papers, one page each</a></p>

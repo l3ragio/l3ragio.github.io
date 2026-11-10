@@ -1,0 +1,107 @@
+# Doctoral thesis, maintained by hand from its authoritative institutional
+# record: https://iris.uniroma1.it/handle/11573/1780148 (IRIS Sapienza).
+# It is NOT a Zenodo publication and is deliberately outside
+# _data/paper_sources.yml and scripts/sync_zenodo_papers.py.
+#
+# Every value below was read from the public IRIS item page or from the
+# title page of the public file on the date in `retrieved`. Nothing here
+# states or implies that a degree was awarded: IRIS records a deposit, a
+# discussion date and a document type, and that is all the page says.
+# Re-check against IRIS before changing anything.
+
+retrieved: 2026-11-10
+
+# Exact IRIS title (DC.title). IRIS writes "safe and aligned" in lower case;
+# the PDF title page and the author's Scholar entry use Title Case. Scholar
+# matches titles case-insensitively. citation_title uses the IRIS form.
+title: "Elements of safe and aligned Artificial General Intelligence"
+author: "Bragetti, Davide"
+author_display: "Davide Bragetti"
+orcid: "0009-0008-7645-8241"
+
+institution: "Sapienza Università di Roma"
+institution_formal: "Università degli Studi di Roma “La Sapienza”"
+department: "Dipartimento di Ingegneria informatica, automatica e gestionale “Antonio Ruberti”"
+# IRIS free-text note on the record: "Dottorato di ricerca in Cybersecurity
+# (Sapienza Università di Roma - Luiss Guido Carli), XXXIX ciclo." The same
+# programme and cycle are printed on the title page of the public file.
+programme: "PhD in Cybersecurity (Sapienza Università di Roma and Luiss Guido Carli), XXXIX cycle"
+# Printed on the title page of the public (censored) file. IRIS shows no
+# supervisor field. Two other names sit in an IRIS field with no visible
+# role label and are therefore not published here.
+supervisor: "Prof. Giuseppe F. Italiano"
+supervisor_source: "title page of the public censored edition"
+
+document_type: "Doctoral thesis"
+issued: "2026-10-22"            # IRIS: DCTERMS.issued, "Data di discussione 22-ott-2026"
+iris_available: "2026-11-10"    # IRIS: DCTERMS.available
+language: en
+
+handle: "11573/1780148"
+iris_url: "https://iris.uniroma1.it/handle/11573/1780148"
+handle_url: "https://hdl.handle.net/11573/1780148"
+scholar_profile: "https://scholar.google.com/citations?user=Fs4CwvwAAAAJ"
+
+keywords:
+  - semantic classification
+  - representation
+  - linear temporal logic
+  - runtime monitoring
+  - agent actions
+
+# BibTeX, kept literal because Liquid cannot template braces. The validator
+# checks that it agrees with title, author, institution, year and handle.
+# @phdthesis names the document type (IRIS: "07a Tesi di Dottorato"); it says
+# nothing about a degree having been conferred.
+bibtex: |
+  @phdthesis{bragetti2026elements,
+    title = {Elements of safe and aligned Artificial General Intelligence},
+    author = {Bragetti, Davide},
+    school = {Sapienza Università di Roma},
+    year = {2026},
+    type = {Doctoral thesis},
+    note = {Discussed 22 October 2026. IRIS Sapienza record 11573/1780148},
+    url = {https://hdl.handle.net/11573/1780148}
+  }
+
+# Verbatim IRIS abstract (DC.description), one entry per paragraph. It is
+# identical to the abstract on page ii of the public file.
+abstract:
+  - "This dissertation studies how representations, observations, and actions determine what an observer or agent can classify, verify, and use. Its first part develops observer-relative classifications of artifacts. Structured meaning, residual opacity, and functionality are separated in the MCK framework; the resulting regions are then connected to admissible realization mechanisms and to a grammar-mediated geometry of intentional reference. A discrete encoding problem makes the representational issue concrete: a separating family stores one value per grid cell while allowing indexed tracers to recover distinct superimposed curves, and a local indistinguishability result identifies the limit of state-blind recovery."
+  - "The temporal part organizes safety, cosafety, liveness, and coliveness into their intersection algebra and studies the observational mechanisms by which such properties are monitored. Touch and crossing are treated as distinct threshold modalities; bounded temporal implication is classified relative to finite observation; monitor parameters select and adapt the observation class; and a Hensel–Newton refinement construction describes qualified confirmation from sequences of finite verdicts. The final part extends these ideas to agents through typed actions with prefix-verdict semantics and an observer-relative cognitive algebra for self-attribution, identity, integrity, and freedom."
+  - "The contribution of the dissertation is organizational as well as formal. It presents the deposited results in one notation-aware narrative while preserving their distinct assumptions and epistemic strength. The synthesis shows that the chapters share a recurring discipline: a claim is meaningful only relative to the representation available, the observer performing the test, and the evidence that the observation mechanism can retain. No stronger cross-family theorem is claimed."
+
+# The two files attached to the IRIS record. Neither is hosted on this site.
+files:
+  - id: censored
+    name: "Tesi_dottorato_Bragetti_oscurata.pdf"
+    label: "Censored edition"
+    access: "open access"
+    licence: "CC BY 4.0"
+    bytes: 7678780              # Content-Length of the IRIS download
+    sha256: "e471ab11b5c18721fccc98dfbc93f5e6c739b95fef27aa484c2f40ed1c1d3a9b"
+    pages: 946
+    url: "https://iris.uniroma1.it/bitstream/11573/1780148/1/Tesi_dottorato_Bragetti_oscurata.pdf"
+    note: "Eleven chapters of the complete dissertation are withheld from this edition; the file's own note on page i says so. Every other chapter is identical to the complete edition."
+  - id: complete
+    name: "Tesi_dottorato_Bragetti.pdf"
+    label: "Complete edition"
+    access: "archive managers only (request through IRIS: “Contatta l’autore”)"
+    licence: "CC BY 4.0 (as recorded; the file is not public)"
+    listed_size: "10.04 MB"
+    url: null
+
+# Published papers whose subjects the abstract describes. Slugs of
+# _papers/*.md. "Related", not a claim about chapter structure.
+related_papers:
+  - meaning-opacity-function
+  - mck-region-transitions
+  - intentional-semantic-geometry
+  - one-number-per-cell
+  - intersection-algebra-ltl
+  - touch-and-crossing
+  - observation-relative-monitorability
+  - observation-class-control
+  - refinement-confirmation-liveness
+  - typed-agent-action-framework
+  - agent-self-attribution

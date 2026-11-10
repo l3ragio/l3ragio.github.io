@@ -95,6 +95,14 @@ pages only.
   {% include paper-meta.html %}
 {% endif %}
 
+{%- comment -%}
+Doctoral thesis page (layout `thesis`): dissertation citation_* tags and
+Thesis JSON-LD, from _data/thesis.yml.
+{%- endcomment -%}
+{% if page.layout == "thesis" %}
+  {% include thesis-meta.html %}
+{% endif %}
+
 <!-- Person schema for the primary author. Adds the avatar image to
      the Person object so social platforms (LinkedIn, X, Slack, etc.)
      have a non-obsolete profile picture next to the author name in

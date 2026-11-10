@@ -19,6 +19,12 @@ site (default: ./_site) or against the live site (--live):
     every page;
   * with --live: HTTP 200 and the right Content-Type for page and PDF.
 
+For the doctoral thesis (_data/thesis.yml, /research/thesis/) it checks the
+dissertation tags (citation_dissertation_institution, no journal / DOI /
+citation_pdf_url, since no PDF is hosted here), the abstract against the IRIS
+text, the Thesis JSON-LD, the IRIS link, discovery links and sitemap entry,
+and that the page makes no degree-conferral claim.
+
 Standard library only, so it runs unchanged in CI.
 
 Usage:
@@ -132,6 +138,98 @@ class Source:
 
 def norm_ws(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
+
+
+THESIS_YML = ROOT / "_data" / "thesis.yml"
+
+
+def thesis_values() -> dict:
+    """The few thesis.yml fields the checks need (regex, to stay stdlib-only)."""
+    text = THESIS_YML.read_text(encoding="utf-8")
+    vals = {}
+    for key in ("title", "author", "issued", "institution", "iris_url", "handle", "handle_url"):
+        m = re.search(rf'^{key}:\s*"([^"]*)"', text, re.M)
+        vals[key] = m.group(1) if m else ""
+    bib = re.search(r"^bibtex: \|\n((?:  .*\n?)+)", text, re.M)
+    vals["bibtex"] = bib.group(1) if bib else ""
+    block = re.search(r"^abstract:\n(.*?)^files:", text, re.M | re.S)
+    vals["abstract"] = re.findall(r'^  - "(.*)"\s*$', block.group(1), re.M) if block else []
+    return vals
+
+
+def check_thesis(src: "Source", base: str, args, err, research: "Page", sitemap: str) -> bool:
+    t = thesis_values()
+    path = "/research/thesis/"
+    page_abs = base + path
+    raw = src.get(path)
+    if raw is None:
+        err(f"thesis: landing page {path} missing")
+        return False
+    if args.live and "text/html" not in src.content_types.get(path, ""):
+        err(f"thesis: page Content-Type {src.content_types.get(path)!r}")
+    html = raw.decode("utf-8")
+    p = Page()
+    p.feed(html)
+    meta: dict[str, list[str]] = {}
+    for k, v in p.meta:
+        meta.setdefault(k, []).append(v)
+
+    def one(name: str, want: str) -> None:
+        vals = meta.get(name, [])
+        if vals != [want]:
+            err(f"thesis: {name} {vals} != [{want!r}]")
+
+    for want in (f"title = {{{t['title']}}}", f"author = {{{t['author']}}}", f"year = {{{t['issued'][:4]}}}",
+                 f"school = {{{t['institution']}}}", t["handle"], t["handle_url"]):
+        if want not in t["bibtex"]:
+            err(f"thesis: BibTeX in _data/thesis.yml lacks {want!r}")
+    one("citation_title", t["title"])
+    one("citation_author", t["author"])
+    one("citation_publication_date", t["issued"].replace("-", "/"))
+    one("citation_dissertation_institution", t["institution"])
+    for name in ("citation_pdf_url", "citation_doi", "citation_journal_title", "citation_conference_title",
+                 "citation_technical_report_institution", "citation_technical_report_number"):
+        if name in meta:
+            err(f"thesis: unexpected {name} (no hosted PDF, no DOI, not a journal/conference/report)")
+    if p.canonical != [page_abs]:
+        err(f"thesis: canonical {p.canonical} != [{page_abs}]")
+    robots = " ".join(meta.get("robots", []) + meta.get("googlebot", [])).lower()
+    if "noindex" in robots or "nofollow" in robots:
+        err(f"thesis: robots meta {robots!r}")
+    if not p.abstract_found or p.abstract_hidden:
+        err("thesis: abstract missing or hidden (details/script/noscript/template)")
+    else:
+        # paragraphs are separate <p> elements, so compare without whitespace
+        got = re.sub(r"\s+", "", "".join(p.abstract_text))
+        want = re.sub(r"\s+", "", "".join(t["abstract"]))
+        if not want or got != want:
+            err("thesis: visible abstract differs from the IRIS abstract in _data/thesis.yml")
+    ld = []
+    for block in p.jsonld:
+        try:
+            data = json.loads(block)
+        except json.JSONDecodeError as e:
+            err(f"thesis: JSON-LD does not parse: {e}")
+            continue
+        if isinstance(data, dict) and data.get("@type") == "Thesis":
+            ld.append(data)
+    if len(ld) != 1 or ld[0].get("headline") != t["title"]:
+        err("thesis: expected one Thesis JSON-LD whose headline is the thesis title")
+    if t["iris_url"] not in p.links:
+        err("thesis: no link to the IRIS record")
+    if re.search(r"\.pdf", " ".join(l for l in p.links if l.startswith(base))):
+        err("thesis: links to a PDF on this site (the thesis is not hosted here)")
+    if src.site is not None and list((src.site / "research" / "thesis").glob("*.pdf")):
+        err("thesis: a PDF is present in research/thesis/ (must not be hosted)")
+    body = re.sub(r"<script.*?</script>|<style.*?</style>", " ", html, flags=re.S)
+    text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", body))
+    if re.search(r"\b(conferred|awarded|was granted|has been granted)\b", text, re.I):
+        err("thesis: page makes a degree-conferral claim; IRIS records only a deposit and a discussion date")
+    if path not in research.links and base + path not in research.links:
+        err("thesis: no plain link from /research/")
+    if f"<loc>{page_abs}</loc>" not in sitemap:
+        err("thesis: not in sitemap.xml")
+    return True
 
 
 def main() -> int:
@@ -249,6 +347,7 @@ def main() -> int:
         for name, pg in (("/research/papers/", index), ("/research/", research)):
             if path not in pg.links and base + path not in pg.links:
                 err(f"{slug}: no plain link from {name}")
+    thesis_ok = check_thesis(src, base, args, err, research, sitemap)
     robots_txt = (src.get("/robots.txt") or b"").decode("utf-8")
     if f"Sitemap: {base}/sitemap.xml" not in robots_txt:
         err("robots.txt does not reference the sitemap")
@@ -258,13 +357,14 @@ def main() -> int:
     # citation tags only on single-paper pages
     if src.site is not None:
         paper_pages = {(src.site / "research" / "papers" / s / "index.html").resolve() for s in slugs}
+        paper_pages.add((src.site / "research" / "thesis" / "index.html").resolve())  # dissertation tags, checked above
         for f in src.all_html():
             if f.resolve() not in paper_pages and b'name="citation_title"' in f.read_bytes():
                 err(f"citation_title on a non-paper page: {f.relative_to(src.site)}")
 
     target = base if args.live else args.site
-    print(f"validate_papers: {len(works)} works checked against {target}; "
-          f"{ok} pages found; {len(errors)} problem(s).")
+    print(f"validate_papers: {len(works)} works + thesis checked against {target}; "
+          f"{ok} paper pages found, thesis page {'found' if thesis_ok else 'MISSING'}; {len(errors)} problem(s).")
     for e in errors:
         print("FAIL:", e)
     return 1 if errors else 0

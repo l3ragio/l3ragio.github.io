@@ -1,0 +1,113 @@
+---
+layout: page
+---
+{%- comment -%}
+  Landing page for the doctoral thesis, whose authoritative record is IRIS
+  Sapienza 11573/1780148. Data: _data/thesis.yml. Head metadata:
+  _includes/thesis-meta.html. The full abstract is in the initial HTML.
+  No PDF is hosted here (see the page text), so no citation_pdf_url.
+{%- endcomment -%}
+{%- assign t = site.data.thesis -%}
+{%- assign censored = t.files | where: "id", "censored" | first -%}
+{%- assign complete = t.files | where: "id", "complete" | first -%}
+{%- assign censored_mb = censored.bytes | divided_by: 10485.76 | round | divided_by: 100.0 -%}
+
+<h1 class="dynamic-title paper-title">{{ t.title }}</h1>
+
+<div class="content">
+<div class="research-page paper-page thesis-page">
+
+  <p class="pub-status">{{ t.document_type }} &middot; {{ t.issued | slice: 0, 4 }}</p>
+
+  <p class="paper-authors"><span class="paper-author">{{ t.author_display }}</span></p>
+  <p class="pub-venue">{{ t.institution }}</p>
+
+  <div class="pub-actions paper-actions" aria-label="Thesis links">
+    <a href="{{ t.iris_url }}">IRIS record</a>
+    <a href="{{ censored.url }}" type="application/pdf">Censored edition (PDF)</a>
+    <a href="#cite">Cite</a>
+    <a href="{{ t.scholar_profile }}">Google Scholar profile</a>
+  </div>
+
+  <h2 id="abstract">Abstract</h2>
+  <div class="paper-abstract">
+    {%- for para in t.abstract %}
+    <p>{{ para }}</p>
+    {%- endfor %}
+  </div>
+
+  <p class="paper-keywords"><span class="dossier-label">Keywords</span> {{ t.keywords | join: " &middot; " }}</p>
+
+  <h2 id="details">Record</h2>
+  <dl class="paper-facts">
+    <dt>Type</dt>
+    <dd>{{ t.document_type }}, deposited in the Sapienza institutional repository (IRIS).</dd>
+
+    <dt>Institution</dt>
+    <dd>{{ t.institution_formal }}<br>{{ t.department }}</dd>
+
+    <dt>Programme</dt>
+    <dd>{{ t.programme }}.</dd>
+
+    <dt>Supervisor</dt>
+    <dd>{{ t.supervisor }} (as printed on the {{ t.supervisor_source }}).</dd>
+
+    <dt>Discussion date</dt>
+    <dd>{{ t.issued | date: "%-d %B %Y" }} (as recorded in IRIS).</dd>
+
+    <dt>Institutional record</dt>
+    <dd><a href="{{ t.iris_url }}">{{ t.iris_url | remove: "https://" }}</a>; permanent link <a href="{{ t.handle_url }}">{{ t.handle_url | remove: "https://" }}</a>. In IRIS since {{ t.iris_available | date: "%-d %B %Y" }}.</dd>
+
+    <dt>Language</dt>
+    <dd>English</dd>
+
+    <dt>Researcher ID</dt>
+    <dd><a href="https://orcid.org/{{ t.orcid }}">ORCID {{ t.orcid }}</a></dd>
+  </dl>
+
+  <h2 id="fulltext">Full text</h2>
+  <p>The thesis is not hosted on this site. Both editions stay with the institutional repository, which is the authoritative source.</p>
+  <dl class="paper-facts">
+    <dt>{{ censored.label }}</dt>
+    <dd>
+      <a href="{{ censored.url }}" type="application/pdf">{{ censored.name }}</a>
+      ({{ censored_mb }} MB, {{ censored.pages }} pages), {{ censored.access }}, {{ censored.licence }}.
+      {{ censored.note }}
+      <br><span class="paper-hash">SHA-256 {{ censored.sha256 }}</span>
+    </dd>
+
+    <dt>{{ complete.label }}</dt>
+    <dd>
+      Not public: {{ complete.access }}. The record lists a {{ complete.listed_size }} file. This page does not link it and it has not been copied here.
+    </dd>
+  </dl>
+
+  <h2 id="cite">Cite</h2>
+  <p class="paper-citation">
+    {{ t.author_display }} ({{ t.issued | slice: 0, 4 }}).
+    <em>{{ t.title }}</em>. {{ t.document_type }}, {{ t.institution }}.
+    <a href="{{ t.handle_url }}">{{ t.handle_url }}</a>
+  </p>
+  <div class="pub-citation">
+    <pre><code>{{ t.bibtex | strip | escape }}</code></pre>
+  </div>
+
+  <h2 id="related">Related papers</h2>
+  <p>Published papers on the subjects the abstract describes. Each has its own page, with the full text and DOI.</p>
+  <ul class="paper-related">
+    {%- for slug in t.related_papers %}
+    {%- assign rp = site.papers | where: "slug", slug | first %}
+    {%- if rp %}
+    <li><a href="{{ rp.url | relative_url }}">{{ rp.title }}</a> <span class="pub-venue">{{ rp.publication_type }}, {{ rp.year }}</span></li>
+    {%- endif %}
+    {%- endfor %}
+  </ul>
+
+  <p class="research-links">
+    <a href="{{ '/research/' | relative_url }}">Research program</a>
+    <a href="{{ '/research/papers/' | relative_url }}">All papers</a>
+    <a href="{{ t.scholar_profile }}">Google Scholar profile</a>
+  </p>
+
+</div>
+</div>

@@ -13,6 +13,8 @@ Each paper is archived on [Zenodo](https://zenodo.org/search?q=metadata.creators
 which assigns its DOI. The PDF on each page here is a byte-identical copy of
 the Zenodo file. The concept DOI always resolves to the latest version.
 
+The doctoral thesis these papers feed into is a different kind of document and has its own page: [Doctoral thesis]({{ '/research/thesis/' | relative_url }}).
+
 <p class="research-links"><a href="{{ '/research/' | relative_url }}">Research program</a><a href="https://scholar.google.com/citations?user=Fs4CwvwAAAAJ">Google Scholar profile</a><a href="https://orcid.org/0009-0008-7645-8241">ORCID</a></p>
 
 {% assign papers = site.papers | sort: "first_published" | reverse %}

@@ -1,0 +1,38 @@
+{%- comment -%}
+  Bibliographic metadata for the doctoral thesis page (layout `thesis`).
+  Dissertation fields only (scholar.google.com/intl/en/scholar/inclusion.html):
+  citation_title, citation_author, citation_publication_date and
+  citation_dissertation_institution. No journal or conference tags, no
+  citation_doi (the thesis has no DOI), and no citation_pdf_url: the PDFs
+  stay in IRIS, and Scholar requires the PDF in the same directory as this
+  page, so a link to IRIS here would be invalid.
+{%- endcomment -%}
+{%- assign t = site.data.thesis -%}
+{%- assign page_abs = page.url | absolute_url -%}
+<meta name="citation_title" content="{{ t.title | escape }}">
+<meta name="citation_author" content="{{ t.author | escape }}">
+<meta name="citation_publication_date" content="{{ t.issued | replace: '-', '/' }}">
+<meta name="citation_online_date" content="{{ t.iris_available | replace: '-', '/' }}">
+<meta name="citation_dissertation_institution" content="{{ t.institution | escape }}">
+<meta name="citation_abstract_html_url" content="{{ page_abs }}">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="{{ t.keywords | join: '; ' | escape }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Thesis",
+  "@id": {{ page_abs | jsonify }},
+  "url": {{ page_abs | jsonify }},
+  "mainEntityOfPage": {{ page_abs | jsonify }},
+  "headline": {{ t.title | jsonify }},
+  "name": {{ t.title | jsonify }},
+  "author": {"@type": "Person", "name": {{ t.author_display | jsonify }}, "sameAs": {{ t.orcid | prepend: "https://orcid.org/" | jsonify }}},
+  "datePublished": {{ t.issued | jsonify }},
+  "description": {{ t.abstract | first | jsonify }},
+  "inLanguage": "en",
+  "keywords": {{ t.keywords | join: ", " | jsonify }},
+  "publisher": {"@type": "CollegeOrUniversity", "name": {{ t.institution_formal | jsonify }}},
+  "identifier": {"@type": "PropertyValue", "propertyID": "Handle", "value": {{ t.handle | jsonify }}},
+  "sameAs": [{{ t.handle_url | jsonify }}, {{ t.iris_url | jsonify }}]
+}
+</script>
