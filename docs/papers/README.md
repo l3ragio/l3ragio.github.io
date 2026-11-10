@@ -68,6 +68,28 @@ The sync is idempotent. A second run with nothing new on Zenodo prints
 `No changes.` and touches no file, so the sitemap `lastmod` moves only on
 real changes.
 
+## The doctoral thesis (not a Zenodo paper)
+
+The thesis lives at `/research/thesis/` and is maintained by hand in
+`_data/thesis.yml` from its authoritative record, IRIS Sapienza 11573/1780148.
+It is deliberately outside `paper_sources.yml` and the sync script. To update
+it, re-read the IRIS page, edit `_data/thesis.yml` (title, abstract, files,
+dates), and run the validator. The page never hosts a PDF; it carries
+dissertation tags only; it must not claim that a degree was conferred (the
+validator checks all three).
+
+## Other tools
+
+| Command | Purpose |
+|---------|---------|
+| `python3 scripts/validate_papers.py [--site DIR \| --live]` | Scholar compliance for the 13 papers and the thesis |
+| `python3 scripts/indexing_report.py [--write]` | Per-item status table (measured plus recorded fields) |
+| `python3 scripts/check_overflow.py --site DIR [--all-papers]` | Horizontal overflow at 320 to 1280 px; run before a release. In Git Bash set `MSYS_NO_PATHCONV=1` when passing `--pages /x/` |
+
+Sitemap `lastmod` comes from git history (`_plugins/pages-lastmod-hook.rb`),
+so it moves only when a page's source changes. A generated paper page carries
+its own `last_modified_at`.
+
 ## Metadata decisions
 
 - `citation_doi` and every DOI button use the **concept** DOI. It always

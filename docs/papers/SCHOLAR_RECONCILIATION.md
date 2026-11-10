@@ -146,3 +146,86 @@ without signing in.
 - **S-1** Before this change, the site's "ABS" texts were editorial
   paraphrases, not the abstracts. Cards and pages now show the Zenodo
   abstract verbatim.
+
+---
+
+# Update 2026-11-10: doctoral thesis, baseline re-check, open conflicts
+
+## Doctoral thesis (IRIS 11573/1780148)
+
+Read from the public IRIS item page on 2026-11-10 and from the public file.
+The page is `/research/thesis/`; data in `_data/thesis.yml`.
+
+| Item | Observed |
+|------|----------|
+| Title (IRIS `DC.title`) | "Elements of safe and aligned Artificial General Intelligence" (lower case; the PDF title page and the Scholar entry use Title Case) |
+| Type | 07a Tesi di Dottorato; discussion date **22 Oct 2026**; in IRIS since 10 Nov 2026 |
+| Programme | IRIS note: "Dottorato di ricerca in Cybersecurity (Sapienza - Luiss Guido Carli), XXXIX ciclo". The same programme and cycle are on the PDF title page. IRIS also notes that its programme menu lacks Cybersecurity and that "Ingegneria informatica" was selected on the offices' instruction. |
+| Supervisor | Not an IRIS field. The title page of the public file names Prof. Giuseppe F. Italiano. Two other names (Kwiatkowska, Leucker) sit in an IRIS field with no visible role label, so they are not published. |
+| Files | (1) `Tesi_dottorato_Bragetti_oscurata.pdf`, open access, CC BY 4.0, 7,678,780 bytes, 946 pages, SHA-256 `e471ab11...d3a9b`: the **censored edition**, eleven chapters withheld (its page i says so). (2) `Tesi_dottorato_Bragetti.pdf`, complete, "solo gestori archivio", listed 10.04 MB; redirects to the IRIS login; request-only. |
+| Scholar profile | Entry "Elements of Safe and Aligned Artificial General Intelligence" is **already in the profile** (Università degli Studi di Roma "La Sapienza", 2026), matching the IRIS handle. No action. |
+
+Decisions:
+
+- **No local copy.** The only public file is 7.3 MiB, over Scholar's 5 MB
+  limit, so a copy here would not become indexable and would add 7.7 MB to the
+  repository. Both editions stay in IRIS. The page links the censored edition
+  and says plainly that it is censored.
+- **Scholar tags** are the dissertation set only: `citation_title`,
+  `citation_author`, `citation_publication_date` (2026/10/22),
+  `citation_dissertation_institution`. No `citation_pdf_url` (it would have to
+  sit in the page's directory), no DOI, no journal tags. The validator enforces
+  this. The IRIS page itself points `citation_pdf_url` at the 7.3 MiB file, so
+  Scholar can probably index the IRIS abstract and metadata but not that PDF.
+- **Not published:** the student ID number printed on page 1 of the PDF, the
+  referee names with no role label, and any statement that a degree was
+  conferred. The validator fails the page if "conferred"/"awarded" appears.
+
+## OPEN CONFLICT: doctorate dates in the CV
+
+The CV in `candidature/cv/` (outside this repository) says:
+
+- `academic-cv-2026-09-16/03_VERIFIED_CV.md` and `cv-academic-long/cv-academic.tex`:
+  Ph.D. in Cybersecurity and Artificial Intelligence, 10/2020 to 04/2024,
+  **"conferred 23 April 2024"**, thesis titled *Elements of Safe and General
+  Artificial General Intelligence*; also Associate Professor of Advanced
+  Cryptography, Sapienza DIAG, 10/2024 to present.
+- The website About page says "dual PhDs in cybersecurity".
+
+IRIS and the thesis title page say: XXXIX cycle, discussion **22 October 2026**,
+deposit 28 October, public 10 November 2026, title "...Safe and **Aligned**...".
+
+These cannot all describe the same degree. I changed none of them: the CV is
+not part of this repository, it exists in several variants (two are labelled
+"2041 scenario"), and the choice is a factual statement about the author's
+qualifications. **Needed from the author:** which dates and thesis title are
+correct, and whether the April 2024 degree is a different doctorate. Until
+then the site makes no degree claim, and the thesis is not added to the CV.
+
+## Baseline re-check, 2026-11-10
+
+- Live: 13 of 13 paper pages and PDFs pass `validate_papers.py --live`.
+- Scholar profile: unchanged (10 entries, same five papers and the thesis;
+  still no homepage link; verified email at uniroma1.it). Single unauthenticated
+  GET; no Scholar search was repeated.
+- The 8 papers still absent from the profile are unchanged.
+
+## Fixed in this update
+
+- **Sitemap `lastmod`.** `/research/`, `/about/` and every PDF carried the CI
+  build time. Pages now take the date of the last commit that touched the
+  source (`_plugins/pages-lastmod-hook.rb`); the PDFs are no longer in the
+  sitemap, since they are not landing pages.
+- **Mobile overflow: not reproducible.** The earlier crop came from headless
+  Chrome's minimum window width. Measured in iframes of exact width
+  (`scripts/check_overflow.py`; control page detected at +388 px), the home
+  page, `/research/`, `/research/papers/`, the thesis page, `/research/mck-properties/`,
+  `/about/` and all 13 paper pages have zero overflow at 320, 375, 390, 768 and
+  1280 px. No CSS change was needed.
+
+## Still blocked (need the author's Google sign-in)
+
+No browser tools were available, so these were not attempted: Scholar homepage
+field; adding the 8 missing papers; Search Console property, sitemap
+submission and indexing requests. Steps are in the sections above.
+Status of every item: `INDEXING_STATUS.md`.

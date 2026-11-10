@@ -1,0 +1,39 @@
+{
+  "_about": "Evidence for the indexing statuses that a script cannot establish. WEBSITE_DEPLOYED, FULLTEXT_AVAILABLE and SCHOLAR_METADATA_VALID are measured live by scripts/indexing_report.py. The fields below are observations made by a person or a one-off read, each with the date and method. 'unknown' means not observed; it never means 'no'. Update an entry only after observing it, and write the date and method. Do not script Google Scholar searches: Scholar answers automated requests with a bot challenge.",
+  "profile": {
+    "url": "https://scholar.google.com/citations?user=Fs4CwvwAAAAJ",
+    "last_read": "2026-11-10",
+    "method": "single unauthenticated GET of the public profile page",
+    "entries": 10,
+    "verified_email_domain": "uniroma1.it",
+    "homepage_link": "none shown",
+    "owner_account_verified": false
+  },
+  "items": {
+    "intersection-algebra-ltl":               {"iris": "11573/1767773", "scholar_profile": "present"},
+    "touch-and-crossing":                     {"iris": "11573/1770547", "scholar_profile": "present"},
+    "observation-relative-monitorability":    {"iris": "11573/1772220", "scholar_profile": "present"},
+    "observation-class-control":              {"iris": "11573/1772243", "scholar_profile": "present"},
+    "meaning-opacity-function":               {"iris": "11573/1772494", "scholar_profile": "present"},
+    "mck-region-transitions":                 {"iris": null, "scholar_profile": "missing"},
+    "refinement-confirmation-liveness":       {"iris": null, "scholar_profile": "missing"},
+    "transactional-games-temporal-signatures": {"iris": null, "scholar_profile": "missing"},
+    "agent-self-attribution":                 {"iris": null, "scholar_profile": "missing"},
+    "typed-agent-action-framework":           {"iris": null, "scholar_profile": "missing"},
+    "intentional-semantic-geometry":          {"iris": null, "scholar_profile": "missing"},
+    "one-number-per-cell":                    {"iris": null, "scholar_profile": "missing"},
+    "autoimmune-rationalization":             {"iris": null, "scholar_profile": "missing"},
+    "thesis":                                 {"iris": "11573/1780148", "scholar_profile": "present"}
+  },
+  "defaults": {
+    "google_search_indexed": "unknown",
+    "google_scholar_indexed": "unknown",
+    "alternate_version_recognized": "unknown",
+    "last_checked": "2026-11-10",
+    "method": "not observed; Search Console and a signed-in Scholar session were not available. Scholar search was probed once on 2026-11-09 and answered with a bot challenge, so nothing was learned."
+  },
+  "blocked": [
+    "Search Console property: needs the author's Google sign-in; no verification token exists in the repository.",
+    "Scholar profile edits (homepage, adding the 8 missing papers): need the author's signed-in session; no browser tools were available."
+  ]
+}
