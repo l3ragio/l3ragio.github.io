@@ -2,6 +2,8 @@
 layout: page
 title: Papers
 permalink: /research/papers/
+lastmod_deps:
+  - _papers
 description: "Every public paper by Davide Bragetti deposited on Zenodo, each with its own page, full-text PDF, DOI and citation."
 ---
 

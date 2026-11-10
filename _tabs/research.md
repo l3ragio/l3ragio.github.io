@@ -3,6 +3,12 @@ layout: page
 title: Research
 icon: fas fa-microscope
 order: 0
+lastmod_deps:
+  - _data/research_publications.yml
+  - _data/research_projects.yml
+  - _data/research_timeline.yml
+  - _data/thesis.yml
+  - _papers
 description: "Research on temporal semantics for LLMs, formal AI evaluation, agent properties, multi-agent systems, and governance."
 ---
 
