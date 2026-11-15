@@ -17,7 +17,7 @@ the Zenodo file. The concept DOI always resolves to the latest version.
 
 The doctoral thesis these papers feed into is a different kind of document and has its own page: [Doctoral thesis]({{ '/research/thesis/' | relative_url }}).
 
-<p class="research-links"><a href="{{ '/research/' | relative_url }}">Research program</a><a href="https://scholar.google.com/citations?user=Fs4CwvwAAAAJ">Google Scholar profile</a><a href="https://orcid.org/0009-0008-7645-8241">ORCID</a></p>
+<p class="research-links"><a href="{{ '/research/' | relative_url }}">Research program</a><a href="https://scholar.google.com/citations?user=Fs4CwvwAAAAJ">Google Scholar profile</a><a href="https://orcid.org/0009-0008-7645-8241">ORCID</a><a href="https://www.alphaxiv.org/@davide-bragetti">alphaXiv profile</a></p>
 
 {% assign papers = site.papers | sort: "first_published" | reverse %}
 <section class="publication-list paper-index" aria-label="All papers">

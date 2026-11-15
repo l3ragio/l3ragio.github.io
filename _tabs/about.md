@@ -2,7 +2,7 @@
 layout: page
 title: About
 icon: fas fa-info-circle
-order: 4
+order: 6
 ---
 
 <div class="about-page" markdown="1">
@@ -14,3 +14,7 @@ Davide Bragetti is an independent AI researcher, frontier Red Team leader and op
 He now supports organizations in building resilient, auditable AI systems-guiding assurance frameworks, telemetry and adversarial testing of models and platforms-while advancing scientific insight into how AI models behave and fail. He is committed to embedding governance, adversary-aware monitoring and adaptive assurance into mission-critical deployments, enabling organisations to stay ahead in a world where intelligent systems and sophisticated adversaries evolve together.
 
 </div>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Davide Bragetti","url":"https://l3ragio.github.io/","hasCredential":{"@type":"EducationalOccupationalCredential","name":"Abilitazione Scientifica Nazionale, Professore di prima fascia (full professor)","credentialCategory":"certification","recognizedBy":{"@type":"Organization","name":"Ministero dell'Università e della Ricerca"},"dateCreated":"2025"}}
+</script>
