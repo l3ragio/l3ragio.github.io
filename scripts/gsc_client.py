@@ -22,8 +22,10 @@ Commands:
   sitemaps submit --confirm
   inspect papers
   performance papers [--days N]
-  audit --all [--write]  everything above (read-only); --write updates
-                         docs/papers/gsc_status.json and GSC_STATUS.md
+  audit --all [--write]  everything above (read-only), plus the navigation pages
+                         and a comparison with the previous audit; --write updates
+                         docs/papers/gsc_status.json and GSC_STATUS.md, but only
+                         when some observation changed (no artificial commits)
   doctor
 
 Run with the dedicated environment, which has the Google libraries:
@@ -53,6 +55,8 @@ STATUS_MD = ROOT / "docs" / "papers" / "GSC_STATUS.md"
 PROPERTY = "https://l3ragio.github.io/"
 ALLOWED_PROPERTIES = frozenset({PROPERTY})
 SITEMAP = PROPERTY + "sitemap.xml"
+# navigation pages through which a crawler reaches the paper pages
+INDEX_URLS = [PROPERTY, PROPERTY + "research/", PROPERTY + "research/papers/"]
 SCOPES = ["https://www.googleapis.com/auth/webmasters"]
 SM_NS = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
 TRANSIENT = {429, 500, 502, 503, 504}
@@ -510,12 +514,94 @@ def run_audit(svc) -> dict:
         except GscError as e:
             inspections[slug] = {"state": "indeterminate", "_error": str(e)}
     report["inspections"] = inspections
+    index_pages = {}
+    for url in INDEX_URLS:
+        try:
+            index_pages[url] = summarize_inspection(inspect_url(svc, url))
+        except GscError as e:
+            index_pages[url] = {"state": "indeterminate", "_error": str(e)}
+    report["index_pages"] = index_pages
     try:
         report["performance"] = performance(svc)
     except GscError as e:
         report["performance"] = {"_error": str(e)}
     save_raw("audit", {"properties_visible": len(props), "sitemap": sm, "report": report})
     return report
+
+
+# --------------------------------------------------------------------------- comparison
+
+SITEMAP_TRACKED = ("lastSubmitted", "lastDownloaded", "isPending", "errors", "warnings", "contents", "_error")
+INSPECTION_TRACKED = ("state", "coverageState", "lastCrawlTime", "googleCanonical", "pageFetchState",
+                      "robotsTxtState", "indexingState", "_error")
+STATE_RANK = {"blocked_or_inaccessible": -1, "indeterminate": 0, "unknown_to_google": 1,
+              "discovered_not_crawled": 2, "crawled_not_indexed": 3, "indexed_other_canonical": 4, "indexed": 5}
+
+
+def observations(r: dict) -> dict:
+    """What Google and the live site answered, without run-dependent fields (timestamps, intervals)."""
+    perf = {k: v for k, v in (r.get("performance") or {}).items() if k != "requested_interval"}
+
+    def stable(d):  # inspectionResultLink carries a new id on every request
+        return {u: {k: v for k, v in ins.items() if k != "inspectionResultLink"} for u, ins in (d or {}).items()}
+
+    return {"property_access": {k: v for k, v in r.get("property_access", {}).items() if k != "visible_properties"},
+            "website": r.get("website"), "sitemap": r.get("sitemap"), "inspections": stable(r.get("inspections")),
+            "index_pages": stable(r.get("index_pages")), "performance": perf}
+
+
+def _inspected(r: dict) -> dict:
+    out = {page_url(s): v for s, v in (r.get("inspections") or {}).items()}
+    out.update(r.get("index_pages") or {})
+    return out
+
+
+def compare(prev: dict | None, cur: dict) -> list[dict]:
+    """Field-level changes between two audits: sitemap API record and every inspected URL."""
+    if not prev:
+        return [{"what": "baseline", "detail": "no previous audit"}]
+    changes = []
+    pa, ca = prev.get("sitemap", {}).get("api", {}), cur.get("sitemap", {}).get("api", {})
+    for k in SITEMAP_TRACKED:
+        if pa.get(k) != ca.get(k):
+            changes.append({"what": "sitemap", "field": k, "before": pa.get(k), "after": ca.get(k)})
+    before, after = _inspected(prev), _inspected(cur)
+    for url, now in after.items():
+        was = before.get(url)
+        if was is None:
+            changes.append({"what": "url", "url": url, "field": "state", "before": "not inspected",
+                            "after": now.get("state")})
+            continue
+        for k in INSPECTION_TRACKED:
+            if was.get(k) != now.get(k):
+                changes.append({"what": "url", "url": url, "field": k, "before": was.get(k), "after": now.get(k)})
+    return changes
+
+
+def progress(changes: list[dict]) -> dict:
+    """URLs whose state moved forward (unknown -> discovered -> crawled -> indexed) or backward."""
+    fwd, back = [], []
+    for c in changes:
+        if c.get("what") == "url" and c["field"] == "state" and c["before"] in STATE_RANK:
+            (fwd if STATE_RANK.get(c["after"], 0) > STATE_RANK[c["before"]] else back).append(c["url"])
+    return {"advanced": fwd, "regressed": back}
+
+
+def crawl_errors(r: dict) -> list[str]:
+    """Technical errors actually reported, as opposed to URLs Google has not reached yet."""
+    errs = []
+    api = r.get("sitemap", {}).get("api", {})
+    if int(api.get("errors", 0) or 0):
+        errs.append(f"sitemap: {api['errors']} errors")
+    if api.get("_error"):
+        errs.append(f"sitemap API: {api['_error']}")
+    for url, ins in _inspected(r).items():
+        if ins.get("state") == "blocked_or_inaccessible" or ins.get("_error"):
+            errs.append(f"{url}: {ins.get('pageFetchState') or ins.get('robotsTxtState') or ins.get('_error')}")
+    for slug, p in (r.get("website", {}).get("pages") or {}).items():
+        if p.get("html") != 200 or p.get("pdf") != 200 or p.get("noindex"):
+            errs.append(f"live site {slug}: html {p.get('html')}, pdf {p.get('pdf')}, noindex {p.get('noindex')}")
+    return errs
 
 
 STATE_LABEL = {
@@ -564,6 +650,31 @@ def render_markdown(r: dict) -> str:
         gc = "self" if gc == page_url(slug) else (gc or "")
         lines.append(f"| {t[:60]} | {d} | {p.get('html')} | {p.get('pdf')} | {STATE_LABEL[ins['state']]} | "
                      f"{ins.get('coverageState', ins.get('_error', ''))} | {ins.get('lastCrawlTime', '')} | {gc} |")
+    if r.get("index_pages"):
+        lines += ["", "## Navigation pages (URL Inspection API)", "",
+                  "| URL | State | Coverage | Last crawl |", "|---|---|---|---|"]
+        for url, ins in r["index_pages"].items():
+            lines.append(f"| {url} | {STATE_LABEL[ins['state']]} | {ins.get('coverageState', ins.get('_error', ''))} "
+                         f"| {ins.get('lastCrawlTime', '')} |")
+    lines += ["", "## Technical errors reported", ""]
+    errs = crawl_errors(r)
+    lines += [f"- {e}" for e in errs] if errs else ["None: no fetch, robots, sitemap or live-site error."]
+    ch = r.get("changes_since_previous")
+    if ch is not None:
+        lines += ["", "## Changes since the previous audit", "",
+                  f"Previous audit: {ch.get('previous_generated') or 'none'}.", ""]
+        items = ch.get("changes", [])
+        if not items:
+            lines.append("No change in any tracked field.")
+        for c in items:
+            if c["what"] == "baseline":
+                lines.append("- Baseline: no previous audit to compare with.")
+            else:
+                where = "sitemap" if c["what"] == "sitemap" else c["url"]
+                lines.append(f"- {where}: {c['field']} {c['before']!r} -> {c['after']!r}")
+        pg = ch.get("progress", {})
+        if pg.get("advanced") or pg.get("regressed"):
+            lines += ["", f"Advanced: {len(pg.get('advanced', []))}; regressed: {len(pg.get('regressed', []))}."]
     lines += ["", "## Search performance (paper pages)", ""]
     if perf.get("_error"):
         lines.append(f"Not available: {perf['_error']}")
@@ -689,14 +800,24 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps(performance(svc, args.days), indent=1))
             return 0
         if args.cmd == "audit":
+            prev = json.loads(STATUS_JSON.read_text(encoding="utf-8")) if STATUS_JSON.exists() else None
             r = run_audit(svc)
+            changes = compare(prev, r)
+            r["changes_since_previous"] = {"previous_generated": prev.get("generated") if prev else None,
+                                           "changes": changes, "progress": progress(changes)}
             md = render_markdown(r)
             print(md)
             if args.write:
-                STATUS_JSON.write_text(json.dumps(sanitized(r), indent=1, ensure_ascii=False) + "\n",
-                                       encoding="utf-8", newline="\n")
-                STATUS_MD.write_text(md, encoding="utf-8", newline="\n")
-                print(f"wrote {STATUS_JSON.relative_to(ROOT)} and {STATUS_MD.relative_to(ROOT)}", file=sys.stderr)
+                if prev and observations(sanitized(prev)) == observations(sanitized(r)):
+                    # an unchanged Google answer must not produce a commit, hence not a redeploy
+                    print(f"no observation changed since {prev.get('generated')}: "
+                          f"{STATUS_JSON.relative_to(ROOT)} left untouched (raw output kept in {secrets_dir() / 'raw'})",
+                          file=sys.stderr)
+                else:
+                    STATUS_JSON.write_text(json.dumps(sanitized(r), indent=1, ensure_ascii=False) + "\n",
+                                           encoding="utf-8", newline="\n")
+                    STATUS_MD.write_text(md, encoding="utf-8", newline="\n")
+                    print(f"wrote {STATUS_JSON.relative_to(ROOT)} and {STATUS_MD.relative_to(ROOT)}", file=sys.stderr)
             return 0
     except GscError as e:
         print(f"ERROR: {redact(e)}", file=sys.stderr)

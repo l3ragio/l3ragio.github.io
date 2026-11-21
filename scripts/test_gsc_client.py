@@ -229,6 +229,53 @@ class Report(unittest.TestCase):
         self.assertEqual(md, g.render_markdown(r))  # deterministic
 
 
+class Comparison(unittest.TestCase):
+    def audit(self, generated, state="unknown_to_google", pending=True, interval=("a", "b"), crawl=None):
+        slug = g.paper_urls()[0][0]
+        ins = {"state": state, "coverageState": "URL is unknown to Google"}
+        if crawl:
+            ins["lastCrawlTime"] = crawl
+        return {"generated": generated, "property": g.PROPERTY,
+                "property_access": {"accessible": True, "permissionLevel": "siteOwner", "visible_properties": 3},
+                "website": {"sitemap": {"http_status": 200, "xml_ok": True},
+                            "pages": {slug: {"html": 200, "pdf": 200, "noindex": False}}},
+                "sitemap": {"api": {"isPending": pending, "errors": "0"}},
+                "inspections": {slug: ins},
+                "index_pages": {g.PROPERTY + "research/papers/": {"state": "unknown_to_google"}},
+                "performance": {"requested_interval": list(interval), "paper_pages": {}}}
+
+    def test_baseline(self):
+        self.assertEqual(g.compare(None, self.audit("t1"))[0]["what"], "baseline")
+
+    def test_unchanged_answer_is_not_a_change(self):
+        a, b = self.audit("t1"), self.audit("t2", interval=("c", "d"))
+        for r, link_id in ((a, "X1"), (b, "Y2")):  # Google issues a new link id per request
+            next(iter(r["inspections"].values()))["inspectionResultLink"] = f"https://search.google.com/x?id={link_id}"
+        self.assertEqual(g.compare(a, b), [])
+        self.assertEqual(g.observations(g.sanitized(a)), g.observations(g.sanitized(b)))
+
+    def test_progress_and_sitemap_processing(self):
+        a = self.audit("t1")
+        b = self.audit("t2", state="indexed", pending=False, crawl="2026-11-25T00:00:00Z")
+        ch = g.compare(a, b)
+        fields = {(c["what"], c["field"]) for c in ch}
+        self.assertIn(("sitemap", "isPending"), fields)
+        self.assertIn(("url", "lastCrawlTime"), fields)
+        self.assertEqual(len(g.progress(ch)["advanced"]), 1)
+        self.assertNotEqual(g.observations(a), g.observations(b))
+
+    def test_new_url_reported(self):
+        a = self.audit("t1")
+        del a["index_pages"]
+        ch = g.compare(a, self.audit("t2"))
+        self.assertEqual(ch[0]["before"], "not inspected")
+
+    def test_crawl_errors_distinguish_unknown_from_error(self):
+        self.assertEqual(g.crawl_errors(self.audit("t1")), [])
+        bad = self.audit("t1", state="blocked_or_inaccessible")
+        self.assertEqual(len(g.crawl_errors(bad)), 1)
+
+
 class Redaction(unittest.TestCase):
     def test_patterns(self):
         s = g.redact('ya29.a0Abc 1//0gAbcdefghijkl GOCSPX-xyz {"refresh_token": "abc"} code=4/0AbCdEfGhIjKl&s=1')

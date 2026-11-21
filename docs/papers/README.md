@@ -149,3 +149,17 @@ revoked at https://myaccount.google.com/permissions. The only write operation
 is `sitemaps submit --confirm`. The API has no live URL test and no
 "Request indexing": those stay in the Search Console UI. Search Console covers
 Google Search only, never Google Scholar.
+
+Each audit also inspects the navigation pages (`/`, `/research/`,
+`/research/papers/`) and compares itself with the committed
+`gsc_status.json`: the "Changes since the previous audit" section of
+`GSC_STATUS.md` lists every field that moved (sitemap `lastSubmitted`,
+`lastDownloaded`, `isPending`, errors, warnings, contents; per URL state,
+coverage, last crawl, canonical, fetch and robots state). When nothing Google
+or the live site answered has changed, `--write` leaves both files untouched,
+so an unchanged answer never becomes a commit or a redeploy (commits on
+`main`, `docs/` included, trigger the Pages build). Timestamps, the requested
+date interval and the per-request `inspectionResultLink` id are not
+observations. The raw output of every run stays in `.secrets\gsc\raw\`.
+"Technical errors reported" separates real errors (fetch, robots, sitemap
+errors, live-site failures) from URLs Google has simply not reached yet.
