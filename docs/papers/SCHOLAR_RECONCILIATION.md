@@ -229,3 +229,53 @@ No browser tools were available, so these were not attempted: Scholar homepage
 field; adding the 8 missing papers; Search Console property, sitemap
 submission and indexing requests. Steps are in the sections above.
 Status of every item: `INDEXING_STATUS.md`.
+
+# Update 2026-11-21: indexing audit, 11 days after the baseline
+
+## What was measured
+
+- Site: commits since the baseline are `b769828` (new post, alphaXiv profile
+  link on `/research/papers/`, `sameAs`, About metadata) and `7591437` (a
+  Zenodo link in that post). No paper page, PDF or Scholar tag changed.
+- Live: 13 of 13 paper pages and PDFs answer 200 (`application/pdf`), no
+  `X-Robots-Tag`, no `noindex`; `validate_papers.py --live` reports 0 problems,
+  including the stricter check that every `citation_*` tag is inside `<head>`.
+  `robots.txt` allows everything except `/norobots/` and names the sitemap. The
+  sitemap lists all 13 paper pages and no PDF.
+- Scholar profile: unchanged since 2026-11-10. 10 entries: the same five papers,
+  the thesis and four Medium posts. Author lists match Zenodo. No homepage link.
+  Verified email at uniroma1.it. Single unauthenticated GET.
+- Scholar entry pages: an unauthenticated request for an entry's detail page
+  (which would show whether it is linked to an indexed Scholar record and its
+  versions) is redirected to Google's session-sync page. The check stopped
+  there. Whether any of the five entries is an indexed record or a manual entry
+  is therefore unknown.
+- Google Search: not observed. Search Console is still not set up
+  (`webmaster_verifications.google` is empty, no `google*.html` file).
+- Zenodo: two concepts appeared after the baseline and are outside the gate:
+  24217158 *On the Closure of Causal Antecedents* and 24167399 *Synthesizing
+  Antecedent and Defeater Structure in Exact Neural Causal Laws by Direct
+  Editing and Training*. `sync_zenodo_papers.py --check` lists both as `NEW`;
+  neither has a paper page.
+
+## Reading
+
+No technical defect was found, so nothing on the paper pages was changed.
+Nothing observed shows indexing progress or failure: the Google-side states are
+not observable without the author's sign-in. Eleven days is short for a new site
+section; Google's guidance is that crawling takes from days to weeks.
+
+## Next step (author, about 10 minutes)
+
+1. Search Console: add the URL-prefix property `https://l3ragio.github.io/`,
+   choose the HTML-tag method, and give the `content` value of the tag; it goes
+   into `webmaster_verifications.google` in `_config.yml`. Then submit
+   `sitemap.xml` and inspect two or three paper URLs.
+2. In a normal browser, open each of the five paper entries in the Scholar
+   profile and note whether a "Scholar articles" line with "All N versions" is
+   shown. Search one missing title in quotes, for example "MCK Region
+   Transitions: Restricted Realization Mechanisms and Their Limits".
+3. Add the homepage `https://l3ragio.github.io/` in the profile settings.
+
+Next check: about 2026-12-12, after Search Console has been running for two
+weeks.

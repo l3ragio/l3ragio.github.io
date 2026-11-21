@@ -2,8 +2,8 @@
   "_about": "Evidence for the indexing statuses that a script cannot establish. WEBSITE_DEPLOYED, FULLTEXT_AVAILABLE and SCHOLAR_METADATA_VALID are measured live by scripts/indexing_report.py. The fields below are observations made by a person or a one-off read, each with the date and method. 'unknown' means not observed; it never means 'no'. Update an entry only after observing it, and write the date and method. Do not script Google Scholar searches: Scholar answers automated requests with a bot challenge.",
   "profile": {
     "url": "https://scholar.google.com/citations?user=Fs4CwvwAAAAJ",
-    "last_read": "2026-11-10",
-    "method": "single unauthenticated GET of the public profile page",
+    "last_read": "2026-11-21",
+    "method": "single unauthenticated GET of the public profile page; 10 entries, the same as on 2026-11-10 (5 of the 13 papers, the thesis, 4 Medium posts); no homepage link",
     "entries": 10,
     "verified_email_domain": "uniroma1.it",
     "homepage_link": "none shown",
@@ -29,11 +29,12 @@
     "google_search_indexed": "unknown",
     "google_scholar_indexed": "unknown",
     "alternate_version_recognized": "unknown",
-    "last_checked": "2026-11-10",
-    "method": "not observed; Search Console and a signed-in Scholar session were not available. Scholar search was probed once on 2026-11-09 and answered with a bot challenge, so nothing was learned."
+    "last_checked": "2026-11-21",
+    "method": "not observed. On 2026-11-21 the per-entry pages of the public profile (which would show whether an entry is linked to an indexed Scholar cluster and its versions) answered an unauthenticated request with a redirect to Google's session-sync page, so the check stopped there. Search Console is not set up and no signed-in Scholar session was available. Scholar search was probed once on 2026-11-09 and answered with a bot challenge."
   },
   "blocked": [
-    "Search Console property: needs the author's Google sign-in; no verification token exists in the repository.",
-    "Scholar profile edits (homepage, adding the 8 missing papers): need the author's signed-in session; no browser tools were available."
+    "Search Console property: still not set up on 2026-11-21; no verification token in _config.yml (webmaster_verifications.google is empty) and no google*.html file on the site. Needs the author's Google sign-in.",
+    "Scholar profile edits (homepage, adding the 8 missing papers): need the author's signed-in session; no browser tools were available on 2026-11-21.",
+    "Scholar cluster and version status of each profile entry: the public entry pages require a Google session for automated clients (redirect to sgsync on 2026-11-21); check in a normal browser."
   ]
 }
