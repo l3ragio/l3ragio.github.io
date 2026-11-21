@@ -1,0 +1,253 @@
+{
+ "generated": "2026-11-21T14:42:29Z",
+ "property": "https://l3ragio.github.io/",
+ "property_access": {
+  "accessible": true,
+  "permissionLevel": "siteOwner"
+ },
+ "website": {
+  "sitemap": {
+   "http_status": 200,
+   "content_type": "application/xml",
+   "bytes": 9328,
+   "xml_ok": true,
+   "root": "{http://www.sitemaps.org/schemas/sitemap/0.9}urlset",
+   "urls": 98,
+   "unique": 98,
+   "foreign": [],
+   "papers_missing": []
+  },
+  "robots": {
+   "http_status": 200,
+   "sitemap_directive": true,
+   "disallow": [
+    "/norobots/"
+   ],
+   "papers_blocked": []
+  },
+  "pages": {
+   "intersection-algebra-ltl": {
+    "html": 200,
+    "pdf": 200,
+    "pdf_type": "application/pdf",
+    "noindex": false
+   },
+   "touch-and-crossing": {
+    "html": 200,
+    "pdf": 200,
+    "pdf_type": "application/pdf",
+    "noindex": false
+   },
+   "observation-relative-monitorability": {
+    "html": 200,
+    "pdf": 200,
+    "pdf_type": "application/pdf",
+    "noindex": false
+   },
+   "observation-class-control": {
+    "html": 200,
+    "pdf": 200,
+    "pdf_type": "application/pdf",
+    "noindex": false
+   },
+   "meaning-opacity-function": {
+    "html": 200,
+    "pdf": 200,
+    "pdf_type": "application/pdf",
+    "noindex": false
+   },
+   "mck-region-transitions": {
+    "html": 200,
+    "pdf": 200,
+    "pdf_type": "application/pdf",
+    "noindex": false
+   },
+   "refinement-confirmation-liveness": {
+    "html": 200,
+    "pdf": 200,
+    "pdf_type": "application/pdf",
+    "noindex": false
+   },
+   "transactional-games-temporal-signatures": {
+    "html": 200,
+    "pdf": 200,
+    "pdf_type": "application/pdf",
+    "noindex": false
+   },
+   "agent-self-attribution": {
+    "html": 200,
+    "pdf": 200,
+    "pdf_type": "application/pdf",
+    "noindex": false
+   },
+   "typed-agent-action-framework": {
+    "html": 200,
+    "pdf": 200,
+    "pdf_type": "application/pdf",
+    "noindex": false
+   },
+   "intentional-semantic-geometry": {
+    "html": 200,
+    "pdf": 200,
+    "pdf_type": "application/pdf",
+    "noindex": false
+   },
+   "one-number-per-cell": {
+    "html": 200,
+    "pdf": 200,
+    "pdf_type": "application/pdf",
+    "noindex": false
+   },
+   "autoimmune-rationalization": {
+    "html": 200,
+    "pdf": 200,
+    "pdf_type": "application/pdf",
+    "noindex": false
+   }
+  }
+ },
+ "sitemap": {
+  "path": "https://l3ragio.github.io/sitemap.xml",
+  "api": {
+   "path": "https://l3ragio.github.io/sitemap.xml",
+   "lastSubmitted": "2026-11-21T13:59:35.594Z",
+   "isPending": true,
+   "isSitemapsIndex": false,
+   "errors": "0",
+   "warnings": "0"
+  },
+  "listed_paths": [
+   "https://l3ragio.github.io/sitemap.xml"
+  ],
+  "classification": "D_SUBMITTED_NOT_YET_PROCESSED"
+ },
+ "inspections": {
+  "intersection-algebra-ltl": {
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://l3ragio.github.io/&id=Cc0GKm4A4zAsuLaEsmiNfg&utm_medium=link&utm_source=api",
+   "state": "unknown_to_google"
+  },
+  "touch-and-crossing": {
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://l3ragio.github.io/&id=gY3jFWsbD0i8O66ICMkglQ&utm_medium=link&utm_source=api",
+   "state": "unknown_to_google"
+  },
+  "observation-relative-monitorability": {
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://l3ragio.github.io/&id=2lztOJMbOGMJfB7a4Abmpw&utm_medium=link&utm_source=api",
+   "state": "unknown_to_google"
+  },
+  "observation-class-control": {
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://l3ragio.github.io/&id=oLpFRlcfBrMXoZQmK0waHQ&utm_medium=link&utm_source=api",
+   "state": "unknown_to_google"
+  },
+  "meaning-opacity-function": {
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://l3ragio.github.io/&id=ClwQjv7mjzNtzLy27-Qlqw&utm_medium=link&utm_source=api",
+   "state": "unknown_to_google"
+  },
+  "mck-region-transitions": {
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://l3ragio.github.io/&id=VZ2qLwHit3q0-xah3rK_hw&utm_medium=link&utm_source=api",
+   "state": "unknown_to_google"
+  },
+  "refinement-confirmation-liveness": {
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://l3ragio.github.io/&id=ct0673EXe3toP2WiW-oOtA&utm_medium=link&utm_source=api",
+   "state": "unknown_to_google"
+  },
+  "transactional-games-temporal-signatures": {
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://l3ragio.github.io/&id=C2c_uQqBbbtTlRD-DsbvLQ&utm_medium=link&utm_source=api",
+   "state": "unknown_to_google"
+  },
+  "agent-self-attribution": {
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://l3ragio.github.io/&id=zXoTtOBffqyLoUq0LgieGw&utm_medium=link&utm_source=api",
+   "state": "unknown_to_google"
+  },
+  "typed-agent-action-framework": {
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://l3ragio.github.io/&id=JIyQeP-PaAYxOfylUydsIA&utm_medium=link&utm_source=api",
+   "state": "unknown_to_google"
+  },
+  "intentional-semantic-geometry": {
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://l3ragio.github.io/&id=F58Mrq4wFugBnQIHLSYL6Q&utm_medium=link&utm_source=api",
+   "state": "unknown_to_google"
+  },
+  "one-number-per-cell": {
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://l3ragio.github.io/&id=Undg0BuJ3zW7Pjm78vsYDw&utm_medium=link&utm_source=api",
+   "state": "unknown_to_google"
+  },
+  "autoimmune-rationalization": {
+   "verdict": "NEUTRAL",
+   "coverageState": "URL is unknown to Google",
+   "indexingState": "INDEXING_STATE_UNSPECIFIED",
+   "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+   "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+   "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://l3ragio.github.io/&id=_zRZlS0rmvQDDYuj2s05yg&utm_medium=link&utm_source=api",
+   "state": "unknown_to_google"
+  }
+ },
+ "performance": {
+  "requested_interval": [
+   "2026-08-23",
+   "2026-11-21"
+  ],
+  "data_dates": null,
+  "site": null,
+  "paper_pages": {},
+  "paper_query_count": 0
+ }
+}

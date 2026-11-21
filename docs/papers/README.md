@@ -85,6 +85,7 @@ validator checks all three).
 | `python3 scripts/validate_papers.py [--site DIR \| --live]` | Scholar compliance for the 13 papers and the thesis |
 | `python3 scripts/indexing_report.py [--write]` | Per-item status table (measured plus recorded fields) |
 | `python3 scripts/check_overflow.py --site DIR [--all-papers]` | Horizontal overflow at 320 to 1280 px; run before a release. In Git Bash set `MSYS_NO_PATHCONV=1` when passing `--pages /x/` |
+| `gsc_client.py audit --all --write` (in the `l3ragio-gsc` venv) | Search Console API: sitemap state, URL Inspection of the 13 paper pages, search performance; writes `gsc_status.json` and `GSC_STATUS.md` |
 
 Sitemap `lastmod` comes from git history (`_plugins/pages-lastmod-hook.rb`),
 so it moves only when a page's source changes. A generated paper page carries
@@ -124,3 +125,27 @@ its own `last_modified_at`.
    serves a bot-verification challenge to automated requests.
 4. In the Scholar profile, add newly indexed works from "Add articles"
    instead of creating manual entries (see `SCHOLAR_RECONCILIATION.md`).
+
+## Search Console (API)
+
+`scripts/gsc_client.py` reads Search Console through the official API for the
+property `https://l3ragio.github.io/` only (allowlist). It needs the OAuth
+client and token in `%USERPROFILE%\.secrets\gsc` (outside the repository;
+the token is encrypted with Windows DPAPI) and its own environment
+(`scripts/requirements-gsc.txt`).
+
+```bash
+PY=C:/Users/Davide/.venvs/l3ragio-gsc/Scripts/python.exe
+$PY scripts/gsc_client.py doctor                 # libraries, client file, token refresh, property access
+$PY scripts/gsc_client.py audit --all --write    # read-only; updates gsc_status.json and GSC_STATUS.md
+python3 scripts/indexing_report.py --write       # picks up the Google Search state from gsc_status.json
+$PY scripts/gsc_client.py auth login --login-hint <owner account>   # when the token is rejected
+```
+
+The OAuth app is in Testing status, so Google expires its refresh token after
+7 days; `doctor` then reports `invalid_grant` and `auth login` (one browser
+consent) restores access. `auth logout` deletes the local token; the grant is
+revoked at https://myaccount.google.com/permissions. The only write operation
+is `sitemaps submit --confirm`. The API has no live URL test and no
+"Request indexing": those stay in the Search Console UI. Search Console covers
+Google Search only, never Google Scholar.
