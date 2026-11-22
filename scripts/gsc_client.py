@@ -55,8 +55,10 @@ STATUS_MD = ROOT / "docs" / "papers" / "GSC_STATUS.md"
 PROPERTY = "https://l3ragio.github.io/"
 ALLOWED_PROPERTIES = frozenset({PROPERTY})
 SITEMAP = PROPERTY + "sitemap.xml"
-# navigation pages through which a crawler reaches the paper pages
-INDEX_URLS = [PROPERTY, PROPERTY + "research/", PROPERTY + "research/papers/"]
+# navigation pages through which a crawler reaches the paper pages, plus the
+# sitemap file itself: its URL Inspection shows whether Googlebot could fetch it,
+# which the Sitemaps report (isPending, lastDownloaded) does not distinguish
+INDEX_URLS = [PROPERTY, PROPERTY + "research/", PROPERTY + "research/papers/", PROPERTY + "sitemap.xml"]
 SCOPES = ["https://www.googleapis.com/auth/webmasters"]
 SM_NS = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
 TRANSIENT = {429, 500, 502, 503, 504}
@@ -651,7 +653,7 @@ def render_markdown(r: dict) -> str:
         lines.append(f"| {t[:60]} | {d} | {p.get('html')} | {p.get('pdf')} | {STATE_LABEL[ins['state']]} | "
                      f"{ins.get('coverageState', ins.get('_error', ''))} | {ins.get('lastCrawlTime', '')} | {gc} |")
     if r.get("index_pages"):
-        lines += ["", "## Navigation pages (URL Inspection API)", "",
+        lines += ["", "## Navigation pages and sitemap file (URL Inspection API)", "",
                   "| URL | State | Coverage | Last crawl |", "|---|---|---|---|"]
         for url, ins in r["index_pages"].items():
             lines.append(f"| {url} | {STATE_LABEL[ins['state']]} | {ins.get('coverageState', ins.get('_error', ''))} "
