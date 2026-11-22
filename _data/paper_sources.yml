@@ -105,6 +105,20 @@ papers:
     concept: 24039575
     bibtex_key: bragetti2026autoimmune
 
+  # Approved by the author on 2026-11-22. Zenodo lists Cas Cremers as a
+  # contributor of type "Other" (non-author, with his consent); the sync takes
+  # authors from `creators` only, so he is not an author on the page.
+  # Discussed in the blog post /posts/closure-of-causal-antecedents/.
+  - slug: closure-of-causal-antecedents
+    concept: 24217158
+    bibtex_key: bragetti2026closurecausal
+
+  # Approved by the author on 2026-11-22. The record also carries a LaTeX
+  # source archive; only the single PDF is mirrored.
+  - slug: neural-causal-law-synthesis
+    concept: 24167399
+    bibtex_key: bragetti2026neuralcausallaws
+
 # Zenodo concepts found under the author's name that are deliberately NOT
 # given a scholarly page. Reason codes are reported by the sync script.
 excluded:

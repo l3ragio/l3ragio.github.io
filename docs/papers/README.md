@@ -82,10 +82,10 @@ validator checks all three).
 
 | Command | Purpose |
 |---------|---------|
-| `python3 scripts/validate_papers.py [--site DIR \| --live]` | Scholar compliance for the 13 papers and the thesis |
+| `python3 scripts/validate_papers.py [--site DIR \| --live]` | Scholar compliance for every gated paper and the thesis |
 | `python3 scripts/indexing_report.py [--write]` | Per-item status table (measured plus recorded fields) |
 | `python3 scripts/check_overflow.py --site DIR [--all-papers]` | Horizontal overflow at 320 to 1280 px; run before a release. In Git Bash set `MSYS_NO_PATHCONV=1` when passing `--pages /x/` |
-| `gsc_client.py audit --all --write` (in the `l3ragio-gsc` venv) | Search Console API: sitemap state, URL Inspection of the 13 paper pages, search performance; writes `gsc_status.json` and `GSC_STATUS.md` |
+| `gsc_client.py audit --all --write` (in the `l3ragio-gsc` venv) | Search Console API: sitemap state, URL Inspection of the paper pages and navigation pages, search performance; writes `gsc_status.json` and `GSC_STATUS.md` |
 
 Sitemap `lastmod` comes from git history (`_plugins/pages-lastmod-hook.rb`),
 so it moves only when a page's source changes. A generated paper page carries
