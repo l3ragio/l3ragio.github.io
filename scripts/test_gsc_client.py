@@ -124,9 +124,9 @@ class Calls(unittest.TestCase):
     def test_retries_transient_then_succeeds(self):
         sleeps = []
         req = request_raising(http_error(503), http_error(429), {"ok": 1})
-        self.assertEqual(g.call(req, sleep=sleeps.append), {"ok": 1})
-        self.assertEqual(len(sleeps), 2)
-        self.assertGreater(sleeps[1], sleeps[0] * 1.2)
+        with patch.object(g.random, "uniform", return_value=0.0):  # jitter off: delays are deterministic
+            self.assertEqual(g.call(req, sleep=sleeps.append), {"ok": 1})
+        self.assertEqual(sleeps, [1.0, 2.0])
 
     def test_quota_exhausted_after_attempts(self):
         req = request_raising(*[http_error(429, "rateLimitExceeded")] * 3)
