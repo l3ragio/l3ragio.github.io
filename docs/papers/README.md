@@ -151,7 +151,9 @@ is `sitemaps submit --confirm`. The API has no live URL test and no
 Google Search only, never Google Scholar.
 
 Each audit also inspects the navigation pages (`/`, `/research/`,
-`/research/papers/`) and compares itself with the committed
+`/research/papers/`) and the `sitemap.xml` URL itself (whether Googlebot
+could fetch it, which the Sitemaps report does not say), and compares itself
+with the committed
 `gsc_status.json`: the "Changes since the previous audit" section of
 `GSC_STATUS.md` lists every field that moved (sitemap `lastSubmitted`,
 `lastDownloaded`, `isPending`, errors, warnings, contents; per URL state,

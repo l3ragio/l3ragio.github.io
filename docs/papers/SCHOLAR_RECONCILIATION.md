@@ -279,3 +279,23 @@ section; Google's guidance is that crawling takes from days to weeks.
 
 Next check: about 2026-12-12, after Search Console has been running for two
 weeks.
+
+# Update 2026-11-22: two works added, 15 in the collection
+
+Approved by the author and added through `paper_sources.yml` and the sync:
+
+| Work | Concept DOI | Hosted version | Page |
+|---|---|---|---|
+| On the Closure of Causal Antecedents | 10.5281/zenodo.24217158 | 24217159 (v1, 2026-11-14) | /research/papers/closure-of-causal-antecedents/ |
+| Synthesizing Antecedent and Defeater Structure in Exact Neural Causal Laws by Direct Editing and Training | 10.5281/zenodo.24167399 | 24167400 (2026-11-12) | /research/papers/neural-causal-law-synthesis/ |
+
+- Both are open CC BY 4.0 preprints with a single author, Davide Bragetti.
+- Zenodo lists Cas Cremers on the first record as a contributor of type Other. He is a non-author with his consent, so he is not an author on the page or in `citation_author`.
+- Zenodo gives the second record the version label "MERGED_P042 (affiliation updated 2026-11-12)" and the affiliation "Anthropic Fellow". The page shows both as Zenodo states them. A cleaner label can only come from a new Zenodo version (author decision).
+- Neither work is in the Scholar profile (public read on 2026-11-22: 10 entries, unchanged).
+- Search Console, 2026-11-22: both pages are unknown to Google, like the other 13.
+- The `sitemap.xml` URL itself was crawled successfully on 2026-11-21 at 14:04:52Z. Google can fetch the file; only its processing in the Sitemaps report is pending.
+
+Steps 2 and 3 of the 2026-11-21 list still stand. Step 1 is done: Search Console is verified, and `scripts/gsc_client.py` reads it.
+
+When a new work appears in Scholar, add it from "Add articles". Do not add it as a manual entry.
