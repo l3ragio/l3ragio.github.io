@@ -2,8 +2,8 @@
   "generated_by": "scripts/sync_zenodo_papers.py",
   "source": "Zenodo public REST API (anonymous), queries by ORCID and by creator name, all versions",
   "orcid": "0009-0008-7645-8241",
-  "concepts_found": 16,
-  "records_found": 34,
+  "concepts_found": 18,
+  "records_found": 36,
   "works": [
     {
       "slug": "intersection-algebra-ltl",
@@ -909,6 +909,118 @@
           "doi": "10.5281/zenodo.24054353",
           "version": "RC21",
           "date": "2026-11-08",
+          "access": "open",
+          "title": null
+        }
+      ]
+    },
+    {
+      "slug": "closure-of-causal-antecedents",
+      "title": "On the Closure of Causal Antecedents",
+      "authors": [
+        "Bragetti, Davide"
+      ],
+      "type": "Preprint",
+      "concept_record": 24217158,
+      "concept_doi": "10.5281/zenodo.24217158",
+      "preferred_record": 24217159,
+      "preferred_doi": "10.5281/zenodo.24217159",
+      "preferred_version": "v1",
+      "publication_date": "2026-11-14",
+      "first_published": "2026-11-14",
+      "deposited": "2026-11-14",
+      "license": "cc-by-4.0",
+      "keywords": [
+        "necessary and sufficient conditions",
+        "causal closure",
+        "INUS conditions",
+        "alternative causes",
+        "defeaters",
+        "classification",
+        "prime implicants",
+        "safety and liveness",
+        "philosophy of science"
+      ],
+      "zenodo_pdf": "https://zenodo.org/records/24217159/files/main.pdf?download=1",
+      "site_page": "https://l3ragio.github.io/research/papers/closure-of-causal-antecedents/",
+      "site_pdf": "https://l3ragio.github.io/research/papers/closure-of-causal-antecedents/paper.pdf",
+      "pdf_bytes": 236153,
+      "pdf_sha256": "55274539e0f69bb152da7b2a96abe0b9543efef8c101c4aa599e6506c83f8054",
+      "pdf_md5_matches_zenodo": true,
+      "pdf_under_5MB": true,
+      "pdf_checks": {
+        "pages": 3,
+        "text_extractable": true,
+        "first_page_title": true,
+        "first_page_title_words": "3/3",
+        "first_page_authors": {
+          "Bragetti": true
+        },
+        "references_section": true
+      },
+      "iris": [],
+      "versions": [
+        {
+          "record": 24217159,
+          "doi": "10.5281/zenodo.24217159",
+          "version": "v1",
+          "date": "2026-11-14",
+          "access": "open",
+          "title": null
+        }
+      ]
+    },
+    {
+      "slug": "neural-causal-law-synthesis",
+      "title": "Synthesizing Antecedent and Defeater Structure in Exact Neural Causal Laws by Direct Editing and Training",
+      "authors": [
+        "Bragetti, Davide"
+      ],
+      "type": "Preprint",
+      "concept_record": 24167399,
+      "concept_doi": "10.5281/zenodo.24167399",
+      "preferred_record": 24167400,
+      "preferred_doi": "10.5281/zenodo.24167400",
+      "preferred_version": "MERGED_P042 (affiliation updated 2026-11-12)",
+      "publication_date": "2026-11-12",
+      "first_published": "2026-11-12",
+      "deposited": "2026-11-12",
+      "license": "cc-by-4.0",
+      "keywords": [
+        "finite intervention laws",
+        "neural causal laws",
+        "antecedent structure",
+        "defeaters",
+        "parameter editing",
+        "training",
+        "MNIST",
+        "binary32 semantics",
+        "ReLU classifiers"
+      ],
+      "zenodo_pdf": "https://zenodo.org/records/24167400/files/BECENR_MERGED_P042_Anthropic_Fellow.pdf?download=1",
+      "site_page": "https://l3ragio.github.io/research/papers/neural-causal-law-synthesis/",
+      "site_pdf": "https://l3ragio.github.io/research/papers/neural-causal-law-synthesis/paper.pdf",
+      "pdf_bytes": 517808,
+      "pdf_sha256": "691a9a778def9ab2e7864016867b99baa4b269605970b02e0db9413c17fc6ae6",
+      "pdf_md5_matches_zenodo": true,
+      "pdf_under_5MB": true,
+      "pdf_checks": {
+        "pages": 18,
+        "text_extractable": true,
+        "first_page_title": true,
+        "first_page_title_words": "11/11",
+        "first_page_authors": {
+          "Bragetti": true
+        },
+        "references_section": true
+      },
+      "iris": [],
+      "versions": [
+        {
+          "record": 24167400,
+          "doi": "10.5281/zenodo.24167400",
+          "version": "MERGED_P042 (affiliation updated 2026-11-12)",
+          "date": "2026-11-12",
           "access": "open",
           "title": null
         }
