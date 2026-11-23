@@ -17,7 +17,13 @@ site (default: ./_site) or against the live site (--live):
     inventory value (i.e. it is the Zenodo file, byte for byte);
   * the sitemap lists every page; /research/papers/ and /research/ link to
     every page;
-  * with --live: HTTP 200 and the right Content-Type for page and PDF.
+  * crawl paths without JavaScript (plain <a href> in the served HTML):
+    / -> /research/ -> /research/papers/, then from /research/papers/ both to
+    the paper page and directly to its PDF, and from the paper page to the
+    PDF. The PDF link is the citation_pdf_url, so both routes reach the
+    hash-checked file;
+  * with --live: HTTP 200, the right Content-Type for page and PDF, and no
+    redirect on any URL fetched.
 
 For the doctoral thesis (_data/thesis.yml, /research/thesis/) it checks the
 dissertation tags (citation_dissertation_institution, no journal / DOI /
@@ -115,6 +121,7 @@ class Source:
     def __init__(self, site: Path | None, base: str) -> None:
         self.site, self.base = site, base
         self.content_types: dict[str, str] = {}
+        self.redirected: dict[str, str] = {}
 
     def get(self, path: str) -> bytes | None:
         if self.site is not None:
@@ -126,6 +133,8 @@ class Source:
         try:
             with urllib.request.urlopen(req, timeout=60) as r:
                 self.content_types[path] = r.headers.get("Content-Type", "")
+                if r.geturl() != self.base + path:
+                    self.redirected[path] = r.geturl()
                 return r.read() if r.status == 200 else None
         except Exception:  # noqa: BLE001
             return None
@@ -300,6 +309,8 @@ def main() -> int:
         robots = " ".join(meta.get("robots", []) + meta.get("googlebot", [])).lower()
         if "noindex" in robots or "nofollow" in robots:
             err(f"{slug}: robots meta {robots!r}")
+        if path + "paper.pdf" not in p.links and pdf_abs not in p.links:
+            err(f"{slug}: no plain link from the paper page to its PDF")
         if not p.abstract_found:
             err(f"{slug}: no div.paper-abstract in the HTML")
         elif p.abstract_hidden:
@@ -340,6 +351,11 @@ def main() -> int:
     index.feed((src.get("/research/papers/") or b"").decode("utf-8"))
     research = Page()
     research.feed((src.get("/research/") or b"").decode("utf-8"))
+    home = Page()
+    home.feed((src.get("/") or b"").decode("utf-8"))
+    for name, pg, target in (("/", home, "/research/"), ("/research/", research, "/research/papers/")):
+        if target not in pg.links and base + target not in pg.links:
+            err(f"no plain link from {name} to {target}")
     for slug in slugs:
         path = f"/research/papers/{slug}/"
         if f"<loc>{base}{path}</loc>" not in sitemap:
@@ -347,6 +363,8 @@ def main() -> int:
         for name, pg in (("/research/papers/", index), ("/research/", research)):
             if path not in pg.links and base + path not in pg.links:
                 err(f"{slug}: no plain link from {name}")
+        if path + "paper.pdf" not in index.links and base + path + "paper.pdf" not in index.links:
+            err(f"{slug}: no direct PDF link from /research/papers/")
     thesis_ok = check_thesis(src, base, args, err, research, sitemap)
     robots_txt = (src.get("/robots.txt") or b"").decode("utf-8")
     if f"Sitemap: {base}/sitemap.xml" not in robots_txt:
@@ -361,6 +379,9 @@ def main() -> int:
         for f in src.all_html():
             if f.resolve() not in paper_pages and b'name="citation_title"' in f.read_bytes():
                 err(f"citation_title on a non-paper page: {f.relative_to(src.site)}")
+
+    for path, final in sorted(src.redirected.items()):
+        err(f"{path} redirects to {final}")
 
     target = base if args.live else args.site
     print(f"validate_papers: {len(works)} works + thesis checked against {target}; "
