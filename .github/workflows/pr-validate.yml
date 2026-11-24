@@ -1,0 +1,66 @@
+name: "Validate pull request"
+
+# Build and test only. This workflow never deploys: it has read-only access to
+# the repository, uses no secrets, and has no Pages or push step. Production
+# deployment stays in pages-deploy.yml, which runs on push to main.
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "pr-validate-${{ github.event.pull_request.number }}"
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the sitemap lastmod hook reads git history
+          persist-credentials: false
+
+      - name: Unit tests (validators and Search Console client)
+        # The Search Console tests import the Google client libraries
+        # (pinned in scripts/requirements-gsc.txt); they use mocks only and
+        # need no credentials.
+        run: |
+          python3 -m venv "$RUNNER_TEMP/gsc-venv"
+          "$RUNNER_TEMP/gsc-venv/bin/pip" install --quiet -r scripts/requirements-gsc.txt
+          "$RUNNER_TEMP/gsc-venv/bin/python" -m unittest discover -s scripts -p "test_*.py" -v
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler-cache: true
+
+      - name: Apply post overrides
+        run: ruby scripts/apply_post_overrides.rb
+
+      - name: Build site
+        run: bundle exec jekyll b -d "_site"
+        env:
+          JEKYLL_ENV: "production"
+
+      - name: Test site
+        run: |
+          bundle exec htmlproofer _site \
+            --disable-external \
+            --no-enforce-https \
+            --ignore-empty-alt \
+            --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
+
+      - name: Validate scholarly paper pages
+        # Highwire tags, PDF identity and integrity, abstract visibility, and
+        # the no-JavaScript crawl paths (/ -> /research/ -> /research/papers/
+        # -> paper page and PDF).
+        run: python3 scripts/validate_papers.py --site _site
