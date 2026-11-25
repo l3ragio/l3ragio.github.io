@@ -9,14 +9,14 @@ authors_display:
 - Davide Bragetti
 publication_type: Preprint
 zenodo_type: preprint
-publication_date: '2026-11-14'
+publication_date: '2026-11-25'
 first_published: '2026-11-14'
-online_date: '2026-11-14'
+online_date: '2026-11-25'
 year: '2026'
 concept_doi: 10.5281/zenodo.24217158
-version_doi: 10.5281/zenodo.24217159
-version: v1
-zenodo_record: 24217159
+version_doi: 10.5281/zenodo.24538897
+version: v2
+zenodo_record: 24538897
 zenodo_concept: 24217158
 license: cc-by-4.0
 keywords:
@@ -28,16 +28,17 @@ keywords:
 - classification
 - prime implicants
 - safety and liveness
+- linear temporal logic
 - philosophy of science
-abstract_html: '<p>Necessity and sufficiency are relative to the contexts that a classification admits. A complete list of an effect''s necessary and sufficient conditions holds of the world only when the classification preserves every distinction relevant to it. Records can refute this closure but cannot establish it on their own, and learned causal laws inherit it from their representations.</p> <p><strong>Historical note.</strong> According to the author, the central ideas of this note were first presented at an academic meeting in 2017, and a 2017 manuscript received scientific review and conceptual feedback from Cas Cremers. No version of the present manuscript was made public before this deposit; the text deposited here was written and revised in 2026, and its publication date is the date of this deposit.</p> <p><strong>Contributor.</strong> Cas Cremers (CISPA Helmholtz Center for Information Security): scientific review and conceptual feedback on the 2017 manuscript. Listed as a non-author contributor with his consent.</p> <p><strong>AI assistance.</strong> Claude Code (Anthropic) aided drafting, revision and checks, and ChatGPT (OpenAI) review instructions; the author is responsible for the work.</p>'
+abstract_html: '<p>Necessity and sufficiency are relative to the contexts that a classification admits. A complete list of an effect''s necessary and sufficient conditions holds of the world only when the classification preserves every distinction relevant to it. Records can refute this closure but cannot establish it on their own, and learned causal laws inherit it from their representations.</p> <p><strong>Version 2.</strong> Adds a graphical exposition of alternative routes and defeaters through hidden conditions that are absent or present throughout the records (Figure 1, Tables 1 and 2); a baseline-polarity corollary, obtained from the proposition by complementing the hidden condition; and a remark on recovery along a trace suffix, showing that a recovered implication does not restore a necessity or sufficiency refuted earlier. The proposition and its proof are unchanged.</p> <p><strong>Historical note.</strong> According to the author, the central ideas of this note were first presented at an academic meeting in 2017, and a 2017 manuscript received scientific review and conceptual feedback from Cas Cremers. No version of the manuscript was made public before the first deposit of 14 November 2026 (version 1); the text was written and revised in 2026.</p> <p><strong>Contributor.</strong> Cas Cremers (CISPA Helmholtz Center for Information Security): scientific review and conceptual feedback on the 2017 manuscript. Listed as a non-author contributor with his consent.</p> <p><strong>AI assistance.</strong> Claude Code (Anthropic) aided drafting, revision and checks, and ChatGPT (OpenAI) review instructions; the author is responsible for the work.</p>'
 description: Necessity and sufficiency are relative to the contexts that a classification admits. A complete list of an effect's necessary and sufficient conditions holds of the world only when the classification preserves every distinction relevant to it. Records can refute this closure but cannot establish...
 pdf:
   file: paper.pdf
-  bytes: 236153
-  sha256: 55274539e0f69bb152da7b2a96abe0b9543efef8c101c4aa599e6506c83f8054
-  md5: 5a7a2a543dcb9434b3b4ce1ea2ec3ac4
+  bytes: 326429
+  sha256: f7295adcd2d72a7b9351a48df9a0e6386ca8d5254e772c760e46c83152290682
+  md5: 042a54e805d30b731291ddf9e4ee9450
   zenodo_file: main.pdf
-  zenodo_url: https://zenodo.org/records/24217159/files/main.pdf?download=1
+  zenodo_url: https://zenodo.org/records/24538897/files/main.pdf?download=1
 versions:
 - record: 24217159
   doi: 10.5281/zenodo.24217159
@@ -45,7 +46,13 @@ versions:
   date: '2026-11-14'
   access: open
   title: null
+- record: 24538897
+  doi: 10.5281/zenodo.24538897
+  version: v2
+  date: '2026-11-25'
+  access: open
+  title: null
 bibtex_key: bragetti2026closurecausal
 bibtex: "@misc{bragetti2026closurecausal,\n  title = {On the Closure of Causal Antecedents},\n  author = {Bragetti, Davide},\n  year = {2026},\n  month = nov,\n  doi = {10.5281/zenodo.24217158},\n  publisher = {Zenodo},\n  note = {Preprint}\n}\n"
-last_modified_at: '2026-11-22T10:40:29+00:00'
+last_modified_at: '2026-11-25T17:11:26+00:00'
 ---

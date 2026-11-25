@@ -2,8 +2,8 @@
   "generated_by": "scripts/sync_zenodo_papers.py",
   "source": "Zenodo public REST API (anonymous), queries by ORCID and by creator name, all versions",
   "orcid": "0009-0008-7645-8241",
-  "concepts_found": 18,
-  "records_found": 36,
+  "concepts_found": 20,
+  "records_found": 39,
   "works": [
     {
       "slug": "intersection-algebra-ltl",
@@ -923,12 +923,12 @@
       "type": "Preprint",
       "concept_record": 24217158,
       "concept_doi": "10.5281/zenodo.24217158",
-      "preferred_record": 24217159,
-      "preferred_doi": "10.5281/zenodo.24217159",
-      "preferred_version": "v1",
-      "publication_date": "2026-11-14",
+      "preferred_record": 24538897,
+      "preferred_doi": "10.5281/zenodo.24538897",
+      "preferred_version": "v2",
+      "publication_date": "2026-11-25",
       "first_published": "2026-11-14",
-      "deposited": "2026-11-14",
+      "deposited": "2026-11-25",
       "license": "cc-by-4.0",
       "keywords": [
         "necessary and sufficient conditions",
@@ -939,17 +939,18 @@
         "classification",
         "prime implicants",
         "safety and liveness",
+        "linear temporal logic",
         "philosophy of science"
       ],
-      "zenodo_pdf": "https://zenodo.org/records/24217159/files/main.pdf?download=1",
+      "zenodo_pdf": "https://zenodo.org/records/24538897/files/main.pdf?download=1",
       "site_page": "https://l3ragio.github.io/research/papers/closure-of-causal-antecedents/",
       "site_pdf": "https://l3ragio.github.io/research/papers/closure-of-causal-antecedents/paper.pdf",
-      "pdf_bytes": 236153,
-      "pdf_sha256": "55274539e0f69bb152da7b2a96abe0b9543efef8c101c4aa599e6506c83f8054",
+      "pdf_bytes": 326429,
+      "pdf_sha256": "f7295adcd2d72a7b9351a48df9a0e6386ca8d5254e772c760e46c83152290682",
       "pdf_md5_matches_zenodo": true,
       "pdf_under_5MB": true,
       "pdf_checks": {
-        "pages": 3,
+        "pages": 6,
         "text_extractable": true,
         "first_page_title": true,
         "first_page_title_words": "3/3",
@@ -965,6 +966,14 @@
           "doi": "10.5281/zenodo.24217159",
           "version": "v1",
           "date": "2026-11-14",
+          "access": "open",
+          "title": null
+        },
+        {
+          "record": 24538897,
+          "doi": "10.5281/zenodo.24538897",
+          "version": "v2",
+          "date": "2026-11-25",
           "access": "open",
           "title": null
         }
@@ -1075,5 +1084,18 @@
       ]
     }
   ],
-  "unlisted_new_concepts": []
+  "unlisted_new_concepts": [
+    {
+      "concept_record": 24470586,
+      "titles": [
+        "Verification Policies under Semantic Decoding in MCK"
+      ]
+    },
+    {
+      "concept_record": 24470588,
+      "titles": [
+        "Verification Policies under Semantic Decoding in MCK: technical supplement (checks, data, extended version, Lean 4 formalization)"
+      ]
+    }
+  ]
 }
