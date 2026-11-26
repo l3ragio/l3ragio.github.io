@@ -54,5 +54,6 @@ versions:
   title: null
 bibtex_key: bragetti2026closurecausal
 bibtex: "@misc{bragetti2026closurecausal,\n  title = {On the Closure of Causal Antecedents},\n  author = {Bragetti, Davide},\n  year = {2026},\n  month = nov,\n  doi = {10.5281/zenodo.24217158},\n  publisher = {Zenodo},\n  note = {Preprint}\n}\n"
-last_modified_at: '2026-11-25T17:11:26+00:00'
+research_line: Causal Laws & Antecedent Closure
+last_modified_at: '2026-11-26T11:37:44+00:00'
 ---

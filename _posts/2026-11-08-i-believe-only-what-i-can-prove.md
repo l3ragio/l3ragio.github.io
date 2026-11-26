@@ -130,10 +130,10 @@ The vocabulary of this post is the one I used for [Kipling's *If-*](/posts/kipli
 
 ## References
 
-- Davide Bragetti, [*Autoimmune Rationalization: A Protective-Systems Analogy and a Formal Mechanism for Self-Defeating Epistemic Protection*](https://doi.org/10.5281/zenodo.24039575), Zenodo preprint, 2026. The link resolves to the latest version. Philosophical and anthropological contribution by Paolo Benanti.
-- Davide Bragetti, [*The Intersection Algebra of Safety, Cosafety, Liveness, and Coliveness over Linear Temporal Logic*](https://doi.org/10.5281/zenodo.23043255), Zenodo, 2026.
-- Davide Bragetti, [*Refinement-Based Confirmation of Liveness Properties from Monitor Verdict Traces*](https://doi.org/10.5281/zenodo.22028019), Zenodo, 2026.
-- Davide Bragetti, Carmelo Asaro and Giuseppe F. Italiano, [*Meaning, Opacity, and Function: An Observer-Relative Classification of Artifacts*](https://doi.org/10.5281/zenodo.22016203), Zenodo, 2026.
+- Davide Bragetti, [*Autoimmune Rationalization: A Protective-Systems Analogy and a Formal Mechanism for Self-Defeating Epistemic Protection*](https://doi.org/10.5281/zenodo.24039575), Zenodo preprint, 2026. The link resolves to the latest version. Philosophical and anthropological contribution by Paolo Benanti. Paper page with the full text: [/research/papers/autoimmune-rationalization/](/research/papers/autoimmune-rationalization/).
+- Davide Bragetti, [*The Intersection Algebra of Safety, Cosafety, Liveness, and Coliveness over Linear Temporal Logic*](https://doi.org/10.5281/zenodo.23043255), Zenodo, 2026. Paper page with the full text: [/research/papers/intersection-algebra-ltl/](/research/papers/intersection-algebra-ltl/).
+- Davide Bragetti, [*Refinement-Based Confirmation of Liveness Properties from Monitor Verdict Traces*](https://doi.org/10.5281/zenodo.22028019), Zenodo, 2026. Paper page with the full text: [/research/papers/refinement-confirmation-liveness/](/research/papers/refinement-confirmation-liveness/).
+- Davide Bragetti, Carmelo Asaro and Giuseppe F. Italiano, [*Meaning, Opacity, and Function: An Observer-Relative Classification of Artifacts*](https://doi.org/10.5281/zenodo.22016203), Zenodo, 2026. Paper page with the full text: [/research/papers/meaning-opacity-function/](/research/papers/meaning-opacity-function/).
 - Shafi Goldwasser, Silvio Micali and Charles Rackoff, [*The Knowledge Complexity of Interactive Proof Systems*](https://doi.org/10.1137/0218012), SIAM Journal on Computing, 1989.
 - Gilles Brassard, David Chaum and Claude Crépeau, [*Minimum Disclosure Proofs of Knowledge*](https://doi.org/10.1016/0022-0000(88)90005-0), Journal of Computer and System Sciences, 1988.
 - Jerome H. Saltzer and Michael D. Schroeder, [*The Protection of Information in Computer Systems*](https://doi.org/10.1109/PROC.1975.9939), Proceedings of the IEEE, 1975.

@@ -96,6 +96,24 @@ post-failure governance and role dynamics in multi-agent interaction.
     <p>Develops the persona and mask-coupling vocabulary that connects agent identity, role selection, and evaluation under adversarial context shifts.</p>
     <p class="research-links"><a href="{% post_url 2026-05-19-uno_nessuno_centomila_e_tutti %}">Read</a></p>
   </article>
+
+  <article class="essay">
+    <h3><a href="{% post_url 2026-10-17-kipling-if-as-ltl %}">Kipling's If- as Linear Temporal Logic</a></h3>
+    <p>Reads Kipling's poem as temporal invariants and response policies, and classifies each clause by what a finite observation can settle.</p>
+    <p class="research-links"><a href="{% post_url 2026-10-17-kipling-if-as-ltl %}">Read</a></p>
+  </article>
+
+  <article class="essay">
+    <h3><a href="{% post_url 2026-11-08-i-believe-only-what-i-can-prove %}">I Believe Only What I Can Prove</a></h3>
+    <p>A short tour of Autoimmune Rationalization: why relying only on what a finite record can confirm can defeat the system the policy protects.</p>
+    <p class="research-links"><a href="{% post_url 2026-11-08-i-believe-only-what-i-can-prove %}">Read</a></p>
+  </article>
+
+  <article class="essay">
+    <h3><a href="{% post_url 2026-11-15-closure-of-causal-antecedents %}">When Is the List of Causes Complete?</a></h3>
+    <p>A short note on antecedent closure: records can refute the completeness of a list of causes but never establish it, and a learned causal law inherits the same limit.</p>
+    <p class="research-links"><a href="{% post_url 2026-11-15-closure-of-causal-antecedents %}">Read</a></p>
+  </article>
 </section>
 
 ## Current Questions

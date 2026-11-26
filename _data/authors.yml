@@ -3,11 +3,15 @@
 ## when omitted, it renders as plain <em>name</em>.
 ## Template > https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md#setting-author-url
 
-davide:
+davide: &davide
   name: Davide Bragetti
   twitter: l3rag1
   url: https://www.linkedin.com/in/davide-bragetti
   image: https://l3ragio.github.io/assets/img/avatar.png
+
+# Medium-synced posts carry `author: "Davide Bragetti"` (set by the sync, not
+# editable). Without this key the post byline rendered empty.
+"Davide Bragetti": *davide
 
 liz_tan:
   name: Liz Tan

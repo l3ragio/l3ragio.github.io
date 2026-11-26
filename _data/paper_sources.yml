@@ -112,12 +112,14 @@ papers:
   - slug: closure-of-causal-antecedents
     concept: 24217158
     bibtex_key: bragetti2026closurecausal
+    research_line: Causal Laws & Antecedent Closure
 
   # Approved by the author on 2026-11-22. The record also carries a LaTeX
   # source archive; only the single PDF is mirrored.
   - slug: neural-causal-law-synthesis
     concept: 24167399
     bibtex_key: bragetti2026neuralcausallaws
+    research_line: Causal Laws & Antecedent Closure
 
 # Zenodo concepts found under the author's name that are deliberately NOT
 # given a scholarly page. Reason codes are reported by the sync script.

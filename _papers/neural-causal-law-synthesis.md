@@ -47,5 +47,6 @@ versions:
   title: null
 bibtex_key: bragetti2026neuralcausallaws
 bibtex: "@misc{bragetti2026neuralcausallaws,\n  title = {Synthesizing Antecedent and Defeater Structure in Exact Neural Causal Laws by Direct Editing and Training},\n  author = {Bragetti, Davide},\n  year = {2026},\n  month = nov,\n  doi = {10.5281/zenodo.24167399},\n  publisher = {Zenodo},\n  note = {Preprint}\n}\n"
-last_modified_at: '2026-11-22T10:40:30+00:00'
+research_line: Causal Laws & Antecedent Closure
+last_modified_at: '2026-11-26T11:37:44+00:00'
 ---

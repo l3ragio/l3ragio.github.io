@@ -114,6 +114,7 @@
 - id: closure-of-causal-antecedents
   paper: closure-of-causal-antecedents
   featured: true
+  research_line: "Causal Laws & Antecedent Closure"
   status: "Preprint"
   venue: "Zenodo preprint"
   description: "Shows that a complete list of an effect's necessary and sufficient conditions holds of the world only when the classification keeps every relevant distinction, and that records can refute this closure but cannot establish it."
@@ -121,6 +122,7 @@
 - id: neural-causal-law-synthesis
   paper: neural-causal-law-synthesis
   featured: true
+  research_line: "Causal Laws & Antecedent Closure"
   status: "Preprint"
   venue: "Zenodo preprint"
   description: "Synthesizes a prescribed route-and-block structure in the exact finite intervention law of a float32 MNIST classifier, by a closed-form edit of one hidden unit and by ordinary training, with every result checked exhaustively in binary32."
