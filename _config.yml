@@ -45,7 +45,15 @@ social:
     - https://medium.com/@dbragetti
     - https://scholar.google.com/citations?user=Fs4CwvwAAAAJ
     - https://www.alphaxiv.org/@davide-bragetti
+    # ORCID as recorded on the Zenodo records and in _data/thesis.yml
+    - https://orcid.org/0009-0008-7645-8241
 
+
+# Default author for jekyll-seo-tag only (key in _data/authors.yml). The theme
+# does not read it: post bylines still come from page.author / page.authors or
+# social.name. Without it, posts with no author field had no `author` in their
+# BlogPosting JSON-LD.
+author: davide
 
 # Site Verification Settings
 webmaster_verifications:
@@ -219,6 +227,10 @@ defaults:
     values:
       layout: page
       permalink: /:title/
+      # Tabs are hub pages, not articles. Without this, jekyll-seo-tag typed them
+      # BlogPosting because every collection document has a date (the build time).
+      seo:
+        type: WebPage
   # Defaults for Visual Stories
   - scope:
       path: "_visual_stories"
@@ -239,6 +251,12 @@ defaults:
       type: papers
     values:
       layout: paper
+      # The article entity of a paper page is the ScholarlyArticle JSON-LD in
+      # _includes/paper-meta.html. jekyll-seo-tag describes the page itself, so
+      # it must not emit a second, conflicting BlogPosting. Its date is set from
+      # publication_date by _plugins/paper-pages-hook.rb.
+      seo:
+        type: WebPage
       comments: false
       toc: false
 
