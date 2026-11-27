@@ -88,9 +88,9 @@ That day, beneath the acacia, a predator died, and no blood was shed. The gazell
 
 Some tell this story another way. In their telling the lion stays a lion, and takes the gazelle. When evening comes, he returns to his rock. Under the acacia, of her, there remain a stone, a scarf and a rifle lowered for good.
 
-{% include plate.html n=9 title="The other telling" text="The lion is back on the rock, as in the first plate, and wears no hat. The stone reads “Here rests a human soul”. The cross already looks toward the parable to come." src="/assets/visual-stories/gazelle-and-lion/panel-09.jpg" alt="A gravestone reading “Here rests a human soul”, the scarf and the rifle left on the rocks, the lion watching from a distance." %}
+{% include plate.html n=9 title="The other telling" text="The lion is back on the rock, as in the first plate, and wears no hat. Below him a gazelle grazes, on four legs. The stone reads “Here rests a human, with immortal soul”. The cross already looks toward the parable to come." src="/assets/visual-stories/gazelle-and-lion/panel-09-v2.jpg" alt="A gravestone reading “Here rests a human, with immortal soul”, the scarf and the rifle left in the grass, a gazelle grazing and the lion watching from the rock." %}
 
-Yet even in that telling, nothing changes for her. Her legend is the same: she was born a gazelle, and she died a human being. Here rests a human soul. What the lion does with mercy does not undo the one who offered it.
+Yet even in that telling, nothing changes for her. Her legend is the same: she was born a gazelle, and she died a human being. Here rests a human, with immortal soul. What the lion does with mercy does not undo the one who offered it.
 
 This story does not ask anyone under threat to lower the rifle. It tells what becomes of the one who chooses to.
 
