@@ -1,0 +1,46 @@
+// Story plates: a portrait illustration inside a post with its reading
+// underneath. Markup comes from _includes/plate.html.
+//
+// The plate is narrower than the text column so a 4:5 image does not fill
+// more than a screen; the reading is small upright text, set apart from the
+// narrative, so the tale keeps its own voice.
+article .content figure.plate {
+  max-width: 30rem;
+  margin: var(--space-4) auto;
+
+  a.img-link {
+    display: block;
+    margin: 0;
+    border: 0 !important;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 !important;
+    border-radius: 10px;
+  }
+
+  figcaption {
+    margin-top: var(--space-2);
+    padding: 0 0.25rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    text-align: left;
+    color: var(--text-muted-color);
+  }
+
+  .plate-head {
+    display: block;
+    margin-bottom: 0.2rem;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent-alt);
+  }
+}
