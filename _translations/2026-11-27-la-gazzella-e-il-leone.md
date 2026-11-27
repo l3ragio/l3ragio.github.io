@@ -1,7 +1,10 @@
 ---
+permalink: /posts/la-gazzella-e-il-leone/
+translation_key: gazelle-and-lion
 title: "La gazzella e il leone"
 lang: it-IT
 date: 2026-11-27T09:00:00+01:00
+visual_story: /visual-stories/la-gazzella-e-il-leone/
 categories: [notes]
 tags: [philosophy, christian-tradition, parable]
 description: "L'unico modo per una gazzella di uccidere un leone è diventare un uomo: puntargli un fucile a due centimetri dal muso, e abbassarlo. Una parabola sul potere e sulla libertà di non usarlo."
@@ -81,6 +84,12 @@ Questa storia non chiede a chi è minacciato di abbassare il fucile. Racconta ch
 </blockquote>
 
 Dentro questa storia ce n'è un'altra: quella del leone che sa di essere leone, non ha niente da dimostrare e impiega tutta la sua forza per non agire da leone. Quella, e l'Agnello a cui conduce, avranno le loro tavole.
+
+## Le tavole
+
+{% include story-gallery.html %}
+
+[Sfoglia la Visual Story](/visual-stories/la-gazzella-e-il-leone/) a pagina intera.
 
 ---
 
