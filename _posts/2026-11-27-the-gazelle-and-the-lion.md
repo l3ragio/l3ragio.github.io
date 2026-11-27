@@ -106,6 +106,14 @@ This story does not ask anyone under threat to lower the rifle. It tells what be
 
 Inside this story there is another: the lion who knows he is a lion, has nothing to prove, and spends all his strength on not acting like one. That story, and the Lamb it leads to, will have their own panels.
 
+## Recognising Before Reacting
+
+This parable has a formal relative. In [*Recognising Before Reacting: Temporal Signatures of Transactional Games*](https://doi.org/10.5281/zenodo.22050700), a preprint with Giuseppe F. Italiano ([full text](/research/papers/transactional-games-temporal-signatures/)), we study Eric Berne's psychological games through the three roles of Karpman's Drama Triangle: Victim, Persecutor, Rescuer. Berne calls *antithesis* the move by one participant that keeps the game from completing. Our question is about time: once you can tell which game is being played, is that move still available?
+
+It is measured by the *antithesis window*: the gap between the moment the game can be recognised and the last moment at which its course can still be changed. When the window is positive, recognising and then reacting is enough. When it is negative, understanding comes too late, and only a choice made beforehand works. When it is zero, you are on the knife's edge.
+
+Read this way, the gazelle with the rifle stands at a change of role: from prey to predator, in the language of the triangle from Victim to Persecutor. Lowering the rifle is her antithesis. And she does not wait to know what the lion will do: waiting until she could recognise it might mean being too late. It has the logic of a choice committed before recognition. This is a reading of the parable, not a result of the paper, which studies games between people and whose classification depends on what the observer has to tell apart.
+
 ## The Panels
 
 {% include story-gallery.html %}
