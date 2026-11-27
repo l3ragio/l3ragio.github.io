@@ -108,14 +108,6 @@ Questa storia non chiede a chi è minacciato di abbassare il fucile. Racconta ch
 
 Dentro questa storia ce n'è un'altra: quella del leone che sa di essere leone, non ha niente da dimostrare e impiega tutta la sua forza per non agire da leone. Quella, e l'Agnello a cui conduce, avranno le loro tavole.
 
-## Riconoscere prima di reagire
-
-Questa parabola ha un parente formale. In [*Recognising Before Reacting: Temporal Signatures of Transactional Games*](https://doi.org/10.5281/zenodo.22050700), un preprint scritto con Giuseppe F. Italiano ([testo completo](/research/papers/transactional-games-temporal-signatures/)), studiamo i giochi psicologici di Eric Berne attraverso i tre ruoli del triangolo drammatico di Karpman: Vittima, Persecutore, Salvatore. Berne chiama *antitesi* la mossa di un partecipante che impedisce al gioco di compiersi. La nostra domanda riguarda il tempo: quando si riesce a riconoscere quale gioco è in corso, quella mossa è ancora possibile?
-
-La si misura con la *finestra dell'antitesi*: la distanza tra il momento in cui il gioco si può riconoscere e l'ultimo momento in cui se ne può ancora cambiare il corso. Se la finestra è positiva, basta riconoscere e poi reagire. Se è negativa, quando si è capito è già tardi, e serve una scelta presa prima. Se è nulla, si è sul filo.
-
-Letta così, la gazzella con il fucile è davanti a un cambio di ruolo: da preda a predatore, nel linguaggio del triangolo da Vittima a Persecutore. Abbassare il fucile è la sua antitesi. E non aspetta di sapere che cosa farà il leone: aspettare di riconoscerlo potrebbe voler dire arrivare tardi. Ha la logica di una scelta presa prima del riconoscimento. Questa è una lettura della parabola, non un risultato del paper, che studia giochi tra persone e la cui classificazione dipende da che cosa l'osservatore deve distinguere.
-
 ## Le tavole
 
 {% include story-gallery.html %}
@@ -123,5 +115,7 @@ Letta così, la gazzella con il fucile è davanti a un cambio di ruolo: da preda
 [Sfoglia la Visual Story](/visual-stories/la-gazzella-e-il-leone/) a pagina intera.
 
 ---
+
+*Sullo stesso tema: [Recognising Before Reacting: Temporal Signatures of Transactional Games](https://doi.org/10.5281/zenodo.22050700), preprint con Giuseppe F. Italiano ([testo completo](/research/papers/transactional-games-temporal-signatures/)).*
 
 *La storia e la sua morale sono mie. Le ho riviste in conversazione con ChatGPT, che ha scritto i prompt e generato le immagini.*
