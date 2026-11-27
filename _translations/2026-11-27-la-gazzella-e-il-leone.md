@@ -90,9 +90,9 @@ Quel giorno, sotto l'acacia, morì un predatore, e nessuno versò sangue. La gaz
 
 C'è chi racconta questa storia in un altro modo. In quel racconto il leone resta leone, e si prende la gazzella. Quando viene sera, torna sulla sua roccia. Sotto l'acacia, di lei, restano una pietra, una sciarpa e un fucile abbassato per sempre.
 
-{% include plate.html n=9 title="L’altro racconto" text="Il leone è di nuovo sulla roccia, come nella prima tavola, e non porta alcun cappello. Sulla pietra, in inglese, c’è scritto «qui riposa un’anima umana». La croce guarda già alla parabola che verrà." src="/assets/visual-stories/gazelle-and-lion/panel-09.jpg" alt="Una lapide con la scritta inglese «Here rests a human soul», la sciarpa e il fucile lasciati sulle rocce, il leone che guarda da lontano." %}
+{% include plate.html n=9 title="L’altro racconto" text="Il leone è di nuovo sulla roccia, come nella prima tavola, e non porta alcun cappello. Più in basso una gazzella bruca, su quattro zampe. Sulla pietra, in inglese, c’è scritto «qui riposa un uomo dall’anima immortale». La croce guarda già alla parabola che verrà." src="/assets/visual-stories/gazelle-and-lion/panel-09-v2.jpg" alt="Una lapide con la scritta inglese «Here rests a human, with immortal soul», la sciarpa e il fucile lasciati nell’erba, una gazzella che bruca e il leone che guarda dalla roccia." %}
 
-Eppure, anche in quel racconto, per lei non cambia nulla. La sua leggenda è la stessa: era nata gazzella, ed è morta uomo. Qui riposa un'anima umana. Ciò che il leone fa della misericordia non cancella chi l'ha offerta.
+Eppure, anche in quel racconto, per lei non cambia nulla. La sua leggenda è la stessa: era nata gazzella, ed è morta uomo. Qui riposa un uomo dall'anima immortale. Ciò che il leone fa della misericordia non cancella chi l'ha offerta.
 
 Questa storia non chiede a chi è minacciato di abbassare il fucile. Racconta che cosa diventa chi sceglie di farlo.
 
