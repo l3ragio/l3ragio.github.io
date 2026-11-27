@@ -9,9 +9,14 @@ layout: default
 
   {% if page.panels %}
   <section class="vs-panels">
+    {% assign _roman = 'I,II,III,IV,V,VI,VII,VIII,IX,X,XI,XII,XIII,XIV,XV,XVI' | split: ',' %}
+    {% assign _word = 'Plate' %}
+    {% if page.lang == 'it-IT' %}{% assign _word = 'Tavola' %}{% endif %}
     {% for p in page.panels %}
     <figure class="vs-panel">
-      <a href="{{ p.img | relative_url }}" class="vs-image">
+      <a href="{{ p.img | relative_url }}" class="vs-image"
+        {% if p.title %}data-head="{{ _word }} {{ _roman[forloop.index0] }} · {{ p.title | escape }}"{% endif %}
+        {% if p.caption %}data-text="{{ p.caption | escape }}"{% endif %}>
         <img
           src="{{ p.img | relative_url }}"
           alt="{{ p.alt | default: 'panel' }}"

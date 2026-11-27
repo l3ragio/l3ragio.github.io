@@ -1,23 +1,29 @@
 {%- comment -%}
 One plate of the post's Visual Story, with its reading underneath.
 
-  {% include plate.html n=3 title="Two centimetres" text="..." %}
+  {% include plate.html n=3 %}
 
-`n` is the plate number (1-based); image and alt text come from the story
-named by the post's `visual_story` front matter, so they never drift apart.
-Pass `src` and `alt` for a plate that is not in the story. The theme wraps
-each image in a lightbox link, so a reader can page through the sequence.
+`n` is the plate number (1-based). Image, alt text, title and caption come
+from the story named by the post's `visual_story` front matter, so they never
+drift apart. A number beyond the story's panels takes the story's `alternate`
+entry (a plate shown in the post but not on the story page). `title` and
+`text` may be passed to override. Opens in gallery mode
+(assets/js/data/gallery-lightbox.js).
 {%- endcomment -%}
 {%- assign _pool = site.visual_stories | concat: site.translations -%}
 {%- assign _story = _pool | where: 'url', page.visual_story | first -%}
 {%- assign _i = include.n | minus: 1 -%}
-{%- assign _panel = _story.panels[_i] -%}
-{%- assign _src = include.src | default: _panel.img -%}
-{%- assign _alt = include.alt | default: _panel.alt -%}
+{%- if include.n > _story.panels.size -%}
+  {%- assign _panel = _story.alternate -%}
+{%- else -%}
+  {%- assign _panel = _story.panels[_i] -%}
+{%- endif -%}
+{%- assign _title = include.title | default: _panel.title -%}
+{%- assign _text = include.text | default: _panel.caption -%}
 {%- assign _roman = 'I,II,III,IV,V,VI,VII,VIII,IX,X,XI,XII,XIII,XIV,XV,XVI' | split: ',' -%}
 {%- assign _word = 'Plate' -%}
 {%- if page.lang == 'it-IT' -%}{%- assign _word = 'Tavola' -%}{%- endif -%}
 <figure class="plate">
-<img src="{{ _src }}" alt="{{ _alt | xml_escape }}" w="1122" h="1402">
-<figcaption><span class="plate-head">{{ _word }} {{ _roman[_i] }} · {{ include.title }}</span>{{ include.text }}</figcaption>
+<img src="{{ _panel.img }}" alt="{{ _panel.alt | xml_escape }}" w="1122" h="1402">
+<figcaption><span class="plate-head">{{ _word }} {{ _roman[_i] }} · {{ _title }}</span>{{ _text }}</figcaption>
 </figure>
