@@ -1,4 +1,9 @@
 ---
+permalink: /visual-stories/la-gazzella-e-il-leone/
+translation_key: gazelle-and-lion-story
+layout: visual_story
+comments: false
+toc: false
 title:    "La gazzella e il leone"
 lang:     it-IT
 subtitle: "Una parabola sul potere e sulla misericordia"

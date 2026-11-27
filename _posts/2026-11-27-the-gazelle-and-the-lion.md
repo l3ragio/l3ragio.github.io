@@ -1,6 +1,8 @@
 ---
+translation_key: gazelle-and-lion
 title: "The Gazelle and the Lion"
 date: 2026-11-27T09:00:00+01:00
+visual_story: /visual-stories/gazelle-and-lion/
 categories: [notes]
 tags: [philosophy, christian-tradition, parable]
 description: "The only way for a gazelle to kill a lion is to become human: to hold a rifle two centimetres from his face, and lower it. A parable about power and the freedom not to use it."
@@ -80,6 +82,12 @@ This story does not ask anyone under threat to lower the rifle. It tells what be
 </blockquote>
 
 Inside this story there is another: the lion who knows he is a lion, has nothing to prove, and spends all his strength on not acting like one. That story, and the Lamb it leads to, will have their own panels.
+
+## The Panels
+
+{% include story-gallery.html %}
+
+[Open the Visual Story](/visual-stories/gazelle-and-lion/) full page.
 
 ---
 

@@ -1,4 +1,5 @@
 ---
+translation_key: gazelle-and-lion-story
 title:    "The Gazelle and the Lion"
 subtitle: "A parable about power and mercy"
 summary:  "A gazelle learns to forge a rifle, holds it to a lion's face, and lowers it while his claw is still at her throat."

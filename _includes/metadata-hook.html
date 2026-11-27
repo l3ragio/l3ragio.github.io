@@ -103,6 +103,11 @@ Thesis JSON-LD, from _data/thesis.yml.
   {% include thesis-meta.html %}
 {% endif %}
 
+{%- comment -%}
+Language versions: hreflang alternates and the EN | IT toggle.
+{%- endcomment -%}
+{% include lang-alternates.html %}
+
 <!-- Person schema for the primary author. Adds the avatar image to
      the Person object so social platforms (LinkedIn, X, Slack, etc.)
      have a non-obsolete profile picture next to the author name in

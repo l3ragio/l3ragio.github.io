@@ -1,0 +1,48 @@
+{%- comment -%}
+Gallery of a Visual Story's panels inside a post.
+
+Usage in a post:  {% include story-gallery.html %}
+The story is the one named by the post's `visual_story:` front matter
+(its URL), or by `story=` passed to the include. Panels and alt text come
+from the story itself, so the post and the story never drift apart.
+Each image is wrapped by the theme in a lightbox link; the lightbox lets
+the reader page through the whole sequence.
+{%- endcomment -%}
+{%- assign _sg_url = include.story | default: page.visual_story -%}
+{%- assign _sg_pool = site.visual_stories | concat: site.translations -%}
+{%- assign _sg = _sg_pool | where: 'url', _sg_url | first -%}
+{%- if _sg and _sg.panels -%}
+<div class="story-gallery">
+{%- for _p in _sg.panels %}
+<img src="{{ _p.img }}" alt="{{ _p.alt | xml_escape }}">
+{%- endfor %}
+</div>
+<style>
+  .story-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.6rem;
+    margin: 1rem 0 1.25rem;
+  }
+  @media (max-width: 576px) {
+    .story-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  .story-gallery a.img-link {
+    display: block;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 8px;
+    border-bottom: 0 !important;
+  }
+  .story-gallery img {
+    display: block;
+    width: 100%;
+    height: 100% !important;
+    object-fit: cover;
+    margin: 0 !important;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+  }
+  .story-gallery a.img-link:hover img { transform: scale(1.03); }
+</style>
+{%- endif -%}
