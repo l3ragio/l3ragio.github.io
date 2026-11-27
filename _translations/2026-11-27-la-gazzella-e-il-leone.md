@@ -28,15 +28,19 @@ Si dice che ogni mattina, in Africa, una gazzella si svegli sapendo che dovrà c
 
 Per tutta la vita aveva corso. Era diventata più veloce, più pronta a scartare, più svelta a sentirlo nell'erba. Ma sapeva che un giorno non sarebbe bastato. Nessuna gazzella corre per sempre.
 
+Ogni mattina il leone la aspettava allo stesso posto: sulla roccia, all'ombra dell'acacia. Non aveva bisogno di muoversi. La savana era già sua.
+
 {% include plate.html n=1 title="La legge" text="Lui sta in alto, sulla roccia. Lei è in basso, vista di spalle, su quattro zampe. È l’ordine della savana: lui non deve fare nulla, lei può solo correre." %}
 
 ## Il ferro e il fuoco
 
-Allora fece ciò che nessuna gazzella aveva mai fatto. Si alzò sulle zampe posteriori, imparò il fuoco della forgia e il peso del martello, e batté il ferro finché il ferro le obbedì. Ne uscì un fucile.
+Allora fece ciò che nessuna gazzella aveva mai fatto. Si alzò sulle zampe posteriori, imparò il fuoco della forgia e il peso del martello, e batté il ferro finché il ferro le obbedì.
+
+Per la prima volta ebbe delle mani. Si legò un grembiule di cuoio e lavorò davanti al fuoco, con la savana di sempre oltre la soglia. Quando il ferro si raffreddò, sul banco c'era un fucile.
 
 {% include plate.html n=2 title="La forgia" text="Alle sue spalle c’è la stessa savana, ma lei è già un’altra: in piedi, con le mani, un grembiule addosso. Sul banco il fucile è finito prima che lei sappia che cosa farne." %}
 
-Tornò sotto la stessa acacia. Il leone era lì, come sempre. Lei sollevò il fucile e glielo puntò in faccia, a due centimetri dal muso.
+Tornò sotto la stessa acacia. Il leone era lì, come sempre. Lei sollevò il fucile e glielo puntò in faccia, a due centimetri dal muso. Il leone non si mosse. Tra la canna e il suo respiro restava soltanto un filo di luce.
 
 {% include plate.html n=3 title="Due centimetri" text="Per la prima volta è il leone a essere sotto tiro. Lei è armata e ancora senza vesti: ha imparato un mestiere, non ha ancora fatto una scelta. Tutto ciò che resta da decidere sta nello spazio tra la canna e il muso." %}
 
@@ -44,7 +48,7 @@ Ora era pericolosa quanto lui. Ma questo non faceva ancora di lei un predatore. 
 
 ## Lo stallo
 
-Il leone la guardò negli occhi.
+Il leone non ruggì. La guardò negli occhi, e lei non abbassò i suoi. Non era mai successo: quando una gazzella incontra lo sguardo di un leone, di solito sta già fuggendo.
 
 {% include plate.html n=4 title="Occhi negli occhi" text="Nella prima tavola lui la guardava dall’alto. Ora i due sguardi sono alla stessa altezza: il ferro ha pareggiato le forze, non ancora le intenzioni." %}
 
@@ -70,11 +74,11 @@ Il ferro le aveva dato il grembiule del fabbro. La rinuncia le diede l'abito del
 
 Ora la scelta era del leone, e prima non l'aveva mai avuta. Per un leone, una gazzella è soltanto una preda.
 
-Ritrasse l'artiglio.
+Piano, come piano l'aveva alzata, staccò la zampa dalla sua gola. L'artiglio non aveva lasciato un graffio.
 
 {% include plate.html n=7 title="La seconda scelta" text="Adesso si muove lui. La zampa si stacca, e tra l’artiglio e la gola si apre uno spazio che prima non c’era. Poteva affondare, e si ritrae." %}
 
-Risparmiò la sua preda naturale, come lei aveva risparmiato lui, e se ne andò lungo il sentiero voltandosi una volta sola.
+Risparmiò la sua preda naturale, come lei aveva risparmiato lui, e se ne andò lungo il sentiero, verso il sole basso, voltandosi una volta sola.
 
 Non si alzò su due zampe. Non indossò abiti. Rimase leone nel corpo, nella forza, nel passo. Ma da quel giorno portò un cappello: uno soltanto, il segno che qualcosa di umano era entrato anche in lui.
 
@@ -84,11 +88,11 @@ Quel giorno, sotto l'acacia, morì un predatore, e nessuno versò sangue. La gaz
 
 ## La leggenda della gazzella
 
-C'è chi racconta questa storia in un altro modo. In quel racconto il leone resta leone, e si prende la gazzella.
+C'è chi racconta questa storia in un altro modo. In quel racconto il leone resta leone, e si prende la gazzella. Quando viene sera, torna sulla sua roccia. Sotto l'acacia, di lei, restano una pietra, una sciarpa e un fucile abbassato per sempre.
 
-{% include plate.html n=9 title="L’altro racconto" text="Il leone è di nuovo sulla roccia, come nella prima tavola, e non porta alcun cappello. Restano la sciarpa, il fucile e una pietra che dice, in inglese, «qui riposa un’anima umana». La croce guarda già alla parabola che verrà." src="/assets/visual-stories/gazelle-and-lion/panel-09.jpg" alt="Una lapide con la scritta inglese «Here rests a human soul», la sciarpa e il fucile lasciati sulle rocce, il leone che guarda da lontano." %}
+{% include plate.html n=9 title="L’altro racconto" text="Il leone è di nuovo sulla roccia, come nella prima tavola, e non porta alcun cappello. Sulla pietra, in inglese, c’è scritto «qui riposa un’anima umana». La croce guarda già alla parabola che verrà." src="/assets/visual-stories/gazelle-and-lion/panel-09.jpg" alt="Una lapide con la scritta inglese «Here rests a human soul», la sciarpa e il fucile lasciati sulle rocce, il leone che guarda da lontano." %}
 
-Eppure, anche in quel racconto, per lei non cambia nulla. Sulla roccia restano la sciarpa e il fucile, e la sua leggenda è la stessa: era nata gazzella, ed è morta uomo. Qui riposa un'anima umana. Ciò che il leone fa della misericordia non cancella chi l'ha offerta.
+Eppure, anche in quel racconto, per lei non cambia nulla. La sua leggenda è la stessa: era nata gazzella, ed è morta uomo. Qui riposa un'anima umana. Ciò che il leone fa della misericordia non cancella chi l'ha offerta.
 
 Questa storia non chiede a chi è minacciato di abbassare il fucile. Racconta che cosa diventa chi sceglie di farlo.
 
